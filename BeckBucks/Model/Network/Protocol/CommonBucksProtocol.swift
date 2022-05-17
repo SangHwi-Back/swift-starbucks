@@ -44,13 +44,17 @@ class CommonBucksProtocol: URLProtocol {
   override func stopLoading() { }
   
   override func startLoading() {
-    do {
-      let (response, data) = try self.handler(self.request)
-      self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
-      self.client?.urlProtocol(self, didLoad: data)
-      self.client?.urlProtocolDidFinishLoading(self)
-    } catch {
-      self.client?.urlProtocol(self, didFailWithError: error)
+    let randomSecond = Int.random(in: 0...3)
+    
+    DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + .seconds(randomSecond)) {
+      do {
+        let (response, data) = try self.handler(self.request)
+        self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
+        self.client?.urlProtocol(self, didLoad: data)
+        self.client?.urlProtocolDidFinishLoading(self)
+      } catch {
+        self.client?.urlProtocol(self, didFailWithError: error)
+      }
     }
   }
 }

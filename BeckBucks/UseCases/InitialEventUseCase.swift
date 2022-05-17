@@ -3,8 +3,7 @@ import RxSwift
 
 class InitialEventUseCase {
   
-  let initialURLSession = InitialURLSession()
-  let bag = DisposeBag()
+  private let initialURLSession = InitialURLSession()
   
   func getBackgroundImage() -> Observable<Data> {
     initialURLSession.image

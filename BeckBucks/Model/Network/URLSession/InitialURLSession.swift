@@ -3,8 +3,10 @@ import RxSwift
 
 class InitialURLSession {
   
-  var imageURL: URL
-  var infoURL: URL
+  // MARK: - URLs
+  
+  private var imageURL: URL
+  private var infoURL: URL
   
   init() {
     imageURL = URL(string: "https://s3.ap-northeast-2.amazonaws.com")!
@@ -17,22 +19,20 @@ class InitialURLSession {
     infoURL.appendPathComponent("starbuckst-loading.json")
   }
   
+  // MARK: - Observables
+  
   var info: Observable<Data> {
-    
-    let configuration = URLSessionConfiguration.default
-    configuration.protocolClasses = [InitialInfoBucksProtocol.self]
-    
-    return URLSession(configuration: configuration).rx
+//    let configuration = URLSessionConfiguration.default
+//    configuration.protocolClasses = [InitialInfoBucksProtocol.self]
+    return URLSession(configuration: InitialInfoBucksProtocol.protocolClass).rx
       .data(request: URLRequest(url: infoURL))
       .share(replay: 1)
   }
   
   var image: Observable<Data> {
-    
-    let configuration = URLSessionConfiguration.default
-    configuration.protocolClasses = [InitialImageBucksProtocol.self]
-    
-    return URLSession(configuration: configuration).rx
+//    let configuration = URLSessionConfiguration.default
+//    configuration.protocolClasses = [InitialImageBucksProtocol.self]
+    return URLSession(configuration: InitialImageBucksProtocol.protocolClass).rx
       .data(request: URLRequest(url: imageURL))
       .share(replay: 1)
   }
