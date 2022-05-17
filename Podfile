@@ -1,18 +1,18 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
 
-target 'BeckBucks' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+use_frameworks!
+platform :ios, '12.0'
+
+def shared_pods 
   pod 'RxSwift', '5.1.1'
   pod 'RxRelay', '5.1.1'
   pod 'RxCocoa', '5.1.1'
+end
 
-  # Pods for BeckBucks
+target 'BeckBucks' do
+  shared_pods
+end
 
-  target 'BeckBucksTests' do
-    inherit! :complete
-    pod 'RxTest', '5.1.1'
-  end
-
+target 'BeckBucksTests' do
+  shared_pods
 end
