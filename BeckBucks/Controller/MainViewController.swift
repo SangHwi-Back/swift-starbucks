@@ -22,6 +22,10 @@ class MainViewController: UIViewController {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyyMMdd"
     
+//    CommonUserDefaults
+//      .resetInitialEventDismissDate()
+//      .disposed(by: bag)
+    
     CommonUserDefaults
       .getInitialEventDismissDate()
       .subscribe(onSuccess: { [weak self] dateString in

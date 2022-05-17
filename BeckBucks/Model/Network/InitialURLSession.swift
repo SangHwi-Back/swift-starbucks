@@ -19,27 +19,21 @@ class InitialURLSession {
   
   var info: Observable<Data> {
     
-    var session = URLSession.shared.rx
+    let configuration = URLSessionConfiguration.default
+    configuration.protocolClasses = [InitialInfoBucksProtocol.self]
     
-    if UserDefaults.standard.bool(forKey: "isUnitTest") {
-      let conf = URLSessionConfiguration.default
-      conf.protocolClasses = [InitialInfoBucksProtocol.self]
-      session = URLSession(configuration: conf).rx
-    }
-    
-    return session.data(request: URLRequest(url: infoURL)).share(replay: 1)
+    return URLSession(configuration: configuration).rx
+      .data(request: URLRequest(url: infoURL))
+      .share(replay: 1)
   }
   
   var image: Observable<Data> {
     
-    var session = URLSession.shared.rx
+    let configuration = URLSessionConfiguration.default
+    configuration.protocolClasses = [InitialImageBucksProtocol.self]
     
-    if UserDefaults.standard.bool(forKey: "isUnitTest") {
-      let conf = URLSessionConfiguration.default
-      conf.protocolClasses = [InitialImageBucksProtocol.self]
-      session = URLSession(configuration: conf).rx
-    }
-    
-    return session.data(request: URLRequest(url: imageURL)).share(replay: 1)
+    return URLSession(configuration: configuration).rx
+      .data(request: URLRequest(url: imageURL))
+      .share(replay: 1)
   }
 }

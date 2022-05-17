@@ -1,5 +1,5 @@
 import Foundation
-enum InitialError: Error {
+enum ProtocolError: Error {
   case noData
   case noResponse
 }
