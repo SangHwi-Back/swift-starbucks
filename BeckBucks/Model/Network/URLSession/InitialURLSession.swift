@@ -22,18 +22,14 @@ class InitialURLSession {
   // MARK: - Observables
   
   var info: Observable<Data> {
-//    let configuration = URLSessionConfiguration.default
-//    configuration.protocolClasses = [InitialInfoBucksProtocol.self]
     return URLSession(configuration: InitialInfoBucksProtocol.protocolClass).rx
-      .data(request: URLRequest(url: infoURL))
+      .data(request: URLRequest.common(infoURL))
       .share(replay: 1)
   }
   
   var image: Observable<Data> {
-//    let configuration = URLSessionConfiguration.default
-//    configuration.protocolClasses = [InitialImageBucksProtocol.self]
     return URLSession(configuration: InitialImageBucksProtocol.protocolClass).rx
-      .data(request: URLRequest(url: imageURL))
+      .data(request: URLRequest.common(imageURL))
       .share(replay: 1)
   }
 }

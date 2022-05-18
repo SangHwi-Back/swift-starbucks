@@ -27,13 +27,13 @@ class HomeURLSession {
   
   var main: Observable<Data> {
     return URLSession(configuration: HomeMainBucksProtocol.protocolClass).rx
-      .data(request: URLRequest(url: homeMainURL))
+      .data(request: URLRequest.common(homeMainURL))
       .share(replay: 1)
   }
   
   var thumb: Observable<Data> {
     return URLSession(configuration: HomeThumbBucksProtocol.protocolClass).rx
-      .data(request: URLRequest(url: mainThumbURL))
+      .data(request: URLRequest.common(mainThumbURL))
       .share(replay: 1)
   }
   
@@ -46,7 +46,7 @@ class HomeURLSession {
     request.addValue("utf-8", forHTTPHeaderField: "charset")
     
     return URLSession(configuration: HomeIngBucksProtocol.protocolClass).rx
-      .data(request: URLRequest(url: ingListURL))
+      .data(request: URLRequest.common(ingListURL))
       .share(replay: 1)
   }
 }

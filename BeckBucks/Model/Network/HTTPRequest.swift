@@ -16,3 +16,9 @@ struct HTTPResult {
   let data: Data?
   let message: String
 }
+
+extension URLRequest {
+  static func common(_ url: URL) -> URLRequest {
+    URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+  }
+}
