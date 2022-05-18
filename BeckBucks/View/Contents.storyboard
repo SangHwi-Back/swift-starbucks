@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SRW-Ig-6nq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -346,15 +347,20 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="icon_home" id="mVS-Pd-3LI"/>
                     <connections>
+                        <outlet property="ingListItemStackView" destination="3on-5I-jln" id="1wk-ea-0IQ"/>
                         <outlet property="ingListScrollView" destination="YHq-ER-Vv6" id="SSs-X8-wc8"/>
+                        <outlet property="ingListStackView" destination="bB1-L3-gpM" id="wIo-FN-MBK"/>
                         <outlet property="mainEventImageView" destination="RmG-bM-H0o" id="sUZ-dW-twy"/>
                         <outlet property="mainEventImageViewHeightConstraint" destination="Rhw-MK-GUk" id="nb7-jG-Xn2"/>
                         <outlet property="mainScrollView" destination="uGR-4p-6bC" id="PX3-rf-MqB"/>
                         <outlet property="nameLabel" destination="tGS-RN-Hxx" id="S5z-iQ-zRI"/>
+                        <outlet property="recommendItemStackView" destination="yYQ-zf-XfV" id="E0g-s3-lJw"/>
                         <outlet property="recommendScrollView" destination="oVS-E8-GUr" id="fcS-E8-AMc"/>
                         <outlet property="recommendStackView" destination="xw1-HA-2Ls" id="CRg-3M-Ci6"/>
                         <outlet property="seeAllButton" destination="wMm-lm-mHr" id="hwY-XM-Yw4"/>
+                        <outlet property="thisTimeRecommendItemStackView" destination="ykj-1S-irb" id="dtx-ad-tkY"/>
                         <outlet property="thisTimeRecommendScrollView" destination="glE-Wo-3MG" id="WvD-QE-GBc"/>
+                        <outlet property="thisTimeRecommendStackView" destination="GHD-Zi-ujH" id="IFE-MV-8lE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6Y-DC-YWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -418,8 +424,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Wpr-AC-GtR" kind="relationship" relationship="viewControllers" id="GEQ-w6-b7j"/>

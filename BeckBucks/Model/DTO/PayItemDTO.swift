@@ -23,4 +23,5 @@ struct PayItemView: Codable {
   let sodium: String // 나트륨
   let caffeine: String // 카페인
   let allergy: String // 알러지 유발 요인(@로 구분)
+  let img_UPLOAD_PATH: String
 }

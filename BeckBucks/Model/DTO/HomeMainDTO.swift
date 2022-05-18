@@ -4,7 +4,14 @@ struct HomeMainDTO: Codable {
   let displayName: String
   let yourRecommend: HomeMainProducts
   let mainEvent: HomeMainEvent
-  let nowRecommand: HomeMainProducts
+  let nowRecommend: HomeMainProducts
+  
+  enum CodingKeys: String, CodingKey {
+    case displayName = "display-name"
+    case yourRecommend = "your-recommand"
+    case mainEvent = "main-event"
+    case nowRecommend = "now-recommand"
+  }
 }
 
 struct HomeMainProducts: Codable {
@@ -12,6 +19,6 @@ struct HomeMainProducts: Codable {
 }
 
 struct HomeMainEvent: Codable {
-  let imgUploadPath: String
-  let mobThumb: String
+  let img_UPLOAD_PATH: String
+  let mob_THUM: String
 }

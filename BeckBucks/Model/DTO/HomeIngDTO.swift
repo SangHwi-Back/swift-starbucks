@@ -10,4 +10,7 @@ struct HomeIngList: Codable {
 
 struct HomeIngItem: Codable {
   let title: String
+  let mob_THUM: String
+  let img_UPLOAD_PATH: String
+  
 }
