@@ -19,12 +19,12 @@ class HomeMainUseCase {
   }
   
   func getIngList() -> Observable<HomeIngDTO> {
-    return homeURLSession.main.compactMap { [weak self] data in
+    return homeURLSession.ingList.compactMap { [weak self] data in
       try? self?.decoder.decode(HomeIngDTO.self, from: data)
     }
   }
   
-  func getImage(uploadPath: String, mobThum: String) -> Observable<Data> {
+  func getStoredImageData(uploadPath: String, mobThum: String) -> Observable<Data> {
     var url = URL(string: uploadPath)
     url?.appendPathComponent("upload")
     url?.appendPathComponent("promotion")
@@ -40,7 +40,7 @@ class HomeMainUseCase {
     return imageURLSession.getStarbucksImage(request)
   }
   
-  func getInfo(_ productCd: String, index: Int? = nil) -> Observable<PayItemDTO> {
+  func getStoredItemInfo(key productCd: String, index: Int? = nil) -> Observable<PayItemDTO> {
     return payURLSession.itemInfo(productCd, index).compactMap { [weak self] data in
       return try? self?.decoder.decode(PayItemDTO.self, from: data)
     }
@@ -56,21 +56,22 @@ class HomeMainUseCase {
     .asObservable()
   }
   
-  func getStoredImage(as name: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
+  func getStoredJSONAndData(JSONname: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
     
     let imageInfoObservable: Observable<(PayItemImageDTO, Int)> = Observable<String>.just("").flatMap { _ in
-      return self.getItemImageInfo(name, index: index)
+      return self.getItemImageInfo(JSONname, index: index)
         .map({(elem) in (elem, index)})
     }
     
-    let result = imageInfoObservable.flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
-      guard let info = dto.file.first else {
-        return Observable<(PayItemImageFile, Data)>.empty()
+    let result = imageInfoObservable
+      .flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
+        guard let info = dto.file.first else {
+          return Observable<(PayItemImageFile, Data)>.empty()
+        }
+        
+        return self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
+          .map({ data in (info, data) })
       }
-      
-      return self.getImage(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
-        .map({ data in (info, data) })
-    }
     
     return result.map({ (info, data) in (info, data, index) })
   }

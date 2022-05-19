@@ -1,7 +1,7 @@
 import Foundation
 
 struct HomeIngDTO: Codable {
-  let list: HomeIngList
+  let list: [HomeIngItem]
 }
 
 struct HomeIngList: Codable {
@@ -12,4 +12,5 @@ struct HomeIngItem: Codable {
   let title: String
   let mob_THUM: String
   let img_UPLOAD_PATH: String
+  let sbtitle_NAME: String
 }

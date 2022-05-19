@@ -52,7 +52,7 @@ class BeckBucksNetworkTests: XCTestCase {
             imageDTO.file.first
           })
           .flatMap({ imageDTO -> Observable<Data> in
-            useCase.getImage(uploadPath: imageDTO.img_UPLOAD_PATH, mobThum: imageDTO.file_NAME)
+            useCase.getStoredImageData(uploadPath: imageDTO.img_UPLOAD_PATH, mobThum: imageDTO.file_NAME)
           })
           .subscribe(onNext: { imageData in
             XCTAssertNotNil(UIImage(data: imageData))
@@ -69,7 +69,7 @@ class BeckBucksNetworkTests: XCTestCase {
             imageDTO.file.first
           })
           .flatMap({ imageDTO -> Observable<Data> in
-            useCase.getImage(uploadPath: imageDTO.img_UPLOAD_PATH, mobThum: imageDTO.file_NAME)
+            useCase.getStoredImageData(uploadPath: imageDTO.img_UPLOAD_PATH, mobThum: imageDTO.file_NAME)
           })
           .subscribe(onNext: { imageData in
             XCTAssertNotNil(UIImage(data: imageData))
@@ -89,10 +89,10 @@ class BeckBucksNetworkTests: XCTestCase {
 
     useCase.getIngList()
       .flatMap({ dto in
-        Observable.from(dto.list.item)
+        Observable.from(dto.list)
       })
       .flatMap({ itemDTO in
-        useCase.getImage(uploadPath: itemDTO.img_UPLOAD_PATH, mobThum: itemDTO.mob_THUM)
+        useCase.getStoredImageData(uploadPath: itemDTO.img_UPLOAD_PATH, mobThum: itemDTO.mob_THUM)
       })
       .subscribe(onNext: { imageData in
         XCTAssertNotNil(UIImage(data: imageData))
