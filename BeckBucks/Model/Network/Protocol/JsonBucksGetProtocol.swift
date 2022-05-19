@@ -1,9 +1,6 @@
 import Foundation
 
-class CommonBucksProtocol: URLProtocol {
-  
-  private(set) var resourceName: String = ""
-  private(set) var resourceExtension: String = ""
+class JsonBucksGetProtocol: URLProtocol {
   
   static var protocolClass: URLSessionConfiguration {
     let conf = URLSessionConfiguration.default
@@ -14,8 +11,11 @@ class CommonBucksProtocol: URLProtocol {
   lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { request in
     
     var resultData: Data?
+    let requestURL = request.url
+    let resourceName = requestURL?.lastPathComponent
     
-    if let url = Bundle.main.url(forResource: self.resourceName, withExtension: self.resourceExtension),
+    if let name = resourceName,
+       let url = Bundle.main.url(forResource: name, withExtension: "json"),
        let data = try? Data(contentsOf: url) {
       resultData = data
     }
@@ -44,13 +44,17 @@ class CommonBucksProtocol: URLProtocol {
   override func stopLoading() { }
   
   override func startLoading() {
-    do {
-      let (response, data) = try self.handler(self.request)
-      self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
-      self.client?.urlProtocol(self, didLoad: data)
-      self.client?.urlProtocolDidFinishLoading(self)
-    } catch {
-      self.client?.urlProtocol(self, didFailWithError: error)
+    let randomSecond = Int.random(in: 0...3)
+    
+    DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + .seconds(randomSecond)) {
+      do {
+        let (response, data) = try self.handler(self.request)
+        self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
+        self.client?.urlProtocol(self, didLoad: data)
+        self.client?.urlProtocolDidFinishLoading(self)
+      } catch {
+        self.client?.urlProtocol(self, didFailWithError: error)
+      }
     }
   }
 }

@@ -1,9 +1,6 @@
 import Foundation
 
-class CommonBucksProtocol: URLProtocol {
-  
-  private(set) var resourceName: String = ""
-  private(set) var resourceExtension: String = ""
+class ImageBucksPOSTProtocol: URLProtocol {
   
   static var protocolClass: URLSessionConfiguration {
     let conf = URLSessionConfiguration.default
@@ -14,8 +11,19 @@ class CommonBucksProtocol: URLProtocol {
   lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { request in
     
     var resultData: Data?
+    let requestBody = request.httpBody
+
+    guard let bodyData = requestBody,
+          let bodyString = String(data: bodyData, encoding: .utf8) else {
+      self.client?.urlProtocol(self, didFailWithError: ProtocolError.bodyError)
+      throw ProtocolError.bodyError
+    }
     
-    if let url = Bundle.main.url(forResource: self.resourceName, withExtension: self.resourceExtension),
+    let bodies = bodyString.split(separator: "&")
+
+    if let firstBody = bodies.first,
+       let name = bodies.first?.split(separator: "=").first,
+       let url = Bundle.main.url(forResource: String(name), withExtension: "jpg"),
        let data = try? Data(contentsOf: url) {
       resultData = data
     }
@@ -44,13 +52,17 @@ class CommonBucksProtocol: URLProtocol {
   override func stopLoading() { }
   
   override func startLoading() {
-    do {
-      let (response, data) = try self.handler(self.request)
-      self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
-      self.client?.urlProtocol(self, didLoad: data)
-      self.client?.urlProtocolDidFinishLoading(self)
-    } catch {
-      self.client?.urlProtocol(self, didFailWithError: error)
+    let randomSecond = Int.random(in: 0...3)
+    
+    DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + .seconds(randomSecond)) {
+      do {
+        let (response, data) = try self.handler(self.request)
+        self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
+        self.client?.urlProtocol(self, didLoad: data)
+        self.client?.urlProtocolDidFinishLoading(self)
+      } catch {
+        self.client?.urlProtocol(self, didFailWithError: error)
+      }
     }
   }
 }

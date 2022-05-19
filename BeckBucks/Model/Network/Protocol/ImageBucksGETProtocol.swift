@@ -1,6 +1,6 @@
 import Foundation
 
-class ImageBucksProtocol: URLProtocol {
+class ImageBucksGETProtocol: URLProtocol {
   
   static var protocolClass: URLSessionConfiguration {
     let conf = URLSessionConfiguration.default
@@ -12,10 +12,11 @@ class ImageBucksProtocol: URLProtocol {
     
     var resultData: Data?
     let requestURL = request.url
-    let resourceName = requestURL?.lastPathComponent
+    let resourceName = requestURL?.lastPathComponent.split(separator: ".")
     
-    if let name = resourceName,
-       let url = Bundle.main.url(forResource: name, withExtension: "jpg"),
+    if let name = resourceName?.first,
+       let ext = resourceName?.last,
+       let url = Bundle.main.url(forResource: "\(name)", withExtension: "\(ext)"),
        let data = try? Data(contentsOf: url) {
       resultData = data
     }

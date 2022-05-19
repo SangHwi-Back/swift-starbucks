@@ -34,7 +34,10 @@ class HomeMainUseCase {
       return Observable<Data>.empty()
     }
     
-    return imageURLSession.getStarbucksImage(url)
+    var request = URLRequest.common(url)
+    request.httpMethod = "GET"
+    
+    return imageURLSession.getStarbucksImage(request)
   }
   
   func getInfo(_ productCd: String, index: Int? = nil) -> Observable<PayItemDTO> {
@@ -44,22 +47,31 @@ class HomeMainUseCase {
     .asObservable()
   }
   
-  func getItemImage(_ productCd: String, index: Int? = nil) -> Observable<PayItemImageDTO> {
-    var url = URL(string: "https://www.starbucks.co.kr")
-    url?.appendPathComponent("menu")
-    url?.appendPathComponent("productFileAjax.do")
-    
-    guard let url = url else { return Observable<PayItemImageDTO>.empty() }
-    
-    var urlComp = URLComponents(string: url.absoluteString)
+  func getItemImageInfo(_ productCd: String, index: Int? = nil) -> Observable<PayItemImageDTO> {
     let index = index == nil ? "" : "\(index!)"
-    urlComp?.queryItems = [URLQueryItem(name: "PRODUCT_CD", value: productCd+index)]
     
-    guard let url = urlComp?.url else { return Observable<PayItemImageDTO>.empty() }
-    
-    return imageURLSession.getStarbucksImage(url).compactMap { data in
+    return payURLSession.getImageInfo(productCd+index).compactMap { data in
       return try? self.decoder.decode(PayItemImageDTO.self, from: data)
     }
+    .asObservable()
+  }
+  
+  func getStoredImage(as name: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
     
+    let imageInfoObservable: Observable<(PayItemImageDTO, Int)> = Observable<String>.just("").flatMap { _ in
+      return self.getItemImageInfo(name, index: index)
+        .map({(elem) in (elem, index)})
+    }
+    
+    let result = imageInfoObservable.flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
+      guard let info = dto.file.first else {
+        return Observable<(PayItemImageFile, Data)>.empty()
+      }
+      
+      return self.getImage(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
+        .map({ data in (info, data) })
+    }
+    
+    return result.map({ (info, data) in (info, data, index) })
   }
 }

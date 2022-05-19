@@ -32,13 +32,24 @@ class PayURLSession {
       .asSingle()
   }
   
-  lazy var imageInfo: (String) -> Single<Data> = { productCd in
+  lazy var postImageInfo: (String) -> Single<Data> = { productCd in
     var request = URLRequest.common(self.itemURL)
     request.httpMethod = "POST"
     request.httpBody = "PRODUCT_CD=\(productCd)".data(using: .utf8)
     
-    return URLSession(configuration: PayImageBucksProtocol.protocolClass).rx
+    return URLSession(configuration: ImageBucksPOSTProtocol.protocolClass).rx
       .data(request: request)
+      .share(replay: 1)
+      .asSingle()
+  }
+  
+  lazy var getImageInfo: (String) -> Single<Data> = { resourceName in
+    var url = self.itemURL
+    url.deleteLastPathComponent()
+    url.appendPathComponent(resourceName)
+    
+    return URLSession(configuration: JsonBucksGetProtocol.protocolClass).rx
+      .data(request: URLRequest.common(url))
       .share(replay: 1)
       .asSingle()
   }
