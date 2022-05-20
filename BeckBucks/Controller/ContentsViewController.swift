@@ -32,61 +32,55 @@ class ContentsViewController: UIViewController {
     super.viewDidLoad()
     
     useCase.getMainInfo()
+      .observeOn(MainScheduler.instance)
       .subscribe(onNext: { mainDTO in
         
         // 사용자 이름
-        Observable<String>.just(mainDTO.displayName).bind(to: self.nameLabel.rx.text).dispose()
+        self.nameLabel.text = mainDTO.displayName
         
-        let recommendImageObservable = Observable.from(mainDTO.yourRecommend.products)
-          .enumerated()
+        // 추천 메뉴(이미지 + 이름)
+        let recommendImageObservable = Observable.from(mainDTO.yourRecommend.products).enumerated()
           .flatMap { (index, elem) in
-            self.useCase.getStoredJSONAndData(JSONname: "payImageJSON", index: index)
+            self.useCase.getStoredJSONAndImageData(JSONname: "payImageJSON", index: index)
           }
         
-        let recommendNameObservable = Observable.from(mainDTO.yourRecommend.products)
-          .enumerated()
+        let recommendNameObservable = Observable.from(mainDTO.yourRecommend.products).enumerated()
           .flatMap { (index, elem) in
             self.useCase.getStoredItemInfo(key: elem, index: index)
           }
         
-        // 추천 메뉴(이미지 + 이름)
-        Observable.zip(recommendImageObservable, recommendNameObservable)
-          .enumerated()
+        Observable.zip(recommendImageObservable, recommendNameObservable).enumerated()
           .observeOn(MainScheduler.instance)
           .subscribe(onNext: { index, element in
             guard let stackView = self.getIndexedStackView(at: index, from: self.recommendStackView, item: self.recommendItemStackView) else {
               return
             }
             
-            let imageComponent = element.0
-            let infoComponent = element.1
+            let imageData = element.0.1
+            let viewDTO = element.1.view
             
-            if let imageView = stackView.arrangedSubviews.first as? UIImageView, let image = UIImage(data: imageComponent.1) {
-              Observable<UIImage>.just(image).bind(to: imageView.rx.image).dispose()
+            if let imageView = stackView.arrangedSubviews.first as? UIImageView {
+              imageView.image = UIImage(data: imageData)
             }
             
             if let label = stackView.arrangedSubviews.last as? UILabel {
-              Observable<String>.just(infoComponent.view.product_NM).bind(to: label.rx.text).disposed(by: self.bag)
+              label.text = viewDTO.product_NM
             }
           })
           .disposed(by: self.bag)
         
         // 이 시간대 인기 메뉴(이미지)
-        
-        let nowRecommendInfoObservable = Observable.from(mainDTO.nowRecommend.products)
-          .enumerated()
+        let nowRecommendInfoObservable = Observable.from(mainDTO.nowRecommend.products).enumerated()
           .flatMap { (index, elem) in
-            self.useCase.getStoredJSONAndData(JSONname: "payImageJSON", index: index)
+            self.useCase.getStoredJSONAndImageData(JSONname: "payImageJSON", index: index)
           }
         
-        let nowRecommendImageObservable = Observable.from(mainDTO.nowRecommend.products)
-          .enumerated()
+        let nowRecommendImageObservable = Observable.from(mainDTO.nowRecommend.products).enumerated()
           .flatMap { (index, elem) in
             self.useCase.getStoredItemInfo(key: elem, index: index)
           }
         
-        Observable.zip(nowRecommendInfoObservable, nowRecommendImageObservable)
-          .enumerated()
+        Observable.zip(nowRecommendInfoObservable, nowRecommendImageObservable).enumerated()
           .observeOn(MainScheduler.instance)
           .subscribe(onNext: { index, element in
             guard let stackView = self.getIndexedStackView(at: index, from: self.thisTimeRecommendStackView, item: self.thisTimeRecommendItemStackView) else {
@@ -102,12 +96,12 @@ class ContentsViewController: UIViewController {
               return
             }
             
-            Observable<UIImage?>.just(UIImage(data: element.0.1))
-              .bind(to: imageView.rx.image).disposed(by: self.bag)
-            Observable<String>.just(element.1.view.product_NM)
-              .bind(to: numberLabel.rx.text).disposed(by: self.bag)
-            Observable<String>.just("\(index+1)")
-              .bind(to: titleLabel.rx.text).disposed(by: self.bag)
+            let imageData = element.0.1
+            let viewDTO = element.1.view
+            
+            imageView.image = UIImage(data: imageData)
+            numberLabel.text = viewDTO.product_NM
+            titleLabel.text = "\(index+1)"
           })
           .disposed(by: self.bag)
       })
@@ -117,9 +111,7 @@ class ContentsViewController: UIViewController {
     useCase.getThumbDataImage()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { imageData in
-        guard let image = UIImage(data: imageData) else {
-          return
-        }
+        guard let image = UIImage(data: imageData) else { return }
         
         self.mainEventImageViewHeightConstraint.constant = image.size.height
         self.mainEventImageView.image = image
@@ -127,8 +119,7 @@ class ContentsViewController: UIViewController {
       .disposed(by: bag)
 
     // 이 시간대 인기 메뉴
-    let ingInfoObservable = useCase.getIngList()
-      .enumerated()
+    let ingInfoObservable = useCase.getIngList().enumerated()
       .flatMap({ (index, ingDTO) in
         Observable.from(ingDTO.list).map({ ingDTO in (index, ingDTO) })
       })
@@ -138,8 +129,7 @@ class ContentsViewController: UIViewController {
         self.useCase.getStoredImageData(uploadPath: ingDTO.img_UPLOAD_PATH, mobThum: ingDTO.mob_THUM)
       })
     
-    Observable.zip(ingInfoObservable, ingImageObservable)
-      .enumerated()
+    Observable.zip(ingInfoObservable, ingImageObservable).enumerated()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { index, element in
         guard let stackView = self.getIndexedStackView(at: index,from: self.ingListStackView, item: self.ingListItemStackView) else {
@@ -154,12 +144,12 @@ class ContentsViewController: UIViewController {
           return
         }
         
-        Observable<UIImage?>.just(UIImage(data: element.1))
-          .bind(to: imageView.rx.image).disposed(by: self.bag)
-        Observable<String>.just(element.0.1.title)
-          .bind(to: titleLabel.rx.text).disposed(by: self.bag)
-        Observable<String>.just(element.0.1.sbtitle_NAME)
-          .bind(to: subTitleLabel.rx.text).disposed(by: self.bag)
+        let imageData = element.1
+        let viewDTO = element.0.1
+        
+        imageView.image = UIImage(data: imageData)
+        titleLabel.text = viewDTO.title
+        subTitleLabel.text = viewDTO.sbtitle_NAME
       })
       .disposed(by: self.bag)
   }
@@ -181,6 +171,7 @@ class ContentsViewController: UIViewController {
     return result
   }
 }
+
 extension UIView {
   func copyView<T: UIView>() -> T {
     return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T

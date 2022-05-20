@@ -4,4 +4,5 @@ enum ProtocolError: Error {
   case noResponse
   case urlError
   case bodyError
+  case handlerError
 }

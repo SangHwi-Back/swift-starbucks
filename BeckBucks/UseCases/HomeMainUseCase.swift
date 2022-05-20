@@ -56,23 +56,24 @@ class HomeMainUseCase {
     .asObservable()
   }
   
-  func getStoredJSONAndData(JSONname: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
-    
-    let imageInfoObservable: Observable<(PayItemImageDTO, Int)> = Observable<String>.just("").flatMap { _ in
+  func getStoredJSONAndImageData(JSONname: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
+    return Observable<(PayItemImageFile, Data, Int)>.create { observer in
       return self.getItemImageInfo(JSONname, index: index)
         .map({(elem) in (elem, index)})
-    }
-    
-    let result = imageInfoObservable
-      .flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
-        guard let info = dto.file.first else {
-          return Observable<(PayItemImageFile, Data)>.empty()
+        .flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
+          guard let info = dto.file.first else {
+            return Observable<(PayItemImageFile, Data)>.empty()
+          }
+          
+          return self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
+            .map({ data in (info, data) })
         }
-        
-        return self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
-          .map({ data in (info, data) })
-      }
-    
-    return result.map({ (info, data) in (info, data, index) })
+        .map { fileInfo, data in
+          (fileInfo, data, index)
+        }
+        .subscribe { fileInfo, data, index in
+          observer.onNext((fileInfo, data, index))
+        }
+    }
   }
 }
