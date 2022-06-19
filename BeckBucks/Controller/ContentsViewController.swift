@@ -26,7 +26,7 @@ class ContentsViewController: UIViewController {
   @IBOutlet weak var thisTimeRecommendItemStackView: UIStackView!
   
   let useCase = HomeMainUseCase()
-  let bag = DisposeBag()
+  private var bag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,7 +51,8 @@ class ContentsViewController: UIViewController {
         
         Observable.zip(recommendImageObservable, recommendNameObservable).enumerated()
           .observeOn(MainScheduler.instance)
-          .subscribe(onNext: { index, element in
+          .subscribe(onNext: { [weak self] index, element in
+            guard let self = self else { return }
             guard let stackView = self.getIndexedStackView(at: index, from: self.recommendStackView, item: self.recommendItemStackView) else {
               return
             }
@@ -82,7 +83,8 @@ class ContentsViewController: UIViewController {
         
         Observable.zip(nowRecommendInfoObservable, nowRecommendImageObservable).enumerated()
           .observeOn(MainScheduler.instance)
-          .subscribe(onNext: { index, element in
+          .subscribe(onNext: { [weak self] index, element in
+            guard let self = self else { return }
             guard let stackView = self.getIndexedStackView(at: index, from: self.thisTimeRecommendStackView, item: self.thisTimeRecommendItemStackView) else {
               return
             }
@@ -131,7 +133,8 @@ class ContentsViewController: UIViewController {
     
     Observable.zip(ingInfoObservable, ingImageObservable).enumerated()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { index, element in
+      .subscribe(onNext: { [weak self] index, element in
+        guard let self = self else { return }
         guard let stackView = self.getIndexedStackView(at: index,from: self.ingListStackView, item: self.ingListItemStackView) else {
           return
         }
@@ -151,7 +154,7 @@ class ContentsViewController: UIViewController {
         titleLabel.text = viewDTO.title
         subTitleLabel.text = viewDTO.sbtitle_NAME
       })
-      .disposed(by: self.bag)
+      .disposed(by: bag)
   }
   
   func getIndexedStackView(at index: Int, from: UIStackView, item: UIStackView) -> UIStackView? {
@@ -169,6 +172,9 @@ class ContentsViewController: UIViewController {
     }
     
     return result
+  }
+  
+  @IBAction func seeAllButtonTouchUpInside(_ sender: UIButton) {
   }
 }
 

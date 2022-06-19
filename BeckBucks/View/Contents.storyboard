@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Contents View Controller-->
         <scene sceneID="YpG-dE-kiZ">
             <objects>
                 <viewController storyboardIdentifier="ContentsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wpr-AC-GtR" customClass="ContentsViewController" customModule="BeckBucks" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lb3-f3-Per">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="02U-ep-rTI">
                                         <rect key="frame" x="16" y="16" width="26" height="17.5"/>
@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGR-4p-6bC">
-                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-RN-Hxx">
                                         <rect key="frame" x="16" y="16" width="50" height="30"/>
@@ -150,6 +150,9 @@
                                         <state key="normal" title="See all">
                                             <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="seeAllButtonTouchUpInside:" destination="Wpr-AC-GtR" eventType="touchUpInside" id="MkZ-2O-bHY"/>
+                                        </connections>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHq-ER-Vv6">
                                         <rect key="frame" x="0.0" y="350" width="414" height="236"/>
@@ -345,7 +348,7 @@
                             <constraint firstItem="rP9-hD-agK" firstAttribute="bottom" secondItem="uGR-4p-6bC" secondAttribute="bottom" id="xcq-5I-oKu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="icon_home" id="mVS-Pd-3LI"/>
+                    <navigationItem key="navigationItem" id="ScM-vh-v0m"/>
                     <connections>
                         <outlet property="ingListItemStackView" destination="3on-5I-jln" id="1wk-ea-0IQ"/>
                         <outlet property="ingListScrollView" destination="YHq-ER-Vv6" id="SSs-X8-wc8"/>
@@ -361,11 +364,28 @@
                         <outlet property="thisTimeRecommendItemStackView" destination="ykj-1S-irb" id="dtx-ad-tkY"/>
                         <outlet property="thisTimeRecommendScrollView" destination="glE-Wo-3MG" id="WvD-QE-GBc"/>
                         <outlet property="thisTimeRecommendStackView" destination="GHD-Zi-ujH" id="IFE-MV-8lE"/>
+                        <segue destination="ZP1-ud-mzV" kind="show" identifier="testSegue" id="0zX-hD-yLE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6Y-DC-YWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="501" y="-368"/>
+            <point key="canvasLocation" x="1210" y="-520"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ctw-xy-q1X">
+            <objects>
+                <viewController id="ZP1-ud-mzV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSn-Lr-vaj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="42j-bI-2Rx"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H6P-3e-Oyb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUp-J0-wab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="-520"/>
         </scene>
         <!--Pay-->
         <scene sceneID="h4i-z5-hiM">
@@ -381,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKE-FF-Bob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1177" y="-226"/>
+            <point key="canvasLocation" x="2351" y="121"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="q4b-eA-8Xn">
@@ -418,7 +438,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="sGK-g0-6R0">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="SRW-Ig-6nq" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="SRW-Ig-6nq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2au-h7-JkE">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -426,7 +446,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Wpr-AC-GtR" kind="relationship" relationship="viewControllers" id="GEQ-w6-b7j"/>
+                        <segue destination="QSU-XE-fvk" kind="relationship" relationship="viewControllers" id="GEQ-w6-b7j"/>
                         <segue destination="qU7-mS-XYo" kind="relationship" relationship="viewControllers" id="79y-fX-sUw"/>
                         <segue destination="6Go-d7-pKF" kind="relationship" relationship="viewControllers" id="UZL-up-Q8H"/>
                         <segue destination="f4w-qG-Yc8" kind="relationship" relationship="viewControllers" id="3Gs-8M-qGO"/>
@@ -435,6 +455,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kj-A9-c1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-347.82608695652175" y="109.82142857142857"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="3RP-kS-oF3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QSU-XE-fvk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="icon_home" id="mVS-Pd-3LI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tc0-jA-I3S">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Wpr-AC-GtR" kind="relationship" relationship="rootViewController" id="0Ar-19-wRw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yv5-wb-3po" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505.79710144927537" y="-520.3125"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -461,6 +500,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

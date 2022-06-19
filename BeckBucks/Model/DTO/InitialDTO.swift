@@ -14,4 +14,6 @@ struct InitialDTO: Codable {
     case description
     case eventProducts = "event-products"
   }
+  
+  static let empty = Self.init(title: "", range: "", target: "", description: "", eventProducts: "")
 }

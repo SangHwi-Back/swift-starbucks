@@ -1,21 +1,22 @@
 import Foundation
-import RxSwift
+import RxCocoa
 
 class InitialEventUseCase {
   
   private let initialURLSession = InitialURLSession()
   
-  func getBackgroundImage() -> Observable<Data> {
-    initialURLSession.image
+  func getBackgroundImage() -> Driver<Data> {
+    initialURLSession.image.asDriver(onErrorJustReturn: Data())
   }
   
-  func getInitialInfo() -> Observable<InitialDTO> {
-    initialURLSession.info.compactMap { data in
+  func getInitialInfo() -> Driver<InitialDTO?> {
+    initialURLSession.info.map({ data in
       if let result = try? JSONDecoder().decode(InitialDTO.self, from: data) {
         return result
       }
       
       return nil
-    }
+    })
+    .asDriver(onErrorJustReturn: nil)
   }
 }

@@ -8,7 +8,9 @@ class JsonBucksGetProtocol: URLProtocol {
     return conf
   }
   
-  lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { request in
+  lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { [weak self] request in
+    
+    guard let self = self else { throw ProtocolError.noResponse}
     
     var resultData: Data?
     let requestURL = request.url

@@ -11,22 +11,33 @@ class CommonBucksProtocol: URLProtocol {
     return conf
   }
   
-  lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { request in
+  lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { [weak self] request in
     
     var resultData: Data?
     
-    if let url = Bundle.main.url(forResource: self.resourceName, withExtension: self.resourceExtension),
-       let data = try? Data(contentsOf: url) {
+    
+    if let url = Bundle.main.url(forResource: self?.resourceName, withExtension: self?.resourceExtension),
+       let data = try? Data.init(contentsOf: url, options: Data.ReadingOptions.uncached) {
       resultData = data
     }
     
-    guard let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil) else {
-      self.client?.urlProtocol(self, didFailWithError: ProtocolError.noResponse)
+    guard let response = HTTPURLResponse(
+      url: request.url!,
+      statusCode: 200,
+      httpVersion: nil,
+      headerFields: nil)
+    else {
+        if let self = self {
+            self.client?.urlProtocol(self, didFailWithError: ProtocolError.noResponse)
+        }
+      
       throw ProtocolError.noResponse
     }
     
     guard let data = resultData else {
-      self.client?.urlProtocol(self, didFailWithError: ProtocolError.noData)
+        if let self = self {
+            self.client?.urlProtocol(self, didFailWithError: ProtocolError.noResponse)
+        }
       throw ProtocolError.noData
     }
     

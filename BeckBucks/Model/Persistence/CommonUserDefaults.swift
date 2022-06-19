@@ -18,13 +18,11 @@ class CommonUserDefaults {
     }
   }
   
-  static func setInitialEventDismissDate(_ dateString: String) -> Disposable {
+  static func setInitialEventDismissDate(_ dateString: String) -> Completable {
     Completable.create { observer in
+      UserDefaults.standard.setValue(dateString, forKey: CommonUserDefaultsKeys.InitialEventDismissDate.rawValue)
       observer(.completed)
       return Disposables.create()
-    }
-    .subscribe { _ in
-      UserDefaults.standard.setValue(dateString, forKey: CommonUserDefaultsKeys.InitialEventDismissDate.rawValue)
     }
   }
   

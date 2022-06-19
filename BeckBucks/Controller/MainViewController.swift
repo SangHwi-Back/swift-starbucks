@@ -22,58 +22,63 @@ class MainViewController: UIViewController {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyyMMdd"
     
-//    CommonUserDefaults
-//      .resetInitialEventDismissDate()
-//      .disposed(by: bag)
-    
     CommonUserDefaults
       .getInitialEventDismissDate()
       .subscribe(onSuccess: { [weak self] dateString in
-        if dateString != formatter.string(from: Date()) {
+        guard dateString == formatter.string(from: Date()) else {
           self?.getInitialEvent()
-        } else {
-          self?.moveNext()
+          return
         }
+        
+        self?.moveNext()
       })
       .disposed(by: bag)
-    
+  
     noLookTodayButton.rx.tap
-      .subscribe { [weak self] _ in
+      .subscribe({ [weak self] _ in
+        guard let self = self else { return }
         CommonUserDefaults
           .setInitialEventDismissDate(formatter.string(from: Date()))
-          .disposed(by: self?.bag ?? DisposeBag())
-        self?.moveNext()
-      }
+          .subscribe({ _ in
+            self.moveNext()
+          })
+          .disposed(by: self.bag)
+      })
       .disposed(by: bag)
-    
+  
     closeButton.rx.tap
-      .subscribe { [weak self] _ in
+      .subscribe({ [weak self] _ in
         self?.moveNext()
-      }
+      })
       .disposed(by: bag)
   }
   
   func getInitialEvent() {
-    
-    useCase.getInitialInfo()
-      .observeOn(MainScheduler.instance)
-      .bind { [weak self] dto in
-        self?.rangeLabel.text = dto.range
-        self?.targetLabel.text = dto.target
-        self?.descriptionLabel.text = dto.description
-        self?.titleLabel.text = dto.title
-      }
+    useCase
+      .getInitialInfo()
+      .drive(onNext: { [weak self] dto in
+        guard let self = self, let dto = dto else { return }
+        self.rangeLabel.text = dto.range
+        self.targetLabel.text = dto.target
+        self.descriptionLabel.text = dto.description
+        self.titleLabel.text = dto.title
+      })
       .disposed(by: bag)
     
-    useCase.getBackgroundImage()
-      .compactMap { data in UIImage(data: data) }
-      .observeOn(MainScheduler.instance)
-      .bind(to: backgroundImageView.rx.image)
+    useCase
+      .getBackgroundImage()
+      .drive(onNext: { [weak self] data in
+        self?.backgroundImageView.image = UIImage(data: data)
+      })
       .disposed(by: bag)
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    backgroundImageView.image = nil
+  }
+  
   func moveNext() {
-    self.performSegue(withIdentifier: "Contents", sender: self)
+    performSegue(withIdentifier: "Contents", sender: self)
   }
 }
-

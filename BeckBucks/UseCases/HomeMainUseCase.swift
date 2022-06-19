@@ -58,22 +58,32 @@ class HomeMainUseCase {
   
   func getStoredJSONAndImageData(JSONname: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
     return Observable<(PayItemImageFile, Data, Int)>.create { observer in
-      return self.getItemImageInfo(JSONname, index: index)
+      self.getItemImageInfo(JSONname, index: index)
         .map({(elem) in (elem, index)})
         .flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
           guard let info = dto.file.first else {
+            observer.onError(UseCaseError.testError)
             return Observable<(PayItemImageFile, Data)>.empty()
           }
           
           return self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
             .map({ data in (info, data) })
         }
-        .map { fileInfo, data in
+        .map({ fileInfo, data in
           (fileInfo, data, index)
-        }
+        })
         .subscribe { fileInfo, data, index in
           observer.onNext((fileInfo, data, index))
+          observer.onCompleted()
         }
     }
+  }
+  
+  func dispose() {
+    
+  }
+    
+  enum UseCaseError: Error {
+    case testError
   }
 }

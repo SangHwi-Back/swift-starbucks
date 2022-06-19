@@ -13,17 +13,11 @@ class BeckBucksNetworkTests: XCTestCase {
     let imageExpectation = XCTestExpectation()
     
     useCase.getInitialInfo()
-      .subscribe(onNext: { data in
-        infoExpectation.fulfill()
-      })
+      .drive()
       .disposed(by: bag)
     
     useCase.getBackgroundImage()
-      .subscribe(onNext: { data in
-        let result = UIImage(data: data)
-        XCTAssertTrue(result != nil)
-        imageExpectation.fulfill()
-      })
+      .drive()
       .disposed(by: bag)
     
     wait(for: [infoExpectation, imageExpectation], timeout: 6)
