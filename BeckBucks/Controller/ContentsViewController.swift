@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 
 class ContentsViewController: UIViewController {
   
@@ -31,128 +32,104 @@ class ContentsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    useCase.getMainInfo()
+    var ingListIndex = 0
+    var recommendIndex = 0
+    var thisTimeRecommendIndex = 0
+    
+    let mainDTOObservable = useCase.getMainInfo().share()
+    mainDTOObservable
+      .map({ dto -> String? in dto?.displayName})
+      .bind(to: self.nameLabel.rx.text)
+      .disposed(by: bag)
+    
+    let productsObservable = mainDTOObservable.flatMap({ dto in Observable.from(dto?.yourRecommend.products ?? [String]()) })
+    Observable
+      .zip(
+        productsObservable.enumerated()
+          .flatMap { (index, _) in self.useCase.getStoredImageData(JSONname: "payImageJSON", index: index) },
+        productsObservable.enumerated()
+          .flatMap { (index, cd) in self.useCase.getStoredItemInfo(key: cd, index: index) }
+      )
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { mainDTO in
+      .subscribe(onNext: { [weak self] data, dto in
+        guard let self = self else { return }
         
-        // 사용자 이름
-        self.nameLabel.text = mainDTO.displayName
+        if let stackView = self.getIndexedStackView(
+          at: recommendIndex,
+          from: self.recommendStackView,
+          item: self.recommendItemStackView
+        ) {
+          (stackView.arrangedSubviews.first as? UIImageView)?.image = UIImage(data: data)
+          (stackView.arrangedSubviews.last as? UILabel)?.text = dto.view.product_NM
+          recommendIndex += 1
+        }
         
-        // 추천 메뉴(이미지 + 이름)
-        let recommendImageObservable = Observable.from(mainDTO.yourRecommend.products).enumerated()
-          .flatMap { (index, elem) in
-            self.useCase.getStoredJSONAndImageData(JSONname: "payImageJSON", index: index)
-          }
-        
-        let recommendNameObservable = Observable.from(mainDTO.yourRecommend.products).enumerated()
-          .flatMap { (index, elem) in
-            self.useCase.getStoredItemInfo(key: elem, index: index)
-          }
-        
-        Observable.zip(recommendImageObservable, recommendNameObservable).enumerated()
-          .observeOn(MainScheduler.instance)
-          .subscribe(onNext: { [weak self] index, element in
-            guard let self = self else { return }
-            guard let stackView = self.getIndexedStackView(at: index, from: self.recommendStackView, item: self.recommendItemStackView) else {
-              return
-            }
-            
-            let imageData = element.0.1
-            let viewDTO = element.1.view
-            
-            if let imageView = stackView.arrangedSubviews.first as? UIImageView {
-              imageView.image = UIImage(data: imageData)
-            }
-            
-            if let label = stackView.arrangedSubviews.last as? UILabel {
-              label.text = viewDTO.product_NM
-            }
-          })
-          .disposed(by: self.bag)
-        
-        // 이 시간대 인기 메뉴(이미지)
-        let nowRecommendInfoObservable = Observable.from(mainDTO.nowRecommend.products).enumerated()
-          .flatMap { (index, elem) in
-            self.useCase.getStoredJSONAndImageData(JSONname: "payImageJSON", index: index)
-          }
-        
-        let nowRecommendImageObservable = Observable.from(mainDTO.nowRecommend.products).enumerated()
-          .flatMap { (index, elem) in
-            self.useCase.getStoredItemInfo(key: elem, index: index)
-          }
-        
-        Observable.zip(nowRecommendInfoObservable, nowRecommendImageObservable).enumerated()
-          .observeOn(MainScheduler.instance)
-          .subscribe(onNext: { [weak self] index, element in
-            guard let self = self else { return }
-            guard let stackView = self.getIndexedStackView(at: index, from: self.thisTimeRecommendStackView, item: self.thisTimeRecommendItemStackView) else {
-              return
-            }
-            
-            guard
-              let imageView = stackView.arrangedSubviews.first as? UIImageView,
-              let bottomStackView = stackView.arrangedSubviews.last as? UIStackView,
-              let numberLabel = bottomStackView.arrangedSubviews.last as? UILabel,
-              let titleLabel = bottomStackView.arrangedSubviews.first as? UILabel
-            else {
-              return
-            }
-            
-            let imageData = element.0.1
-            let viewDTO = element.1.view
-            
-            imageView.image = UIImage(data: imageData)
-            numberLabel.text = viewDTO.product_NM
-            titleLabel.text = "\(index+1)"
-          })
-          .disposed(by: self.bag)
+        if
+          let stackView = self.getIndexedStackView(
+            at: thisTimeRecommendIndex,
+            from: self.thisTimeRecommendStackView,
+            item: self.thisTimeRecommendItemStackView),
+          let bottomStackView = stackView.arrangedSubviews.last as? UIStackView
+        {
+          (stackView.arrangedSubviews.first as? UIImageView)?.image = UIImage(data: data)
+          (bottomStackView.arrangedSubviews.last as? UILabel)?.text = dto.view.product_NM
+          (bottomStackView.arrangedSubviews.first as? UILabel)?.text = "\(thisTimeRecommendIndex+1)"
+          thisTimeRecommendIndex += 1
+        }
       })
       .disposed(by: bag)
     
     // 썸네일 메인 이벤트
-    useCase.getThumbDataImage()
+    useCase.getThumbDataImage()?
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { imageData in
-        guard let image = UIImage(data: imageData) else { return }
-        
+      .compactMap({UIImage(data: $0)})
+      .do(onNext: { image in
         self.mainEventImageViewHeightConstraint.constant = image.size.height
-        self.mainEventImageView.image = image
+      })
+      .bind(to: mainEventImageView.rx.image)
+      .disposed(by: bag)
+    
+    // 이 시간대 인기 메뉴
+    let ingList = useCase.getIngList()?.share()
+    ingList?.observeOn(MainScheduler.instance)
+      .subscribe(onNext: { [weak self] dto in
+        guard let self = self else { return }
+        
+        for (index, item) in dto.list.enumerated() {
+          guard
+            let stackView = self.getIndexedStackView(
+              at: index,
+              from: self.ingListStackView,
+              item: self.ingListItemStackView),
+            stackView.arrangedSubviews.count >= 3
+          else {
+            continue
+          }
+            
+          (stackView.arrangedSubviews[1] as? UILabel)?.text = item.title
+          (stackView.arrangedSubviews[2] as? UILabel)?.text = item.sbtitle_NAME
+        }
       })
       .disposed(by: bag)
-
-    // 이 시간대 인기 메뉴
-    let ingInfoObservable = useCase.getIngList().enumerated()
-      .flatMap({ (index, ingDTO) in
-        Observable.from(ingDTO.list).map({ ingDTO in (index, ingDTO) })
-      })
     
-    let ingImageObservable = ingInfoObservable
-      .flatMap({ (index, ingDTO) in
-        self.useCase.getStoredImageData(uploadPath: ingDTO.img_UPLOAD_PATH, mobThum: ingDTO.mob_THUM)
+    ingList?.observeOn(MainScheduler.instance)
+      .flatMap({ dto -> Observable<Data> in
+        let itemObservable = Observable<HomeIngItem>.from(dto.list)
+        
+        return itemObservable
+          .compactMap { [weak self] item in
+            self?.useCase.getStoredImageData(uploadPath: item.img_UPLOAD_PATH, mobThum: item.mob_THUM)
+          }
+          .flatMap({ $0 })
       })
-    
-    Observable.zip(ingInfoObservable, ingImageObservable).enumerated()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] index, element in
-        guard let self = self else { return }
-        guard let stackView = self.getIndexedStackView(at: index,from: self.ingListStackView, item: self.ingListItemStackView) else {
+      .subscribe(onNext: { data in
+        guard let stackView = self.getIndexedStackView(at: ingListIndex, from: self.ingListStackView, item: self.ingListItemStackView) else {
           return
         }
         
-        guard stackView.arrangedSubviews.count >= 3,
-              let imageView = stackView.arrangedSubviews[0] as? UIImageView,
-              let titleLabel = stackView.arrangedSubviews[1] as? UILabel,
-              let subTitleLabel = stackView.arrangedSubviews[2] as? UILabel
-        else {
-          return
-        }
-        
-        let imageData = element.1
-        let viewDTO = element.0.1
-        
-        imageView.image = UIImage(data: imageData)
-        titleLabel.text = viewDTO.title
-        subTitleLabel.text = viewDTO.sbtitle_NAME
+        (stackView.arrangedSubviews.first as? UIImageView)?.image = UIImage(data: data)
+        ingListIndex += 1
       })
       .disposed(by: bag)
   }

@@ -1,6 +1,10 @@
 import RxSwift
 import Foundation
 
+enum UseCaseError: Error {
+  case testError
+}
+
 class HomeMainUseCase {
   
   private let homeURLSession = HomeURLSession()
@@ -8,36 +12,36 @@ class HomeMainUseCase {
   private let payURLSession = PayURLSession()
   private let decoder = JSONDecoder()
   
-  func getMainInfo() -> Observable<HomeMainDTO> {
-    return homeURLSession.main.compactMap { [weak self] data in
-      try? self?.decoder.decode(HomeMainDTO.self, from: data)
+  func getMainInfo() -> Observable<HomeMainDTO?> {
+    guard let session = homeURLSession.main else {
+      return .empty()
     }
+    
+    return session.compactMap { [weak self] data in
+      try? self?.decoder.decode(HomeMainDTO.self, from: data)
+    }.asObservable()
   }
   
-  func getThumbDataImage() -> Observable<Data> {
+  func getThumbDataImage() -> Observable<Data>? {
     return homeURLSession.thumb
   }
   
-  func getIngList() -> Observable<HomeIngDTO> {
-    return homeURLSession.ingList.compactMap { [weak self] data in
+  func getIngList() -> Observable<HomeIngDTO>? {
+    return homeURLSession.ingList?.compactMap { [weak self] data in
       try? self?.decoder.decode(HomeIngDTO.self, from: data)
     }
   }
   
-  func getStoredImageData(uploadPath: String, mobThum: String) -> Observable<Data> {
-    var url = URL(string: uploadPath)
-    url?.appendPathComponent("upload")
-    url?.appendPathComponent("promotion")
-    url?.appendPathComponent(mobThum)
-    
-    guard let url = url else {
-      return Observable<Data>.empty()
+  func getStoredImageData(uploadPath: String, mobThum: String) -> Observable<Data>? {
+    guard var url = URL(string: uploadPath) else {
+      return nil
     }
     
-    var request = URLRequest.common(url)
-    request.httpMethod = "GET"
+    url.appendPathComponent("upload")
+    url.appendPathComponent("promotion")
+    url.appendPathComponent(mobThum)
     
-    return imageURLSession.getStarbucksImage(request)
+    return imageURLSession.getStarbucksImage(URLRequest.common(url))
   }
   
   func getStoredItemInfo(key productCd: String, index: Int? = nil) -> Observable<PayItemDTO> {
@@ -57,33 +61,33 @@ class HomeMainUseCase {
   }
   
   func getStoredJSONAndImageData(JSONname: String, index: Int) -> Observable<(PayItemImageFile, Data, Int)> {
-    return Observable<(PayItemImageFile, Data, Int)>.create { observer in
-      self.getItemImageInfo(JSONname, index: index)
-        .map({(elem) in (elem, index)})
-        .flatMap { (dto, index) -> Observable<(PayItemImageFile, Data)> in
-          guard let info = dto.file.first else {
-            observer.onError(UseCaseError.testError)
-            return Observable<(PayItemImageFile, Data)>.empty()
-          }
-          
-          return self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
-            .map({ data in (info, data) })
+    getItemImageInfo(JSONname, index: index)
+      .map({(elem) in (elem, index)})
+      .flatMap { (dto, index) -> Observable<(PayItemImageFile, Data, Int)> in
+        guard
+          let info = dto.file.first,
+          let ob = self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
+        else {
+          return Observable<(PayItemImageFile, Data, Int)>.empty()
         }
-        .map({ fileInfo, data in
-          (fileInfo, data, index)
-        })
-        .subscribe { fileInfo, data, index in
-          observer.onNext((fileInfo, data, index))
-          observer.onCompleted()
-        }
-    }
+        
+        return ob.map({ data in (info, data, index) })
+      }
   }
   
-  func dispose() {
-    
+  func getStoredImageData(JSONname: String, index: Int) -> Observable<Data> {
+    getItemImageInfo(JSONname, index: index)
+      .flatMap { dto -> Observable<Data> in
+        guard
+          let info = dto.file.first,
+          let ob = self.getStoredImageData(uploadPath: info.img_UPLOAD_PATH, mobThum: info.file_NAME)
+        else {
+          return Observable.empty()
+        }
+        
+        return ob
+      }
   }
-    
-  enum UseCaseError: Error {
-    case testError
-  }
+  
+  func dispose() { }
 }

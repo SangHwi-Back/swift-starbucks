@@ -1,19 +1,23 @@
 import Foundation
 import RxSwift
 
+enum ImageURLSessionError: Error {
+  case methodNotFound
+}
+
 class ImageURLSession {
   func getStarbucksImage(_ request: URLRequest) -> Observable<Data> {
-    var session: Reactive<URLSession>
-    
     switch request.httpMethod?.uppercased() {
     case "GET":
-      session = URLSession(configuration: ImageBucksGETProtocol.protocolClass).rx
+      return URLSession(configuration: ImageBucksGETProtocol.protocolClass).rx.data(request: request)
     case "POST":
-      session = URLSession(configuration: ImageBucksPOSTProtocol.protocolClass).rx
+      return URLSession(configuration: ImageBucksPOSTProtocol.protocolClass).rx.data(request: request)
     default:
-      return Observable.empty()
+      return Observable.create({
+        let disposables = Disposables.create()
+        $0.onError(ImageURLSessionError.methodNotFound)
+        return disposables
+      })
     }
-    
-    return session.data(request: request).share(replay: 1)
   }
 }

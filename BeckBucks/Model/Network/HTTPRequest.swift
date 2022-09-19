@@ -9,6 +9,7 @@ protocol HTTPRequest {
 enum HTTPMethods {
   case GET
   case POST
+  case DELETE
 }
 
 struct HTTPResult {
