@@ -73,6 +73,10 @@
 		1BDEFD1C284C66FD00EBC3DF /* InitialBackgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BDEFD1B284C66FD00EBC3DF /* InitialBackgroundImage.jpg */; };
 		1BDEFD1E284C988200EBC3DF /* InitialBackgroundImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BDEFD1D284C988200EBC3DF /* InitialBackgroundImage2.png */; };
 		1BECD3EA2828BC2F00B486B9 /* BeckBucksNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECD3E92828BC2F00B486B9 /* BeckBucksNetworkTests.swift */; };
+		1BF36D6B28D961DE0033DF2A /* RecommendScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D6A28D961DE0033DF2A /* RecommendScrollView.swift */; };
+		1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D6C28D961E70033DF2A /* ViewImageTitled.swift */; };
+		1BF36D6F28D962960033DF2A /* ViewImageSubTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D6E28D962960033DF2A /* ViewImageSubTitled.swift */; };
+		1BF36D7128D975D50033DF2A /* RecommendContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D7028D975D50033DF2A /* RecommendContentsView.swift */; };
 		1BFEB9A228331ABF003517F0 /* ProtocolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEB9A128331ABF003517F0 /* ProtocolError.swift */; };
 		44621A45FA15A54122226630 /* Pods_BeckBucks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A768F7226FB884BF8CDB06 /* Pods_BeckBucks.framework */; };
 		91032C045344F7B9B4268AF6 /* Pods_BeckBucksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4884E3D9247DADDB978B19FA /* Pods_BeckBucksTests.framework */; };
@@ -167,6 +171,10 @@
 		1BDEFD1B284C66FD00EBC3DF /* InitialBackgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InitialBackgroundImage.jpg; sourceTree = "<group>"; };
 		1BDEFD1D284C988200EBC3DF /* InitialBackgroundImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InitialBackgroundImage2.png; sourceTree = "<group>"; };
 		1BECD3E92828BC2F00B486B9 /* BeckBucksNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckBucksNetworkTests.swift; sourceTree = "<group>"; };
+		1BF36D6A28D961DE0033DF2A /* RecommendScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendScrollView.swift; sourceTree = "<group>"; };
+		1BF36D6C28D961E70033DF2A /* ViewImageTitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImageTitled.swift; sourceTree = "<group>"; };
+		1BF36D6E28D962960033DF2A /* ViewImageSubTitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImageSubTitled.swift; sourceTree = "<group>"; };
+		1BF36D7028D975D50033DF2A /* RecommendContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendContentsView.swift; sourceTree = "<group>"; };
 		1BFEB9A128331ABF003517F0 /* ProtocolError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolError.swift; sourceTree = "<group>"; };
 		1E12B325A441F31159123235 /* Pods-BeckBucksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeckBucksTests.release.xcconfig"; path = "Target Support Files/Pods-BeckBucksTests/Pods-BeckBucksTests.release.xcconfig"; sourceTree = "<group>"; };
 		4884E3D9247DADDB978B19FA /* Pods_BeckBucksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeckBucksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +377,10 @@
 				1B27493A283206D900027B60 /* Contents.storyboard */,
 				1BCCB3012828B8F000CBB58F /* Main.storyboard */,
 				1BCCB3062828B8F300CBB58F /* LaunchScreen.storyboard */,
+				1BF36D6A28D961DE0033DF2A /* RecommendScrollView.swift */,
+				1BF36D7028D975D50033DF2A /* RecommendContentsView.swift */,
+				1BF36D6C28D961E70033DF2A /* ViewImageTitled.swift */,
+				1BF36D6E28D962960033DF2A /* ViewImageSubTitled.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -668,6 +680,7 @@
 			files = (
 				1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */,
 				1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */,
+				1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */,
 				1B27494B28323E3800027B60 /* InitialInfoBucksProtocol.swift in Sources */,
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
 				1B0F6628283371F8000428E3 /* ContentsViewController.swift in Sources */,
@@ -681,6 +694,7 @@
 				1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */,
 				1BD427C22833D9F10098DEEF /* HomeMainUseCase.swift in Sources */,
 				1BD427BD2833ACA90098DEEF /* HomeIngBucksProtocol.swift in Sources */,
+				1BF36D7128D975D50033DF2A /* RecommendContentsView.swift in Sources */,
 				1B27493F28320F4800027B60 /* InitialEventUseCase.swift in Sources */,
 				1BCFCEA3283530D800074ED2 /* AnonymousImageBucksProtocol.swift in Sources */,
 				1BCFCE7F2834C49D00074ED2 /* ImageURLSession.swift in Sources */,
@@ -688,6 +702,7 @@
 				1BD427B72833ABBB0098DEEF /* HomeIngDTO.swift in Sources */,
 				1BCCB2FC2828B8F000CBB58F /* AppDelegate.swift in Sources */,
 				1BD427B52833AAEC0098DEEF /* HomeMainDTO.swift in Sources */,
+				1BF36D6F28D962960033DF2A /* ViewImageSubTitled.swift in Sources */,
 				1BFEB9A228331ABF003517F0 /* ProtocolError.swift in Sources */,
 				1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
@@ -696,6 +711,7 @@
 				1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */,
 				1BD427B92833AC750098DEEF /* HomeMainBucksProtocol.swift in Sources */,
 				1BCFCE812834C51600074ED2 /* ImageBucksGETProtocol.swift in Sources */,
+				1BF36D6B28D961DE0033DF2A /* RecommendScrollView.swift in Sources */,
 				1B0F662628336A5B000428E3 /* CommonBucksProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

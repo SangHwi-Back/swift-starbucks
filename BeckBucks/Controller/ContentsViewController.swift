@@ -9,22 +9,21 @@ class ContentsViewController: UIViewController {
   
   @IBOutlet weak var nameLabel: UILabel!
   
-  @IBOutlet weak var recommendScrollView: UIScrollView!
-  @IBOutlet weak var recommendStackView: UIStackView!
-  @IBOutlet weak var recommendItemStackView: UIStackView!
+//  @IBOutlet weak var recommendScrollView: RecommendScrollView!
+//  @IBOutlet weak var recommendScrollViewWidthConstraint: NSLayoutConstraint!
+//  @IBOutlet weak var recommendFirstView: UIView!
+  
+  @IBOutlet weak var recommendView: UIView!
+  lazy var recommendScrollView = RecommendScrollView(frame: recommendView.bounds)
   
   @IBOutlet weak var mainEventImageView: UIImageView!
   @IBOutlet weak var mainEventImageViewHeightConstraint: NSLayoutConstraint!
-  
   @IBOutlet weak var seeAllButton: UIButton!
   
-  @IBOutlet weak var ingListScrollView: UIScrollView!
-  @IBOutlet weak var ingListStackView: UIStackView!
-  @IBOutlet weak var ingListItemStackView: UIStackView!
-  
-  @IBOutlet weak var thisTimeRecommendScrollView: UIScrollView!
-  @IBOutlet weak var thisTimeRecommendStackView: UIStackView!
-  @IBOutlet weak var thisTimeRecommendItemStackView: UIStackView!
+  @IBOutlet weak var processingView: UIView!
+  lazy var processingScrollView = RecommendScrollView(frame: processingView.bounds)
+  @IBOutlet weak var currentRecommendView: UIView!
+  lazy var currentRecommendScrollView = RecommendScrollView(frame: currentRecommendView.bounds)
   
   let useCase = HomeMainUseCase()
   private var bag = DisposeBag()
@@ -32,9 +31,9 @@ class ContentsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    var ingListIndex = 0
-    var recommendIndex = 0
-    var thisTimeRecommendIndex = 0
+    recommendView.addSubview(recommendScrollView)
+    processingView.addSubview(processingScrollView)
+    currentRecommendView.addSubview(currentRecommendScrollView)
     
     let mainDTOObservable = useCase.getMainInfo().share()
     mainDTOObservable
@@ -43,8 +42,8 @@ class ContentsViewController: UIViewController {
       .disposed(by: bag)
     
     let productsObservable = mainDTOObservable.flatMap({ dto in Observable.from(dto?.yourRecommend.products ?? [String]()) })
-    Observable
-      .zip(
+    
+    Observable.zip(
         productsObservable.enumerated()
           .flatMap { (index, _) in self.useCase.getStoredImageData(JSONname: "payImageJSON", index: index) },
         productsObservable.enumerated()
@@ -54,27 +53,18 @@ class ContentsViewController: UIViewController {
       .subscribe(onNext: { [weak self] data, dto in
         guard let self = self else { return }
         
-        if let stackView = self.getIndexedStackView(
-          at: recommendIndex,
-          from: self.recommendStackView,
-          item: self.recommendItemStackView
-        ) {
-          (stackView.arrangedSubviews.first as? UIImageView)?.image = UIImage(data: data)
-          (stackView.arrangedSubviews.last as? UILabel)?.text = dto.view.product_NM
-          recommendIndex += 1
+        if let titledImageView = self.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
+          titledImageView.imageView?.image = UIImage(data: data)
+          titledImageView.titleLabel?.text = dto.view.product_NM
+          
+          self.recommendScrollView.reloadContentSizeWidth()
         }
         
-        if
-          let stackView = self.getIndexedStackView(
-            at: thisTimeRecommendIndex,
-            from: self.thisTimeRecommendStackView,
-            item: self.thisTimeRecommendItemStackView),
-          let bottomStackView = stackView.arrangedSubviews.last as? UIStackView
-        {
-          (stackView.arrangedSubviews.first as? UIImageView)?.image = UIImage(data: data)
-          (bottomStackView.arrangedSubviews.last as? UILabel)?.text = dto.view.product_NM
-          (bottomStackView.arrangedSubviews.first as? UILabel)?.text = "\(thisTimeRecommendIndex+1)"
-          thisTimeRecommendIndex += 1
+        if let subTitledImageView = self.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
+          subTitledImageView.imageView?.image = UIImage(data: data)
+          subTitledImageView.titleLabel?.text = dto.view.product_NM
+          
+          self.currentRecommendScrollView.reloadContentSizeWidth()
         }
       })
       .disposed(by: bag)
@@ -90,65 +80,25 @@ class ContentsViewController: UIViewController {
       .disposed(by: bag)
     
     // 이 시간대 인기 메뉴
-    let ingList = useCase.getIngList()?.share()
-    ingList?.observeOn(MainScheduler.instance)
+    useCase.getIngList()?
+      .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] dto in
         guard let self = self else { return }
         
-        for (index, item) in dto.list.enumerated() {
-          guard
-            let stackView = self.getIndexedStackView(
-              at: index,
-              from: self.ingListStackView,
-              item: self.ingListItemStackView),
-            stackView.arrangedSubviews.count >= 3
-          else {
-            continue
-          }
+        for item in dto.list {
+          if let titledImageView = self.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
+            if let url = URL(string: item.img_UPLOAD_PATH)?.appendingPathComponent(item.mob_THUM) {
+              titledImageView.setImage(from: url)
+            }
             
-          (stackView.arrangedSubviews[1] as? UILabel)?.text = item.title
-          (stackView.arrangedSubviews[2] as? UILabel)?.text = item.sbtitle_NAME
-        }
-      })
-      .disposed(by: bag)
-    
-    ingList?.observeOn(MainScheduler.instance)
-      .flatMap({ dto -> Observable<Data> in
-        let itemObservable = Observable<HomeIngItem>.from(dto.list)
-        
-        return itemObservable
-          .compactMap { [weak self] item in
-            self?.useCase.getStoredImageData(uploadPath: item.img_UPLOAD_PATH, mobThum: item.mob_THUM)
+            titledImageView.titleLabel?.text = item.title
+            titledImageView.subTitleLabel?.text = item.sbtitle_NAME
+            
+            self.processingScrollView.reloadContentSizeWidth()
           }
-          .flatMap({ $0 })
-      })
-      .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { data in
-        guard let stackView = self.getIndexedStackView(at: ingListIndex, from: self.ingListStackView, item: self.ingListItemStackView) else {
-          return
         }
-        
-        (stackView.arrangedSubviews.first as? UIImageView)?.image = UIImage(data: data)
-        ingListIndex += 1
       })
       .disposed(by: bag)
-  }
-  
-  func getIndexedStackView(at index: Int, from: UIStackView, item: UIStackView) -> UIStackView? {
-    var result: UIStackView
-    
-    if index != 0 {
-      guard let view = item.copyView() as? UIStackView else {
-        return nil
-      }
-      
-      result = view
-      from.insertArrangedSubview(view, at: from.arrangedSubviews.count-1)
-    } else {
-      result = item
-    }
-    
-    return result
   }
   
   @IBAction func seeAllButtonTouchUpInside(_ sender: UIButton) {
