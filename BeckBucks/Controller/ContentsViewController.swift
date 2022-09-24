@@ -54,17 +54,11 @@ class ContentsViewController: UIViewController {
         guard let self = self else { return }
         
         if let titledImageView = self.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          titledImageView.imageView?.image = UIImage(data: data)
-          titledImageView.titleLabel?.text = dto.view.product_NM
-          
-          self.recommendScrollView.reloadContentSizeWidth()
+          titledImageView.setImageAndTitle(imageData: data, title: dto.view.product_NM)
         }
         
         if let subTitledImageView = self.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          subTitledImageView.imageView?.image = UIImage(data: data)
-          subTitledImageView.titleLabel?.text = dto.view.product_NM
-          
-          self.currentRecommendScrollView.reloadContentSizeWidth()
+          subTitledImageView.setImageAndTitle(imageData: data, title: dto.view.product_NM)
         }
       })
       .disposed(by: bag)
@@ -88,13 +82,10 @@ class ContentsViewController: UIViewController {
         for item in dto.list {
           if let titledImageView = self.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
             if let url = URL(string: item.img_UPLOAD_PATH)?.appendingPathComponent(item.mob_THUM) {
-              titledImageView.setImage(from: url)
+              titledImageView.setImageAndTitles(imageURL: url, title: item.title, subTitle: item.sbtitle_NAME)
+            } else {
+              titledImageView.setTitles(title: item.title, subTitle: item.sbtitle_NAME)
             }
-            
-            titledImageView.titleLabel?.text = item.title
-            titledImageView.subTitleLabel?.text = item.sbtitle_NAME
-            
-            self.processingScrollView.reloadContentSizeWidth()
           }
         }
       })

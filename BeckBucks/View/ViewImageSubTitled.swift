@@ -38,4 +38,15 @@ class ViewImageSubTitled: ViewImageTitled {
       subTitleLabel?.adjustsFontSizeToFitWidth = true
     }
   }
+  
+  func setImageAndTitles(imageURL: URL, title: String?, subTitle: String?) {
+    setImage(from: imageURL)
+    titleLabel?.text = title
+    subTitleLabel?.text = subTitle
+  }
+  
+  func setTitles(title: String?, subTitle: String?) {
+    titleLabel?.text = title
+    subTitleLabel?.text = subTitle
+  }
 }

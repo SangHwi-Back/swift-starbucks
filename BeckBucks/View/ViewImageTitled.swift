@@ -63,4 +63,14 @@ class ViewImageTitled: UIView, RecommendContentsView {
       .bind(to: imageView.rx.image)
       .disposed(by: disposeBag)
   }
+  
+  func setImageAndTitle(imageData: Data, title: String?) {
+    imageView?.image = UIImage(data: imageData)
+    titleLabel?.text = title
+  }
+  
+  func setImageAndTitle(image: UIImage, title: String?) {
+    imageView?.image = image
+    titleLabel?.text = title
+  }
 }

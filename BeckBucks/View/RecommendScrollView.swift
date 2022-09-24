@@ -7,12 +7,40 @@
 
 import UIKit
 import RxCocoa
+import RxSwift
 
 class RecommendScrollView: UIScrollView {
   
   static let padding: CGFloat = 20
+  
+  private var contentSizeWidthRelay = BehaviorRelay<CGPoint>(value: .zero)
+  private var disposeBag = DisposeBag()
   var lastView: UIView? {
     subviews.filter({$0 is RecommendContentsView}).max(by: { $0.frame.maxX < $1.frame.maxX })
+  }
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    initialSetting()
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    initialSetting()
+  }
+  
+  private func initialSetting() {
+    contentSizeWidthRelay
+      .subscribe { [weak self] event in
+        switch event {
+        case .next(let point):
+          guard let currentWidth = self?.contentSize.width, currentWidth > point.x else { return }
+          self?.contentSize.width = point.x + RecommendScrollView.padding
+        default:
+          self?.contentSize.width = self?.frame.width ?? 0
+        }
+      }
+      .disposed(by: disposeBag)
   }
   
   func insertView(_ view: UIView.Type) -> RecommendContentsView? {
@@ -36,14 +64,14 @@ class RecommendScrollView: UIScrollView {
     customView?.frame.origin.x = RecommendScrollView.padding
     if let lastView = lastView {
       customView?.frame.origin.x += lastView.frame.maxX
+      contentSizeWidthRelay
+        .accept(CGPoint(x: (customView?.frame.maxX ?? 0) + RecommendScrollView.padding, y: 0))
     }
     
     return customView as? RecommendContentsView
   }
   
-  func reloadContentSizeWidth() {
-    contentSize.width = RecommendScrollView.padding
-    contentSize.width += lastView?.frame.maxX ?? 0
-    contentSize.width += RecommendScrollView.padding
+  func dispose() {
+    self.disposeBag = DisposeBag()
   }
 }
