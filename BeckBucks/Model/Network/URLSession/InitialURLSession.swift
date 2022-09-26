@@ -22,14 +22,16 @@ class InitialURLSession {
   // MARK: - Observables
   
   var info: Observable<Data> {
-    return URLSession(configuration: InitialInfoBucksProtocol.protocolClass).rx
-      .data(request: URLRequest.common(infoURL))
-      .share(replay: 1)
+//    return URLSession(configuration: InitialInfoBucksProtocol.protocolClass).rx
+//      .data(request: URLRequest.common(infoURL))
+//      .share(replay: 1)
+    return Observable.empty()
   }
   
   var image: Observable<Data> {
-    return URLSession(configuration: InitialImageBucksProtocol.protocolClass).rx
-      .data(request: URLRequest.common(imageURL))
-      .share(replay: 1)
+//    return URLSession(configuration: InitialImageBucksProtocol.protocolClass).rx
+//      .data(request: URLRequest.common(imageURL))
+//      .share(replay: 1)
+    return Observable.empty()
   }
 }

@@ -27,18 +27,20 @@ class HomeURLSession {
   
   var main: Single<Data>? {
     guard let homeMainURL = homeMainURL else { return nil }
-    return URLSession(configuration: HomeMainBucksProtocol.protocolClass)
-      .rx
-      .data(request: URLRequest.common(homeMainURL))
-      .asSingle()
+//    return URLSession(configuration: HomeMainBucksProtocol.protocolClass)
+//      .rx
+//      .data(request: URLRequest.common(homeMainURL))
+//      .asSingle()
+    return nil
   }
   
   var thumb: Observable<Data>? {
     guard let mainThumbURL = mainThumbURL else { return nil }
-    return URLSession(configuration: HomeThumbBucksProtocol.protocolClass)
-      .rx
-      .data(request: URLRequest.common(mainThumbURL))
-      .share(replay: 1, scope: .forever)
+//    return URLSession(configuration: HomeThumbBucksProtocol.protocolClass)
+//      .rx
+//      .data(request: URLRequest.common(mainThumbURL))
+//      .share(replay: 1, scope: .forever)
+    return nil
   }
   
   var ingList: Observable<Data>? {
@@ -50,9 +52,10 @@ class HomeURLSession {
     request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     request.addValue("utf-8", forHTTPHeaderField: "charset")
     
-    return URLSession(configuration: HomeIngBucksProtocol.protocolClass)
-      .rx
-      .data(request: URLRequest.common(ingListURL))
-      .share(replay: 1, scope: .forever)
+//    return URLSession(configuration: HomeIngBucksProtocol.protocolClass)
+//      .rx
+//      .data(request: URLRequest.common(ingListURL))
+//      .share(replay: 1, scope: .forever)
+    return nil
   }
 }

@@ -2,12 +2,6 @@ import Foundation
 
 class ImageBucksPOSTProtocol: URLProtocol {
   
-  static var protocolClass: URLSessionConfiguration {
-    let conf = URLSessionConfiguration.default
-    conf.protocolClasses = [self]
-    return conf
-  }
-  
   lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { request in
     
     var resultData: Data?

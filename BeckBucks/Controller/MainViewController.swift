@@ -25,12 +25,7 @@ class MainViewController: UIViewController {
     CommonUserDefaults
       .getInitialEventDismissDate()
       .subscribe(onSuccess: { [weak self] dateString in
-        guard dateString == formatter.string(from: Date()) else {
-          self?.getInitialEvent()
-          return
-        }
-        
-        self?.moveNext()
+        self?.getInitialEvent()
       })
       .disposed(by: bag)
   

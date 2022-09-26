@@ -1,15 +1,25 @@
 import Foundation
 
-class CommonBucksProtocol: URLProtocol {
-  
-  private(set) var resourceName: String = ""
-  private(set) var resourceExtension: String = ""
-  
+extension URLProtocol {
   static var protocolClass: URLSessionConfiguration {
     let conf = URLSessionConfiguration.default
-    conf.protocolClasses = [self]
+    
+    if conf.protocolClasses == nil {
+      conf.protocolClasses = []
+    }
+    
+    if conf.protocolClasses?.contains(where: { $0 == Self.self }) == false {
+      conf.protocolClasses?.append(Self.self)
+    }
+    
     return conf
   }
+}
+
+class CommonBucksProtocol: URLProtocol {
+  
+  var resourceName: String = ""
+  var resourceExtension: String = ""
   
   lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { [weak self] request in
     

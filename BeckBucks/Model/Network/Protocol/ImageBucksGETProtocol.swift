@@ -2,12 +2,6 @@ import Foundation
 
 class ImageBucksGETProtocol: URLProtocol {
   
-  static var protocolClass: URLSessionConfiguration {
-    let conf = URLSessionConfiguration.default
-    conf.protocolClasses = [self]
-    return conf
-  }
-  
   lazy var handler: ((URLRequest) throws -> (HTTPURLResponse, Data)) = { [weak self] request in
     
     guard let self = self else { throw ProtocolError.noResponse }

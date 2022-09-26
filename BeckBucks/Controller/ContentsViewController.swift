@@ -35,58 +35,46 @@ class ContentsViewController: UIViewController {
     processingView.addSubview(processingScrollView)
     currentRecommendView.addSubview(currentRecommendScrollView)
     
-    let mainDTOObservable = useCase.getMainInfo().share()
-    mainDTOObservable
-      .map({ dto -> String? in dto?.displayName})
-      .bind(to: self.nameLabel.rx.text)
-      .disposed(by: bag)
-    
-    let productsObservable = mainDTOObservable.flatMap({ dto in Observable.from(dto?.yourRecommend.products ?? [String]()) })
-    
-    Observable.zip(
-        productsObservable.enumerated()
-          .flatMap { (index, _) in self.useCase.getStoredImageData(JSONname: "payImageJSON", index: index) },
-        productsObservable.enumerated()
-          .flatMap { (index, cd) in self.useCase.getStoredItemInfo(key: cd, index: index) }
-      )
+    // 메인 리스트
+    useCase.getMainInfo()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] data, dto in
-        guard let self = self else { return }
-        
-        if let titledImageView = self.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          titledImageView.setImageAndTitle(imageData: data, title: dto.view.product_NM)
+      .subscribe { [weak self] event in
+        switch event {
+        case .success(let data):
+          if let titledImageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
+            titledImageView.setImageAndTitle(imageData: data, title: "Main Usecase Title(None)1")
+          }
+          if let subTitledImageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
+            subTitledImageView.setImageAndTitle(imageData: data, title: "Main Usecase Title(None)2")
+          }
+        case .error(let error):
+          print("[Error] \(error)")
         }
-        
-        if let subTitledImageView = self.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          subTitledImageView.setImageAndTitle(imageData: data, title: dto.view.product_NM)
-        }
-      })
+      }
       .disposed(by: bag)
     
     // 썸네일 메인 이벤트
-    useCase.getThumbDataImage()?
+    useCase.getThumbDataImage()
       .observeOn(MainScheduler.instance)
-      .compactMap({UIImage(data: $0)})
-      .do(onNext: { image in
-        self.mainEventImageViewHeightConstraint.constant = image.size.height
-      })
-      .bind(to: mainEventImageView.rx.image)
+      .subscribe { [weak self] event in
+        switch event {
+        case .success(let data):
+          let image = UIImage(data: data)
+          self?.mainEventImageView.image = image
+          self?.mainEventImageViewHeightConstraint.constant = image?.size.height ?? 300
+        case .error(let error):
+          print("[Error] \(error)")
+        }
+      }
       .disposed(by: bag)
     
     // 이 시간대 인기 메뉴
-    useCase.getIngList()?
+    useCase.getIngList()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] dto in
-        guard let self = self else { return }
-        
-        for item in dto.list {
-          if let titledImageView = self.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
-            if let url = URL(string: item.img_UPLOAD_PATH)?.appendingPathComponent(item.mob_THUM) {
-              titledImageView.setImageAndTitles(imageURL: url, title: item.title, subTitle: item.sbtitle_NAME)
-            } else {
-              titledImageView.setTitles(title: item.title, subTitle: item.sbtitle_NAME)
-            }
-          }
+      .subscribe(onNext: { [weak self] data in
+        if let titledImageView = self?.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled, let data = data {
+          titledImageView.imageView?.image = UIImage(data: data)
+          titledImageView.setTitles(title: "ING Title(None)", subTitle: "ING SubTitle(None)")
         }
       })
       .disposed(by: bag)

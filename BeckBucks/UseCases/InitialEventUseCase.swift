@@ -6,17 +6,33 @@ class InitialEventUseCase {
   private let initialURLSession = InitialURLSession()
   
   func getBackgroundImage() -> Driver<Data> {
-    initialURLSession.image.asDriver(onErrorJustReturn: Data())
+    defer {
+      URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
+    }
+    
+    URLProtocol.registerClass(HTTPRequestMockProtocol.self)
+    
+    guard let url = Bundle.main.url(forResource: "InitialBackgroundImage", withExtension: "jpg") else {
+      return Driver.just(Data())
+    }
+    
+    return URLSession.shared.rx.data(request: URLRequest(url: url))
+      .asDriver(onErrorJustReturn: Data())
   }
   
   func getInitialInfo() -> Driver<InitialDTO?> {
-    initialURLSession.info.map({ data in
-      if let result = try? JSONDecoder().decode(InitialDTO.self, from: data) {
-        return result
-      }
-      
-      return nil
-    })
-    .asDriver(onErrorJustReturn: nil)
+    defer {
+      URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
+    }
+    
+    URLProtocol.registerClass(HTTPRequestMockProtocol.self)
+    
+    guard let fileURL = Bundle.main.url(forResource: "InitialJSON", withExtension: "json") else {
+      return Driver.just(nil)
+    }
+    
+    return URLSession.shared.rx.data(request: URLRequest(url: fileURL))
+      .map { try? JSONDecoder().decode(InitialDTO.self, from: $0) }
+      .asDriver(onErrorJustReturn: nil)
   }
 }
