@@ -8,40 +8,41 @@ enum UseCaseError: Error {
 
 class HomeMainUseCase {
   
+  init() {
+    URLProtocol.registerClass(HTTPRequestMockProtocol.self)
+  }
+  
+  deinit {
+    URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
+  }
   
   private let model = HTTPRequestMockModel()
   private let decoder = JSONDecoder()
   
   func getMainInfo() -> Single<Data> {
-    model.getImage(from: Bundle.main.url(forResource: "jpg", withExtension: "homeMainImage"))
+    model.getImage(from: Bundle.main.url(forResource: "homeMainImage", withExtension: "jpg"))
   }
   
   func getThumbDataImage() -> Single<Data> {
-    model.getImage(from: Bundle.main.url(forResource: "jpg", withExtension: "homeMainThumbImage"))
+    model.getImage(from: Bundle.main.url(forResource: "homeMainThumbImage", withExtension: "jpg"))
   }
   
-  func getIngList() -> ReplaySubject<Data?> {
-    guard let urls = Bundle.main.urls(forResourcesWithExtension: "jpg", subdirectory: "ingevent") else {
-      return ReplaySubject<Data?>
-        .create(bufferSize: 1)
+  func getIngList() -> Observable<Data> {
+    
+    var urls = [URL]()
+    for i in 1...8 {
+      if let url = Bundle.main.url(forResource: "ingimg\(i)", withExtension: "jpg") {
+        urls.append(url)
+      }
     }
     
-    let result = ReplaySubject<Data?>.create(bufferSize: urls.count)
+    guard urls.isEmpty == false else { return Observable.empty() }
     
-    for url in urls {
-      model.getImage(from: url)
-        .subscribe { event in
-          switch event {
-          case .error(_):
-            result.onNext(nil)
-          case .success(let data):
-            result.onNext(data)
-          }
-        }
-        .dispose()
-    }
-    
-    return result
+    return Observable<URL>
+      .from(urls)
+      .flatMap { url in
+        URLSession.shared.rx.data(request: URLRequest(url: url))
+      }
   }
   
   func dispose() { }

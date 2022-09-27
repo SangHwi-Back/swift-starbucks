@@ -5,13 +5,15 @@ class InitialEventUseCase {
   
   private let initialURLSession = InitialURLSession()
   
-  func getBackgroundImage() -> Driver<Data> {
-    defer {
-      URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
-    }
-    
+  init() {
     URLProtocol.registerClass(HTTPRequestMockProtocol.self)
-    
+  }
+  
+  deinit {
+    URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
+  }
+  
+  func getBackgroundImage() -> Driver<Data> {
     guard let url = Bundle.main.url(forResource: "InitialBackgroundImage", withExtension: "jpg") else {
       return Driver.just(Data())
     }
@@ -21,12 +23,6 @@ class InitialEventUseCase {
   }
   
   func getInitialInfo() -> Driver<InitialDTO?> {
-    defer {
-      URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
-    }
-    
-    URLProtocol.registerClass(HTTPRequestMockProtocol.self)
-    
     guard let fileURL = Bundle.main.url(forResource: "InitialJSON", withExtension: "json") else {
       return Driver.just(nil)
     }

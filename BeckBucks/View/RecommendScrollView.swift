@@ -34,7 +34,7 @@ class RecommendScrollView: UIScrollView {
       .subscribe { [weak self] event in
         switch event {
         case .next(let point):
-          guard let currentWidth = self?.contentSize.width, currentWidth > point.x else { return }
+          guard let currentWidth = self?.contentSize.width, currentWidth < point.x else { return }
           self?.contentSize.width = point.x + RecommendScrollView.padding
         default:
           self?.contentSize.width = self?.frame.width ?? 0

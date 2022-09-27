@@ -16,12 +16,6 @@ class HTTPRequestMockModel {
       return Single.just(Data())
     }
     
-    defer {
-      URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
-    }
-    
-    URLProtocol.registerClass(HTTPRequestMockProtocol.self)
-    
     return URLSession.shared.rx.data(request: URLRequest(url: url))
       .share()
       .asSingle()

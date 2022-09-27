@@ -9,10 +9,6 @@ class ContentsViewController: UIViewController {
   
   @IBOutlet weak var nameLabel: UILabel!
   
-//  @IBOutlet weak var recommendScrollView: RecommendScrollView!
-//  @IBOutlet weak var recommendScrollViewWidthConstraint: NSLayoutConstraint!
-//  @IBOutlet weak var recommendFirstView: UIView!
-  
   @IBOutlet weak var recommendView: UIView!
   lazy var recommendScrollView = RecommendScrollView(frame: recommendView.bounds)
   
@@ -35,7 +31,6 @@ class ContentsViewController: UIViewController {
     processingView.addSubview(processingScrollView)
     currentRecommendView.addSubview(currentRecommendScrollView)
     
-    // 메인 리스트
     useCase.getMainInfo()
       .observeOn(MainScheduler.instance)
       .subscribe { [weak self] event in
@@ -53,7 +48,6 @@ class ContentsViewController: UIViewController {
       }
       .disposed(by: bag)
     
-    // 썸네일 메인 이벤트
     useCase.getThumbDataImage()
       .observeOn(MainScheduler.instance)
       .subscribe { [weak self] event in
@@ -68,24 +62,29 @@ class ContentsViewController: UIViewController {
       }
       .disposed(by: bag)
     
-    // 이 시간대 인기 메뉴
     useCase.getIngList()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] data in
-        if let titledImageView = self?.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled, let data = data {
+        if let titledImageView = self?.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
           titledImageView.imageView?.image = UIImage(data: data)
           titledImageView.setTitles(title: "ING Title(None)", subTitle: "ING SubTitle(None)")
         }
       })
       .disposed(by: bag)
+    
+    Completable
+      .create { event in
+        let disposables = Disposables.create()
+        event(.completed)
+        return disposables
+      }
+      .delay(RxTimeInterval.seconds(3), scheduler: MainScheduler.instance)
+      .subscribe(onCompleted: { [weak self] in
+        self?.bag = DisposeBag()
+      })
+      .disposed(by: bag)
   }
   
   @IBAction func seeAllButtonTouchUpInside(_ sender: UIButton) {
-  }
-}
-
-extension UIView {
-  func copyView<T: UIView>() -> T {
-    return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
   }
 }
