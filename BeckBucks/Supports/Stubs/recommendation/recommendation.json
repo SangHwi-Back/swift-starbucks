@@ -1,0 +1,20 @@
+{
+  "foods": [
+    {
+      "title": "나이트로 콜드 브루",
+      "name": "recommendation1"
+    },
+    {
+      "title": "나이트로 바닐라 크림",
+      "name": "recommendation2"
+    },
+    {
+      "title": "질소 커피",
+      "name": "recommendation3"
+    },
+    {
+      "title": "블루베리 케이크",
+      "name": "recommendation4"
+    }
+  ]
+}

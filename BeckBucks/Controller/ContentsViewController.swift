@@ -22,7 +22,7 @@ class ContentsViewController: UIViewController {
   lazy var currentRecommendScrollView = RecommendScrollView(frame: currentRecommendView.bounds)
   
   let useCase = HomeMainUseCase()
-  private var bag = DisposeBag()
+  private var disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,22 +31,14 @@ class ContentsViewController: UIViewController {
     processingView.addSubview(processingScrollView)
     currentRecommendView.addSubview(currentRecommendScrollView)
     
-    useCase.getMainInfo()
+    useCase.getRecommendationsForUser()
       .observeOn(MainScheduler.instance)
-      .subscribe { [weak self] event in
-        switch event {
-        case .success(let data):
-          if let titledImageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-            titledImageView.setImageAndTitle(imageData: data, title: "Main Usecase Title(None)1")
-          }
-          if let subTitledImageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-            subTitledImageView.setImageAndTitle(imageData: data, title: "Main Usecase Title(None)2")
-          }
-        case .error(let error):
-          print("[Error] \(error)")
+      .subscribe(onNext: { [weak self] item in
+        if let titledImageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
+          titledImageView.setImageAndTitle(imageData: item.1, title: item.0.title)
         }
-      }
-      .disposed(by: bag)
+      })
+      .disposed(by: disposeBag)
     
     useCase.getThumbDataImage()
       .observeOn(MainScheduler.instance)
@@ -60,7 +52,7 @@ class ContentsViewController: UIViewController {
           print("[Error] \(error)")
         }
       }
-      .disposed(by: bag)
+      .disposed(by: disposeBag)
     
     useCase.getIngList()
       .observeOn(MainScheduler.instance)
@@ -70,7 +62,7 @@ class ContentsViewController: UIViewController {
           titledImageView.setTitles(title: "ING Title(None)", subTitle: "ING SubTitle(None)")
         }
       })
-      .disposed(by: bag)
+      .disposed(by: disposeBag)
     
     Completable
       .create { event in
@@ -80,9 +72,9 @@ class ContentsViewController: UIViewController {
       }
       .delay(RxTimeInterval.seconds(3), scheduler: MainScheduler.instance)
       .subscribe(onCompleted: { [weak self] in
-        self?.bag = DisposeBag()
+        self?.disposeBag = DisposeBag()
       })
-      .disposed(by: bag)
+      .disposed(by: disposeBag)
   }
   
   @IBAction func seeAllButtonTouchUpInside(_ sender: UIButton) {

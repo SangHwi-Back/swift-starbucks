@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct StarbucksArray: Decodable {
+  let foods: [StarbucksItemDTO]
+}
+
 struct StarbucksItemDTO: Decodable {
   let title: String
   let name: String
