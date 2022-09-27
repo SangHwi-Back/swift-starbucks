@@ -58,6 +58,7 @@
 		1B7AAAA528E29D6400DD66EA /* food16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA9128E29D6400DD66EA /* food16.jpg */; };
 		1B7AAAA628E29D6400DD66EA /* food11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA9228E29D6400DD66EA /* food11.jpg */; };
 		1B7AAAA728E29D6400DD66EA /* food5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA9328E29D6400DD66EA /* food5.jpg */; };
+		1B7AAAAD28E2A48900DD66EA /* StarbucksItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAC28E2A48900DD66EA /* StarbucksItemDTO.swift */; };
 		1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87F70C285B8AAE002B47B7 /* TestViewController.swift */; };
 		1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */; };
 		1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */; };
@@ -201,6 +202,9 @@
 		1B7AAA9128E29D6400DD66EA /* food16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food16.jpg; sourceTree = "<group>"; };
 		1B7AAA9228E29D6400DD66EA /* food11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food11.jpg; sourceTree = "<group>"; };
 		1B7AAA9328E29D6400DD66EA /* food5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food5.jpg; sourceTree = "<group>"; };
+		1B7AAAA928E29EFE00DD66EA /* food.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
+		1B7AAAAB28E29F2000DD66EA /* drink.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = drink.json; sourceTree = "<group>"; };
+		1B7AAAAC28E2A48900DD66EA /* StarbucksItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarbucksItemDTO.swift; sourceTree = "<group>"; };
 		1B87F70C285B8AAE002B47B7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBucksPOSTProtocol.swift; sourceTree = "<group>"; };
 		1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBucksGetProtocol.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 				1BD427B62833ABBB0098DEEF /* HomeIngDTO.swift */,
 				1BD427C928348B4C0098DEEF /* PayItemDTO.swift */,
 				1BD427CB28348BA30098DEEF /* PayItemImageDTO.swift */,
+				1B7AAAAC28E2A48900DD66EA /* StarbucksItemDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				1B7AAA5B28E29D4C00DD66EA /* drink18.jpg */,
 				1B7AAA6328E29D4C00DD66EA /* drink19.jpg */,
 				1B7AAA6528E29D4D00DD66EA /* drink20.jpg */,
+				1B7AAAAB28E29F2000DD66EA /* drink.json */,
 			);
 			path = drink;
 			sourceTree = "<group>";
@@ -458,6 +464,7 @@
 				1B7AAA8828E29D6300DD66EA /* food18.jpg */,
 				1B7AAA8A28E29D6300DD66EA /* food19.jpg */,
 				1B7AAA8928E29D6300DD66EA /* food20.jpg */,
+				1B7AAAA928E29EFE00DD66EA /* food.json */,
 			);
 			path = food;
 			sourceTree = "<group>";
@@ -947,6 +954,7 @@
 				1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */,
 				1BD427B92833AC750098DEEF /* HomeMainBucksProtocol.swift in Sources */,
 				1BCFCE812834C51600074ED2 /* ImageBucksGETProtocol.swift in Sources */,
+				1B7AAAAD28E2A48900DD66EA /* StarbucksItemDTO.swift in Sources */,
 				1BF36D6B28D961DE0033DF2A /* RecommendScrollView.swift in Sources */,
 				1B0F662628336A5B000428E3 /* CommonBucksProtocol.swift in Sources */,
 			);
