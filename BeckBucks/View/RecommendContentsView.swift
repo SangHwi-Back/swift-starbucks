@@ -9,7 +9,7 @@ import UIKit
 
 protocol RecommendContentsView {
   var imageView: UIImageView? { get set }
-  var lastView: UIView? { get set }
+  var lastView: UIView? { get }
 }
 
 extension RecommendContentsView {

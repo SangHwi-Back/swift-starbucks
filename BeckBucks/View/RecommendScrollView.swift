@@ -35,7 +35,7 @@ class RecommendScrollView: UIScrollView {
         switch event {
         case .next(let point):
           guard let currentWidth = self?.contentSize.width, currentWidth < point.x else { return }
-          self?.contentSize.width = (point.x + RecommendScrollView.padding*3)
+          self?.contentSize.width = point.x + RecommendScrollView.padding
         default:
           self?.contentSize.width = self?.frame.width ?? 0
         }
@@ -62,6 +62,7 @@ class RecommendScrollView: UIScrollView {
     }
     
     customView?.frame.origin.x += ((lastView?.frame.maxX ?? 0) + RecommendScrollView.padding)
+    (customView as? ViewImageTitled)?.imageView?.putShadows()
     contentSizeWidthRelay
       .accept(CGPoint(x: (customView?.frame.maxX ?? 0), y: 0))
     

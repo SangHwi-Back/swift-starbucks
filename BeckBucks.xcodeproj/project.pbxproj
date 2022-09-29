@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B0F662628336A5B000428E3 /* CommonBucksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F662528336A5B000428E3 /* CommonBucksProtocol.swift */; };
 		1B0F6628283371F8000428E3 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6627283371F8000428E3 /* ContentsViewController.swift */; };
+		1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B230A4828E5565900775128 /* UIView+Extensions.swift */; };
 		1B27493B283206D900027B60 /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B27493A283206D900027B60 /* Contents.storyboard */; };
 		1B27493D2832092F00027B60 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27493C2832092F00027B60 /* HTTPRequest.swift */; };
 		1B27493F28320F4800027B60 /* InitialEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27493E28320F4700027B60 /* InitialEventUseCase.swift */; };
@@ -153,6 +154,7 @@
 		011029F81A403A54E1CA4F10 /* Pods-BeckBucks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeckBucks.release.xcconfig"; path = "Target Support Files/Pods-BeckBucks/Pods-BeckBucks.release.xcconfig"; sourceTree = "<group>"; };
 		1B0F662528336A5B000428E3 /* CommonBucksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBucksProtocol.swift; sourceTree = "<group>"; };
 		1B0F6627283371F8000428E3 /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
+		1B230A4828E5565900775128 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1B27493A283206D900027B60 /* Contents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B27493C2832092F00027B60 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		1B27493E28320F4700027B60 /* InitialEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialEventUseCase.swift; sourceTree = "<group>"; };
@@ -322,6 +324,14 @@
 				4884E3D9247DADDB978B19FA /* Pods_BeckBucksTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B230A4728E5564300775128 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B230A4828E5565900775128 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1B27494028320F5C00027B60 /* UseCases */ = {
@@ -526,6 +536,7 @@
 		1BCCB32C2828B91900CBB58F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1B230A4728E5564300775128 /* Extensions */,
 				1B27493A283206D900027B60 /* Contents.storyboard */,
 				1BCCB3012828B8F000CBB58F /* Main.storyboard */,
 				1BCCB3062828B8F300CBB58F /* LaunchScreen.storyboard */,
@@ -939,6 +950,7 @@
 				1BD427BD2833ACA90098DEEF /* HomeIngBucksProtocol.swift in Sources */,
 				1BF36D7128D975D50033DF2A /* RecommendContentsView.swift in Sources */,
 				1BF36D8D28E08AC50033DF2A /* HTTPRequestMockModel.swift in Sources */,
+				1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */,
 				1B27493F28320F4800027B60 /* InitialEventUseCase.swift in Sources */,
 				1BCFCEA3283530D800074ED2 /* AnonymousImageBucksProtocol.swift in Sources */,
 				1BCFCE7F2834C49D00074ED2 /* ImageURLSession.swift in Sources */,
