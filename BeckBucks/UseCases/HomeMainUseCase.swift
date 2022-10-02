@@ -61,8 +61,8 @@ class HomeMainUseCase {
     model.getImage(from: Bundle.main.url(forResource: "homeMainThumbImage", withExtension: "jpg"))
   }
   
-  func getIngList() -> Observable<Data> {
-    
+  func getIngList() -> Observable<(title: String, imageData: Data)> {
+    let eventTitles = ["e-Gift item 보너스 스타", "BONUS STAR!", "Hyundai Card X STARBUCKS", "오트 밀크를 무료로 만나보세요!", "별 2배!!", "AROUND AUTUMN, AROUND US", "BARISTA FAVORITES", "STARBUCKS | S.I.VILLAGE"]
     var urls = [URL]()
     for i in 1...8 {
       if let url = Bundle.main.url(forResource: "ingimg\(i)", withExtension: "jpg") {
@@ -72,10 +72,82 @@ class HomeMainUseCase {
     
     guard urls.isEmpty == false else { return Observable.empty() }
     
+    let imageObservable = Observable<URL>.from(urls)
+      .flatMap { url in
+        URLSession.shared.rx.data(request: URLRequest(url: url))
+      }
+    
+    return Observable<(title: String, imageData: Data)>
+      .zip(Observable<String>.from(eventTitles), imageObservable) {
+        (title: $0, imageData: $1)
+      }
+  }
+  
+  func getThisTimeRecommendList() -> Observable<(title: String?, imageData: Data)> {
+    
+    var randomBoolean: Bool {
+      Int.random(in: 1...10).isMultiple(of: 2)
+    }
+    
+    guard
+      let foodsURL = Bundle.main.url(forResource: "food", withExtension: "json"),
+      let drinkURL = Bundle.main.url(forResource: "drink", withExtension: "json")
+    else {
+      return Observable.empty()
+    }
+    
+    let getFoodJSONObservable = URLSession.shared.rx.data(request: URLRequest(url: foodsURL))
+      .map({ data -> [StarbucksItemDTO]? in
+        let result = try? JSONDecoder().decode(StarbucksArray.self, from: data)
+        return result?.foods
+      })
+    let getDrinkJSONObservable = URLSession.shared.rx.data(request: URLRequest(url: drinkURL))
+      .map({ data -> [StarbucksItemDTO]? in
+        let result = try? JSONDecoder().decode(StarbucksArray.self, from: data)
+        return result?.foods
+      })
+    
+    let entities = Observable<(food: [StarbucksItemDTO], drink: [StarbucksItemDTO])>
+      .zip(getFoodJSONObservable, getDrinkJSONObservable) { foods, drinks in
+        (food: foods ?? [], drink: drinks ?? [])
+      }
+    
+    var urls = [URL]()
+
+    for indexes in 1...20 {
+      
+      guard randomBoolean else {
+        continue
+      }
+      
+      let title = (randomBoolean ? "food" : "drink") + "\(indexes)"
+      if let url = Bundle.main.url(forResource: title, withExtension: "jpg") {
+        urls.append(url)
+      }
+    }
+    
     return Observable<URL>
       .from(urls)
       .flatMap { url in
         URLSession.shared.rx.data(request: URLRequest(url: url))
+          .map { data in (url, data) }
+      }
+      .concatMap { result in
+        entities
+          .map { dto -> (title: String?, imageData: Data) in
+            var name = result.0.lastPathComponent
+            if let dotIndex = name.firstIndex(of: ".") {
+              name.removeSubrange(dotIndex...)
+            }
+            
+            if name.contains("food") {
+              return (title: dto.food.first(where: { $0.name == name })?.title, imageData: result.1)
+            } else if name.contains("drink") {
+              return (title: dto.drink.first(where: { $0.name == name })?.title, imageData: result.1)
+            }
+            
+            return (title: nil, imageData: result.1)
+          }
       }
   }
   

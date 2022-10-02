@@ -19,6 +19,9 @@
 		1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2749502832527200027B60 /* CommonUserDefaults.swift */; };
 		1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2749552832678D00027B60 /* InitialURLSession.swift */; };
 		1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B274957283268F000027B60 /* InitialImageBucksProtocol.swift */; };
+		1B69A8F728E587A5001C6720 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAA928E29EFE00DD66EA /* food.json */; };
+		1B69A8F828E587AA001C6720 /* drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAB28E29F2000DD66EA /* drink.json */; };
+		1B69A8F928E587AD001C6720 /* recommendation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAE28E2A9F200DD66EA /* recommendation.json */; };
 		1B7AAA6B28E29D4D00DD66EA /* drink16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA5728E29D4C00DD66EA /* drink16.jpg */; };
 		1B7AAA6C28E29D4D00DD66EA /* drink15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA5828E29D4C00DD66EA /* drink15.jpg */; };
 		1B7AAA6D28E29D4D00DD66EA /* drink12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA5928E29D4C00DD66EA /* drink12.jpg */; };
@@ -779,6 +782,7 @@
 				1BCFCE7D2834C45A00074ED2 /* EVE_APP_THUM_20220429162111380.jpg in Resources */,
 				1B7AAA7128E29D4D00DD66EA /* drink4.jpg in Resources */,
 				1BF36D8528DF338D0033DF2A /* ingimg3.jpg in Resources */,
+				1B69A8F828E587AA001C6720 /* drink.json in Resources */,
 				1B7AAA9628E29D6400DD66EA /* food3.jpg in Resources */,
 				1BCCB3052828B8F300CBB58F /* Assets.xcassets in Resources */,
 				1B7AAA7E28E29D4D00DD66EA /* drink5.jpg in Resources */,
@@ -802,6 +806,7 @@
 				1BCFCE772834C45A00074ED2 /* EVE_APP_THUM_20220429082859621.jpg in Resources */,
 				1BF36D8628DF338D0033DF2A /* ingimg4.jpg in Resources */,
 				1B7AAA9828E29D6400DD66EA /* food6.jpg in Resources */,
+				1B69A8F928E587AD001C6720 /* recommendation.json in Resources */,
 				1BD427B12833AA390098DEEF /* homeMainThumbImage.jpg in Resources */,
 				1BCFCE7C2834C45A00074ED2 /* EVE_APP_THUM_20220509123439412.jpg in Resources */,
 				1BCFCE862834ED3100074ED2 /* payItemJSON3.json in Resources */,
@@ -820,6 +825,7 @@
 				1B7AAA7D28E29D4D00DD66EA /* drink6.jpg in Resources */,
 				1BF36D8428DF338D0033DF2A /* ingimg6.jpg in Resources */,
 				1B7AAA6B28E29D4D00DD66EA /* drink16.jpg in Resources */,
+				1B69A8F728E587A5001C6720 /* food.json in Resources */,
 				1BD427C6283482CF0098DEEF /* payItemJSON.json in Resources */,
 				1BCFCE9F2834FA2200074ED2 /* recommendation2.jpg in Resources */,
 				1B7AAA9D28E29D6400DD66EA /* food20.jpg in Resources */,

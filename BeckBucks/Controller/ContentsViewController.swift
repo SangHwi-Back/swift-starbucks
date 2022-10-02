@@ -58,8 +58,17 @@ class ContentsViewController: UIViewController {
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] data in
         if let titledImageView = self?.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
-          titledImageView.imageView?.image = UIImage(data: data)
-          titledImageView.setTitles(title: "ING Title(None)", subTitle: "ING SubTitle(None)")
+          titledImageView.imageView?.image = UIImage(data: data.imageData)
+          titledImageView.setTitles(title: data.title, subTitle: "")
+        }
+      })
+      .disposed(by: disposeBag)
+    
+    useCase.getThisTimeRecommendList()
+      .observeOn(MainScheduler.instance)
+      .subscribe(onNext: { [weak self] result in
+        if let titledImageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
+          titledImageView.setImageAndTitle(imageData: result.imageData, title: result.title)
         }
       })
       .disposed(by: disposeBag)
