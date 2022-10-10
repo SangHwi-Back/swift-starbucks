@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,15 +18,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" id="iN0-l3-epB">
+                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4b-Mp-gYv">
-                                <rect key="frame" x="16" y="16" width="382" height="182"/>
+                                <rect key="frame" x="16" y="16" width="382" height="177.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o4b-Mp-gYv" secondAttribute="height" multiplier="2.15:1" priority="750" id="Gb9-2P-Qy7"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdS-F0-wFa">
-                                <rect key="frame" x="16" y="214" width="382" height="16"/>
+                                <rect key="frame" x="16" y="209.5" width="382" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016 블랙 사이렌 카드" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="uXA-Ak-zBt">
                                         <rect key="frame" x="114" y="0.0" width="154" height="16"/>
@@ -59,7 +61,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMq-1N-Ywx">
-                                <rect key="frame" x="16" y="238" width="382" height="30"/>
+                                <rect key="frame" x="16" y="233.5" width="382" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12,100원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Lq6-HW-ERt">
                                         <rect key="frame" x="159" y="0.0" width="64" height="30"/>
@@ -89,10 +91,13 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EZ-Rv-8Sc">
-                                <rect key="frame" x="16" y="288" width="382" height="64"/>
+                                <rect key="frame" x="16" y="283.5" width="382" height="52.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Nnw-Sa-4KX"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I80-ec-C9a">
-                                <rect key="frame" x="16" y="360" width="382" height="16"/>
+                                <rect key="frame" x="16" y="344" width="382" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="****_****_**50-8252" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-XD-Ai2">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="16"/>
@@ -111,7 +116,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iD-qB-x7P">
-                                <rect key="frame" x="16" y="388" width="382" height="16"/>
+                                <rect key="frame" x="16" y="372" width="382" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바코드 유효시간이 만료되었습니다." textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="9Np-BN-RTt">
                                         <rect key="frame" x="74" y="0.0" width="234" height="16"/>
@@ -145,7 +150,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPm-gd-1kK">
-                                <rect key="frame" x="16" y="420" width="382" height="80"/>
+                                <rect key="frame" x="16" y="404" width="382" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS1-C9-zui">
                                         <rect key="frame" x="16" y="0.0" width="153" height="64"/>
@@ -205,7 +210,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hdS-F0-wFa" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="3QX-ec-uzm"/>
@@ -215,20 +219,19 @@
                             <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="JO0-v5-MuD"/>
                             <constraint firstItem="9iD-qB-x7P" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="LtZ-Ic-ef5"/>
                             <constraint firstItem="aPm-gd-1kK" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="MId-Jz-Zjh"/>
-                            <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aPm-gd-1kK" secondAttribute="bottom" id="QFe-XB-Rrz"/>
+                            <constraint firstAttribute="bottom" secondItem="aPm-gd-1kK" secondAttribute="bottom" constant="16" id="QFe-XB-Rrz"/>
                             <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="top" secondItem="DMq-1N-Ywx" secondAttribute="bottom" constant="20" id="Sci-Bp-5lR"/>
                             <constraint firstItem="DMq-1N-Ywx" firstAttribute="top" secondItem="hdS-F0-wFa" secondAttribute="bottom" constant="8" id="UBB-Ve-Hcl"/>
                             <constraint firstItem="I80-ec-C9a" firstAttribute="top" secondItem="0EZ-Rv-8Sc" secondAttribute="bottom" constant="8" id="WoF-EF-s28"/>
-                            <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" constant="16" id="XZE-mL-gBz"/>
+                            <constraint firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" constant="16" id="XZE-mL-gBz"/>
                             <constraint firstItem="9iD-qB-x7P" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="aor-AH-4O6"/>
                             <constraint firstItem="o4b-Mp-gYv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="eaA-Qm-Waf"/>
                             <constraint firstItem="hdS-F0-wFa" firstAttribute="width" secondItem="o4b-Mp-gYv" secondAttribute="width" id="fns-R0-ntt"/>
-                            <constraint firstItem="o4b-Mp-gYv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="hy5-yp-C7t"/>
+                            <constraint firstItem="o4b-Mp-gYv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="hy5-yp-C7t"/>
                             <constraint firstItem="aPm-gd-1kK" firstAttribute="top" secondItem="9iD-qB-x7P" secondAttribute="bottom" constant="16" id="j2g-zA-5bL"/>
                             <constraint firstItem="DMq-1N-Ywx" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="jrP-bU-hZU"/>
                             <constraint firstItem="DMq-1N-Ywx" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="nAV-fC-4LK"/>
                             <constraint firstItem="9iD-qB-x7P" firstAttribute="top" secondItem="I80-ec-C9a" secondAttribute="bottom" constant="12" id="nYO-Y6-Qgx"/>
-                            <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="height" secondItem="o4b-Mp-gYv" secondAttribute="height" multiplier="0.35" id="q8X-5C-Tg2"/>
                             <constraint firstItem="hdS-F0-wFa" firstAttribute="top" secondItem="o4b-Mp-gYv" secondAttribute="bottom" constant="16" id="rSh-aF-hDn"/>
                             <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="width" secondItem="o4b-Mp-gYv" secondAttribute="width" id="uh6-mm-OEH"/>
                             <constraint firstItem="aPm-gd-1kK" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="vqG-RC-Puh"/>
@@ -236,12 +239,14 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             </collectionViewCellContentView>
             <size key="customSize" width="360" height="500"/>
             <connections>
                 <outlet property="autoChargeButton" destination="uS1-C9-zui" id="UeV-XI-9h3"/>
                 <outlet property="balanceLabel" destination="Lq6-HW-ERt" id="dq7-UX-Wqq"/>
                 <outlet property="barcodeImageView" destination="0EZ-Rv-8Sc" id="ggt-M9-hvO"/>
+                <outlet property="cardBackgroundView" destination="iN0-l3-epB" id="WPo-jl-WQx"/>
                 <outlet property="cardImageView" destination="o4b-Mp-gYv" id="AtA-XW-Qaq"/>
                 <outlet property="cardNumberLabel" destination="Ng0-XD-Ai2" id="2ne-h1-9Dl"/>
                 <outlet property="descriptionLabel" destination="9Np-BN-RTt" id="BXG-DO-GZg"/>

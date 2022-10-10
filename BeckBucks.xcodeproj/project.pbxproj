@@ -26,6 +26,9 @@
 		1B3788DF28F3068600A2DF39 /* card_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788DD28F3068600A2DF39 /* card_normal.png */; };
 		1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */; };
 		1B3788E328F3103600A2DF39 /* pay_event.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E228F3103600A2DF39 /* pay_event.png */; };
+		1B3788E528F3999700A2DF39 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E428F3999700A2DF39 /* cards.json */; };
+		1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */; };
+		1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E828F39FDA00A2DF39 /* card_seattle.png */; };
 		1B69A8F728E587A5001C6720 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAA928E29EFE00DD66EA /* food.json */; };
 		1B69A8F828E587AA001C6720 /* drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAB28E29F2000DD66EA /* drink.json */; };
 		1B69A8F928E587AD001C6720 /* recommendation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAE28E2A9F200DD66EA /* recommendation.json */; };
@@ -181,6 +184,9 @@
 		1B3788DD28F3068600A2DF39 /* card_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_normal.png; sourceTree = "<group>"; };
 		1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B3788E228F3103600A2DF39 /* pay_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_event.png; sourceTree = "<group>"; };
+		1B3788E428F3999700A2DF39 /* cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = card_okinawa.jpg; sourceTree = "<group>"; };
+		1B3788E828F39FDA00A2DF39 /* card_seattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_seattle.png; sourceTree = "<group>"; };
 		1B7AAA5728E29D4C00DD66EA /* drink16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink16.jpg; sourceTree = "<group>"; };
 		1B7AAA5828E29D4C00DD66EA /* drink15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink15.jpg; sourceTree = "<group>"; };
 		1B7AAA5928E29D4C00DD66EA /* drink12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink12.jpg; sourceTree = "<group>"; };
@@ -385,7 +391,7 @@
 				1BF36D9128E094470033DF2A /* event */,
 				1BF36D9028E094410033DF2A /* recommendation */,
 				1BF36D8B28E05B3A0033DF2A /* ingevent */,
-				1B3788DB28F3065B00A2DF39 /* pay */,
+				1B3788DB28F3065B00A2DF39 /* card */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -443,14 +449,17 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		1B3788DB28F3065B00A2DF39 /* pay */ = {
+		1B3788DB28F3065B00A2DF39 /* card */ = {
 			isa = PBXGroup;
 			children = (
 				1B3788DC28F3068600A2DF39 /* card_black.png */,
 				1B3788DD28F3068600A2DF39 /* card_normal.png */,
+				1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */,
+				1B3788E828F39FDA00A2DF39 /* card_seattle.png */,
 				1B3788E228F3103600A2DF39 /* pay_event.png */,
+				1B3788E428F3999700A2DF39 /* cards.json */,
 			);
-			path = pay;
+			path = card;
 			sourceTree = "<group>";
 		};
 		1B7AAA7F28E29D5100DD66EA /* drink */ = {
@@ -781,6 +790,7 @@
 				1BCFCE7B2834C45A00074ED2 /* EVE_APP_THUM_20211231080741192.jpg in Resources */,
 				1B7AAAA128E29D6400DD66EA /* food1.jpg in Resources */,
 				1BF36D8928DF338D0033DF2A /* ingimg1.jpg in Resources */,
+				1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */,
 				1B7AAA9528E29D6400DD66EA /* food10.jpg in Resources */,
 				1B7AAA7928E29D4D00DD66EA /* drink20.jpg in Resources */,
 				1BD427AF2833A9F90098DEEF /* homeIngEventList.json in Resources */,
@@ -848,8 +858,10 @@
 				1B3788DE28F3068600A2DF39 /* card_black.png in Resources */,
 				1BCFCE892834ED3100074ED2 /* payItemJSON2.json in Resources */,
 				1BCFCE882834ED3100074ED2 /* payItemJSON0.json in Resources */,
+				1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */,
 				1B7AAAA628E29D6400DD66EA /* food11.jpg in Resources */,
 				1BCFCE8F2834F6CB00074ED2 /* payImageJSON3.json in Resources */,
+				1B3788E528F3999700A2DF39 /* cards.json in Resources */,
 				1B7AAA7328E29D4D00DD66EA /* drink8.jpg in Resources */,
 				1BCFCEA12834FA2200074ED2 /* recommendation4.jpg in Resources */,
 				1BCFCE7A2834C45A00074ED2 /* EVE_APP_THUM_20220429124801969.jpg in Resources */,

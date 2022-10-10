@@ -9,6 +9,8 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cardBackgroundView: UIView!
+    
     @IBOutlet weak var cardImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!

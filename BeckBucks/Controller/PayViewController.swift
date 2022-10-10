@@ -17,16 +17,16 @@ class PayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(cardCollectionView.frame, view.frame)
         let layout = UICollectionViewFlowLayout()
+        
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(
             width: view.frame.width,
             height: cardCollectionView.frame.height
         )
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         eventImageView.image = UIImage(named: "pay_event.png")
         
@@ -56,6 +56,7 @@ extension PayViewController: UICollectionViewDataSource {
         }
         
         cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
+        cell.cardBackgroundView.putShadows()
         
         return cell
     }
