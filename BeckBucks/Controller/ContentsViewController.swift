@@ -33,9 +33,9 @@ class ContentsViewController: UIViewController {
     
     useCase.getRecommendationsForUser()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] item in
+      .subscribe(onNext: { [weak self] titledImageData in
         if let titledImageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          titledImageView.setImageAndTitle(imageData: item.1, title: item.0.title)
+          titledImageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
         }
       })
       .disposed(by: disposeBag)
@@ -56,19 +56,19 @@ class ContentsViewController: UIViewController {
     
     useCase.getIngList()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] data in
+      .subscribe(onNext: { [weak self] titledImageData in
         if let titledImageView = self?.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
-          titledImageView.imageView?.image = UIImage(data: data.imageData)
-          titledImageView.setTitles(title: data.title, subTitle: "")
+          titledImageView.imageView?.image = UIImage(data: titledImageData.data)
+          titledImageView.setTitles(title: titledImageData.title, subTitle: "")
         }
       })
       .disposed(by: disposeBag)
     
     useCase.getThisTimeRecommendList()
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] result in
+      .subscribe(onNext: { [weak self] titledImageData in
         if let titledImageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          titledImageView.setImageAndTitle(imageData: result.imageData, title: result.title)
+          titledImageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
         }
       })
       .disposed(by: disposeBag)

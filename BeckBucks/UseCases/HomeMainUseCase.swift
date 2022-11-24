@@ -4,6 +4,9 @@ import Foundation
 
 enum UseCaseError: Error {
   case testError
+  case urlError(String)
+  case decodeFailed(String)
+  case requestError(Int)
 }
 
 class HomeMainUseCase {
@@ -20,136 +23,152 @@ class HomeMainUseCase {
   private let decoder = JSONDecoder()
   private var disposeBag = DisposeBag()
   
-  func getRecommendationsForUser() -> Observable<(StarbucksItemDTO, Data)> {
-    guard let jsonURL = Bundle.main.url(forResource: "recommendation", withExtension: "json") else {
-      return Observable.empty()
-    }
+  private var recommendationURL: URL? {
+    Bundle.main.url(forResource: "recommendation", withExtension: "json")
+  }
+  
+  private var imageOfRecommendationItemURL: (Int) -> URL? = { num in
+    Bundle.main.url(forResource: "recommendation\(num)", withExtension: "jpg")
+  }
+  
+  private var homeMainImageURL: URL? {
+    Bundle.main.url(forResource: "homeMainImage", withExtension: "jpg")
+  }
+  
+  private var thumbnailImageDataURL: URL? {
+    Bundle.main.url(forResource: "homeMainThumbImage", withExtension: "jpg")
+  }
+  
+  private var ingImageURL: (Int) -> URL? = { num in
+    Bundle.main.url(forResource: "ingimg\(num)", withExtension: "jpg")
+  }
+  
+  private let ingListTitles = ["e-Gift item 보너스 스타", "BONUS STAR!", "Hyundai Card X STARBUCKS", "오트 밀크를 무료로 만나보세요!", "별 2배!!", "AROUND AUTUMN, AROUND US", "BARISTA FAVORITES", "STARBUCKS | S.I.VILLAGE"]
+  
+  private var foodsURL: URL? {
+    Bundle.main.url(forResource: "food", withExtension: "json")
+  }
+  
+  private var drinksURL: URL? {
+    Bundle.main.url(forResource: "drink", withExtension: "json")
+  }
+  
+  private var randomBoolean: Bool {
+    Int.random(in: 1...10).isMultiple(of: 2)
+  }
+  
+  func getRecommendationsForUser() -> Observable<TitledImageData> {
+    guard let recommendationURL else { return Observable.error(UseCaseError.urlError("recommendation.json")) }
     
-    let jsonObservable = URLSession.shared.rx
-      .data(request: URLRequest(url: jsonURL))
-      .compactMap({
-        data in try? JSONDecoder().decode(StarbucksArray.self, from: data)
+    let itemTitleObservable = URLSession.shared.rx.response(request: URLRequest(url: recommendationURL))
+      .flatMap({ request -> Observable<String> in
+        guard let result = try? JSONDecoder().decode(StarbucksArray.self, from: request.data) else {
+          throw UseCaseError.decodeFailed("StarbucksArray decode Failed from " + (request.response.url?.absoluteString ?? "unkown URL"))
+        }
+        
+        guard 200..<300 ~= request.response.statusCode else {
+          throw UseCaseError.requestError(request.response.statusCode)
+        }
+        
+        return Observable<String>.from(result.foods.map({$0.title}))
       })
-      .flatMap({
-        Observable<StarbucksItemDTO>.from($0.foods)
+    
+    let imageDataObservable = Observable<Int>.from(1...4)
+      .flatMap({ [weak self] num -> Observable<Data> in
+        guard let url = self?.imageOfRecommendationItemURL(num) else {
+          throw UseCaseError.urlError("recommendation\(num).jpg")
+        }
+        
+        return URLSession.shared.rx.data(request: URLRequest(url: url))
       })
     
-    var urls = [URL]()
-    for i in 1...4 {
-      if let url = Bundle.main.url(forResource: "recommendation\(i)", withExtension: "jpg") {
-        urls.append(url)
-      }
-    }
-    
-    let imageObservable: Observable<Data> = Observable<URL>
-      .from(urls)
-      .flatMap { url in
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-      }
-    
-    return Observable<(StarbucksItemDTO, Data)>
-      .zip(jsonObservable, imageObservable) {
-        ($0, $1)
+    return Observable<TitledImageData>
+      .zip(itemTitleObservable, imageDataObservable) {
+        TitledImageData(title: $0, data: $1)
       }
   }
   
   func getMainInfo() -> Single<Data> {
-    model.getImage(from: Bundle.main.url(forResource: "homeMainImage", withExtension: "jpg"))
+    model.getImage(from: homeMainImageURL)
   }
   
   func getThumbDataImage() -> Single<Data> {
-    model.getImage(from: Bundle.main.url(forResource: "homeMainThumbImage", withExtension: "jpg"))
+    model.getImage(from: thumbnailImageDataURL)
   }
   
-  func getIngList() -> Observable<(title: String, imageData: Data)> {
-    let eventTitles = ["e-Gift item 보너스 스타", "BONUS STAR!", "Hyundai Card X STARBUCKS", "오트 밀크를 무료로 만나보세요!", "별 2배!!", "AROUND AUTUMN, AROUND US", "BARISTA FAVORITES", "STARBUCKS | S.I.VILLAGE"]
-    var urls = [URL]()
-    for i in 1...8 {
-      if let url = Bundle.main.url(forResource: "ingimg\(i)", withExtension: "jpg") {
-        urls.append(url)
-      }
-    }
-    
-    guard urls.isEmpty == false else { return Observable.empty() }
-    
-    let imageObservable = Observable<URL>.from(urls)
-      .flatMap { url in
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-      }
-    
-    return Observable<(title: String, imageData: Data)>
-      .zip(Observable<String>.from(eventTitles), imageObservable) {
-        (title: $0, imageData: $1)
-      }
+  func getIngList() -> Observable<TitledImageData> {
+    Observable<String>.from(ingListTitles)
+      .enumerated()
+      .flatMap({ [weak self] (index, title) -> Observable<TitledImageData> in
+        guard let url = self?.ingImageURL(index+1), let title = self?.ingListTitles[index] else {
+          throw UseCaseError.urlError("ingimg\(index+1).jpg")
+        }
+        
+        return URLSession.shared.rx.response(request: URLRequest(url: url))
+          .map({ (response, data) -> TitledImageData in
+            guard 200..<300 ~= response.statusCode else {
+              throw UseCaseError.requestError(response.statusCode)
+            }
+            
+            return TitledImageData(title: title, data: data)
+          })
+      })
   }
   
-  func getThisTimeRecommendList() -> Observable<(title: String?, imageData: Data)> {
-    
-    var randomBoolean: Bool {
-      Int.random(in: 1...10).isMultiple(of: 2)
-    }
-    
-    guard
-      let foodsURL = Bundle.main.url(forResource: "food", withExtension: "json"),
-      let drinkURL = Bundle.main.url(forResource: "drink", withExtension: "json")
-    else {
-      return Observable.empty()
-    }
-    
-    let getFoodJSONObservable = URLSession.shared.rx.data(request: URLRequest(url: foodsURL))
-      .map({ data -> [StarbucksItemDTO]? in
-        let result = try? JSONDecoder().decode(StarbucksArray.self, from: data)
-        return result?.foods
+  private func getThisTimeRecommendList(_ url: URL) -> Observable<StarbucksItemDTO> {
+    URLSession.shared.rx.response(request: URLRequest(url: url))
+      .map({ request -> StarbucksArray in
+        guard 200..<300 ~= request.response.statusCode else {
+          throw UseCaseError.requestError(request.response.statusCode)
+        }
+        
+        if let result = try? JSONDecoder().decode(StarbucksArray.self, from: request.data) {
+          return result
+        }
+        
+        throw UseCaseError.decodeFailed("StarbucksArray decode Failed from " + (request.response.url?.absoluteString ?? "unkown URL"))
       })
-    let getDrinkJSONObservable = URLSession.shared.rx.data(request: URLRequest(url: drinkURL))
-      .map({ data -> [StarbucksItemDTO]? in
-        let result = try? JSONDecoder().decode(StarbucksArray.self, from: data)
-        return result?.foods
+      .flatMap({
+        return Observable<StarbucksItemDTO>.from($0.foods)
       })
+  }
+  
+  func getThisTimeRecommendList() -> Observable<TitledImageData> {
+    guard let foodsURL else { return Observable.error(UseCaseError.urlError("food.json")) }
+    guard let drinksURL else { return Observable.error(UseCaseError.urlError("drink.json")) }
     
-    let entities = Observable<(food: [StarbucksItemDTO], drink: [StarbucksItemDTO])>
-      .zip(getFoodJSONObservable, getDrinkJSONObservable) { foods, drinks in
-        (food: foods ?? [], drink: drinks ?? [])
+    let entities = Observable<(number: Int, food: StarbucksItemDTO, drink: StarbucksItemDTO)>
+      .zip(getThisTimeRecommendList(foodsURL).enumerated(), getThisTimeRecommendList(drinksURL)) {
+        (number: $0.index+1, food: $0.element, drink: $1)
       }
     
-    var urls = [URL]()
-
-    for indexes in 1...20 {
-      
-      guard randomBoolean else {
-        continue
-      }
-      
-      let title = (randomBoolean ? "food" : "drink") + "\(indexes)"
-      if let url = Bundle.main.url(forResource: title, withExtension: "jpg") {
-        urls.append(url)
-      }
+    var getRandomTitle: String {
+      (self.randomBoolean ? "food" : "drink")
     }
     
-    return Observable<URL>
-      .from(urls)
-      .flatMap { url in
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-          .map { data in (url, data) }
+    return entities.flatMap({ entityInfo in
+      let title = getRandomTitle
+      
+      guard let url = Bundle.main.url(forResource: title+"\(entityInfo.number)", withExtension: "jpg") else {
+        throw UseCaseError.urlError(title+"\(entityInfo.number).jpg")
       }
-      .concatMap { result in
-        entities
-          .map { dto -> (title: String?, imageData: Data) in
-            var name = result.0.lastPathComponent
-            if let dotIndex = name.firstIndex(of: ".") {
-              name.removeSubrange(dotIndex...)
-            }
-            
-            if name.contains("food") {
-              return (title: dto.food.first(where: { $0.name == name })?.title, imageData: result.1)
-            } else if name.contains("drink") {
-              return (title: dto.drink.first(where: { $0.name == name })?.title, imageData: result.1)
-            }
-            
-            return (title: nil, imageData: result.1)
+      
+      return URLSession.shared.rx.response(request: URLRequest(url: url))
+        .map { request in
+          guard 200..<300 ~= request.response.statusCode else {
+            throw UseCaseError.requestError(request.response.statusCode)
           }
-      }
+          
+          return TitledImageData(
+            title: (title == "food" ? entityInfo.food.title : entityInfo.drink.title),
+            data: request.data
+          )
+        }
+    })
   }
   
-  func dispose() { }
+  struct TitledImageData {
+    let title: String
+    let data: Data
+  }
 }
