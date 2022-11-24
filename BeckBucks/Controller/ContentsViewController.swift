@@ -34,22 +34,20 @@ class ContentsViewController: UIViewController {
     useCase.getRecommendationsForUser()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] titledImageData in
-        if let titledImageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          titledImageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
+        guard let imageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled else {
+          return
         }
+        
+        imageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
       })
       .disposed(by: disposeBag)
     
     useCase.getThumbDataImage()
       .observeOn(MainScheduler.instance)
       .subscribe { [weak self] event in
-        switch event {
-        case .success(let data):
-          let image = UIImage(data: data)
+        if case let SingleEvent.success(data) = event, let image = UIImage(data: data) {
           self?.mainEventImageView.image = image
-          self?.mainEventImageViewHeightConstraint.constant = image?.size.height ?? 300
-        case .error(let error):
-          print("[Error] \(error)")
+          self?.mainEventImageViewHeightConstraint.constant = image.size.height
         }
       }
       .disposed(by: disposeBag)
@@ -57,27 +55,29 @@ class ContentsViewController: UIViewController {
     useCase.getIngList()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] titledImageData in
-        if let titledImageView = self?.processingScrollView.insertView(ViewImageSubTitled.self) as? ViewImageSubTitled {
-          titledImageView.imageView?.image = UIImage(data: titledImageData.data)
-          titledImageView.setTitles(title: titledImageData.title, subTitle: "")
+        guard let imageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled else {
+          return
         }
+        
+        imageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
       })
       .disposed(by: disposeBag)
     
     useCase.getThisTimeRecommendList()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] titledImageData in
-        if let titledImageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled {
-          titledImageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
+        guard let imageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled else {
+          return
         }
+        
+        imageView.setImageAndTitle(imageData: titledImageData.data, title: titledImageData.title)
       })
       .disposed(by: disposeBag)
     
     Completable
       .create { event in
-        let disposables = Disposables.create()
         event(.completed)
-        return disposables
+        return Disposables.create()
       }
       .delay(RxTimeInterval.seconds(3), scheduler: MainScheduler.instance)
       .subscribe(onCompleted: { [weak self] in

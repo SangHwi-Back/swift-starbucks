@@ -62,12 +62,9 @@ class HomeMainUseCase {
     
     let itemTitleObservable = URLSession.shared.rx.response(request: URLRequest(url: recommendationURL))
       .flatMap({ request -> Observable<String> in
+        if let error = request.response.getRequestError { throw error }
         guard let result = try? JSONDecoder().decode(StarbucksArray.self, from: request.data) else {
-          throw UseCaseError.decodeFailed("StarbucksArray decode Failed from " + (request.response.url?.absoluteString ?? "unkown URL"))
-        }
-        
-        guard 200..<300 ~= request.response.statusCode else {
-          throw UseCaseError.requestError(request.response.statusCode)
+          throw UseCaseError.decodeFailed(request.response.url.getErrorMessage)
         }
         
         return Observable<String>.from(result.foods.map({$0.title}))
@@ -106,10 +103,7 @@ class HomeMainUseCase {
         
         return URLSession.shared.rx.response(request: URLRequest(url: url))
           .map({ (response, data) -> TitledImageData in
-            guard 200..<300 ~= response.statusCode else {
-              throw UseCaseError.requestError(response.statusCode)
-            }
-            
+            if let error = response.getRequestError { throw error }
             return TitledImageData(title: title, data: data)
           })
       })
@@ -118,15 +112,12 @@ class HomeMainUseCase {
   private func getThisTimeRecommendList(_ url: URL) -> Observable<StarbucksItemDTO> {
     URLSession.shared.rx.response(request: URLRequest(url: url))
       .map({ request -> StarbucksArray in
-        guard 200..<300 ~= request.response.statusCode else {
-          throw UseCaseError.requestError(request.response.statusCode)
-        }
-        
+        if let error = request.response.getRequestError { throw error }
         if let result = try? JSONDecoder().decode(StarbucksArray.self, from: request.data) {
           return result
         }
         
-        throw UseCaseError.decodeFailed("StarbucksArray decode Failed from " + (request.response.url?.absoluteString ?? "unkown URL"))
+        throw UseCaseError.decodeFailed(request.response.url.getErrorMessage)
       })
       .flatMap({
         return Observable<StarbucksItemDTO>.from($0.foods)
@@ -155,10 +146,7 @@ class HomeMainUseCase {
       
       return URLSession.shared.rx.response(request: URLRequest(url: url))
         .map { request in
-          guard 200..<300 ~= request.response.statusCode else {
-            throw UseCaseError.requestError(request.response.statusCode)
-          }
-          
+          if let error = request.response.getRequestError { throw error }
           return TitledImageData(
             title: (title == "food" ? entityInfo.food.title : entityInfo.drink.title),
             data: request.data
@@ -170,5 +158,21 @@ class HomeMainUseCase {
   struct TitledImageData {
     let title: String
     let data: Data
+  }
+}
+
+private extension HTTPURLResponse {
+  var getRequestError: Error? {
+    guard self.isSuccess else {
+      return nil
+    }
+    
+    return UseCaseError.requestError(self.statusCode)
+  }
+}
+
+private extension Optional where Wrapped == URL {
+  var getErrorMessage: String {
+    ("Error occured at " + (self?.absoluteString ?? "unkown URL") + ".")
   }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B0F662628336A5B000428E3 /* CommonBucksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F662528336A5B000428E3 /* CommonBucksProtocol.swift */; };
 		1B0F6628283371F8000428E3 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6627283371F8000428E3 /* ContentsViewController.swift */; };
+		1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */; };
 		1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B230A4828E5565900775128 /* UIView+Extensions.swift */; };
 		1B27493B283206D900027B60 /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B27493A283206D900027B60 /* Contents.storyboard */; };
 		1B27493D2832092F00027B60 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27493C2832092F00027B60 /* HTTPRequest.swift */; };
@@ -167,6 +168,7 @@
 		011029F81A403A54E1CA4F10 /* Pods-BeckBucks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeckBucks.release.xcconfig"; path = "Target Support Files/Pods-BeckBucks/Pods-BeckBucks.release.xcconfig"; sourceTree = "<group>"; };
 		1B0F662528336A5B000428E3 /* CommonBucksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBucksProtocol.swift; sourceTree = "<group>"; };
 		1B0F6627283371F8000428E3 /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
+		1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Extensions.swift"; sourceTree = "<group>"; };
 		1B230A4828E5565900775128 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1B27493A283206D900027B60 /* Contents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B27493C2832092F00027B60 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				1B230A4828E5565900775128 /* UIView+Extensions.swift */,
+				1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,
+				1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */,
 				1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */,
 				1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */,
 				1BD427B92833AC750098DEEF /* HomeMainBucksProtocol.swift in Sources */,
