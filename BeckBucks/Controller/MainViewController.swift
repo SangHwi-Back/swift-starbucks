@@ -14,63 +14,61 @@ class MainViewController: UIViewController {
   @IBOutlet weak var closeButton: UIButton!
   
   let useCase = InitialEventUseCase()
-  let bag = DisposeBag()
+  let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyyMMdd"
-    
     CommonUserDefaults
       .getInitialEventDismissDate()
-      .subscribe(onSuccess: { [weak self] dateString in
-        self?.getInitialEvent()
-      })
-      .disposed(by: bag)
-  
+      .subscribe(onSuccess: { [weak self] _ in self?.getInitialEvent() })
+      .disposed(by: disposeBag)
+    
     noLookTodayButton.rx.tap
-      .subscribe({ [weak self] _ in
-        guard let self = self else { return }
+      .subscribe({ [weak disposeBag] _ in
+        guard let bag = disposeBag else { return }
+        
+        let currentDateString: (Date) -> String = { date in
+          let formatter = DateFormatter()
+          formatter.dateFormat = "yyyyMMdd"
+          return formatter.string(from: date)
+        }
+        
         CommonUserDefaults
-          .setInitialEventDismissDate(formatter.string(from: Date()))
-          .subscribe({ _ in
-            self.moveNext()
-          })
-          .disposed(by: self.bag)
+          .setInitialEventDismissDate(currentDateString(Date()))
+          .subscribe({ [weak self] _ in self?.moveNext() })
+          .disposed(by: bag)
       })
-      .disposed(by: bag)
+      .disposed(by: disposeBag)
   
     closeButton.rx.tap
-      .subscribe({ [weak self] _ in
-        self?.moveNext()
-      })
-      .disposed(by: bag)
+      .subscribe({ [weak self] _ in self?.moveNext() })
+      .disposed(by: disposeBag)
   }
   
   func getInitialEvent() {
-    useCase
-      .getInitialInfo()
-      .drive(onNext: { [weak self] dto in
-        guard let self = self, let dto = dto else { return }
-        self.rangeLabel.text = dto.range
-        self.targetLabel.text = dto.target
-        self.descriptionLabel.text = dto.description
-        self.titleLabel.text = dto.title
-      })
-      .disposed(by: bag)
+    let sharedObservable = useCase.getInitialInfo().share()
     
-    useCase
-      .getBackgroundImage()
-      .drive(onNext: { [weak self] data in
-        self?.backgroundImageView.image = UIImage(data: data)
-      })
-      .disposed(by: bag)
-  }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    backgroundImageView.image = nil
+    sharedObservable.map({$0?.range})
+      .bind(to: rangeLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    sharedObservable.map({$0?.target})
+      .bind(to: targetLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    sharedObservable.map({$0?.description})
+      .bind(to: descriptionLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    sharedObservable.map({$0?.title})
+      .bind(to: titleLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    useCase.getBackgroundImage()
+      .map({UIImage.init(data: $0)})
+      .bind(to: backgroundImageView.rx.image)
+      .disposed(by: disposeBag)
   }
   
   func moveNext() {

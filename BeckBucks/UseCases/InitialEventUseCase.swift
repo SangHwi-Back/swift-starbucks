@@ -1,5 +1,5 @@
 import Foundation
-import RxCocoa
+import RxSwift
 
 class InitialEventUseCase {
   
@@ -13,22 +13,20 @@ class InitialEventUseCase {
     URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
   }
   
-  func getBackgroundImage() -> Driver<Data> {
+  func getBackgroundImage() -> Observable<Data> {
     guard let url = Bundle.main.url(forResource: "InitialBackgroundImage", withExtension: "jpg") else {
-      return Driver.just(Data())
+      return Observable.just(Data())
     }
     
     return URLSession.shared.rx.data(request: URLRequest(url: url))
-      .asDriver(onErrorJustReturn: Data())
   }
   
-  func getInitialInfo() -> Driver<InitialDTO?> {
+  func getInitialInfo() -> Observable<InitialDTO?> {
     guard let fileURL = Bundle.main.url(forResource: "InitialJSON", withExtension: "json") else {
-      return Driver.just(nil)
+      return Observable.just(nil)
     }
     
     return URLSession.shared.rx.data(request: URLRequest(url: fileURL))
       .map { try? JSONDecoder().decode(InitialDTO.self, from: $0) }
-      .asDriver(onErrorJustReturn: nil)
   }
 }
