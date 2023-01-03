@@ -31,7 +31,9 @@ class PayViewController: UIViewController {
         eventImageView.image = UIImage(named: "pay_event.png")
         
         cardCollectionView.dataSource = self
-        cardCollectionView.register(UINib(nibName: "CardCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "CardCollectionViewCell")
+        cardCollectionView.register(
+            UINib(nibName: "CardCollectionViewCell", bundle: Bundle.main),
+            forCellWithReuseIdentifier: "CardCollectionViewCell")
         cardCollectionView.collectionViewLayout = layout
         cardCollectionView.reloadData()
     }
@@ -43,21 +45,27 @@ extension PayViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as? CardCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "CardCollectionViewCell",
+            for: indexPath) as? CardCollectionViewCell
+        else {
             return UICollectionViewCell()
         }
         
-        if indexPath.item == 0 {
-            cell.cardImageView.image = UIImage(named: "card_black.png")
-        } else if indexPath.item == 1 {
-            cell.cardImageView.image = UIImage(named: "card_normal.png")
-        } else if indexPath.item == 2 {
-            cell.cardImageView.image = UIImage(named: "card_black.png")
-        }
-        
+        cell.cardImageView.image = indexPath.getCardImage()
         cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
-        cell.cardBackgroundView.putShadows()
-        
+        cell.cardBackgroundView.putShadows(offset: CGSize(width: 2, height: 2))
         return cell
+    }
+}
+
+private extension IndexPath {
+    func getCardImage() -> UIImage? {
+        switch self.item {
+        case 0: return UIImage(named: "card_black.png")
+        case 1: return UIImage(named: "card_normal.png")
+        case 2: return UIImage(named: "card_black.png")
+        default: return nil
+        }
     }
 }

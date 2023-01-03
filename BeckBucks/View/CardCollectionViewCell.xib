@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,27 +19,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                        <rect key="frame" x="16" y="16" width="382" height="468"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4b-Mp-gYv">
-                                <rect key="frame" x="16" y="16" width="382" height="177.5"/>
+                                <rect key="frame" x="16" y="16" width="350" height="148"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="o4b-Mp-gYv" secondAttribute="height" multiplier="2.15:1" priority="750" id="Gb9-2P-Qy7"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdS-F0-wFa">
-                                <rect key="frame" x="16" y="209.5" width="382" height="16"/>
+                                <rect key="frame" x="16" y="180" width="350" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016 블랙 사이렌 카드" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="uXA-Ak-zBt">
-                                        <rect key="frame" x="114" y="0.0" width="154" height="16"/>
+                                        <rect key="frame" x="98" y="0.0" width="154" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-3o-oPb">
-                                        <rect key="frame" x="276" y="1" width="14" height="14"/>
+                                        <rect key="frame" x="260" y="1" width="14" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="OnU-3o-oPb" secondAttribute="height" multiplier="1:1" id="fcJ-c9-Wgg"/>
                                         </constraints>
@@ -61,16 +61,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMq-1N-Ywx">
-                                <rect key="frame" x="16" y="233.5" width="382" height="30"/>
+                                <rect key="frame" x="16" y="204" width="350" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12,100원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Lq6-HW-ERt">
-                                        <rect key="frame" x="159" y="0.0" width="64" height="30"/>
+                                        <rect key="frame" x="143" y="0.0" width="64" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9N-77-ARh">
-                                        <rect key="frame" x="121" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="105" y="0.0" width="30" height="30"/>
                                         <color key="tintColor" name="color_text_gray"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="">
@@ -91,16 +91,16 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EZ-Rv-8Sc">
-                                <rect key="frame" x="16" y="283.5" width="382" height="52.5"/>
+                                <rect key="frame" x="16" y="254" width="350" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Nnw-Sa-4KX"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I80-ec-C9a">
-                                <rect key="frame" x="16" y="344" width="382" height="16"/>
+                                <rect key="frame" x="16" y="312" width="350" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="****_****_**50-8252" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-XD-Ai2">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -116,16 +116,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iD-qB-x7P">
-                                <rect key="frame" x="16" y="372" width="382" height="16"/>
+                                <rect key="frame" x="16" y="340" width="350" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바코드 유효시간이 만료되었습니다." textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="9Np-BN-RTt">
-                                        <rect key="frame" x="74" y="0.0" width="234" height="16"/>
+                                        <rect key="frame" x="58" y="0.0" width="234" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="color_text_green"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM6-XG-My6">
-                                        <rect key="frame" x="54" y="0.0" width="16" height="16"/>
+                                        <rect key="frame" x="38" y="0.0" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FM6-XG-My6" secondAttribute="height" multiplier="1:1" id="kus-XY-IEE"/>
                                         </constraints>
@@ -150,10 +150,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPm-gd-1kK">
-                                <rect key="frame" x="16" y="404" width="382" height="80"/>
+                                <rect key="frame" x="16" y="372" width="350" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS1-C9-zui">
-                                        <rect key="frame" x="16" y="0.0" width="153" height="64"/>
+                                        <rect key="frame" x="16" y="0.0" width="140" height="64"/>
                                         <color key="tintColor" name="color_text_gray_1"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
@@ -161,7 +161,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8O-rp-EUO">
-                                        <rect key="frame" x="213" y="0.0" width="153" height="64"/>
+                                        <rect key="frame" x="194" y="0.0" width="140" height="64"/>
                                         <color key="tintColor" name="color_text_gray_1"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
@@ -169,7 +169,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자동 충전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="1UB-jd-vgZ">
-                                        <rect key="frame" x="16" y="64" width="153" height="16"/>
+                                        <rect key="frame" x="16" y="64" width="140" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="Eri-zs-X2p"/>
                                         </constraints>
@@ -178,7 +178,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일반 충전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="5cT-bC-eQ7">
-                                        <rect key="frame" x="213" y="64" width="153" height="16"/>
+                                        <rect key="frame" x="194" y="64" width="140" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="Cso-Fp-TVp"/>
                                         </constraints>
@@ -240,6 +240,12 @@
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="26g-fk-bMK" secondAttribute="leading" constant="16" id="70O-Oi-aWA"/>
+                    <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="16" id="Bf6-WR-E8X"/>
+                    <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="26g-fk-bMK" secondAttribute="top" constant="16" id="ddR-Iz-Yqn"/>
+                    <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="16" id="eOo-JH-iXV"/>
+                </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="360" height="500"/>
             <connections>
@@ -254,14 +260,14 @@
                 <outlet property="nameLabel" destination="uXA-Ak-zBt" id="nts-W8-EbE"/>
                 <outlet property="normalChargeButton" destination="a8O-rp-EUO" id="bqL-fs-nMi"/>
             </connections>
-            <point key="canvasLocation" x="-850.72463768115949" y="130.58035714285714"/>
+            <point key="canvasLocation" x="329" y="109"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="exclamationmark.arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
-        <image name="star.circle" catalog="system" width="128" height="121"/>
-        <image name="wonsign.circle" catalog="system" width="128" height="121"/>
-        <image name="wonsign.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="exclamationmark.arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
+        <image name="star.circle" catalog="system" width="128" height="123"/>
+        <image name="wonsign.circle" catalog="system" width="128" height="123"/>
+        <image name="wonsign.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="color_text_gray">
             <color red="0.42300000786781311" green="0.42800000309944153" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
