@@ -75,6 +75,7 @@
 		1B7AAAA728E29D6400DD66EA /* food5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA9328E29D6400DD66EA /* food5.jpg */; };
 		1B7AAAAD28E2A48900DD66EA /* StarbucksItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAC28E2A48900DD66EA /* StarbucksItemDTO.swift */; };
 		1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87F70C285B8AAE002B47B7 /* TestViewController.swift */; };
+		1BA5C16B29641B8F00FC4B81 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */; };
 		1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */; };
 		1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */; };
 		1BCCB2FC2828B8F000CBB58F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCCB2FB2828B8F000CBB58F /* AppDelegate.swift */; };
@@ -234,6 +235,7 @@
 		1B7AAAAC28E2A48900DD66EA /* StarbucksItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarbucksItemDTO.swift; sourceTree = "<group>"; };
 		1B7AAAAE28E2A9F200DD66EA /* recommendation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recommendation.json; sourceTree = "<group>"; };
 		1B87F70C285B8AAE002B47B7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBucksPOSTProtocol.swift; sourceTree = "<group>"; };
 		1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBucksGetProtocol.swift; sourceTree = "<group>"; };
 		1BCCB2F82828B8F000CBB58F /* BeckBucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeckBucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -608,6 +610,7 @@
 				1B0F6627283371F8000428E3 /* ContentsViewController.swift */,
 				1B87F70C285B8AAE002B47B7 /* TestViewController.swift */,
 				1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */,
+				1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1017,6 +1020,7 @@
 				1BD427B52833AAEC0098DEEF /* HomeMainDTO.swift in Sources */,
 				1BF36D6F28D962960033DF2A /* ViewImageSubTitled.swift in Sources */,
 				1BF36D8F28E08B780033DF2A /* HTTPRequestMockProtocol.swift in Sources */,
+				1BA5C16B29641B8F00FC4B81 /* OrderViewController.swift in Sources */,
 				1BFEB9A228331ABF003517F0 /* ProtocolError.swift in Sources */,
 				1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
