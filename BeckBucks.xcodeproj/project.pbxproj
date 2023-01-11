@@ -20,7 +20,8 @@
 		1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2749502832527200027B60 /* CommonUserDefaults.swift */; };
 		1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2749552832678D00027B60 /* InitialURLSession.swift */; };
 		1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B274957283268F000027B60 /* InitialImageBucksProtocol.swift */; };
-		1B2C3389296C0DC4009BAEB8 /* OrderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2C3388296C0DC4009BAEB8 /* OrderUseCase.swift */; };
+		1B2C3389296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2C3388296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift */; };
+		1B2C338B296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2C338A296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift */; };
 		1B3788D628F2FB8A00A2DF39 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */; };
 		1B3788D828F2FD0B00A2DF39 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788D728F2FD0B00A2DF39 /* CardCollectionViewCell.xib */; };
 		1B3788DA28F3062E00A2DF39 /* PayViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3788D928F3062E00A2DF39 /* PayViewUseCase.swift */; };
@@ -183,7 +184,8 @@
 		1B2749502832527200027B60 /* CommonUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUserDefaults.swift; sourceTree = "<group>"; };
 		1B2749552832678D00027B60 /* InitialURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialURLSession.swift; sourceTree = "<group>"; };
 		1B274957283268F000027B60 /* InitialImageBucksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialImageBucksProtocol.swift; sourceTree = "<group>"; };
-		1B2C3388296C0DC4009BAEB8 /* OrderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderUseCase.swift; sourceTree = "<group>"; };
+		1B2C3388296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAllMenuUseCase.swift; sourceTree = "<group>"; };
+		1B2C338A296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuListCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		1B3788D728F2FD0B00A2DF39 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B3788D928F3062E00A2DF39 /* PayViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewUseCase.swift; sourceTree = "<group>"; };
@@ -374,7 +376,7 @@
 				1B27493E28320F4700027B60 /* InitialEventUseCase.swift */,
 				1BD427C12833D9F10098DEEF /* HomeMainUseCase.swift */,
 				1B3788D928F3062E00A2DF39 /* PayViewUseCase.swift */,
-				1B2C3388296C0DC4009BAEB8 /* OrderUseCase.swift */,
+				1B2C3388296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -597,6 +599,7 @@
 				1BF36D6E28D962960033DF2A /* ViewImageSubTitled.swift */,
 				1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */,
 				1B5D29982965BE4300025641 /* OrderAllCollectionViewCell.swift */,
+				1B2C338A296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift */,
 				1B5D299A2965BE5400025641 /* OrderMyCollectionViewCell.swift */,
 			);
 			path = View;
@@ -1006,7 +1009,7 @@
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
 				1B3788DA28F3062E00A2DF39 /* PayViewUseCase.swift in Sources */,
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
-				1B2C3389296C0DC4009BAEB8 /* OrderUseCase.swift in Sources */,
+				1B2C3389296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift in Sources */,
 				1B0F6628283371F8000428E3 /* ContentsViewController.swift in Sources */,
 				1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */,
 				1BCFCE672834B38100074ED2 /* PayImageBucksProtocol.swift in Sources */,
@@ -1034,6 +1037,7 @@
 				1BF36D8F28E08B780033DF2A /* HTTPRequestMockProtocol.swift in Sources */,
 				1BA5C16B29641B8F00FC4B81 /* OrderViewController.swift in Sources */,
 				1BFEB9A228331ABF003517F0 /* ProtocolError.swift in Sources */,
+				1B2C338B296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift in Sources */,
 				1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,

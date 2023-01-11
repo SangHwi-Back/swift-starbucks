@@ -11,12 +11,6 @@ import RxCocoa
 
 class OrderAllCollectionViewCell: UICollectionViewCell {
     
-    struct OrderMenuListEntity {
-        let title: String
-        let subTitle: String?
-        let image: Data?
-    }
-    
     @IBOutlet weak var headerMenuView: UIView!
     @IBOutlet weak var allMenuListCollectionView: UICollectionView!
     
@@ -24,16 +18,7 @@ class OrderAllCollectionViewCell: UICollectionViewCell {
         URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
     }
     
-    let cellIdentifier = String(describing: OrderMenuListCollectionViewCell.self)
-    
-    var items = [StarbucksItemDTO]() {
-        didSet {
-            self.itemBinder.onNext(items)
-        }
-    }
-    lazy var itemBinder = PublishSubject<[StarbucksItemDTO]>()
-    
-    private var disposeBag = DisposeBag()
+    private let useCase = OrderAllMenuUseCase()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,6 +35,8 @@ class OrderAllCollectionViewCell: UICollectionViewCell {
     func initialBind() {
         URLProtocol.registerClass(HTTPRequestMockProtocol.self)
         
+        let cellIdentifier = String(describing: OrderMenuListCollectionViewCell.self)
+        
         allMenuListCollectionView.register(OrderMenuListCollectionViewCell.self,
                                            forCellWithReuseIdentifier: cellIdentifier)
         
@@ -63,128 +50,32 @@ class OrderAllCollectionViewCell: UICollectionViewCell {
         allMenuListCollectionView.collectionViewLayout = layout
         allMenuListCollectionView.dataSource = nil
         
-        itemBinder.bind(to: allMenuListCollectionView.rx
-            .items(cellIdentifier: cellIdentifier,
-                   cellType: OrderMenuListCollectionViewCell.self))
-        { [weak disposeBag] (row, element, cell) in
-            
-            cell.contentView
-                .subviews.forEach { $0.removeFromSuperview() }
-            
-            let imageView = UIImageView()
-            let titleLabel = UILabel()
-            let stackView = UIStackView()
-            
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            
-            stackView.axis = .vertical
-            stackView.spacing = 3
-            stackView.distribution = .fillProportionally
-            stackView.addArrangedSubview(titleLabel)
-            
-            titleLabel.font = titleLabel.font.withSize(12)
-            titleLabel.minimumScaleFactor = 0.2
-            titleLabel.numberOfLines = 2
-            
-            cell.contentView.addSubview(imageView)
-            cell.contentView.addSubview(stackView)
-            
-            if
-                let url = Bundle.main.url(forResource: element.name,
-                                         withExtension: "jpg"),
-                let disposeBag
-            {
-                URLSession.shared.rx
-                    .response(request: URLRequest(url: url))
-                    .map({ UIImage(data: $0.data) })
+        useCase.itemBinder
+            .bind(to: allMenuListCollectionView.rx
+                .items(cellIdentifier: cellIdentifier,
+                       cellType: OrderMenuListCollectionViewCell.self)
+            ) { [weak self] (row, _, cell) in
+                
+                cell.resetUIComponents()
+                
+                guard
+                    let imageView = cell.menuImageView,
+                    let disposeBag = self?.useCase.disposeBag
+                else {
+                    return
+                }
+                
+                self?.useCase
+                    .bindRequestedImage(rowNumber: row)
                     .bind(to: imageView.rx.image)
                     .disposed(by: disposeBag)
-            }
-            
-            titleLabel.text = element.title
-            
-            [
-                imageView.leadingAnchor
-                    .constraint(equalTo: cell.contentView.leadingAnchor),
-                imageView.topAnchor
-                    .constraint(equalTo: cell.contentView.topAnchor),
-                imageView.bottomAnchor
-                    .constraint(equalTo: cell.contentView.bottomAnchor),
-                imageView.widthAnchor
-                    .constraint(equalToConstant: 50),
                 
-                stackView.leadingAnchor
-                    .constraint(equalTo: imageView.trailingAnchor, constant: 8),
-                stackView.trailingAnchor
-                    .constraint(equalTo: cell.contentView.trailingAnchor),
-                stackView.topAnchor
-                    .constraint(equalTo: cell.contentView.topAnchor),
-                stackView.bottomAnchor
-                    .constraint(equalTo: cell.contentView.bottomAnchor),
-            ].forEach {
-                $0.isActive = true
+                cell.menuTitleLabel?.text = self?.useCase.getItemTitle(rowNumber: row)
             }
-            
-            cell.menuImageView = imageView
-            cell.menuTitleLabel = titleLabel
-            cell.menuLabelStackView = stackView
-        }
-        .disposed(by: disposeBag)
+            .disposed(by: useCase.disposeBag)
     }
     
     func resolveUI(_ jsonTitle: String) {
-        let url = Bundle.main.url(forResource: jsonTitle, withExtension: "json")
-        getFoodImageDataTitled(title: jsonTitle, jsonURL: url)
-            .subscribe(onNext: { entities in
-                self.items.append(contentsOf: entities)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func getFoodImageDataTitled(title: String, jsonURL: URL?) -> Observable<[StarbucksItemDTO]> {
-        guard let jsonURL else {
-            return Observable.error(UseCaseError.urlError(jsonURL.getErrorMessage))
-        }
-        
-        return URLSession.shared.rx.response(request: URLRequest(url: jsonURL))
-            .map({ result -> [StarbucksItemDTO] in
-                if let error = result.response.getRequestError {
-                    throw error
-                }
-                
-                guard let result = try? JSONDecoder().decode(StarbucksArray.self, from: result.data) else {
-                    throw UseCaseError.decodeFailed(result.response.url.getErrorMessage)
-                }
-                
-                return result.foods
-            })
-    }
-}
-
-class OrderMenuListCollectionViewCell: UICollectionViewCell {
-    
-    var parent: OrderAllCollectionViewCell?
-    var entity: StarbucksItemDTO?
-    
-    // MARK: - Insert view programmatically. CollectionViewDelegate cannot catch moment IBOutlets initialized.
-    var menuImageView: UIImageView?
-    var menuTitleLabel: UILabel?
-    var menuLabelStackView: UIStackView?
-}
-
-private extension HTTPURLResponse {
-    var getRequestError: Error? {
-        guard self.isSuccess else {
-            return UseCaseError.requestError(self.statusCode)
-        }
-        
-        return nil
-    }
-}
-
-private extension Optional where Wrapped == URL {
-    var getErrorMessage: String {
-        ("Error occured at " + (self?.absoluteString ?? "unkown URL") + ".")
+        useCase.resolveUI(jsonTitle)
     }
 }

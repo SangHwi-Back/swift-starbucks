@@ -126,12 +126,13 @@ extension OrderViewController: UICollectionViewDataSource {
             cellIdentifier = String(describing: OrderMyCollectionViewCell.self)
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
-                                                      for: indexPath)
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellIdentifier,
+            for: indexPath) as? OrderAllCollectionViewCell
         
-        (cell as? OrderAllCollectionViewCell)?.initialBind()
-        (cell as? OrderAllCollectionViewCell)?.resolveUI("food")
-        (cell as? OrderAllCollectionViewCell)?.resolveUI("drink")
+        cell?.initialBind()
+        cell?.resolveUI("food")
+        cell?.resolveUI("drink")
         
         return cell
     }
