@@ -14,6 +14,9 @@ class OrderAllCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var headerMenuView: UIView!
     @IBOutlet weak var allMenuListCollectionView: UICollectionView!
     
+    @IBOutlet var headerBeverageMenuButton: UIButton!
+    @IBOutlet var headerFoodMenuButton: UIButton!
+    
     deinit {
         URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
     }
@@ -42,8 +45,8 @@ class OrderAllCollectionViewCell: UICollectionViewCell {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        layout.minimumLineSpacing = 8
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        layout.minimumLineSpacing = 16
         layout.itemSize = CGSize(width: contentView.frame.size.width-32,
                                           height: 50)
         
@@ -73,9 +76,54 @@ class OrderAllCollectionViewCell: UICollectionViewCell {
                 cell.menuTitleLabel?.text = self?.useCase.getItemTitle(rowNumber: row)
             }
             .disposed(by: useCase.disposeBag)
+        
+        useCase.selectedMenuBinder
+            .bind(onNext: { selectedButton in
+                switch selectedButton {
+                case .beverage:
+                    self.headerBeverageMenuButton.titleLabel?.setBoldFont()
+                    self.headerFoodMenuButton.titleLabel?.setNormalFont()
+                case .food:
+                    self.headerBeverageMenuButton.titleLabel?.setNormalFont()
+                    self.headerFoodMenuButton.titleLabel?.setBoldFont()
+                }
+            })
+            .disposed(by: useCase.disposeBag)
+        
+        headerBeverageMenuButton.rx
+            .tap
+            .bind(onNext: { _ in
+                self.useCase.setSelectedMenuButton(.beverage)
+            })
+            .disposed(by: useCase.disposeBag)
+        
+        headerFoodMenuButton.rx
+            .tap
+            .bind(onNext: { _ in
+                self.useCase.setSelectedMenuButton(.food)
+            })
+            .disposed(by: useCase.disposeBag)
     }
     
-    func resolveUI(_ jsonTitle: String) {
-        useCase.resolveUI(jsonTitle)
+    func resolveUI() {
+        headerBeverageMenuButton.sendActions(for: .touchUpInside)
+    }
+}
+
+private extension UILabel {
+    func getBoldFont() -> UIFont? {
+        UIFont.systemFont(ofSize: self.font.pointSize, weight: .bold)
+    }
+    func setBoldFont() {
+        self.font = UIFont.boldSystemFont(ofSize: self.font.pointSize)
+        self.textColor = .black
+    }
+    
+    func getNormalFont() -> UIFont? {
+        UIFont.systemFont(ofSize: self.font.pointSize, weight: .regular)
+    }
+    func setNormalFont() {
+        self.font = self.getNormalFont()
+        self.textColor = .darkGray
     }
 }

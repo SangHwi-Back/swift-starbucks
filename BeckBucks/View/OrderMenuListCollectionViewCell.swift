@@ -42,7 +42,7 @@ class OrderMenuListCollectionViewCell: UICollectionViewCell {
         
         [
             imageView.leadingAnchor
-                .constraint(equalTo: contentView.leadingAnchor),
+                .constraint(equalTo: contentView.leadingAnchor, constant: 16),
             imageView.topAnchor
                 .constraint(equalTo: contentView.topAnchor),
             imageView.bottomAnchor
@@ -53,7 +53,7 @@ class OrderMenuListCollectionViewCell: UICollectionViewCell {
             stackView.leadingAnchor
                 .constraint(equalTo: imageView.trailingAnchor, constant: 8),
             stackView.trailingAnchor
-                .constraint(equalTo: contentView.trailingAnchor),
+                .constraint(equalTo: contentView.trailingAnchor, constant: 16),
             stackView.topAnchor
                 .constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor
@@ -61,6 +61,8 @@ class OrderMenuListCollectionViewCell: UICollectionViewCell {
         ].forEach {
             $0.isActive = true
         }
+        
+        imageView.setCornerRadius(25)
         
         menuImageView = imageView
         menuTitleLabel = titleLabel

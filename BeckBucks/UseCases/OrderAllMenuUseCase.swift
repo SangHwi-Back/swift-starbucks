@@ -10,14 +10,36 @@ import RxCocoa
 import RxSwift
 
 class OrderAllMenuUseCase {
-    private(set) var items = [StarbucksItemDTO]() {
-        didSet {
-            self.itemBinder.onNext(items)
-        }
-    }
+    
     var disposeBag = DisposeBag()
     
-    lazy var itemBinder = PublishSubject<[StarbucksItemDTO]>()
+    let itemBinder = PublishRelay<[StarbucksItemDTO]>()
+    let selectedMenuBinder = PublishRelay<SelectedMenuButton>()
+    
+    private var items = [StarbucksItemDTO]() {
+        didSet {
+            self.itemBinder.accept(items)
+        }
+    }
+    
+    private var selectedMenuButton: SelectedMenuButton = .beverage {
+        didSet {
+            resetItems()
+            
+            switch selectedMenuButton {
+            case .beverage:
+                resolveUI("drink")
+            case .food:
+                resolveUI("food")
+            }
+            
+            selectedMenuBinder.accept(selectedMenuButton)
+        }
+    }
+    
+    func resetItems() {
+        items.removeAll()
+    }
     
     func bindRequestedImage(rowNumber: Int) -> Observable<UIImage?> {
         guard
@@ -67,6 +89,15 @@ class OrderAllMenuUseCase {
                 
                 return result.foods
             })
+    }
+    
+    func setSelectedMenuButton(_ selected: SelectedMenuButton) {
+        selectedMenuButton = selected
+    }
+    
+    enum SelectedMenuButton {
+        case beverage
+        case food
     }
 }
 
