@@ -32,6 +32,37 @@
 		1B3788E528F3999700A2DF39 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E428F3999700A2DF39 /* cards.json */; };
 		1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */; };
 		1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E828F39FDA00A2DF39 /* card_seattle.png */; };
+		1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */; };
+		1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */; };
+		1B52DBDA297145AC0001E70F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */; };
+		1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */; };
+		1B52DBDE297147C00001E70F /* HallCakeReservationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBDD297147C00001E70F /* HallCakeReservationCollectionViewCell.swift */; };
+		1B52DBE129715ADB0001E70F /* hallCake.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE029715AD40001E70F /* hallCake.json */; };
+		1B52DBFB29715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE229715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg */; };
+		1B52DBFC29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE329715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_2.jpg */; };
+		1B52DBFD29715C0A0001E70F /* Dome_Pecan_Tart_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE429715C0A0001E70F /* Dome_Pecan_Tart_1.jpg */; };
+		1B52DBFE29715C0A0001E70F /* Seven_Layer_Ganache_Cake_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE529715C0A0001E70F /* Seven_Layer_Ganache_Cake_1.jpg */; };
+		1B52DBFF29715C0A0001E70F /* (W)Mascapone_Tiraminu_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE629715C0A0001E70F /* (W)Mascapone_Tiraminu_2.jpg */; };
+		1B52DC0029715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE729715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg */; };
+		1B52DC0129715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE829715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg */; };
+		1B52DC0229715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE929715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_1.jpg */; };
+		1B52DC0329715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBEA29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_1.jpg */; };
+		1B52DC0429715C0A0001E70F /* Seven_Layer_Ganache_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBEB29715C0A0001E70F /* Seven_Layer_Ganache_Cake_2.jpg */; };
+		1B52DC0529715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBEC29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_3.jpg */; };
+		1B52DC0629715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBED29715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg */; };
+		1B52DC0729715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBEE29715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_1.jpg */; };
+		1B52DC0829715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBEF29715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_3.jpg */; };
+		1B52DC0929715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF029715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_3.jpg */; };
+		1B52DC0A29715C0A0001E70F /* Dome_Pecan_Tart_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF129715C0A0001E70F /* Dome_Pecan_Tart_3.jpg */; };
+		1B52DC0B29715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF229715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_1.jpg */; };
+		1B52DC0C29715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF329715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_2.jpg */; };
+		1B52DC0D29715C0A0001E70F /* Seven_Layer_Ganache_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF429715C0A0001E70F /* Seven_Layer_Ganache_Cake_3.jpg */; };
+		1B52DC0E29715C0A0001E70F /* (W)Mascapone_Tiraminu_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF529715C0A0001E70F /* (W)Mascapone_Tiraminu_4.jpg */; };
+		1B52DC0F29715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF629715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_2.jpg */; };
+		1B52DC1029715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF729715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_1.jpg */; };
+		1B52DC1129715C0B0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */; };
+		1B52DC1229715C0B0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */; };
+		1B52DC1329715C0B0001E70F /* Dome_Pecan_Tart_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */; };
 		1B5D29992965BE4300025641 /* OrderAllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D29982965BE4300025641 /* OrderAllCollectionViewCell.swift */; };
 		1B5D299B2965BE5400025641 /* OrderMyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D299A2965BE5400025641 /* OrderMyCollectionViewCell.swift */; };
 		1B69A8F728E587A5001C6720 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAA928E29EFE00DD66EA /* food.json */; };
@@ -196,6 +227,37 @@
 		1B3788E428F3999700A2DF39 /* cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = card_okinawa.jpg; sourceTree = "<group>"; };
 		1B3788E828F39FDA00A2DF39 /* card_seattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_seattle.png; sourceTree = "<group>"; };
+		1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationViewController.swift; sourceTree = "<group>"; };
+		1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationUseCase.swift; sourceTree = "<group>"; };
+		1B52DBDD297147C00001E70F /* HallCakeReservationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B52DBE029715AD40001E70F /* hallCake.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallCake.json; sourceTree = "<group>"; };
+		1B52DBE229715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Mascapone_Tiraminu_1.jpg"; sourceTree = "<group>"; };
+		1B52DBE329715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Bearista_Milk_Cream_Cake_2.jpg"; sourceTree = "<group>"; };
+		1B52DBE429715C0A0001E70F /* Dome_Pecan_Tart_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dome_Pecan_Tart_1.jpg; sourceTree = "<group>"; };
+		1B52DBE529715C0A0001E70F /* Seven_Layer_Ganache_Cake_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Seven_Layer_Ganache_Cake_1.jpg; sourceTree = "<group>"; };
+		1B52DBE629715C0A0001E70F /* (W)Mascapone_Tiraminu_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Mascapone_Tiraminu_2.jpg"; sourceTree = "<group>"; };
+		1B52DBE729715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg; sourceTree = "<group>"; };
+		1B52DBE829715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg; sourceTree = "<group>"; };
+		1B52DBE929715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Crepe_Emmental_Cheese_Cake_1.jpg; sourceTree = "<group>"; };
+		1B52DBEA29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Bearista_Milk_Cream_Cake_1.jpg"; sourceTree = "<group>"; };
+		1B52DBEB29715C0A0001E70F /* Seven_Layer_Ganache_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Seven_Layer_Ganache_Cake_2.jpg; sourceTree = "<group>"; };
+		1B52DBEC29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Bearista_Milk_Cream_Cake_3.jpg"; sourceTree = "<group>"; };
+		1B52DBED29715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Mascapone_Tiraminu_3.jpg"; sourceTree = "<group>"; };
+		1B52DBEE29715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cheongdam_Star_Earl_Grey_Milk_Cake_1.jpg; sourceTree = "<group>"; };
+		1B52DBEF29715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blueberry_Cookie_Cheese_Cake_3.jpg; sourceTree = "<group>"; };
+		1B52DBF029715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cheongdam_Star_Oh_Honey_Cake_3.jpg; sourceTree = "<group>"; };
+		1B52DBF129715C0A0001E70F /* Dome_Pecan_Tart_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dome_Pecan_Tart_3.jpg; sourceTree = "<group>"; };
+		1B52DBF229715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cheongdam_Star_Oh_Honey_Cake_1.jpg; sourceTree = "<group>"; };
+		1B52DBF329715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Crepe_Emmental_Cheese_Cake_2.jpg; sourceTree = "<group>"; };
+		1B52DBF429715C0A0001E70F /* Seven_Layer_Ganache_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Seven_Layer_Ganache_Cake_3.jpg; sourceTree = "<group>"; };
+		1B52DBF529715C0A0001E70F /* (W)Mascapone_Tiraminu_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Mascapone_Tiraminu_4.jpg"; sourceTree = "<group>"; };
+		1B52DBF629715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cheongdam_Star_Oh_Honey_Cake_2.jpg; sourceTree = "<group>"; };
+		1B52DBF729715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blueberry_Cookie_Cheese_Cake_1.jpg; sourceTree = "<group>"; };
+		1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Crepe_Emmental_Cheese_Cake_3.jpg; sourceTree = "<group>"; };
+		1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blueberry_Cookie_Cheese_Cake_2.jpg; sourceTree = "<group>"; };
+		1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dome_Pecan_Tart_2.jpg; sourceTree = "<group>"; };
 		1B5D29982965BE4300025641 /* OrderAllCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAllCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B5D299A2965BE5400025641 /* OrderMyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B7AAA5728E29D4C00DD66EA /* drink16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink16.jpg; sourceTree = "<group>"; };
@@ -366,6 +428,8 @@
 			children = (
 				1B230A4828E5565900775128 /* UIView+Extensions.swift */,
 				1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */,
+				1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */,
+				1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,6 +441,7 @@
 				1BD427C12833D9F10098DEEF /* HomeMainUseCase.swift */,
 				1B3788D928F3062E00A2DF39 /* PayViewUseCase.swift */,
 				1B2C3388296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift */,
+				1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -406,6 +471,7 @@
 				1BF36D9028E094410033DF2A /* recommendation */,
 				1BF36D8B28E05B3A0033DF2A /* ingevent */,
 				1B3788DB28F3065B00A2DF39 /* card */,
+				1B52DBDF29715A4B0001E70F /* hallCake */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -474,6 +540,39 @@
 				1B3788E428F3999700A2DF39 /* cards.json */,
 			);
 			path = card;
+			sourceTree = "<group>";
+		};
+		1B52DBDF29715A4B0001E70F /* hallCake */ = {
+			isa = PBXGroup;
+			children = (
+				1B52DBE429715C0A0001E70F /* Dome_Pecan_Tart_1.jpg */,
+				1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */,
+				1B52DBF129715C0A0001E70F /* Dome_Pecan_Tart_3.jpg */,
+				1B52DBE229715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg */,
+				1B52DBE629715C0A0001E70F /* (W)Mascapone_Tiraminu_2.jpg */,
+				1B52DBED29715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg */,
+				1B52DBF529715C0A0001E70F /* (W)Mascapone_Tiraminu_4.jpg */,
+				1B52DBEA29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_1.jpg */,
+				1B52DBE329715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_2.jpg */,
+				1B52DBEC29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_3.jpg */,
+				1B52DBF729715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_1.jpg */,
+				1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */,
+				1B52DBEF29715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_3.jpg */,
+				1B52DBE529715C0A0001E70F /* Seven_Layer_Ganache_Cake_1.jpg */,
+				1B52DBEB29715C0A0001E70F /* Seven_Layer_Ganache_Cake_2.jpg */,
+				1B52DBF429715C0A0001E70F /* Seven_Layer_Ganache_Cake_3.jpg */,
+				1B52DBEE29715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_1.jpg */,
+				1B52DBE729715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg */,
+				1B52DBE829715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg */,
+				1B52DBF229715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_1.jpg */,
+				1B52DBF629715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_2.jpg */,
+				1B52DBF029715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_3.jpg */,
+				1B52DBE929715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_1.jpg */,
+				1B52DBF329715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_2.jpg */,
+				1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */,
+				1B52DBE029715AD40001E70F /* hallCake.json */,
+			);
+			path = hallCake;
 			sourceTree = "<group>";
 		};
 		1B7AAA7F28E29D5100DD66EA /* drink */ = {
@@ -601,6 +700,7 @@
 				1B5D29982965BE4300025641 /* OrderAllCollectionViewCell.swift */,
 				1B2C338A296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift */,
 				1B5D299A2965BE5400025641 /* OrderMyCollectionViewCell.swift */,
+				1B52DBDD297147C00001E70F /* HallCakeReservationCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -623,6 +723,7 @@
 				1B87F70C285B8AAE002B47B7 /* TestViewController.swift */,
 				1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */,
 				1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */,
+				1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -811,17 +912,24 @@
 				1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */,
 				1B7AAA9528E29D6400DD66EA /* food10.jpg in Resources */,
 				1B7AAA7928E29D4D00DD66EA /* drink20.jpg in Resources */,
+				1B52DC1129715C0B0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg in Resources */,
+				1B52DC0C29715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_2.jpg in Resources */,
 				1BD427AF2833A9F90098DEEF /* homeIngEventList.json in Resources */,
 				1B7AAA7228E29D4D00DD66EA /* drink14.jpg in Resources */,
 				1B7AAA7528E29D4D00DD66EA /* drink11.jpg in Resources */,
+				1B52DBE129715ADB0001E70F /* hallCake.json in Resources */,
 				1BCFCEA02834FA2200074ED2 /* recommendation1.jpg in Resources */,
 				1B7AAA6C28E29D4D00DD66EA /* drink15.jpg in Resources */,
 				1B7AAA9B28E29D6400DD66EA /* food15.jpg in Resources */,
 				1B7AAAA228E29D6400DD66EA /* food7.jpg in Resources */,
+				1B52DC0A29715C0A0001E70F /* Dome_Pecan_Tart_3.jpg in Resources */,
 				1B7AAA9F28E29D6400DD66EA /* food2.jpg in Resources */,
+				1B52DC0129715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg in Resources */,
 				1B7AAA9728E29D6400DD66EA /* food9.jpg in Resources */,
+				1B52DC0029715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg in Resources */,
 				1B7AAA6D28E29D4D00DD66EA /* drink12.jpg in Resources */,
 				1BCFCE752834C45A00074ED2 /* EVE_APP_THUM_20220411095441511.jpg in Resources */,
+				1B52DC1029715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_1.jpg in Resources */,
 				1BCFCE792834C45A00074ED2 /* EVE_APP_THUM_20220321083416535.jpg in Resources */,
 				1BF36D8828DF338D0033DF2A /* ingimg2.jpg in Resources */,
 				1BF36D8A28DF338D0033DF2A /* ingimg8.jpg in Resources */,
@@ -831,32 +939,39 @@
 				1BCFCE902834F6CB00074ED2 /* payImageJSON1.json in Resources */,
 				1B7AAAA728E29D6400DD66EA /* food5.jpg in Resources */,
 				1B7AAA9E28E29D6400DD66EA /* food19.jpg in Resources */,
+				1B52DC1329715C0B0001E70F /* Dome_Pecan_Tart_2.jpg in Resources */,
 				1B7AAAA528E29D6400DD66EA /* food16.jpg in Resources */,
 				1B3788D828F2FD0B00A2DF39 /* CardCollectionViewCell.xib in Resources */,
 				1B27494928323CFF00027B60 /* InitialJSON.json in Resources */,
 				1BCCB3082828B8F300CBB58F /* LaunchScreen.storyboard in Resources */,
 				1BCFCE782834C45A00074ED2 /* EVE_APP_THUM_20220411125521718.jpg in Resources */,
 				1B7AAA9C28E29D6400DD66EA /* food18.jpg in Resources */,
+				1B52DC0329715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_1.jpg in Resources */,
 				1B7AAA7728E29D4D00DD66EA /* drink19.jpg in Resources */,
 				1BCFCE7D2834C45A00074ED2 /* EVE_APP_THUM_20220429162111380.jpg in Resources */,
 				1B7AAA7128E29D4D00DD66EA /* drink4.jpg in Resources */,
 				1BF36D8528DF338D0033DF2A /* ingimg3.jpg in Resources */,
+				1B52DC0929715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_3.jpg in Resources */,
 				1B69A8F828E587AA001C6720 /* drink.json in Resources */,
 				1B7AAA9628E29D6400DD66EA /* food3.jpg in Resources */,
 				1BCCB3052828B8F300CBB58F /* Assets.xcassets in Resources */,
 				1B7AAA7E28E29D4D00DD66EA /* drink5.jpg in Resources */,
 				1B7AAA7628E29D4D00DD66EA /* drink3.jpg in Resources */,
 				1B7AAA7A28E29D4D00DD66EA /* drink2.jpg in Resources */,
+				1B52DC0F29715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_2.jpg in Resources */,
 				1B7AAAA328E29D6400DD66EA /* food8.jpg in Resources */,
 				1BCFCE762834C45A00074ED2 /* EVE_APP_THUM_20220429124913428.jpg in Resources */,
 				1B7AAA6E28E29D4D00DD66EA /* drink13.jpg in Resources */,
+				1B52DBFB29715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg in Resources */,
 				1B7AAA7828E29D4D00DD66EA /* drink9.jpg in Resources */,
 				1BF36D8728DF338D0033DF2A /* ingimg5.jpg in Resources */,
+				1B52DC0629715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg in Resources */,
 				1B7AAA7C28E29D4D00DD66EA /* drink1.jpg in Resources */,
 				1B7AAA7428E29D4D00DD66EA /* drink7.jpg in Resources */,
 				1BF36D8328DF338D0033DF2A /* ingimg7.jpg in Resources */,
 				1B7AAA6F28E29D4D00DD66EA /* drink18.jpg in Resources */,
 				1BCFCE872834ED3100074ED2 /* payItemJSON1.json in Resources */,
+				1B52DC0829715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_3.jpg in Resources */,
 				1BCFCE9E2834FA2200074ED2 /* recommendation3.jpg in Resources */,
 				1B7AAA9928E29D6400DD66EA /* food12.jpg in Resources */,
 				1B7AAA7028E29D4D00DD66EA /* drink17.jpg in Resources */,
@@ -865,21 +980,29 @@
 				1BCFCE772834C45A00074ED2 /* EVE_APP_THUM_20220429082859621.jpg in Resources */,
 				1BF36D8628DF338D0033DF2A /* ingimg4.jpg in Resources */,
 				1B7AAA9828E29D6400DD66EA /* food6.jpg in Resources */,
+				1B52DBFC29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_2.jpg in Resources */,
 				1B69A8F928E587AD001C6720 /* recommendation.json in Resources */,
 				1BD427B12833AA390098DEEF /* homeMainThumbImage.jpg in Resources */,
+				1B52DC0229715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_1.jpg in Resources */,
 				1BCFCE7C2834C45A00074ED2 /* EVE_APP_THUM_20220509123439412.jpg in Resources */,
+				1B52DBFD29715C0A0001E70F /* Dome_Pecan_Tart_1.jpg in Resources */,
+				1B52DBFF29715C0A0001E70F /* (W)Mascapone_Tiraminu_2.jpg in Resources */,
 				1BCFCE862834ED3100074ED2 /* payItemJSON3.json in Resources */,
 				1BDEFD1C284C66FD00EBC3DF /* InitialBackgroundImage.jpg in Resources */,
 				1BCFCE8E2834F6CB00074ED2 /* payImageJSON2.json in Resources */,
 				1BD427C8283482E30098DEEF /* payImageJSON.json in Resources */,
 				1B7AAAA028E29D6400DD66EA /* food4.jpg in Resources */,
+				1B52DC0529715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_3.jpg in Resources */,
 				1B3788DE28F3068600A2DF39 /* card_black.png in Resources */,
 				1BCFCE892834ED3100074ED2 /* payItemJSON2.json in Resources */,
+				1B52DC0D29715C0A0001E70F /* Seven_Layer_Ganache_Cake_3.jpg in Resources */,
 				1BCFCE882834ED3100074ED2 /* payItemJSON0.json in Resources */,
 				1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */,
 				1B7AAAA628E29D6400DD66EA /* food11.jpg in Resources */,
 				1BCFCE8F2834F6CB00074ED2 /* payImageJSON3.json in Resources */,
+				1B52DC0B29715C0A0001E70F /* Cheongdam_Star_Oh_Honey_Cake_1.jpg in Resources */,
 				1B3788E528F3999700A2DF39 /* cards.json in Resources */,
+				1B52DBFE29715C0A0001E70F /* Seven_Layer_Ganache_Cake_1.jpg in Resources */,
 				1B7AAA7328E29D4D00DD66EA /* drink8.jpg in Resources */,
 				1BCFCEA12834FA2200074ED2 /* recommendation4.jpg in Resources */,
 				1BCFCE7A2834C45A00074ED2 /* EVE_APP_THUM_20220429124801969.jpg in Resources */,
@@ -887,8 +1010,12 @@
 				1B3788DF28F3068600A2DF39 /* card_normal.png in Resources */,
 				1B7AAA7D28E29D4D00DD66EA /* drink6.jpg in Resources */,
 				1BF36D8428DF338D0033DF2A /* ingimg6.jpg in Resources */,
+				1B52DC1229715C0B0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg in Resources */,
+				1B52DC0E29715C0A0001E70F /* (W)Mascapone_Tiraminu_4.jpg in Resources */,
 				1B7AAA6B28E29D4D00DD66EA /* drink16.jpg in Resources */,
 				1B69A8F728E587A5001C6720 /* food.json in Resources */,
+				1B52DC0429715C0A0001E70F /* Seven_Layer_Ganache_Cake_2.jpg in Resources */,
+				1B52DC0729715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_1.jpg in Resources */,
 				1BD427C6283482CF0098DEEF /* payItemJSON.json in Resources */,
 				1BCFCE9F2834FA2200074ED2 /* recommendation2.jpg in Resources */,
 				1B7AAA9D28E29D6400DD66EA /* food20.jpg in Resources */,
@@ -1009,6 +1136,7 @@
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
 				1B3788DA28F3062E00A2DF39 /* PayViewUseCase.swift in Sources */,
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
+				1B52DBDE297147C00001E70F /* HallCakeReservationCollectionViewCell.swift in Sources */,
 				1B2C3389296C0DC4009BAEB8 /* OrderAllMenuUseCase.swift in Sources */,
 				1B0F6628283371F8000428E3 /* ContentsViewController.swift in Sources */,
 				1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */,
@@ -1031,15 +1159,19 @@
 				1BCFCE7F2834C49D00074ED2 /* ImageURLSession.swift in Sources */,
 				1B27493D2832092F00027B60 /* HTTPRequest.swift in Sources */,
 				1BD427B72833ABBB0098DEEF /* HomeIngDTO.swift in Sources */,
+				1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */,
 				1BCCB2FC2828B8F000CBB58F /* AppDelegate.swift in Sources */,
 				1BD427B52833AAEC0098DEEF /* HomeMainDTO.swift in Sources */,
 				1BF36D6F28D962960033DF2A /* ViewImageSubTitled.swift in Sources */,
 				1BF36D8F28E08B780033DF2A /* HTTPRequestMockProtocol.swift in Sources */,
 				1BA5C16B29641B8F00FC4B81 /* OrderViewController.swift in Sources */,
+				1B52DBDA297145AC0001E70F /* UILabel+Extensions.swift in Sources */,
 				1BFEB9A228331ABF003517F0 /* ProtocolError.swift in Sources */,
 				1B2C338B296EC2CC009BAEB8 /* OrderMenuListCollectionViewCell.swift in Sources */,
+				1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */,
 				1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
+				1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,
 				1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */,
 				1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */,

@@ -1,0 +1,52 @@
+{
+    "list": [
+        {
+            "title": "돔 피칸 타르트",
+            "engTitle": "Dome Pecan Tart",
+            "imageName": "Dome_Pecan_Tart_1",
+            "price": 39000
+        },
+        {
+            "title": "마스카포네 티라미수",
+            "engTitle": "(W)Mascapone Tiraminu",
+            "imageName": "(W)Mascapone_Tiraminu_1",
+            "price": 42000
+        },
+        {
+            "title": "베어리스타 우유 생크림 케이크",
+            "engTitle": "(W)Bearista Milk Cream Cake",
+            "imageName": "(W)Bearista_Milk_Cream_Cake_1",
+            "price": 37000
+        },
+        {
+            "title": "블루베리 쿠키 치즈 케이크",
+            "engTitle": "Blueberry Cookie Cheese Cake",
+            "imageName": "Blueberry_Cookie_Cheese_Cake_1",
+            "price": 41000
+        },
+        {
+            "title": "세븐 레이어 가나슈 케이크",
+            "engTitle": "Seven Layer Ganache Cake",
+            "imageName": "Seven_Layer_Ganache_Cake_1",
+            "price": 25000
+        },
+        {
+            "title": "청담스타 오 허니 케이크",
+            "engTitle": "Cheongdam Star Oh Honey Cake",
+            "imageName": "Cheongdam_Star_Oh_Honey_Cake_1",
+            "price": 38000
+        },
+        {
+            "title": "청담스타 얼 그레이 밀크 케이크",
+            "engTitle": "Cheongdam Star Earl Grey Milk Cake",
+            "imageName": "Cheongdam_Star_Earl_Grey_Milk_Cake_1",
+            "price": 38000
+        },
+        {
+            "title": "크레이프 에멘탈 치즈 케이크",
+            "engTitle": "Crepe Emmental Cheese Cake",
+            "imageName": "Crepe_Emmental_Cheese_Cake_1",
+            "price": 25000
+        }
+    ]
+}

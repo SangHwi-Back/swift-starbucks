@@ -1,0 +1,81 @@
+//
+//  HallCakeReservationViewController.swift
+//  BeckBucks
+//
+//  Created by 백상휘 on 2023/01/13.
+//
+
+import UIKit
+import RxSwift
+import RxCocoa
+
+class HallCakeReservationViewController: UIViewController {
+    
+    typealias CELL = HallCakeReservationCollectionViewCell
+    
+    @IBOutlet var collectionView: UICollectionView!
+    
+    let useCase = HallCakeReservationUseCase()
+    let formatter = NumberFormatter()
+    
+    override func loadView() {
+        super.loadView()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        formatter.numberStyle = .decimal
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: view.frame.width, height: 80)
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        collectionView.collectionViewLayout = layout
+        
+        collectionView.rx
+            .contentOffset
+            .bind(onNext: { offset in
+                self.navigationController?
+                    .navigationItem.largeTitleDisplayMode = offset.y > 25 ? .automatic : .always
+            })
+            .disposed(by: useCase.disposeBag)
+        
+        useCase.itemsBinder
+            .observeOn(MainScheduler.instance)
+            .bind(to: collectionView.rx
+                .items(cellIdentifier: String(describing: CELL.self),
+                       cellType: CELL.self))
+        { row, entity, cell in
+            
+            cell.imageView.image = UIImage(data: entity.imageData)
+            cell.titleLabel.text = entity.title
+            cell.subTitleLabel.text = entity.engTitle
+            cell.priceTagLabel.text = (self.formatter.string(from: NSNumber(value: entity.price)) ?? "") + "원"
+            
+            cell.setUI()
+        }
+        .disposed(by: useCase.disposeBag)
+        
+        useCase.resolveUI()
+    }
+    
+    @objc func moveBackButtonTouchUpInside(_ sender: Any?) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+    }
+}
