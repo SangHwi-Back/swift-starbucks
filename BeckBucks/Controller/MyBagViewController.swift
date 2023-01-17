@@ -33,6 +33,8 @@ class MyBagViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.backButtonTitle = ""
         navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -42,6 +44,10 @@ class MyBagViewController: UIViewController {
             .origin.x = showFoodButton.frame.minX
         categoryUnderneathView.frame
             .size.width = showFoodButton.frame.width
+        
+        showFoodButton.titleLabel?.minimumScaleFactor = 0.2
+        showMerchandiseButton.titleLabel?.minimumScaleFactor = 0.2
+        
         showFoodButton.rx.tap
             .bind {
                 self.collectionView.scrollToItem(at: .init(item: 0, section: 0),
@@ -91,48 +97,35 @@ class MyBagViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        
+        tabBarController?.tabBar.isHidden = false
     }
 }
 
 extension MyBagViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard indexPath.item != 0 else {
+        let entities: [any MyBagData] = indexPath.item == 0 ? useCase.foodItems : useCase.merchItems
+
+        guard indexPath.item != 0 || entities.isEmpty == false else {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyCellID, for: indexPath) as? MyBagCollectionViewEmptyCell {
                 return cell
             }
-            
+
             return .init()
         }
-        
-        let entity: [any MyBagData] = indexPath.item == 0 ? useCase.foodItems : useCase.merchItems
-        
-        guard entity.isEmpty == false else {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyCellID, for: indexPath) as? MyBagCollectionViewEmptyCell {
-                return cell
-            }
-            
-            return .init()
-        }
-        
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MyBagCollectionViewCell else {
             return .init()
         }
-        
-        cell.resolveUI(entity)
-        cell.tableView.rx
-            .contentOffset
-            .observeOn(MainScheduler.instance)
-            .bind(onNext: { offset in
-                self.navigationController?
-                    .navigationItem.largeTitleDisplayMode = offset.y > 25 ? .automatic : .always
-            })
-            .disposed(by: useCase.disposeBag)
-        
+
+        cell.navigationController = navigationController
+        cell.resolveUI(entities)
+
         return cell
     }
 }

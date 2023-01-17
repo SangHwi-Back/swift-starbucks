@@ -9,7 +9,7 @@ import UIKit
 
 extension UIView {
     func setCornerRadius(_ radius: CGFloat? = nil) {
-        self.layer.cornerRadius = radius ?? min(self.frame.height, self.frame.width)
+        self.layer.cornerRadius = radius ?? min(self.frame.height, self.frame.width) / 2
         self.clipsToBounds = true
         self.setNeedsDisplay()
     }

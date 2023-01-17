@@ -118,6 +118,7 @@
 		1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F19532973E2D500A1F07B /* MyBagViewController.swift */; };
 		1B7F19562973F0CC00A1F07B /* MyBagUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */; };
 		1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87F70C285B8AAE002B47B7 /* TestViewController.swift */; };
+		1B98BAE029766EF500353B1A /* NSLayoutAnchor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B98BADF29766EF500353B1A /* NSLayoutAnchor+Extensions.swift */; };
 		1BA5C16B29641B8F00FC4B81 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */; };
 		1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */; };
 		1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */; };
@@ -321,6 +322,7 @@
 		1B7F19532973E2D500A1F07B /* MyBagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagViewController.swift; sourceTree = "<group>"; };
 		1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagUseCase.swift; sourceTree = "<group>"; };
 		1B87F70C285B8AAE002B47B7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		1B98BADF29766EF500353B1A /* NSLayoutAnchor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+Extensions.swift"; sourceTree = "<group>"; };
 		1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBucksPOSTProtocol.swift; sourceTree = "<group>"; };
 		1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBucksGetProtocol.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */,
 				1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */,
 				1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */,
+				1B98BADF29766EF500353B1A /* NSLayoutAnchor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1211,6 +1214,7 @@
 				1BD427B92833AC750098DEEF /* HomeMainBucksProtocol.swift in Sources */,
 				1BCFCE812834C51600074ED2 /* ImageBucksGETProtocol.swift in Sources */,
 				1B7AAAAD28E2A48900DD66EA /* StarbucksItemDTO.swift in Sources */,
+				1B98BAE029766EF500353B1A /* NSLayoutAnchor+Extensions.swift in Sources */,
 				1BF36D6B28D961DE0033DF2A /* RecommendScrollView.swift in Sources */,
 				1B0F662628336A5B000428E3 /* CommonBucksProtocol.swift in Sources */,
 			);

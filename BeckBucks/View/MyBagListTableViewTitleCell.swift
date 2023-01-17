@@ -9,4 +9,14 @@ import UIKit
 
 class MyBagListTableViewTitleCell: UITableViewCell {
     
+    @IBOutlet weak var titleStackView: UIStackView!
+    
+    
+    @IBOutlet weak var underneathPaddingView: UIView!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }

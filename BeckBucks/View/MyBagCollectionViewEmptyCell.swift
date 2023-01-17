@@ -23,8 +23,8 @@ class MyBagCollectionViewEmptyCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     func resolveUI() {

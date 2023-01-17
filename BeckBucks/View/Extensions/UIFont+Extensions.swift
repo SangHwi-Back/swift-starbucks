@@ -9,6 +9,10 @@ import UIKit
 
 extension UIFont {
     
+    static var titleCellFont: UIFont {
+        UIFont.systemFont(ofSize: 17, weight: .bold)
+    }
+    
     static var listTitleFont: UIFont {
         UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
