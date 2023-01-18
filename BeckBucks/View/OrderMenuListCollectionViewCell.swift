@@ -9,63 +9,23 @@ import UIKit
 
 class OrderMenuListCollectionViewCell: UICollectionViewCell {
     
-    var parent: OrderAllCollectionViewCell?
-    var entity: StarbucksItemDTO?
+    @IBOutlet weak var menuImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    // MARK: - Insert view programmatically. CollectionViewDelegate cannot catch moment IBOutlets initialized.
-    var menuImageView: UIImageView?
-    var menuTitleLabel: UILabel?
-    var menuLabelStackView: UIStackView?
+    var rowNumber: Int?
+    var useCase: OrderAllMenuUseCase?
     
     func resetUIComponents() {
-        contentView
-            .subviews.forEach { $0.removeFromSuperview() }
         
-        let imageView = UIImageView()
-        let titleLabel = UILabel()
-        let stackView = UIStackView()
+        guard let useCase, let rowNumber else { return }
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        useCase
+            .bindRequestedImage(rowNumber: rowNumber)
+            .bind(to: menuImageView.rx.image)
+            .disposed(by: useCase.disposeBag)
         
-        stackView.axis = .vertical
-        stackView.spacing = 3
-        stackView.distribution = .fillProportionally
-        stackView.addArrangedSubview(titleLabel)
+        menuImageView.setCornerRadius()
         
-        titleLabel.font = titleLabel.font.withSize(12)
-        titleLabel.minimumScaleFactor = 0.2
-        titleLabel.numberOfLines = 2
-        
-        contentView.addSubview(imageView)
-        contentView.addSubview(stackView)
-        
-        [
-            imageView.leadingAnchor
-                .constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            imageView.topAnchor
-                .constraint(equalTo: contentView.topAnchor),
-            imageView.bottomAnchor
-                .constraint(equalTo: contentView.bottomAnchor),
-            imageView.widthAnchor
-                .constraint(equalToConstant: 50),
-            
-            stackView.leadingAnchor
-                .constraint(equalTo: imageView.trailingAnchor, constant: 8),
-            stackView.trailingAnchor
-                .constraint(equalTo: contentView.trailingAnchor, constant: 16),
-            stackView.topAnchor
-                .constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor
-                .constraint(equalTo: contentView.bottomAnchor),
-        ].forEach {
-            $0.isActive = true
-        }
-        
-        imageView.setCornerRadius(25)
-        
-        menuImageView = imageView
-        menuTitleLabel = titleLabel
-        menuLabelStackView = stackView
+        titleLabel.text = useCase.getItemTitle(rowNumber: rowNumber)
     }
 }

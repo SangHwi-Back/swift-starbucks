@@ -16,29 +16,36 @@ class OrderAllMenuUseCase {
     let itemBinder = PublishRelay<[StarbucksItemDTO]>()
     let selectedMenuBinder = PublishRelay<SelectedMenuButton>()
     
-    private var items = [StarbucksItemDTO]() {
-        didSet {
-            self.itemBinder.accept(items)
+    init() {
+        URLProtocol.registerClass(HTTPRequestMockProtocol.self)
+    }
+    
+    deinit {
+        URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
+    }
+    
+    private var items: [StarbucksItemDTO] {
+        switch selectedMenuButton {
+        case .beverage:
+            return drinkItems
+        case .food:
+            return foodItems
         }
     }
     
+    private var drinkItems = [StarbucksItemDTO]()
+    private var foodItems = [StarbucksItemDTO]()
+    
     private var selectedMenuButton: SelectedMenuButton = .beverage {
         didSet {
-            resetItems()
-            
-            switch selectedMenuButton {
-            case .beverage:
-                resolveUI("drink")
-            case .food:
-                resolveUI("food")
-            }
-            
+            resolveItems(from: selectedMenuButton)
             selectedMenuBinder.accept(selectedMenuButton)
         }
     }
     
     func resetItems() {
-        items.removeAll()
+        drinkItems.removeAll()
+        foodItems.removeAll()
     }
     
     func bindRequestedImage(rowNumber: Int) -> Observable<UIImage?> {
@@ -63,11 +70,26 @@ class OrderAllMenuUseCase {
         return items[rowNumber].title
     }
     
-    func resolveUI(_ jsonTitle: String) {
-        let url = Bundle.main.url(forResource: jsonTitle, withExtension: "json")
-        getFoodImageDataTitled(title: jsonTitle, jsonURL: url)
-            .subscribe(onNext: { entities in
-                self.items.append(contentsOf: entities)
+    func resolveItems(from selectedButton: SelectedMenuButton) {
+        
+        let currentItems = (selectedButton == .beverage ? drinkItems : foodItems)
+        
+        guard currentItems.isEmpty else {
+            itemBinder.accept(items)
+            return
+        }
+        
+        let url = Bundle.main.url(forResource: selectedButton.getJSONName(),
+                                  withExtension: "json")
+        
+        getFoodImageDataTitled(title: selectedButton.getJSONName(), jsonURL: url)
+            .subscribe(onNext: { [weak self] entities in
+                switch selectedButton {
+                case .beverage: self?.drinkItems = entities
+                case .food: self?.foodItems = entities
+                }
+                
+                self?.itemBinder.accept(self?.items ?? [])
             })
             .disposed(by: disposeBag)
     }
@@ -98,6 +120,13 @@ class OrderAllMenuUseCase {
     enum SelectedMenuButton {
         case beverage
         case food
+        
+        func getJSONName() -> String {
+            switch self {
+            case .beverage: return "drink"
+            case .food: return "food"
+            }
+        }
     }
 }
 

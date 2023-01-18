@@ -21,6 +21,7 @@ enum OrderCell: Int {
 class OrderViewController: UIViewController {
     
     let useCase = HomeMainUseCase()
+    let allMenuUseCase = OrderAllMenuUseCase()
     
     private var disposeBag = DisposeBag()
     
@@ -44,18 +45,8 @@ class OrderViewController: UIViewController {
         
         moveUnderneathView(allMenuButton)
         
+        collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.reloadData()
-        collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] _ in
-                self?.performSegue(withIdentifier: "orderViewItemView",
-                                   sender: self)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -119,18 +110,39 @@ extension OrderViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cellIdentifier = ""
-        if indexPath.item == 0 {
-            cellIdentifier = String(describing: OrderAllCollectionViewCell.self)
-        } else {
-            cellIdentifier = String(describing: OrderMyCollectionViewCell.self)
+        let id = indexPath.getCellId()
+        
+        guard
+            indexPath.item == 0,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id,
+                                                          for: indexPath) as? OrderAllCollectionViewCell
+        else {
+            
+            let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: id,
+                                                               for: indexPath) as? OrderMyCollectionViewCell
+            
+            return emptyCell ?? UICollectionViewCell()
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        
-        (cell as? OrderAllCollectionViewCell)?.initialBind()
-        (cell as? OrderAllCollectionViewCell)?.resolveUI()
+        // useCase DI
+        cell.useCase = allMenuUseCase
+        cell.initialBind()
         
         return cell
+    }
+}
+
+extension OrderViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath) as? OrderAllCollectionViewCell
+//        cell?.initialBind()
+//    }
+}
+
+private extension IndexPath {
+    func getCellId() -> String {
+        return self.item == 0 ?
+        String(describing: OrderAllCollectionViewCell.self) :
+        String(describing: OrderMyCollectionViewCell.self)
     }
 }
