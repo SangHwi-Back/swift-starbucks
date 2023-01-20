@@ -18,13 +18,6 @@ class HallCakeReservationViewController: UIViewController {
     let useCase = HallCakeReservationUseCase()
     let formatter = NumberFormatter()
     
-    override func loadView() {
-        super.loadView()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.backButtonTitle = ""
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,14 +30,6 @@ class HallCakeReservationViewController: UIViewController {
         layout.itemSize = CGSize(width: view.frame.width, height: 80)
         layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         collectionView.collectionViewLayout = layout
-        
-        collectionView.rx
-            .contentOffset
-            .bind(onNext: { offset in
-                self.navigationController?
-                    .navigationItem.largeTitleDisplayMode = offset.y > 25 ? .automatic : .always
-            })
-            .disposed(by: useCase.disposeBag)
         
         useCase.itemsBinder
             .observeOn(MainScheduler.instance)
@@ -71,11 +56,13 @@ class HallCakeReservationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class MyBagCollectionViewEmptyCell: UICollectionViewCell {
     
+    @IBOutlet weak var backgroundScrollView: UIScrollView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var orderViewButton: UIButton!

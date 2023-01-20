@@ -13,19 +13,8 @@ class OrderMenuListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     var rowNumber: Int?
-    var useCase: OrderAllMenuUseCase?
+    var useCase: OrderFoodMenuUseCase?
     
     func resetUIComponents() {
-        
-        guard let useCase, let rowNumber else { return }
-        
-        useCase
-            .bindRequestedImage(rowNumber: rowNumber)
-            .bind(to: menuImageView.rx.image)
-            .disposed(by: useCase.disposeBag)
-        
-        menuImageView.setCornerRadius()
-        
-        titleLabel.text = useCase.getItemTitle(rowNumber: rowNumber)
     }
 }

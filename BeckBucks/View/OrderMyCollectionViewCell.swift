@@ -12,10 +12,6 @@ protocol OrderCollectionViewCell {
 }
 
 class OrderMyCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var myMenuListCollectionView: UICollectionView!
-    
     override func prepareForReuse() {
         super.prepareForReuse()
     }

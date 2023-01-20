@@ -9,140 +9,239 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-enum OrderCell: Int {
+enum OrderViewCategory: Int {
     case allMenu = 0
     case myMenu = 1
-    
-    func getIndexPath() -> IndexPath {
-        IndexPath(item: self.rawValue, section: 0)
-    }
+}
+
+enum AllMenuCategory: Int {
+    case drink = 0
+    case food = 1
 }
 
 class OrderViewController: UIViewController {
-    
-    let useCase = HomeMainUseCase()
-    let allMenuUseCase = OrderAllMenuUseCase()
-    
-    private var disposeBag = DisposeBag()
-    
-    @IBOutlet weak var mainTitleStackView: UIStackView!
-    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var menuButtonView: UIView!
+    @IBOutlet weak var allMenuHeaderView: UIView!
     
     @IBOutlet weak var allMenuButton: UIButton!
     @IBOutlet weak var myMenuButton: UIButton!
     @IBOutlet weak var cakeReservationButton: UIButton!
+    @IBOutlet weak var drinkButton: UIButton!
+    @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var menuButtonUnderneathView: UIView!
     
-    @IBOutlet weak var menuListView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var selectRestaurantView: UIView!
+    @IBOutlet weak var restaurantButton: UIButton!
+    @IBOutlet weak var myBagButton: UIButton!
+    
+    private let orderViewCategoryRelay = BehaviorRelay<OrderViewCategory>(value: .allMenu)
+    private let allMenuCategoryRelay = BehaviorRelay<AllMenuCategory>(value: .drink)
+    
+    private let allFoodMenuUseCase = OrderFoodMenuUseCase()
+    private let allDrinkmenuUseCase = OrderDrinkMenuUseCase()
+    private let myMenuUseCase = OrderMyMenuUseCase()
+    private var disposeBag = DisposeBag()
+    
+    var allList: [StarbucksItemDTO] = []
+    var myList: [StarbucksItemDTO] = []
+    
+    var useCase: any OrderUseCase {
+        guard orderViewCategoryRelay.value != .myMenu else {
+            return myMenuUseCase
+        }
+        
+        switch allMenuCategoryRelay.value {
+        case .drink:
+            return allDrinkmenuUseCase
+        case .food:
+            return allFoodMenuUseCase
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTitleStackView.putShadows(dx: 4, dy: 4,
-                                      offset: CGSize(width: 8, height: 8))
+        navigationController?.navigationBar.prefersLargeTitles = true
         
-        moveUnderneathView(allMenuButton)
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = collectionView.frame.size
-        
-        collectionView.collectionViewLayout = layout
-        
-        allMenuButtonTouchUpInside(allMenuButton)
+        initialBind()
     }
     
-    @IBAction func allMenuButtonTouchUpInside(_ sender: UIButton) {
-        
-        collectionView.scrollToItem(at: OrderCell.allMenu.getIndexPath(),
-                                    at: .left,
-                                    animated: true)
-        moveUnderneathView(sender)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .automatic
     }
     
-    @IBAction func myMenuButtonTouchUpInside(_ sender: UIButton) {
+    private func initialBind() {
         
-        collectionView.scrollToItem(at: OrderCell.myMenu.getIndexPath(),
-                                    at: .right,
-                                    animated: true)
-        moveUnderneathView(sender)
-    }
-    
-    @IBAction func cakeReservationButtonTouchUpInside(_ sender: UIButton) {
+        tableView.rx.contentOffset
+            .asDriver()
+            .drive(onNext: { [weak self] offset in
+                self?.navigationItem.largeTitleDisplayMode = offset.y < 25 ? .always : .never
+            })
+            .disposed(by: disposeBag)
         
-        performSegue(withIdentifier: "orderViewCakeView",
-                     sender: self)
-    }
-    
-    @IBAction func openRestaurantButtonTouchUpInside(_ sender: UIButton) {
+        orderViewCategoryRelay
+            .bind(onNext: { [weak self] category in
+                self?.allMenuHeaderView.isHidden = category == .myMenu
+                
+                if category == .myMenu {
+                    self?.myMenuUseCase.itemBinder
+                        .accept(self?.myMenuUseCase.items ?? [])
+                }
+                
+                if let relay = self?.allMenuCategoryRelay {
+                    relay.accept(relay.value)
+                }
+            })
+            .disposed(by: disposeBag)
         
-        performSegue(withIdentifier: "orderViewReservationView",
-                     sender: self)
-    }
-    
-    @IBAction func openMyBagButtonTouchUpInside(_ sender: UIButton) {
+        allMenuCategoryRelay
+            .bind { [weak self] stateOfList in
+                guard let useCase = self?.useCase else {
+                    return
+                }
+                
+                useCase.itemBinder.accept(useCase.items)
+            }
+            .disposed(by: disposeBag)
         
-        performSegue(withIdentifier: "orderMyBagView",
-                     sender: self)
-    }
-    
-    private func moveUnderneathView(_ button: UIButton) {
-        guard button == allMenuButton || button == myMenuButton else { return }
+        Observable<[StarbucksItemDTO]>
+            .merge([
+                allFoodMenuUseCase.itemBinder.asObservable(),
+                allDrinkmenuUseCase.itemBinder.asObservable(),
+                myMenuUseCase.itemBinder.asObservable(),
+            ])
+            .asDriver(onErrorJustReturn: [])
+            .drive { [weak self] list in
+                self?.tableView.reloadData()
+//                self?.tableView.performBatchUpdates { [weak self] in
+//                    guard let self = self, list.isEmpty == false else {
+//                        return
+//                    }
+//
+//                    let indexes: (Range<Int>) -> [IndexPath] = {
+//                        $0.map({
+//                            IndexPath(row: $0, section: 0)
+//                        })
+//                    }
+//
+//                    let rowCount = self.tableView.visibleCells.count
+//                    var direction: UITableView.RowAnimation {
+//                        guard self.orderViewCategoryRelay.value != .myMenu else {
+//                            return .right
+//                        }
+//
+//                        return self.allMenuCategoryStateRelay.value == .drink ? .left : .right
+//                    }
+//
+//                    if rowCount == 0 {
+//                        self.tableView.reloadData()
+//                        return
+//                    }
+//
+//                    self.tableView.reloadRows(at: indexes(1..<rowCount), with: direction)
+//                }
+            }
+            .disposed(by: disposeBag)
         
-        UIView.animate(withDuration: 0.2) { [weak menuButtonUnderneathView] in
+        Observable<Int>.merge([
+            allMenuButton.rx.tap.map({ 0 }),
+            myMenuButton.rx.tap.map({ 1 })
+        ])
+        .bind(onNext: { [weak self] num in
+            let stateMutate: OrderViewCategory = num == 0 ? .allMenu : .myMenu
+            guard stateMutate != self?.orderViewCategoryRelay.value else { return }
             
-            menuButtonUnderneathView?.frame.origin.x = button.frame.origin.x
-            menuButtonUnderneathView?.frame.size.width = button.frame.width
+            self?.orderViewCategoryRelay.accept(stateMutate)
+            
+            guard let self else { return }
+            
+            let originX: CGFloat = (num == 0)
+            ? self.allMenuButton.frame.minX
+            : self.myMenuButton.frame.minX
+            
+            UIView.animate(withDuration: 0.2) {
+                self.menuButtonUnderneathView.frame.origin.x = originX
+            }
+        })
+        .disposed(by: disposeBag)
+        
+        Observable<Int>.merge([
+            drinkButton.rx.tap.map({ 0 }),
+            foodButton.rx.tap.map({ 1 })
+        ])
+        .bind(onNext: { [weak self] num in
+            let stateMutate: AllMenuCategory = num == 0 ? .drink : .food
+            guard stateMutate != self?.allMenuCategoryRelay.value else { return }
+            
+            self?.allMenuCategoryRelay.accept(stateMutate)
+            
+            switch stateMutate {
+            case .drink:
+                self?.drinkButton.titleLabel?.font = UIFont.listTitleFont
+                self?.foodButton.titleLabel?.font = UIFont.subListTitleFont
+            case .food:
+                self?.drinkButton.titleLabel?.font = UIFont.subListTitleFont
+                self?.foodButton.titleLabel?.font = UIFont.listTitleFont
+            }
+        })
+        .disposed(by: disposeBag)
+        
+        Observable<Int>.merge([
+            myBagButton.rx.tap.map({ 0 }),
+            restaurantButton.rx.tap.map({ 1 }),
+            cakeReservationButton.rx.tap.map({ 2 }),
+        ])
+        .bind(onNext: { [weak self] num in
+            self?.performSegue(withIdentifier: {
+                if num == 0 {
+                    return "orderMyBagView"
+                } else if num == 1 {
+                    return "orderViewReservationView"
+                } else {
+                    return "orderViewCakeView"
+                }
+            }(), sender: self)
+        })
+        .disposed(by: disposeBag)
+        
+        allFoodMenuUseCase.fetchItems()
+        allDrinkmenuUseCase.fetchItems()
+        myMenuUseCase.fetchItems()
+    }
+}
+
+extension OrderViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (orderViewCategoryRelay.value == .myMenu ? 1 : 0) + useCase.items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if orderViewCategoryRelay.value == .myMenu, indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuHeaderCell.self),
+                                                           for: indexPath) as? OrderMyMenuHeaderCell else {
+                return .init()
+            }
+            
+            return cell
         }
-    }
-}
-
-extension OrderViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let id = indexPath.getCellId()
         
-        guard
-            indexPath.item == 0,
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id,
-                                                          for: indexPath) as? OrderAllCollectionViewCell
-        else {
-            
-            let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: id,
-                                                               for: indexPath) as? OrderMyCollectionViewCell
-            
-            return emptyCell ?? UICollectionViewCell()
-        }
+        let cellIndex = indexPath.row - (orderViewCategoryRelay.value == .myMenu ? 1 : 0)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: OrderViewListCell.self),
+            for: indexPath) as? OrderViewListCell
         
-        // useCase DI
-        cell.useCase = allMenuUseCase
-        cell.initialBind()
+        let entity = useCase.items[cellIndex]
         
-        return cell
-    }
-}
-
-extension OrderViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as? OrderAllCollectionViewCell
-//        cell?.initialBind()
-//    }
-}
-
-private extension IndexPath {
-    func getCellId() -> String {
-        return self.item == 0 ?
-        String(describing: OrderAllCollectionViewCell.self) :
-        String(describing: OrderMyCollectionViewCell.self)
+        useCase.getImageFrom(rowNumber: cellIndex)
+            .drive(onNext: { cell?.menuImageView.image = $0 })
+            .disposed(by: disposeBag)
+        
+        cell?.titleLabel.text = entity.title
+        cell?.subTitleLabel.isHidden = true
+        
+        return cell ?? .init()
     }
 }

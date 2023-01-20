@@ -28,15 +28,6 @@ class MyBagViewController: UIViewController {
     
     let useCase = MyBagUseCase(true)
     
-    override func loadView() {
-        super.loadView()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.backButtonTitle = ""
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-        
-        tabBarController?.tabBar.isHidden = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,6 +68,13 @@ class MyBagViewController: UIViewController {
             .disposed(by: useCase.disposeBag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -96,8 +94,7 @@ class MyBagViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        
+        self.navigationItem.largeTitleDisplayMode = .automatic
         tabBarController?.tabBar.isHidden = false
     }
 }
@@ -110,22 +107,38 @@ extension MyBagViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let entities: [any MyBagData] = indexPath.item == 0 ? useCase.foodItems : useCase.merchItems
-
+        
         guard indexPath.item != 0 || entities.isEmpty == false else {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyCellID, for: indexPath) as? MyBagCollectionViewEmptyCell {
+                
+                cell.backgroundScrollView.rx
+                    .contentOffset
+                    .bind(onNext: { [weak self] offset in
+                        let isLargeTitle = offset.y < 25
+                        self?.navigationItem.largeTitleDisplayMode = isLargeTitle ? .always : .never
+                    })
+                    .disposed(by: useCase.disposeBag)
+                
                 return cell
             }
-
+            
             return .init()
         }
-
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MyBagCollectionViewCell else {
             return .init()
         }
-
+        
         cell.navigationController = navigationController
         cell.resolveUI(entities)
-
+        cell.tableView.rx
+            .contentOffset
+            .bind(onNext: { [weak self] offset in
+                let isLargeTitle = offset.y < 25
+                self?.navigationItem.largeTitleDisplayMode = isLargeTitle ? .always : .never
+            })
+            .disposed(by: useCase.disposeBag)
+        
         return cell
     }
 }
