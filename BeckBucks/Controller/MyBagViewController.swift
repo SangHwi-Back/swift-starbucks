@@ -72,7 +72,6 @@ class MyBagViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.backButtonTitle = ""
-        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

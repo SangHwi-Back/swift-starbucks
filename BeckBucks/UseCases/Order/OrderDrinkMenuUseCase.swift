@@ -16,6 +16,7 @@ class OrderDrinkMenuUseCase: OrderUseCase {
     private(set) var items: [StarbucksItemDTO] = []
     
     init() {
+        fetchItems()
         URLProtocol.registerClass(HTTPRequestMockProtocol.self)
     }
     
@@ -23,18 +24,11 @@ class OrderDrinkMenuUseCase: OrderUseCase {
         URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
     }
     
-    func getImageFrom(rowNumber: Int) -> Driver<UIImage?> {
-        guard
-            rowNumber < items.count,
-            let url = Bundle.main.url(forResource: items[rowNumber].name,
-                                      withExtension: "jpg")
-        else {
-            return .empty()
-        }
+    func getImageFrom(rowNumber: Int) -> Driver<Data?> {
+        let observable = requestImage(at: rowNumber)
         
-        return URLSession.shared.rx
-            .response(request: URLRequest(url: url))
-            .map({ UIImage(data: $0.data) })
+        return observable
+            .do(onNext: { [weak self] in self?.items[rowNumber].imageData = $0 })
             .asDriver(onErrorJustReturn: nil)
     }
     

@@ -12,6 +12,8 @@
 		1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */; };
 		1B176DA5297ABED400E93D2B /* OrderMenuEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DA4297ABED400E93D2B /* OrderMenuEmptyCell.swift */; };
 		1B176DA7297AC24600E93D2B /* OrderMenuNeedLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DA6297AC24600E93D2B /* OrderMenuNeedLoginCell.swift */; };
+		1B176DA9297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DA8297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift */; };
+		1B176DAB297BD34700E93D2B /* LabelWithSFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DAA297BD34700E93D2B /* LabelWithSFSymbol.swift */; };
 		1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B230A4828E5565900775128 /* UIView+Extensions.swift */; };
 		1B27493B283206D900027B60 /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B27493A283206D900027B60 /* Contents.storyboard */; };
 		1B27493D2832092F00027B60 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27493C2832092F00027B60 /* HTTPRequest.swift */; };
@@ -222,6 +224,8 @@
 		1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Extensions.swift"; sourceTree = "<group>"; };
 		1B176DA4297ABED400E93D2B /* OrderMenuEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuEmptyCell.swift; sourceTree = "<group>"; };
 		1B176DA6297AC24600E93D2B /* OrderMenuNeedLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuNeedLoginCell.swift; sourceTree = "<group>"; };
+		1B176DA8297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMenuTableViewCell.swift; sourceTree = "<group>"; };
+		1B176DAA297BD34700E93D2B /* LabelWithSFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithSFSymbol.swift; sourceTree = "<group>"; };
 		1B230A4828E5565900775128 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1B27493A283206D900027B60 /* Contents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B27493C2832092F00027B60 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
@@ -744,8 +748,10 @@
 				1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */,
 				1B98BAE52979833900353B1A /* OrderViewListCell.swift */,
 				1B98BAE72979834900353B1A /* OrderMyMenuHeaderCell.swift */,
+				1B176DA8297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift */,
 				1B176DA4297ABED400E93D2B /* OrderMenuEmptyCell.swift */,
 				1B176DA6297AC24600E93D2B /* OrderMenuNeedLoginCell.swift */,
+				1B176DAA297BD34700E93D2B /* LabelWithSFSymbol.swift */,
 				1B52DBDD297147C00001E70F /* HallCakeReservationCollectionViewCell.swift */,
 				1B2D7EAD2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift */,
 				1B2D7EAF2973C6A500851D20 /* MyBagCollectionViewCell.swift */,
@@ -1205,6 +1211,7 @@
 				1BD427BF2833D3440098DEEF /* HomeURLSession.swift in Sources */,
 				1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */,
 				1B797F58297A2BC700A58981 /* OrderUseCase.swift in Sources */,
+				1B176DA9297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift in Sources */,
 				1B7F19502973C83700A1F07B /* MyBagListTableViewItemCell.swift in Sources */,
 				1BD427C22833D9F10098DEEF /* HomeMainUseCase.swift in Sources */,
 				1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */,
@@ -1239,6 +1246,7 @@
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
 				1B797F56297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift in Sources */,
 				1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */,
+				1B176DAB297BD34700E93D2B /* LabelWithSFSymbol.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,
 				1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */,
 				1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */,

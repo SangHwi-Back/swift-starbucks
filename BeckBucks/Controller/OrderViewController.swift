@@ -219,29 +219,51 @@ extension OrderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if orderViewCategoryRelay.value == .myMenu, indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuHeaderCell.self),
-                                                           for: indexPath) as? OrderMyMenuHeaderCell else {
-                return .init()
+        let cellIndex = indexPath.row - (orderViewCategoryRelay.value == .myMenu ? 1 : 0)
+        
+        switch orderViewCategoryRelay.value {
+        case .myMenu:
+            guard indexPath.row > 0 else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuHeaderCell.self),
+                                                         for: indexPath) as? OrderMyMenuHeaderCell
+                
+                return cell ?? .init()
             }
             
-            return cell
+            let entity = useCase.items[cellIndex]
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuTableViewCell.self), for: indexPath) as? OrderMyMenuTableViewCell
+            
+            cell?.menuTitleLabel.text = entity.title
+            cell?.setPrice(8000)
+            cell?.descriptionLabel.text = "Someting Cool Descriptions"
+            useCase.getImageInUsecase(at: cellIndex, imageView: cell?.menuImageView)
+            
+            return cell ?? .init()
+        case .allMenu:
+            
+            let entity = useCase.items[cellIndex]
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: OrderViewListCell.self),
+                for: indexPath) as? OrderViewListCell
+            cell?.titleLabel.text = entity.title
+            cell?.subTitleLabel.isHidden = true
+            
+            useCase.getImageInUsecase(at: cellIndex, imageView: cell?.menuImageView)
+            
+            return cell ?? .init()
         }
-        
-        let cellIndex = indexPath.row - (orderViewCategoryRelay.value == .myMenu ? 1 : 0)
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: OrderViewListCell.self),
-            for: indexPath) as? OrderViewListCell
-        
-        let entity = useCase.items[cellIndex]
-        
-        useCase.getImageFrom(rowNumber: cellIndex)
-            .drive(onNext: { cell?.menuImageView.image = $0 })
+    }
+}
+
+private extension OrderUseCase {
+    func getImageInUsecase(at index: Int, imageView: UIImageView?) {
+        self.getImageFrom(rowNumber: index)
+            .drive(onNext: {
+                guard let data = $0, let image = UIImage(data: data) else {
+                    return
+                }
+                imageView?.image = image
+            })
             .disposed(by: disposeBag)
-        
-        cell?.titleLabel.text = entity.title
-        cell?.subTitleLabel.isHidden = true
-        
-        return cell ?? .init()
     }
 }

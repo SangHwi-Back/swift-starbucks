@@ -13,9 +13,10 @@ protocol OrderUseCase {
     var disposeBag: DisposeBag { get }
     var itemBinder: PublishRelay<[StarbucksItemDTO]> { get }
     var items: [StarbucksItemDTO] { get }
-    func getImageFrom(rowNumber: Int) -> Driver<UIImage?>
+    func getImageFrom(rowNumber: Int) -> Driver<Data?>
     func fetchItems()
 }
+
 extension OrderUseCase {
     func getFoodImageDataTitled(title: String, jsonURL: URL?) -> Observable<[StarbucksItemDTO]> {
         guard let jsonURL else {
@@ -37,6 +38,24 @@ extension OrderUseCase {
                 
                 return result.foods
             })
+    }
+    
+    func requestImage(at index: Int) -> Observable<Data?> {
+        guard
+            index < items.count-1,
+            let url = Bundle.main.url(forResource: items[index].name,
+                                      withExtension: "jpg")
+        else {
+            return .empty()
+        }
+        
+        if let data = items[index].imageData {
+            return Observable.just(data)
+        }
+        
+        return URLSession.shared.rx
+            .response(request: URLRequest(url: url))
+            .map({ $0.data })
     }
 }
 

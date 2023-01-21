@@ -19,7 +19,7 @@ class OrderMenuNeedLoginCell: UITableViewCell {
         signInButton.setCornerRadius()
         loginButton.setCornerRadius()
         
-        signInButton.layer.borderColor = UIColor.green.cgColor
+        signInButton.layer.borderColor = UIColor.systemGreen.cgColor
         signInButton.layer.borderWidth = 1
     }
 }

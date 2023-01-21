@@ -14,25 +14,27 @@ class OrderMyMenuUseCase: OrderUseCase {
     
     let itemBinder = PublishRelay<[StarbucksItemDTO]>()
     
-    private(set) var items: [StarbucksItemDTO] = []
+    var items: [StarbucksItemDTO] = []
+    
+    init() {
+        fetchItems()
+        URLProtocol.registerClass(HTTPRequestMockProtocol.self)
+    }
+    
+    deinit {
+        URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
+    }
     
     func resetItems() {
         items.removeAll()
         fetchItems()
     }
     
-    func getImageFrom(rowNumber: Int) -> Driver<UIImage?> {
-        guard
-            rowNumber < items.count,
-            let url = Bundle.main.url(forResource: items[rowNumber].name,
-                                      withExtension: "jpg")
-        else {
-            return .empty()
-        }
-        
-        return URLSession.shared.rx
-            .response(request: URLRequest(url: url))
-            .map({ UIImage(data: $0.data) })
+    func getImageFrom(rowNumber: Int) -> Driver<Data?> {
+        let observable = requestImage(at: rowNumber)
+
+        return observable
+            .do(onNext: { [weak self] in self?.items[rowNumber].imageData = $0 })
             .asDriver(onErrorJustReturn: nil)
     }
     

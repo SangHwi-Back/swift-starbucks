@@ -14,4 +14,6 @@ struct StarbucksArray: Decodable {
 struct StarbucksItemDTO: Decodable {
   let title: String
   let name: String
+    
+  var imageData: Data?
 }
