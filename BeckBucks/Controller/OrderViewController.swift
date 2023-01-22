@@ -221,6 +221,13 @@ extension OrderViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuHeaderCell.self),
                                                          for: indexPath) as? OrderMyMenuHeaderCell
                 
+                cell?.adjustableSwitch?.switchStateRelay
+                    .bind(onNext: {
+                        UserDefaults.standard
+                            .setValue($0 == .on ? true : false, forKey: "OrderAtHome")
+                    })
+                    .disposed(by: disposeBag)
+                
                 return cell ?? .init()
             }
             

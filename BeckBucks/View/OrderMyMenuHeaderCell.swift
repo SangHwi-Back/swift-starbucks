@@ -9,15 +9,10 @@ import UIKit
 
 class OrderMyMenuHeaderCell: UITableViewCell {
 
+    @IBOutlet weak var adjustableSwitch: AdjustableSwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setNeedsDisplay()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

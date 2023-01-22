@@ -227,10 +227,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCollectionViewCell" id="cto-wZ-a3j" customClass="CardCollectionViewCell" customModule="BeckBucks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128.00000000000003" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gOg-zs-Ts4">
-                                            <rect key="frame" x="0.0" y="0.0" width="128.00000000000003" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
@@ -534,25 +534,23 @@
                                                                 <color key="baseForegroundColor" name="color_text_gray"/>
                                                             </buttonConfiguration>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-8e-3ff" customClass="AdjustableSwitch" customModule="BeckBucks" customModuleProvider="target">
-                                                            <rect key="frame" x="129" y="8" width="48" height="24"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Plg-sr-ZF8" customClass="AdjustableSwitch" customModule="BeckBucks" customModuleProvider="target">
+                                                            <rect key="frame" x="129" y="11" width="36" height="18"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="48" id="Lha-72-n0c"/>
-                                                                <constraint firstAttribute="height" constant="24" id="Nvj-yy-Wfb"/>
+                                                                <constraint firstAttribute="height" constant="18" id="PUq-dx-4I6"/>
+                                                                <constraint firstAttribute="width" constant="36" id="VTX-n9-iUM"/>
                                                             </constraints>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" title=""/>
-                                                        </button>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="G23-C9-MTa" secondAttribute="bottom" id="7kI-Ua-TgT"/>
+                                                        <constraint firstItem="Plg-sr-ZF8" firstAttribute="leading" secondItem="WIg-xJ-ITt" secondAttribute="trailing" constant="8" symbolic="YES" id="FzI-9N-SHe"/>
                                                         <constraint firstAttribute="bottom" secondItem="WIg-xJ-ITt" secondAttribute="bottom" id="J1f-gG-A4U"/>
                                                         <constraint firstAttribute="trailing" secondItem="G23-C9-MTa" secondAttribute="trailing" constant="16" id="hXM-kl-lGl"/>
                                                         <constraint firstItem="G23-C9-MTa" firstAttribute="top" secondItem="CZ1-An-DHI" secondAttribute="top" id="kCp-HA-dJu"/>
                                                         <constraint firstItem="WIg-xJ-ITt" firstAttribute="leading" secondItem="CZ1-An-DHI" secondAttribute="leading" constant="16" id="muZ-Wz-BJj"/>
-                                                        <constraint firstItem="b11-8e-3ff" firstAttribute="leading" secondItem="WIg-xJ-ITt" secondAttribute="trailing" constant="8" symbolic="YES" id="t6B-AS-Ogc"/>
-                                                        <constraint firstItem="b11-8e-3ff" firstAttribute="centerY" secondItem="WIg-xJ-ITt" secondAttribute="centerY" id="v0M-cN-lwc"/>
+                                                        <constraint firstItem="Plg-sr-ZF8" firstAttribute="centerY" secondItem="WIg-xJ-ITt" secondAttribute="centerY" id="pFI-l0-4Fx"/>
                                                         <constraint firstItem="WIg-xJ-ITt" firstAttribute="top" secondItem="CZ1-An-DHI" secondAttribute="top" id="wkg-fk-J5t"/>
                                                     </constraints>
                                                 </view>
@@ -564,6 +562,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="CZ1-An-DHI" secondAttribute="trailing" id="zRM-zk-dLc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="adjustableSwitch" destination="Plg-sr-ZF8" id="aRU-xf-ZRk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderMenuEmptyCell" id="oUD-hA-bPD" customClass="OrderMenuEmptyCell" customModule="BeckBucks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="166" width="390" height="485.66665649414062"/>
@@ -1251,7 +1252,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="KoS-vO-SEf"/>
                                         </constraints>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTr-oi-98L">

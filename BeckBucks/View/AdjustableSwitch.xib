@@ -8,7 +8,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdjustableSwitch" customModule="BeckBucks" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdjustableSwitch" customModule="BeckBucks" customModuleProvider="target">
+            <connections>
+                <outlet property="clickableBackgroundButton" destination="pVK-Lc-HTF" id="eai-64-Cgu"/>
+                <outlet property="switchMarker" destination="e8O-IV-btS" id="7Ue-S4-CDH"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="393" height="198"/>
@@ -16,45 +21,33 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVK-Lc-HTF">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="198"/>
-                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title=""/>
-                    <connections>
-                        <action selector="clickableBackgroundButtonTouchUpInside:" destination="iN0-l3-epB" eventType="touchUpInside" id="SxD-gp-jOf"/>
-                    </connections>
                 </button>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8O-IV-btS">
-                    <rect key="frame" x="4" y="4" width="190" height="190"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="e8O-IV-btS">
+                    <rect key="frame" x="2" y="0.0" width="194" height="194"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="e8O-IV-btS" secondAttribute="height" multiplier="1:1" id="XQ7-lO-s8Q"/>
+                        <constraint firstAttribute="width" secondItem="e8O-IV-btS" secondAttribute="height" multiplier="1:1" id="79e-fa-a86"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="systemGray4Color"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="pVK-Lc-HTF" secondAttribute="bottom" id="8YO-Ua-lWF"/>
-                <constraint firstItem="e8O-IV-btS" firstAttribute="centerY" secondItem="pVK-Lc-HTF" secondAttribute="centerY" id="FnE-e7-kik"/>
                 <constraint firstAttribute="trailing" secondItem="pVK-Lc-HTF" secondAttribute="trailing" id="LQv-s4-TUm"/>
                 <constraint firstItem="pVK-Lc-HTF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NEW-yP-xVA"/>
                 <constraint firstItem="pVK-Lc-HTF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NOQ-P7-tvq"/>
-                <constraint firstItem="e8O-IV-btS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="RCT-Pw-uoc"/>
-                <constraint firstItem="e8O-IV-btS" firstAttribute="height" secondItem="pVK-Lc-HTF" secondAttribute="height" multiplier="0.96" id="iYR-01-3Im"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="clickableBackgroundButton" destination="pVK-Lc-HTF" id="S0A-Uf-jbq"/>
-                <outlet property="switchMarker" destination="e8O-IV-btS" id="NIv-LC-zwe"/>
-            </connections>
             <point key="canvasLocation" x="351.90839694656489" y="-186.61971830985917"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
