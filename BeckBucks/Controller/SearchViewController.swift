@@ -14,11 +14,10 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    let selectedQueryPublisher = PublishSubject<String>()
     let useCase = SearchViewUseCase<String>(["모카", "민트", "평촌", "돌체"])
     
     private var cellDisposeBag = DisposeBag()
-    
-    let publishSelectedQuery = PublishSubject<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,7 @@ class SearchViewController: UIViewController {
                 }
                 
                 self?.dismiss(animated: true, completion: {
-                    self?.publishSelectedQuery.onNext(query)
+                    self?.selectedQueryPublisher.onNext(query)
                 })
             })
             .disposed(by: useCase.disposeBag)

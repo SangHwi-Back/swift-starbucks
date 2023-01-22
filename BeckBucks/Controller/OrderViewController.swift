@@ -39,6 +39,8 @@ class OrderViewController: UIViewController {
     @IBOutlet weak var restaurantButton: UIButton!
     @IBOutlet weak var myBagButton: UIButton!
     
+    private let searchVC = UIStoryboard.searchViewController
+    
     private let orderViewCategoryRelay = BehaviorRelay<OrderViewCategory>(value: .allMenu)
     private let allMenuCategoryRelay = BehaviorRelay<AllMenuCategory>(value: .drink)
     
@@ -121,33 +123,6 @@ class OrderViewController: UIViewController {
                 self?.tableView.reloadData()
                 
                 // TODO: Add Rows Actions.
-//                self?.tableView.performBatchUpdates { [weak self] in
-//                    guard let self = self, list.isEmpty == false else {
-//                        return
-//                    }
-//
-//                    let indexes: (Range<Int>) -> [IndexPath] = {
-//                        $0.map({
-//                            IndexPath(row: $0, section: 0)
-//                        })
-//                    }
-//
-//                    let rowCount = self.tableView.visibleCells.count
-//                    var direction: UITableView.RowAnimation {
-//                        guard self.orderViewCategoryRelay.value != .myMenu else {
-//                            return .right
-//                        }
-//
-//                        return self.allMenuCategoryStateRelay.value == .drink ? .left : .right
-//                    }
-//
-//                    if rowCount == 0 {
-//                        self.tableView.reloadData()
-//                        return
-//                    }
-//
-//                    self.tableView.reloadRows(at: indexes(1..<rowCount), with: direction)
-//                }
             }
             .disposed(by: disposeBag)
         
@@ -212,28 +187,17 @@ class OrderViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
+        searchVC?.selectedQueryPublisher
+            .bind(onNext: { [weak self] query in
+                self?.present(UIAlertController.commonAlert(query), animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         menuSearchButton.rx.tap
-            .bind(onNext: {
-                let searchVC = UIStoryboard(name: "Contents", bundle: Bundle.main)
-                    .instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as! SearchViewController
-                
-                searchVC.modalPresentationStyle = .fullScreen
-                searchVC.publishSelectedQuery
-                    .subscribe(onNext: { query in
-                        let alert = UIAlertController()
-                        alert.title = query
-                        alert.addAction(
-                            UIAlertAction(title: "확인",
-                                          style: .cancel) { _ in
-                                              alert.dismiss(animated: true)
-                                          }
-                        )
-                        
-                        self.present(alert, animated: true)
-                    })
-                    .disposed(by: self.disposeBag)
-                
-                self.present(searchVC, animated: true)
+            .bind(onNext: { [weak self] in
+                if let searchVC = self?.searchVC {
+                    self?.present(searchVC, animated: true)
+                }
             })
             .disposed(by: disposeBag)
         
