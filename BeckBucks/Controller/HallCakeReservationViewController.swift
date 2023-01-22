@@ -14,6 +14,7 @@ class HallCakeReservationViewController: UIViewController {
     typealias CELL = HallCakeReservationCollectionViewCell
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var menuSearchButton: UIBarButtonItem!
     
     let useCase = HallCakeReservationUseCase()
     let formatter = NumberFormatter()
@@ -46,6 +47,31 @@ class HallCakeReservationViewController: UIViewController {
             cell.setUI()
         }
         .disposed(by: useCase.disposeBag)
+        
+        menuSearchButton.rx.tap
+            .bind(onNext: {
+                let searchVC = UIStoryboard(name: "Contents", bundle: Bundle.main)
+                    .instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as! SearchViewController
+                
+                searchVC.modalPresentationStyle = .fullScreen
+                searchVC.publishSelectedQuery
+                    .subscribe(onNext: { query in
+                        let alert = UIAlertController()
+                        alert.title = query
+                        alert.addAction(
+                            UIAlertAction(title: "확인",
+                                          style: .cancel) { _ in
+                                              alert.dismiss(animated: true)
+                                          }
+                        )
+                        
+                        self.present(alert, animated: true)
+                    })
+                    .disposed(by: self.useCase.disposeBag)
+                
+                self.present(searchVC, animated: true)
+            })
+            .disposed(by: useCase.disposeBag)
         
         useCase.resolveUI()
     }

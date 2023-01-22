@@ -14,6 +14,10 @@
 		1B176DA7297AC24600E93D2B /* OrderMenuNeedLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DA6297AC24600E93D2B /* OrderMenuNeedLoginCell.swift */; };
 		1B176DA9297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DA8297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift */; };
 		1B176DAB297BD34700E93D2B /* LabelWithSFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DAA297BD34700E93D2B /* LabelWithSFSymbol.swift */; };
+		1B176DAD297C3AD000E93D2B /* SearchViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DAC297C3AD000E93D2B /* SearchViewUseCase.swift */; };
+		1B176DAF297C3E8900E93D2B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DAE297C3E8900E93D2B /* SearchViewController.swift */; };
+		1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */; };
+		1B176DB3297D184800E93D2B /* SearchViewListTableViewFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */; };
 		1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B230A4828E5565900775128 /* UIView+Extensions.swift */; };
 		1B27493B283206D900027B60 /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B27493A283206D900027B60 /* Contents.storyboard */; };
 		1B27493D2832092F00027B60 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27493C2832092F00027B60 /* HTTPRequest.swift */; };
@@ -226,6 +230,10 @@
 		1B176DA6297AC24600E93D2B /* OrderMenuNeedLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuNeedLoginCell.swift; sourceTree = "<group>"; };
 		1B176DA8297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMenuTableViewCell.swift; sourceTree = "<group>"; };
 		1B176DAA297BD34700E93D2B /* LabelWithSFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithSFSymbol.swift; sourceTree = "<group>"; };
+		1B176DAC297C3AD000E93D2B /* SearchViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewUseCase.swift; sourceTree = "<group>"; };
+		1B176DAE297C3E8900E93D2B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListTableViewCell.swift; sourceTree = "<group>"; };
+		1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListTableViewFooterCell.swift; sourceTree = "<group>"; };
 		1B230A4828E5565900775128 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1B27493A283206D900027B60 /* Contents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B27493C2832092F00027B60 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
@@ -489,6 +497,7 @@
 				1B176DA3297A307E00E93D2B /* Order */,
 				1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */,
 				1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */,
+				1B176DAC297C3AD000E93D2B /* SearchViewUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -758,6 +767,8 @@
 				1B7F194D2973C82F00A1F07B /* MyBagListTableViewTitleCell.swift */,
 				1B7F194F2973C83700A1F07B /* MyBagListTableViewItemCell.swift */,
 				1B7F19512973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift */,
+				1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */,
+				1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -783,6 +794,7 @@
 				1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */,
 				1B2D7EAB2973BC3C00851D20 /* OrderNavigationController.swift */,
 				1B7F19532973E2D500A1F07B /* MyBagViewController.swift */,
+				1B176DAE297C3E8900E93D2B /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1192,6 +1204,7 @@
 				1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */,
 				1B797F54297A256800A58981 /* OrderMyMenuUseCase.swift in Sources */,
 				1B7F19522973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift in Sources */,
+				1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */,
 				1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */,
 				1B27494B28323E3800027B60 /* InitialInfoBucksProtocol.swift in Sources */,
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
@@ -1216,6 +1229,7 @@
 				1BD427C22833D9F10098DEEF /* HomeMainUseCase.swift in Sources */,
 				1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */,
 				1B98BAE4297948F500353B1A /* AdjustableSwitch.swift in Sources */,
+				1B176DAD297C3AD000E93D2B /* SearchViewUseCase.swift in Sources */,
 				1BD427BD2833ACA90098DEEF /* HomeIngBucksProtocol.swift in Sources */,
 				1B2D7EAE2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift in Sources */,
 				1B2D7EAC2973BC3C00851D20 /* OrderNavigationController.swift in Sources */,
@@ -1248,6 +1262,8 @@
 				1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */,
 				1B176DAB297BD34700E93D2B /* LabelWithSFSymbol.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,
+				1B176DB3297D184800E93D2B /* SearchViewListTableViewFooterCell.swift in Sources */,
+				1B176DAF297C3E8900E93D2B /* SearchViewController.swift in Sources */,
 				1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */,
 				1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */,
 				1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */,

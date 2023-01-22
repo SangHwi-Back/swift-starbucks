@@ -20,6 +20,9 @@ enum AllMenuCategory: Int {
 }
 
 class OrderViewController: UIViewController {
+    
+    @IBOutlet weak var menuSearchButton: UIBarButtonItem!
+    
     @IBOutlet weak var menuButtonView: UIView!
     @IBOutlet weak var allMenuHeaderView: UIView!
     
@@ -116,6 +119,8 @@ class OrderViewController: UIViewController {
             .asDriver(onErrorJustReturn: [])
             .drive { [weak self] list in
                 self?.tableView.reloadData()
+                
+                // TODO: Add Rows Actions.
 //                self?.tableView.performBatchUpdates { [weak self] in
 //                    guard let self = self, list.isEmpty == false else {
 //                        return
@@ -206,6 +211,31 @@ class OrderViewController: UIViewController {
             }(), sender: self)
         })
         .disposed(by: disposeBag)
+        
+        menuSearchButton.rx.tap
+            .bind(onNext: {
+                let searchVC = UIStoryboard(name: "Contents", bundle: Bundle.main)
+                    .instantiateViewController(withIdentifier: String(describing: SearchViewController.self)) as! SearchViewController
+                
+                searchVC.modalPresentationStyle = .fullScreen
+                searchVC.publishSelectedQuery
+                    .subscribe(onNext: { query in
+                        let alert = UIAlertController()
+                        alert.title = query
+                        alert.addAction(
+                            UIAlertAction(title: "확인",
+                                          style: .cancel) { _ in
+                                              alert.dismiss(animated: true)
+                                          }
+                        )
+                        
+                        self.present(alert, animated: true)
+                    })
+                    .disposed(by: self.disposeBag)
+                
+                self.present(searchVC, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         allFoodMenuUseCase.fetchItems()
         allDrinkmenuUseCase.fetchItems()
