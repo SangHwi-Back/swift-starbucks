@@ -187,7 +187,7 @@ class OrderViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        searchVC?.selectedQueryPublisher
+        searchVC?.selectedQueryPublisher?
             .bind(onNext: { [weak self] query in
                 self?.present(UIAlertController.commonAlert(query), animated: true)
             })

@@ -44,6 +44,10 @@
 		1B3788E528F3999700A2DF39 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E428F3999700A2DF39 /* cards.json */; };
 		1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */; };
 		1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E828F39FDA00A2DF39 /* card_seattle.png */; };
+		1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */; };
+		1B4FADB8297E5E2500FF8717 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB7297E5E2500FF8717 /* SearchResultViewController.swift */; };
+		1B4FADBA297E637000FF8717 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB9297E637000FF8717 /* SearchResultTableViewCell.swift */; };
+		1B4FADBC297E648100FF8717 /* SearchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADBB297E648100FF8717 /* SearchResultUseCase.swift */; };
 		1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */; };
 		1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */; };
 		1B52DBDA297145AC0001E70F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */; };
@@ -262,6 +266,10 @@
 		1B3788E428F3999700A2DF39 /* cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = card_okinawa.jpg; sourceTree = "<group>"; };
 		1B3788E828F39FDA00A2DF39 /* card_seattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_seattle.png; sourceTree = "<group>"; };
+		1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
+		1B4FADB7297E5E2500FF8717 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		1B4FADB9297E637000FF8717 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		1B4FADBB297E648100FF8717 /* SearchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultUseCase.swift; sourceTree = "<group>"; };
 		1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationViewController.swift; sourceTree = "<group>"; };
 		1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -504,6 +512,7 @@
 				1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */,
 				1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */,
 				1B176DAC297C3AD000E93D2B /* SearchViewUseCase.swift */,
+				1B4FADBB297E648100FF8717 /* SearchResultUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -775,6 +784,7 @@
 				1B7F19512973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift */,
 				1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */,
 				1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */,
+				1B4FADB9297E637000FF8717 /* SearchResultTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -800,7 +810,9 @@
 				1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */,
 				1B2D7EAB2973BC3C00851D20 /* OrderNavigationController.swift */,
 				1B7F19532973E2D500A1F07B /* MyBagViewController.swift */,
+				1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */,
 				1B176DAE297C3E8900E93D2B /* SearchViewController.swift */,
+				1B4FADB7297E5E2500FF8717 /* SearchResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1208,11 +1220,13 @@
 			files = (
 				1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */,
 				1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */,
+				1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */,
 				1B797F54297A256800A58981 /* OrderMyMenuUseCase.swift in Sources */,
 				1B7F19522973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift in Sources */,
 				1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */,
 				1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */,
 				1B27494B28323E3800027B60 /* InitialInfoBucksProtocol.swift in Sources */,
+				1B4FADB8297E5E2500FF8717 /* SearchResultViewController.swift in Sources */,
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
 				1B3788DA28F3062E00A2DF39 /* PayViewUseCase.swift in Sources */,
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
@@ -1254,6 +1268,7 @@
 				1B7F194E2973C82F00A1F07B /* MyBagListTableViewTitleCell.swift in Sources */,
 				1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */,
 				1BCCB2FC2828B8F000CBB58F /* AppDelegate.swift in Sources */,
+				1B4FADBA297E637000FF8717 /* SearchResultTableViewCell.swift in Sources */,
 				1BD427B52833AAEC0098DEEF /* HomeMainDTO.swift in Sources */,
 				1BF36D6F28D962960033DF2A /* ViewImageSubTitled.swift in Sources */,
 				1BF36D8F28E08B780033DF2A /* HTTPRequestMockProtocol.swift in Sources */,
@@ -1264,6 +1279,7 @@
 				1B1F244E297D43B300BA6FE9 /* UIAlertController+Extensions.swift in Sources */,
 				1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */,
 				1B87F70D285B8AAE002B47B7 /* TestViewController.swift in Sources */,
+				1B4FADBC297E648100FF8717 /* SearchResultUseCase.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
 				1B797F56297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift in Sources */,
 				1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */,

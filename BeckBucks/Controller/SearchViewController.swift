@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     let selectedQueryPublisher = PublishSubject<String>()
     let useCase = SearchViewUseCase<String>(["모카", "민트", "평촌", "돌체"])
     
+    private var selectedItemIndexPath: IndexPath?
     private var cellDisposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -38,13 +39,10 @@ class SearchViewController: UIViewController {
     private func initialBind() {
         tableView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                guard let query = self?.useCase.searchHistory[indexPath.row] else {
-                    return
-                }
-                
-                self?.dismiss(animated: true, completion: {
-                    self?.selectedQueryPublisher.onNext(query)
-                })
+                self?.selectedItemIndexPath = indexPath
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+                self?.performSegue(withIdentifier: String(describing: SearchResultViewController.self),
+                                   sender: true)
             })
             .disposed(by: useCase.disposeBag)
         
@@ -53,6 +51,15 @@ class SearchViewController: UIViewController {
                 self?.dismiss(animated: true)
             })
             .disposed(by: useCase.disposeBag)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if
+            let dest = segue.destination as? SearchResultViewController,
+            let selectedItemIndexPath {
+            
+            dest.title = useCase.searchHistory[selectedItemIndexPath.row]
+        }
     }
 }
 

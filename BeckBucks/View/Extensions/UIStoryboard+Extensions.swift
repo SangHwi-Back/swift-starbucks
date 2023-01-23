@@ -8,10 +8,10 @@
 import UIKit
 
 extension UIStoryboard {
-    static var searchViewController: SearchViewController? {
+    static var searchViewController: SearchNavigationController? {
         let storyboard = UIStoryboard(name: "Contents", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: String(describing: SearchViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: String(describing: SearchNavigationController.self))
         vc.modalPresentationStyle = .fullScreen
-        return vc as? SearchViewController
+        return vc as? SearchNavigationController
     }
 }
