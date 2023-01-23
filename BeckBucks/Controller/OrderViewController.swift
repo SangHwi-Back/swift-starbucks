@@ -49,6 +49,8 @@ class OrderViewController: UIViewController {
     private let myMenuUseCase = OrderMyMenuUseCase()
     private var disposeBag = DisposeBag()
     
+    var selectedItemIndexPath: IndexPath?
+    
     var allList: [StarbucksItemDTO] = []
     var myList: [StarbucksItemDTO] = []
     
@@ -84,6 +86,15 @@ class OrderViewController: UIViewController {
             .asDriver()
             .drive(onNext: { [weak self] offset in
                 self?.navigationItem.largeTitleDisplayMode = offset.y < 25 ? .always : .never
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .bind(onNext: { indexPath in
+                self.selectedItemIndexPath = indexPath
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                self.performSegue(withIdentifier: String(describing: MenuDetailViewController.self),
+                                   sender: true)
             })
             .disposed(by: disposeBag)
         

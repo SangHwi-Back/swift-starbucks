@@ -30,6 +30,8 @@
 		1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2749502832527200027B60 /* CommonUserDefaults.swift */; };
 		1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2749552832678D00027B60 /* InitialURLSession.swift */; };
 		1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B274957283268F000027B60 /* InitialImageBucksProtocol.swift */; };
+		1B27E92C297EA3B100CF6AFE /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E92B297EA3B100CF6AFE /* MenuDetailViewController.swift */; };
+		1B27E92E297EA3E200CF6AFE /* MenuDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E92D297EA3E200CF6AFE /* MenuDetailUseCase.swift */; };
 		1B2C3389296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift */; };
 		1B2D7EAC2973BC3C00851D20 /* OrderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D7EAB2973BC3C00851D20 /* OrderNavigationController.swift */; };
 		1B2D7EAE2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D7EAD2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift */; };
@@ -252,6 +254,8 @@
 		1B2749502832527200027B60 /* CommonUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUserDefaults.swift; sourceTree = "<group>"; };
 		1B2749552832678D00027B60 /* InitialURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialURLSession.swift; sourceTree = "<group>"; };
 		1B274957283268F000027B60 /* InitialImageBucksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialImageBucksProtocol.swift; sourceTree = "<group>"; };
+		1B27E92B297EA3B100CF6AFE /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
+		1B27E92D297EA3E200CF6AFE /* MenuDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailUseCase.swift; sourceTree = "<group>"; };
 		1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFoodMenuUseCase.swift; sourceTree = "<group>"; };
 		1B2D7EAB2973BC3C00851D20 /* OrderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavigationController.swift; sourceTree = "<group>"; };
 		1B2D7EAD2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagCollectionViewEmptyCell.swift; sourceTree = "<group>"; };
@@ -513,6 +517,7 @@
 				1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */,
 				1B176DAC297C3AD000E93D2B /* SearchViewUseCase.swift */,
 				1B4FADBB297E648100FF8717 /* SearchResultUseCase.swift */,
+				1B27E92D297EA3E200CF6AFE /* MenuDetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -813,6 +818,7 @@
 				1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */,
 				1B176DAE297C3E8900E93D2B /* SearchViewController.swift */,
 				1B4FADB7297E5E2500FF8717 /* SearchResultViewController.swift */,
+				1B27E92B297EA3B100CF6AFE /* MenuDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1234,6 +1240,7 @@
 				1B2C3389296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift in Sources */,
 				1B0F6628283371F8000428E3 /* ContentsViewController.swift in Sources */,
 				1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */,
+				1B27E92C297EA3B100CF6AFE /* MenuDetailViewController.swift in Sources */,
 				1B7F19562973F0CC00A1F07B /* MyBagUseCase.swift in Sources */,
 				1BCFCE672834B38100074ED2 /* PayImageBucksProtocol.swift in Sources */,
 				1BD427C428347CA70098DEEF /* PayItemBucksProtocol.swift in Sources */,
@@ -1257,6 +1264,7 @@
 				1BF36D8D28E08AC50033DF2A /* HTTPRequestMockModel.swift in Sources */,
 				1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */,
 				1B176DA7297AC24600E93D2B /* OrderMenuNeedLoginCell.swift in Sources */,
+				1B27E92E297EA3E200CF6AFE /* MenuDetailUseCase.swift in Sources */,
 				1B27493F28320F4800027B60 /* InitialEventUseCase.swift in Sources */,
 				1B98BAE82979834900353B1A /* OrderMyMenuHeaderCell.swift in Sources */,
 				1BCFCEA3283530D800074ED2 /* AnonymousImageBucksProtocol.swift in Sources */,
