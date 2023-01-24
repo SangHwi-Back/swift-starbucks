@@ -216,6 +216,30 @@ class OrderViewController: UIViewController {
         allDrinkmenuUseCase.fetchItems()
         myMenuUseCase.fetchItems()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? MenuDetailViewController {
+            guard
+                let indexPath = selectedItemIndexPath,
+                let entity = {
+                    if orderViewCategoryRelay.value == .myMenu {
+                        return myMenuUseCase.getItem(at: indexPath.row)
+                    }
+                    
+                    switch allMenuCategoryRelay.value {
+                    case .drink:
+                        return allDrinkmenuUseCase.getItem(at: indexPath.row)
+                    case .food:
+                        return allFoodMenuUseCase.getItem(at: indexPath.row)
+                    }
+                }()
+            else {
+                return
+            }
+            
+            dest.useCase = MenuDetailUseCase(entity: entity)
+        }
+    }
 }
 
 extension OrderViewController: UITableViewDataSource {

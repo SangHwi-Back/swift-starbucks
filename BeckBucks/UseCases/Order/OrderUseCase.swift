@@ -15,6 +15,7 @@ protocol OrderUseCase {
     var items: [StarbucksItemDTO] { get }
     func getImageFrom(rowNumber: Int) -> Driver<Data?>
     func fetchItems()
+    func getItem(at index: Int) -> StarbucksItemDTO?
 }
 
 extension OrderUseCase {
@@ -56,6 +57,14 @@ extension OrderUseCase {
         return URLSession.shared.rx
             .response(request: URLRequest(url: url))
             .map({ $0.data })
+    }
+    
+    func getItem(at index: Int) -> StarbucksItemDTO? {
+        guard index < items.count-1 else {
+            return nil
+        }
+        
+        return items[index]
     }
 }
 
