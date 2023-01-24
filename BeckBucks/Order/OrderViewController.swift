@@ -44,9 +44,9 @@ class OrderViewController: UIViewController {
     private let orderViewCategoryRelay = BehaviorRelay<OrderViewCategory>(value: .allMenu)
     private let allMenuCategoryRelay = BehaviorRelay<AllMenuCategory>(value: .drink)
     
-    private let allFoodMenuUseCase = OrderFoodMenuUseCase()
-    private let allDrinkmenuUseCase = OrderDrinkMenuUseCase()
-    private let myMenuUseCase = OrderMyMenuUseCase()
+    private let allFoodMenuVM = OrderFoodMenuViewModel()
+    private let allDrinkmenuVM = OrderDrinkMenuViewModel()
+    private let myMenuVM = OrderMyMenuViewModel()
     private var disposeBag = DisposeBag()
     
     var selectedItemIndexPath: IndexPath?
@@ -56,14 +56,14 @@ class OrderViewController: UIViewController {
     
     var useCase: any OrderViewModel {
         guard orderViewCategoryRelay.value != .myMenu else {
-            return myMenuUseCase
+            return myMenuVM
         }
         
         switch allMenuCategoryRelay.value {
         case .drink:
-            return allDrinkmenuUseCase
+            return allDrinkmenuVM
         case .food:
-            return allFoodMenuUseCase
+            return allFoodMenuVM
         }
     }
     
@@ -103,8 +103,8 @@ class OrderViewController: UIViewController {
                 self?.allMenuHeaderView.isHidden = category == .myMenu
                 
                 if category == .myMenu {
-                    self?.myMenuUseCase.itemBinder
-                        .accept(self?.myMenuUseCase.items ?? [])
+                    self?.myMenuVM.itemBinder
+                        .accept(self?.myMenuVM.items ?? [])
                 }
                 
                 if let relay = self?.allMenuCategoryRelay {
@@ -125,9 +125,9 @@ class OrderViewController: UIViewController {
         
         Observable<[StarbucksItemDTO]>
             .merge([
-                allFoodMenuUseCase.itemBinder.asObservable(),
-                allDrinkmenuUseCase.itemBinder.asObservable(),
-                myMenuUseCase.itemBinder.asObservable(),
+                allFoodMenuVM.itemBinder.asObservable(),
+                allDrinkmenuVM.itemBinder.asObservable(),
+                myMenuVM.itemBinder.asObservable(),
             ])
             .asDriver(onErrorJustReturn: [])
             .drive { [weak self] list in
@@ -212,9 +212,9 @@ class OrderViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        allFoodMenuUseCase.fetchItems()
-        allDrinkmenuUseCase.fetchItems()
-        myMenuUseCase.fetchItems()
+        allFoodMenuVM.fetchItems()
+        allDrinkmenuVM.fetchItems()
+        myMenuVM.fetchItems()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -223,21 +223,21 @@ class OrderViewController: UIViewController {
                 let indexPath = selectedItemIndexPath,
                 let entity = {
                     if orderViewCategoryRelay.value == .myMenu {
-                        return myMenuUseCase.getItem(at: indexPath.row)
+                        return myMenuVM.getItem(at: indexPath.row)
                     }
                     
                     switch allMenuCategoryRelay.value {
                     case .drink:
-                        return allDrinkmenuUseCase.getItem(at: indexPath.row)
+                        return allDrinkmenuVM.getItem(at: indexPath.row)
                     case .food:
-                        return allFoodMenuUseCase.getItem(at: indexPath.row)
+                        return allFoodMenuVM.getItem(at: indexPath.row)
                     }
                 }()
             else {
                 return
             }
             
-            dest.useCase = MenuDetailViewModel(entity: entity)
+            dest.VM = MenuDetailViewModel(entity: entity)
         }
     }
 }

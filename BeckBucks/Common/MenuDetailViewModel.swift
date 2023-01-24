@@ -58,7 +58,7 @@ class MenuDetailViewModel {
             return .empty()
         }
         
-        return recommendations[index].name
+        return recommendations[index].fileName
             .toFetchJPEGObservable()
     }
 }

@@ -44,7 +44,7 @@ extension OrderViewModel {
     func requestImage(at index: Int) -> Observable<Data?> {
         guard
             index < items.count-1,
-            let url = Bundle.main.url(forResource: items[index].name,
+            let url = Bundle.main.url(forResource: items[index].fileName,
                                       withExtension: "jpg")
         else {
             return .empty()

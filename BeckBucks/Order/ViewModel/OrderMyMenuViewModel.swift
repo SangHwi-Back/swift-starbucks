@@ -1,5 +1,5 @@
 //
-//  OrderMyMenuUseCase.swift
+//  OrderMyMenuViewModel.swift
 //  BeckBucks
 //
 //  Created by 백상휘 on 2023/01/20.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class OrderMyMenuUseCase: OrderViewModel {
+class OrderMyMenuViewModel: OrderViewModel {
     internal var disposeBag = DisposeBag()
     
     let itemBinder = PublishRelay<[StarbucksItemDTO]>()

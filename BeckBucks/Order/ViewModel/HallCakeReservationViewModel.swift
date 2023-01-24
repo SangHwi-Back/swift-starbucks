@@ -1,5 +1,5 @@
 //
-//  HallCakeReservationUseCase.swift
+//  HallCakeReservationViewModel.swift
 //  BeckBucks
 //
 //  Created by 백상휘 on 2023/01/13.
@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class HallCakeReservationUseCase {
+class HallCakeReservationViewModel {
     
     private var items = [HallCakeItemEntity]() {
         didSet {

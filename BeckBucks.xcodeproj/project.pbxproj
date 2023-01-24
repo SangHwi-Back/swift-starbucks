@@ -33,7 +33,7 @@
 		1B27E92E297EA3E200CF6AFE /* MenuDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E92D297EA3E200CF6AFE /* MenuDetailViewModel.swift */; };
 		1B27E930297F423A00CF6AFE /* MenuDetailRecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E92F297F423A00CF6AFE /* MenuDetailRecommendationCollectionViewCell.swift */; };
 		1B27E933297F431200CF6AFE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E932297F431200CF6AFE /* String+Extensions.swift */; };
-		1B2C3389296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift */; };
+		1B2C3389296C0DC4009BAEB8 /* OrderFoodMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuViewModel.swift */; };
 		1B2D7EAC2973BC3C00851D20 /* OrderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D7EAB2973BC3C00851D20 /* OrderNavigationController.swift */; };
 		1B2D7EAE2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D7EAD2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift */; };
 		1B2D7EB02973C6A500851D20 /* MyBagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D7EAF2973C6A500851D20 /* MyBagCollectionViewCell.swift */; };
@@ -54,7 +54,7 @@
 		1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */; };
 		1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */; };
 		1B52DBDA297145AC0001E70F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */; };
-		1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */; };
+		1B52DBDC297146FF0001E70F /* HallCakeReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBDB297146FF0001E70F /* HallCakeReservationViewModel.swift */; };
 		1B52DBDE297147C00001E70F /* HallCakeReservationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBDD297147C00001E70F /* HallCakeReservationCollectionViewCell.swift */; };
 		1B52DBE129715ADB0001E70F /* hallCake.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE029715AD40001E70F /* hallCake.json */; };
 		1B52DBFB29715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBE229715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg */; };
@@ -85,8 +85,8 @@
 		1B69A8F728E587A5001C6720 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAA928E29EFE00DD66EA /* food.json */; };
 		1B69A8F828E587AA001C6720 /* drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAB28E29F2000DD66EA /* drink.json */; };
 		1B69A8F928E587AD001C6720 /* recommendation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAE28E2A9F200DD66EA /* recommendation.json */; };
-		1B797F54297A256800A58981 /* OrderMyMenuUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B797F53297A256800A58981 /* OrderMyMenuUseCase.swift */; };
-		1B797F56297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B797F55297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift */; };
+		1B797F54297A256800A58981 /* OrderMyMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B797F53297A256800A58981 /* OrderMyMenuViewModel.swift */; };
+		1B797F56297A2A0F00A58981 /* OrderDrinkMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B797F55297A2A0F00A58981 /* OrderDrinkMenuViewModel.swift */; };
 		1B797F58297A2BC700A58981 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B797F57297A2BC700A58981 /* OrderViewModel.swift */; };
 		1B7AAA6B28E29D4D00DD66EA /* drink16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA5728E29D4C00DD66EA /* drink16.jpg */; };
 		1B7AAA6C28E29D4D00DD66EA /* drink15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAA5828E29D4C00DD66EA /* drink15.jpg */; };
@@ -133,7 +133,7 @@
 		1B7F19502973C83700A1F07B /* MyBagListTableViewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F194F2973C83700A1F07B /* MyBagListTableViewItemCell.swift */; };
 		1B7F19522973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F19512973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift */; };
 		1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F19532973E2D500A1F07B /* MyBagViewController.swift */; };
-		1B7F19562973F0CC00A1F07B /* MyBagUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */; };
+		1B7F19562973F0CC00A1F07B /* MyBagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F19552973F0CC00A1F07B /* MyBagViewModel.swift */; };
 		1B98BAE029766EF500353B1A /* NSLayoutAnchor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B98BADF29766EF500353B1A /* NSLayoutAnchor+Extensions.swift */; };
 		1B98BAE2297948D400353B1A /* AdjustableSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B98BAE1297948D300353B1A /* AdjustableSwitch.xib */; };
 		1B98BAE4297948F500353B1A /* AdjustableSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B98BAE3297948F500353B1A /* AdjustableSwitch.swift */; };
@@ -257,7 +257,7 @@
 		1B27E92D297EA3E200CF6AFE /* MenuDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewModel.swift; sourceTree = "<group>"; };
 		1B27E92F297F423A00CF6AFE /* MenuDetailRecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B27E932297F431200CF6AFE /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFoodMenuUseCase.swift; sourceTree = "<group>"; };
+		1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFoodMenuViewModel.swift; sourceTree = "<group>"; };
 		1B2D7EAB2973BC3C00851D20 /* OrderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavigationController.swift; sourceTree = "<group>"; };
 		1B2D7EAD2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagCollectionViewEmptyCell.swift; sourceTree = "<group>"; };
 		1B2D7EAF2973C6A500851D20 /* MyBagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 		1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationViewController.swift; sourceTree = "<group>"; };
 		1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
-		1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationUseCase.swift; sourceTree = "<group>"; };
+		1B52DBDB297146FF0001E70F /* HallCakeReservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationViewModel.swift; sourceTree = "<group>"; };
 		1B52DBDD297147C00001E70F /* HallCakeReservationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B52DBE029715AD40001E70F /* hallCake.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallCake.json; sourceTree = "<group>"; };
 		1B52DBE229715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "(W)Mascapone_Tiraminu_1.jpg"; sourceTree = "<group>"; };
@@ -306,8 +306,8 @@
 		1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Crepe_Emmental_Cheese_Cake_3.jpg; sourceTree = "<group>"; };
 		1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blueberry_Cookie_Cheese_Cake_2.jpg; sourceTree = "<group>"; };
 		1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dome_Pecan_Tart_2.jpg; sourceTree = "<group>"; };
-		1B797F53297A256800A58981 /* OrderMyMenuUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMenuUseCase.swift; sourceTree = "<group>"; };
-		1B797F55297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDrinkMenuUseCase.swift; sourceTree = "<group>"; };
+		1B797F53297A256800A58981 /* OrderMyMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMenuViewModel.swift; sourceTree = "<group>"; };
+		1B797F55297A2A0F00A58981 /* OrderDrinkMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDrinkMenuViewModel.swift; sourceTree = "<group>"; };
 		1B797F57297A2BC700A58981 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		1B7AAA5728E29D4C00DD66EA /* drink16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink16.jpg; sourceTree = "<group>"; };
 		1B7AAA5828E29D4C00DD66EA /* drink15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink15.jpg; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 		1B7F194F2973C83700A1F07B /* MyBagListTableViewItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagListTableViewItemCell.swift; sourceTree = "<group>"; };
 		1B7F19512973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagListTableViewDescriptionCell.swift; sourceTree = "<group>"; };
 		1B7F19532973E2D500A1F07B /* MyBagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagViewController.swift; sourceTree = "<group>"; };
-		1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagUseCase.swift; sourceTree = "<group>"; };
+		1B7F19552973F0CC00A1F07B /* MyBagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBagViewModel.swift; sourceTree = "<group>"; };
 		1B98BADF29766EF500353B1A /* NSLayoutAnchor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+Extensions.swift"; sourceTree = "<group>"; };
 		1B98BAE1297948D300353B1A /* AdjustableSwitch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdjustableSwitch.xib; sourceTree = "<group>"; };
 		1B98BAE3297948F500353B1A /* AdjustableSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableSwitch.swift; sourceTree = "<group>"; };
@@ -484,12 +484,12 @@
 		1B176DA3297A307E00E93D2B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1B52DBDB297146FF0001E70F /* HallCakeReservationUseCase.swift */,
-				1B7F19552973F0CC00A1F07B /* MyBagUseCase.swift */,
+				1B52DBDB297146FF0001E70F /* HallCakeReservationViewModel.swift */,
+				1B7F19552973F0CC00A1F07B /* MyBagViewModel.swift */,
 				1B797F57297A2BC700A58981 /* OrderViewModel.swift */,
-				1B797F55297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift */,
-				1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift */,
-				1B797F53297A256800A58981 /* OrderMyMenuUseCase.swift */,
+				1B797F55297A2A0F00A58981 /* OrderDrinkMenuViewModel.swift */,
+				1B2C3388296C0DC4009BAEB8 /* OrderFoodMenuViewModel.swift */,
+				1B797F53297A256800A58981 /* OrderMyMenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1299,7 +1299,7 @@
 				1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */,
 				1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */,
 				1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */,
-				1B797F54297A256800A58981 /* OrderMyMenuUseCase.swift in Sources */,
+				1B797F54297A256800A58981 /* OrderMyMenuViewModel.swift in Sources */,
 				1B7F19522973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift in Sources */,
 				1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */,
 				1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */,
@@ -1309,11 +1309,11 @@
 				1B27E930297F423A00CF6AFE /* MenuDetailRecommendationCollectionViewCell.swift in Sources */,
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
 				1B52DBDE297147C00001E70F /* HallCakeReservationCollectionViewCell.swift in Sources */,
-				1B2C3389296C0DC4009BAEB8 /* OrderFoodMenuUseCase.swift in Sources */,
+				1B2C3389296C0DC4009BAEB8 /* OrderFoodMenuViewModel.swift in Sources */,
 				1B0F6628283371F8000428E3 /* HomeMainViewController.swift in Sources */,
 				1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */,
 				1B27E92C297EA3B100CF6AFE /* MenuDetailViewController.swift in Sources */,
-				1B7F19562973F0CC00A1F07B /* MyBagUseCase.swift in Sources */,
+				1B7F19562973F0CC00A1F07B /* MyBagViewModel.swift in Sources */,
 				1BCFCE672834B38100074ED2 /* PayImageBucksProtocol.swift in Sources */,
 				1BD427C428347CA70098DEEF /* PayItemBucksProtocol.swift in Sources */,
 				1BCCB3002828B8F000CBB58F /* MainViewController.swift in Sources */,
@@ -1360,8 +1360,8 @@
 				1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */,
 				1B4FADBC297E648100FF8717 /* SearchResultViewModel.swift in Sources */,
 				1BD427BB2833AC880098DEEF /* HomeThumbBucksProtocol.swift in Sources */,
-				1B797F56297A2A0F00A58981 /* OrderDrinkMenuUseCase.swift in Sources */,
-				1B52DBDC297146FF0001E70F /* HallCakeReservationUseCase.swift in Sources */,
+				1B797F56297A2A0F00A58981 /* OrderDrinkMenuViewModel.swift in Sources */,
+				1B52DBDC297146FF0001E70F /* HallCakeReservationViewModel.swift in Sources */,
 				1B176DAB297BD34700E93D2B /* LabelWithSFSymbol.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,
 				1B1F244C297D434300BA6FE9 /* UIStoryboard+Extensions.swift in Sources */,

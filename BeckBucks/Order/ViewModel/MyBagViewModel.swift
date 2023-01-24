@@ -1,5 +1,5 @@
 //
-//  MyBagUseCase.swift
+//  MyBagViewModel.swift
 //  BeckBucks
 //
 //  Created by 백상휘 on 2023/01/15.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MyBagUseCase {
+class MyBagViewModel {
     
     private(set) var foodItems: [MyBagFoodData] = []
     let foodBinder: PublishRelay<[MyBagFoodData]> = .init()

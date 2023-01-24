@@ -1,84 +1,960 @@
 {
   "foods": [
     {
+      "key": "0",
+      "fileName": "drink1",
       "title": "나이트로 바닐라 크림",
-      "name": "drink1"
+      "subTitle": null,
+      "engTitle": "Nitro Vanilla Cream",
+      "menuDescription": "부드러운 목넘김의 나이트로 커피와 바닐라 크림의 매력을 한번에 느껴보세요!",
+      "menuPrice": 6100.0,
+      "tempOption": 1,
+      "menuNotification": "픽업대로 오시면 음료를 제조해드립니다.\n매장 찾기에서 나이트로 콜드브루\n판매매장을 확인해보세요.\n디카페인 에스프레소 샷 선택이 불가한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 0,
+          "volume": "237ml(8 fl oz)",
+          "kcal": 50.0,
+          "carbonG": 5.0,
+          "sugarG": 5.0,
+          "sodiumMG": 30.0,
+          "proteinG": 1.0,
+          "fatG": 1.8,
+          "cholesterolMG": 5.0,
+          "transFatG": 0.0,
+          "satFatG": 1.3,
+          "caffeineMG": 193.0
+        },
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 80.0,
+          "carbonG": 10.0,
+          "sugarG": 10.0,
+          "sodiumMG": 40.0,
+          "proteinG": 1.0,
+          "fatG": 2.7,
+          "cholesterolMG": 5.0,
+          "transFatG": 0.0,
+          "satFatG": 2.0,
+          "caffeineMG": 232.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 110.0,
+          "carbonG": 14.0,
+          "sugarG": 14.0,
+          "sodiumMG": 50.0,
+          "proteinG": 2.0,
+          "fatG": 3.7,
+          "cholesterolMG": 5.0,
+          "transFatG": 0.0,
+          "satFatG": 2.7,
+          "caffeineMG": 309.0
+        }
+      ],
+      "allergy": [0],
+      "badge": null
     },
     {
+      "key": "1",
+      "fileName": "drink2",
       "title": "나이트로 콜드 브루",
-      "name": "drink2"
+      "subTitle": null,
+      "engTitle": "Nitro Cold Brew",
+      "menuDescription": "나이트로 커피 정통의 캐스케이딩과 부드러운 콜드 크레마! 부드러운 목 넘김과 완벽한 밸런스에 커피 본연의 단맛을 경험할 수 있습니다.",
+      "menuPrice": 6000.0,
+      "tempOption": 1,
+      "menuNotification": "픽업대로 오시면 음료를 제조해드립니다.\n매장 찾기에서 나이트로 콜드브루\n판매매장을 확인해보세요.\n디카페인 에스프레소 샷 선택이 불가한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 0,
+          "volume": "237ml(8 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 5.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 195.0
+        },
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 5.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 245.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 5.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 335.0
+        }
+      ],
+      "allergy": [],
+      "badge": null
     },
     {
+      "key": "2",
+      "fileName": "drink3",
       "title": "돌체 콜드 브루",
-      "name": "drink3"
+      "subTitle": null,
+      "engTitle": "Dolce Cold Brew",
+      "menuDescription": "무더운 여름철,\n동남아 휴가지에서 즐기는 커피를 떠오르게 하는 스타벅스 음료의 베스트 x 베스트 조합인\n돌체 콜드 브루를 만나보세요!",
+      "menuPrice": 6000.0,
+      "tempOption": 1,
+      "menuNotification": "콜드 브루 판매 매장에서만 주문 가능한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 265.0,
+          "carbonG": 29.0,
+          "sugarG": 29.0,
+          "sodiumMG": 130.0,
+          "proteinG": 8.0,
+          "fatG": 12.0,
+          "cholesterolMG": 25.0,
+          "transFatG": 0.0,
+          "satFatG": 9.0,
+          "caffeineMG": 155.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 375.0,
+          "carbonG": 42.0,
+          "sugarG": 42.0,
+          "sodiumMG": 180.0,
+          "proteinG": 11.0,
+          "fatG": 17.0,
+          "cholesterolMG": 35.0,
+          "transFatG": 0.0,
+          "satFatG": 12.0,
+          "caffeineMG": 205.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 465.0,
+          "carbonG": 53.0,
+          "sugarG": 53.0,
+          "sodiumMG": 220.0,
+          "proteinG": 14.0,
+          "fatG": 21.0,
+          "cholesterolMG": 45.0,
+          "transFatG": 0.0,
+          "satFatG": 15.0,
+          "caffeineMG": 250.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 0
     },
     {
+      "key": "3",
+      "fileName": "drink4",
       "title": "바닐라 크림 콜드 브루",
-      "name": "drink4"
+      "subTitle": null,
+      "engTitle": "Vanilla Cream Cold Brew",
+      "menuDescription": "콜드 브루에 더해진 바닐라 크림으로 깔끔하면서 달콤한 콜드브루를 새롭게 즐길 수 있는 음료입니다.",
+      "menuPrice": 5800.0,
+      "tempOption": 1,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 125.0,
+          "carbonG": 11.0,
+          "sugarG": 11.0,
+          "sodiumMG": 58.0,
+          "proteinG": 3.0,
+          "fatG": 8.0,
+          "cholesterolMG": 10.0,
+          "transFatG": 0.0,
+          "satFatG": 6.0,
+          "caffeineMG": 155.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 185.0,
+          "carbonG": 20.0,
+          "sugarG": 18.0,
+          "sodiumMG": 80.0,
+          "proteinG": 4.0,
+          "fatG": 11.0,
+          "cholesterolMG": 14.0,
+          "transFatG": 0.0,
+          "satFatG": 9.0,
+          "caffeineMG": 205.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 200.0,
+          "carbonG": 25.0,
+          "sugarG": 22.0,
+          "sodiumMG": 83.0,
+          "proteinG": 4.0,
+          "fatG": 10.0,
+          "cholesterolMG": 14.0,
+          "transFatG": 0.0,
+          "satFatG": 9.0,
+          "caffeineMG": 250.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 0
     },
     {
-      "title": "벨벳 다크 모카 나이트로. 맛잇겠다 이것도 본 적이 없는데.",
-      "name": "drink5"
-    },
-    {
+      "key": "4",
+      "fileName": "drink6",
       "title": "시그니처 더 블랙 콜드 브루",
-      "name": "drink6"
+      "subTitle": null,
+      "engTitle": "Signature The Black Cold Brew",
+      "menuDescription": "콜드 브루 전용 원두를 차가운 물로 매장에서 직접 추출하여 부드럽고 진한 풍미의 콜드브루를 언제 어디서나 편하게 즐겨보세요 (전용 보틀 /500ml)",
+      "menuPrice": 19600.0,
+      "tempOption": null,
+      "menuNotification": "* 주문 즉시 메뉴 제조를 시작하므로 주문 완료 후에는 변경 또는 취소할 수 없습니다.\n* 해당 제품은 콜드 브루 원액으로 물 또는 우유와 함께 즐겨주세요\n* 변심 또는 제조 공정상 발생 가능한 잔기스 등은 반품/교환 대상에 해당되지 않습니다. (해당 모듈은 밀폐용기가 아닙니다)\n* 보틀 불량의 경우, 구매일로부터 3일 이내의 매장 파트너 확인 후 교환 처리 가능합니다.",
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "500ml(17 fl oz)",
+          "kcal": 25.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 50.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 6.0,
+          "caffeineMG": 680.0
+        }
+      ],
+      "allergy": [],
+      "badge": null
     },
     {
+      "key": "5",
+      "fileName": "drink7",
       "title": "아이스 커피",
-      "name": "drink7"
+      "subTitle": null,
+      "engTitle": "Iced Coffee",
+      "menuDescription": "깔끔하고 상큼함이 특징인 시원한 아이스 커피",
+      "menuPrice": 4500.0,
+      "tempOption": 1,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 140.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 9.0,
+          "caffeineMG": 190.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 220.0
+        }
+      ],
+      "allergy": [],
+      "badge": null
     },
     {
+      "key": "6",
+      "fileName": "drink8",
       "title": "오늘의 커피",
-      "name": "drink8"
+      "subTitle": null,
+      "engTitle": "Brewed Coffee",
+      "menuDescription": "신선하게 브루드(Brewed)되어 원두의 다양함이 살아있는 커피",
+      "menuPrice": 4200.0,
+      "tempOption": 0,
+      "menuNotification": "준비 상황에 따라 약 5분 정도의 추출 시간이 소요될 수 있습니다.",
+      "nutritionInfo": [
+        {
+          "category": 0,
+          "volume": "237ml(8 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 180.0
+        },
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 0.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 260.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 1.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 9.0,
+          "caffeineMG": 330.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 5.0,
+          "carbonG": 0.0,
+          "sugarG": 0.0,
+          "sodiumMG": 10.0,
+          "proteinG": 1.0,
+          "fatG": 0.0,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 415.0
+        }
+      ],
+      "allergy": [],
+      "badge": 0
     },
     {
+      "key": "7",
+      "fileName": "drink9"
       "title": "아이스 카라멜 마키아또",
-      "name": "drink9"
+      "subTitle": null,
+      "engTitle": "Iced Caramel Macchiato",
+      "menuDescription": "향긋한 바닐라 시럽과 시원한 우유와 얼음을 넣고 점을 찍듯이 에스프레소를 부은 후 벌집 모양으로 카라멜 드리즐을 올린 달콤한 커피 음료",
+      "menuPrice": 5900.0,
+      "tempOption": 1,
+      "menuNotification": "퍼스널 옵션을 선택하여 블론드로 즐겨보세요.\n디카페인은 디카페인 커피Tab에서 선택 가능합니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 190.0,
+          "carbonG": 23.0,
+          "sugarG": 22.0,
+          "sodiumMG": 110.0,
+          "proteinG": 6.0,
+          "fatG": 8.0,
+          "cholesterolMG": 20.0,
+          "transFatG": 0.0,
+          "satFatG": 4.6,
+          "caffeineMG": 75.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 260.0,
+          "carbonG": 30.0,
+          "sugarG": 27.0,
+          "sodiumMG": 140.0,
+          "proteinG": 8.0,
+          "fatG": 10.0,
+          "cholesterolMG": 25.0,
+          "transFatG": 0.0,
+          "satFatG": 6.0,
+          "caffeineMG": 150.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 360.0,
+          "carbonG": 48.0,
+          "sugarG": 44.0,
+          "sodiumMG": 170.0,
+          "proteinG": 13.0,
+          "fatG": 13.0,
+          "cholesterolMG": 40.0,
+          "transFatG": 0.0,
+          "satFatG": 8.0,
+          "caffeineMG": 150.0
+        }
+      ],
+      "allergy": [1,0],
+      "badge": 1
     },
     {
+      "key": "8",
+      "fileName": "drink10",
       "title": "카라멜 마키아또",
-      "name": "drink10"
+      "subTitle": null,
+      "engTitle": "Caramel Macchiato",
+      "menuDescription": "향긋한 바닐라 시럽과 따뜻한 스팀 밀크 위에 풍성한 우유 거품을 얹고 점을 찍듯이 에스프레소를 부은 후 벌집 모양으로 카라멜 드리즐을 올린 달콤한 커피 음료",
+      "menuPrice": 5900.0,
+      "tempOption": 1,
+      "menuNotification": "퍼스널 옵션을 선택하여 블론드로 즐겨보세요.\n디카페인은 디카페인 커피Tab에서 선택 가능합니다.",
+      "nutritionInfo": [
+        {
+          "category": 0,
+          "volume": "237ml(8 fl oz)",
+          "kcal": 140.0,
+          "carbonG": 16.0,
+          "sugarG": 14.0,
+          "sodiumMG": 70.0,
+          "proteinG": 5.0,
+          "fatG": 6.0,
+          "cholesterolMG": 20.0,
+          "transFatG": 0.0,
+          "satFatG": 3.5,
+          "caffeineMG": 75.0
+        },
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 200.0,
+          "carbonG": 24.0,
+          "sugarG": 22.0,
+          "sodiumMG": 130.0,
+          "proteinG": 8.0,
+          "fatG": 9.0,
+          "cholesterolMG": 25.0,
+          "transFatG": 0.0,
+          "satFatG": 5.0,
+          "caffeineMG": 75.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 270.0,
+          "carbonG": 32.0,
+          "sugarG": 30.0,
+          "sodiumMG": 170.0,
+          "proteinG": 10.0,
+          "fatG": 11.0,
+          "cholesterolMG": 30.0,
+          "transFatG": 0.0,
+          "satFatG": 7.0,
+          "caffeineMG": 150.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 340.0,
+          "carbonG": 40.0,
+          "sugarG": 38.0,
+          "sodiumMG": 210.0,
+          "proteinG": 13.0,
+          "fatG": 14.0,
+          "cholesterolMG": 40.0,
+          "transFatG": 0.0,
+          "satFatG": 9.0,
+          "caffeineMG": 150.0
+        }
+      ],
+      "allergy": [1,0],
+      "badge": null
     },
     {
+      "key": "9",
+      "fileName": "drink11",
       "title": "아이스 카푸치노",
-      "name": "drink11"
+      "subTitle": null,
+      "engTitle": "Iced Cappuccino",
+      "menuDescription": "Flavor Note 진한 리저브 에스프레소 샷과 풍성하고 벨벳같은 우유 폼 가득한 카푸치노",
+      "menuPrice": 6500.0,
+      "tempOption": 1,
+      "menuNotification": "리저브R 매장에서만 주문 가능한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 110.0,
+          "carbonG": 10.0,
+          "sugarG": 8.0,
+          "sodiumMG": 80.0,
+          "proteinG": 6.0,
+          "fatG": 5.0,
+          "cholesterolMG": 15.0,
+          "transFatG": 0.0,
+          "satFatG": 3.2,
+          "caffeineMG": 210.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 160.0,
+          "carbonG": 14.0,
+          "sugarG": 12.0,
+          "sodiumMG": 120.0,
+          "proteinG": 8.0,
+          "fatG": 8.0,
+          "cholesterolMG": 25.0,
+          "transFatG": 0.0,
+          "satFatG": 4.7,
+          "caffeineMG": 210.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 3
     },
     {
+      "key": "10",
+      "fileName": "drink12",
       "title": "카푸치노",
-      "name": "drink12"
+      "subTitle": null,
+      "engTitle": "Cappuccino",
+      "menuDescription": "Flavor Note 진한 리저브 에스프레소 샷과 풍성하고 벨벳같은 우유 폼 가득한 카푸치노",
+      "menuPrice": 6500.0,
+      "tempOption": 1,
+      "menuNotification": "리저브R 매장에서만 주문 가능한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 155.0,
+          "carbonG": 14.0,
+          "sugarG": 12.0,
+          "sodiumMG": 120.0,
+          "proteinG": 8.0,
+          "fatG": 8.0,
+          "cholesterolMG": 25.0,
+          "transFatG": 0.0,
+          "satFatG": 4.7,
+          "caffeineMG": 210.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 195.0,
+          "carbonG": 17.0,
+          "sugarG": 15.0,
+          "sodiumMG": 150.0,
+          "proteinG": 10.0,
+          "fatG": 10.0,
+          "cholesterolMG": 30.0,
+          "transFatG": 0.0,
+          "satFatG": 6.0,
+          "caffeineMG": 210.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 3
     },
     {
-      "title": "럼 샷 코르타도",
-      "name": "drink13"
-    },
-    {
+      "key": "11",
+      "fileName": "drink14",
       "title": "바닐라 빈 라떼",
-      "name": "drink14"
+      "subTitle": null,
+      "engTitle": "Vanilla Bean Latte",
+      "menuDescription": "Flavor Note 리저브만을 위한 프리미엄 바닐라 빈 시럽이 부드럽게 어우러진 카페 라떼",
+      "menuPrice": 7000.0,
+      "tempOption": 0,
+      "menuNotification": "리저브R 매장에서만 주문 가능한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 245.0,
+          "carbonG": 29.0,
+          "sugarG": 27.0,
+          "sodiumMG": 150.0,
+          "proteinG": 9.0,
+          "fatG": 9.0,
+          "cholesterolMG": 30.0,
+          "transFatG": 0.0,
+          "satFatG": 6.0,
+          "caffeineMG": 210.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 330.0,
+          "carbonG": 40.0,
+          "sugarG": 38.0,
+          "sodiumMG": 190.0,
+          "proteinG": 12.0,
+          "fatG": 13.0,
+          "cholesterolMG": 40.0,
+          "transFatG": 0.0,
+          "satFatG": 8.0,
+          "caffeineMG": 210.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 3
     },
     {
-      "title": "사케라또 비안코 오버 아이스. 이거 진짜 내 주변에 먹어본 사람 한명도 없는데 이런게 있었네.",
-      "name": "drink15"
+      "key": "12",
+      "fileName": "drink15",
+      "title": "사케라또 비안코 오버 아이스",
+      "subTitle": null,
+      "engTitle": "Shakerato Bianco Over Ice",
+      "menuDescription": "Flavor Note 얼음과 같이 쉐이킹하여 차가워진 진한 리저브 에스프레서와 하우스 메이드 크림이 어우러진 달콤한 음료",
+      "menuPrice": 7500.0,
+      "tempOption": 0,
+      "menuNotification": "리저브R 매장에서만 주문 가능한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 270.0,
+          "carbonG": 17.0,
+          "sugarG": 14.0,
+          "sodiumMG": 45.0,
+          "proteinG": 3.0,
+          "fatG": 21.0,
+          "cholesterolMG": 10.0,
+          "transFatG": 0.0,
+          "satFatG": 18.0,
+          "caffeineMG": 315.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 290.0,
+          "carbonG": 19.0,
+          "sugarG": 15.0,
+          "sodiumMG": 50.0,
+          "proteinG": 4.0,
+          "fatG": 22.0,
+          "cholesterolMG": 10.0,
+          "transFatG": 0.0,
+          "satFatG": 19.0,
+          "caffeineMG": 420.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 3
     },
     {
+      "key": "13",
+      "fileName": "drink16",
       "title": "스타벅스 돌체 라떼",
-      "name": "drink16"
+      "subTitle": null,
+      "engTitle": "Starbucks Dolce Latte",
+      "menuDescription": "스타벅스의 다른 커피 음료보다 더욱 깊은 커피의 맛과 향에 깔끔한 무지방 우유와 부드러운 돌체 시럽이 들어간 음료로 달콤하고 진한 커피 라떼",
+      "menuPrice": 5900.0,
+      "tempOption": 0,
+      "menuNotification": "블론드/디카페인 커피 Tab에서\n블론드, 디카페인, 1/2디카페인 스타벅스 돌체 라떼를 주문할 수 있습니다.",
+      "nutritionInfo": [
+        {
+          "category": 0,
+          "volume": "237ml(8 fl oz)",
+          "kcal": 175.0,
+          "carbonG": 28.0,
+          "sugarG": 26.0,
+          "sodiumMG": 130.0,
+          "proteinG": 8.0,
+          "fatG": 3.0,
+          "cholesterolMG": 10.0,
+          "transFatG": 0.2,
+          "satFatG": 2.0,
+          "caffeineMG": 75.0
+        },
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 255.0,
+          "carbonG": 42.0,
+          "sugarG": 39.0,
+          "sodiumMG": 190.0,
+          "proteinG": 12.0,
+          "fatG": 4.2,
+          "cholesterolMG": 15.0,
+          "transFatG": 0.3,
+          "satFatG": 2.6,
+          "caffeineMG": 150.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 335.0,
+          "carbonG": 55.0,
+          "sugarG": 51.0,
+          "sodiumMG": 240.0,
+          "proteinG": 16.0,
+          "fatG": 6.0,
+          "cholesterolMG": 17.0,
+          "transFatG": 0.4,
+          "satFatG": 3.5,
+          "caffeineMG": 225.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 420.0,
+          "carbonG": 70.0,
+          "sugarG": 64.0,
+          "sodiumMG": 305.0,
+          "proteinG": 20.0,
+          "fatG": 7.0,
+          "cholesterolMG": 20.0,
+          "transFatG": 0.4,
+          "satFatG": 4.5,
+          "caffeineMG": 300.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 0
     },
     {
+      "key": "14",
+      "fileName": "drink17"
       "title": "아이스 카페 모카",
-      "name": "drink17"
+      "subTitle": null,
+      "engTitle": "Iced Caffe Mocha",
+      "menuDescription": "진한 초콜릿 모카 시럽과 풍부한 에스프레소를 신선한 우유 그리고 얼음과 섞어 휘핑크림으로 마무리한 음료로 진한 에스프레소와 초콜릿 맛이 어우러진 커피",
+      "menuPrice": 5500.0,
+      "tempOption": 1,
+      "menuNotification": "퍼스널 옵션을 선택하여\n디카페인이나 블론드로 즐겨보세요.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 250.0,
+          "carbonG": 28.0,
+          "sugarG": 21.0,
+          "sodiumMG": 70.0,
+          "proteinG": 7.0,
+          "fatG": 14.0,
+          "cholesterolMG": 45.0,
+          "transFatG": 0.0,
+          "satFatG": 8.0,
+          "caffeineMG": 95.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 330.0,
+          "carbonG": 38.0,
+          "sugarG": 28.0,
+          "sodiumMG": 85.0,
+          "proteinG": 9.0,
+          "fatG": 19.0,
+          "cholesterolMG": 60.0,
+          "transFatG": 0.5,
+          "satFatG": 10.0,
+          "caffeineMG": 175.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 430.0,
+          "carbonG": 55.0,
+          "sugarG": 39.0,
+          "sodiumMG": 115.0,
+          "proteinG": 13.0,
+          "fatG": 22.0,
+          "cholesterolMG": 65.0,
+          "transFatG": 0.5,
+          "satFatG": 12.0,
+          "caffeineMG": 180.0
+        }
+      ],
+      "allergy": [0],
+      "badge": null
     },
     {
+      "key": "15",
+      "fileName": "drink18",
       "title": "카페 라떼",
-      "name": "drink18"
+      "subTitle": null,
+      "engTitle": "Caffe Latte",
+      "menuDescription": "Flavor Note 진한 리저브 에스프레소 샷과 부드러운 우유로 만든 카페 라떼",
+      "menuPrice": 6500.0,
+      "tempOption": 0,
+      "menuNotification": "리저브R 매장에서만 주문 가능한 음료입니다.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 200.0,
+          "carbonG": 17.0,
+          "sugarG": 15.0,
+          "sodiumMG": 150.0,
+          "proteinG": 10.0,
+          "fatG": 10.0,
+          "cholesterolMG": 30.0,
+          "transFatG": 0.0,
+          "satFatG": 6.0,
+          "caffeineMG": 210.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 265.0,
+          "carbonG": 22.0,
+          "sugarG": 20.0,
+          "sodiumMG": 210.0,
+          "proteinG": 13.0,
+          "fatG": 13.0,
+          "cholesterolMG": 40.0,
+          "transFatG": 0.0,
+          "satFatG": 8.0,
+          "caffeineMG": 210.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 3
     },
     {
+      "key": "16",
+      "fileName": "drink19",
       "title": "바닐라 플랫 화이트",
-      "name": "drink19"
+      "subTitle": null,
+      "engTitle": "Vanilla Flat White",
+      "menuDescription": "바닐라 플랫 화이트는 진하고 고소한 리스트레토 샷과 바닐라 시럽 그리고 스팀 밀크로 즐기는 진한 커피 라떼 입니다.",
+      "menuPrice": 5900.0,
+      "tempOption": 0,
+      "menuNotification": "퍼스널 옵션을 선택하여 디카페인이나\n블론드로 즐겨보세요.\n최상의 맛을 위해 따뜻한 음료로 숏과 톨 사이즈로만 제공됩니다.",
+      "nutritionInfo": [
+        {
+          "category": 0,
+          "volume": "237ml(8 fl oz)",
+          "kcal": 145.0,
+          "carbonG": 18.0,
+          "sugarG": 15.0,
+          "sodiumMG": 85.0,
+          "proteinG": 6.0,
+          "fatG": 5.0,
+          "cholesterolMG": 15.0,
+          "transFatG": 0.0,
+          "satFatG": 3.2,
+          "caffeineMG": 195.0
+        },
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 220.0,
+          "carbonG": 27.0,
+          "sugarG": 23.0,
+          "sodiumMG": 130.0,
+          "proteinG": 9.0,
+          "fatG": 8.0,
+          "cholesterolMG": 25.0,
+          "transFatG": 0.0,
+          "satFatG": 5.0,
+          "caffeineMG": 260.0
+        }
+      ],
+      "allergy": [0],
+      "badge": null
     },
     {
-      "title": "더블 에스프레소 침 프라푸치노. 이거 엄청 맛있어!!!!",
-      "name": "drink20"
+      "key": "17",
+      "fileName": "drink20",
+      "title": "더블 에스프레소 침 프라푸치노",
+      "subTitle": null,
+      "engTitle": "Double Espresso Chip Frappuccino",
+      "menuDescription": "리스트레토 에스프레소 2샷과 에스프레소 칩, 하프앤하프가 진하게 어우러진 커피의 기본에 충실한 프라푸치노",
+      "menuPrice": 6300.0,
+      "tempOption": 1,
+      "menuNotification": "퍼스널 옵션을 선택하여 디카페인이나 블론드로 즐겨보세요.",
+      "nutritionInfo": [
+        {
+          "category": 1,
+          "volume": "355ml(12 fl oz)",
+          "kcal": 265.0,
+          "carbonG": 33.0,
+          "sugarG": 31.0,
+          "sodiumMG": 140.0,
+          "proteinG": 4.0,
+          "fatG": 13.0,
+          "cholesterolMG": 10.0,
+          "transFatG": 0.0,
+          "satFatG": 11.0,
+          "caffeineMG": 130.0
+        },
+        {
+          "category": 2,
+          "volume": "473ml(16 fl oz)",
+          "kcal": 375.0,
+          "carbonG": 49.0,
+          "sugarG": 46.0,
+          "sodiumMG": 200.0,
+          "proteinG": 5.0,
+          "fatG": 18.0,
+          "cholesterolMG": 15.0,
+          "transFatG": 0.0,
+          "satFatG": 15.0,
+          "caffeineMG": 130.0
+        },
+        {
+          "category": 3,
+          "volume": "591ml(20 fl oz)",
+          "kcal": 460.0,
+          "carbonG": 65.0,
+          "sugarG": 60.0,
+          "sodiumMG": 250.0,
+          "proteinG": 6.0,
+          "fatG": 20.0,
+          "cholesterolMG": 15.0,
+          "transFatG": 0.0,
+          "satFatG": 16.0,
+          "caffeineMG": 260.0
+        }
+      ],
+      "allergy": [0],
+      "badge": 0
     }
   ]
 }

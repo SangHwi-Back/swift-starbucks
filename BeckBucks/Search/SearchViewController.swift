@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let selectedQueryPublisher = PublishSubject<String>()
-    let useCase = SearchViewModel<String>(["모카", "민트", "평촌", "돌체"])
+    let VM = SearchViewModel<String>(["모카", "민트", "평촌", "돌체"])
     
     private var selectedItemIndexPath: IndexPath?
     private var cellDisposeBag = DisposeBag()
@@ -44,13 +44,13 @@ class SearchViewController: UIViewController {
                 self?.performSegue(withIdentifier: String(describing: SearchResultViewController.self),
                                    sender: true)
             })
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
         
         dismissButton.rx.tap
             .bind(onNext: { [weak self] in
                 self?.dismiss(animated: true)
             })
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,19 +58,19 @@ class SearchViewController: UIViewController {
             let dest = segue.destination as? SearchResultViewController,
             let selectedItemIndexPath {
             
-            dest.title = useCase.searchHistory[selectedItemIndexPath.row]
+            dest.title = VM.searchHistory[selectedItemIndexPath.row]
         }
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard useCase.searchHistory.isEmpty == false else { return 0 }
-        return useCase.searchHistory.count + 1
+        guard VM.searchHistory.isEmpty == false else { return 0 }
+        return VM.searchHistory.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == useCase.searchHistory.count {
+        if indexPath.row == VM.searchHistory.count {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: SearchViewListTableViewFooterCell.self),
                 for: indexPath) as? SearchViewListTableViewFooterCell
@@ -80,7 +80,7 @@ extension SearchViewController: UITableViewDataSource {
             
             cell.removeAllButton.rx.tap
                 .bind(onNext: { [weak self] in
-                    self?.useCase.removeAllHistories()
+                    self?.VM.removeAllHistories()
                     self?.tableView.reloadData()
                     self?.cellDisposeBag = DisposeBag()
                 })
@@ -95,10 +95,10 @@ extension SearchViewController: UITableViewDataSource {
             return .init()
         }
         
-        cell.queryLabel.text = useCase.searchHistory[indexPath.row]
+        cell.queryLabel.text = VM.searchHistory[indexPath.row]
         cell.cancelButton.rx.tap
             .bind(onNext: { [weak self] in
-                self?.useCase.removeHistory(at: indexPath.row)
+                self?.VM.removeHistory(at: indexPath.row)
                 self?.tableView.reloadData()
                 self?.cellDisposeBag = DisposeBag()
             })

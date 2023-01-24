@@ -18,7 +18,7 @@ class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let useCase = SearchResultViewModel()
+    private let VM = SearchResultViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +27,10 @@ class SearchResultViewController: UIViewController {
         navigationController?.navigationBar
             .putShadows(offset: CGSize(width: view.frame.width, height: view.frame.height + 3))
         
-        useCase.itemsRelay
+        VM.itemsRelay
             .bind(to: tableView.rx.items(cellIdentifier: String(describing: SearchResultTableViewCell.self),
                                          cellType: SearchResultTableViewCell.self)) { [weak self] row, element, cell in
-                if let useCase = self?.useCase {
+                if let useCase = self?.VM {
                     useCase.requestImage(at: row)
                         .map({ data -> UIImage? in
                             guard let data else {
@@ -44,11 +44,11 @@ class SearchResultViewController: UIViewController {
                 }
                 
                 cell.resultTitleLabel.text = element.title
-                cell.resultEngTitleLabel.text = element.name
+                cell.resultEngTitleLabel.text = element.fileName
                 cell.priceTagLabel.text = "9000"
             }
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
         
-        useCase.getTestData()
+        VM.getTestData()
     }
 }

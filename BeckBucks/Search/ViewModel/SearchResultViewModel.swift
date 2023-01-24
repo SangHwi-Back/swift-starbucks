@@ -42,7 +42,7 @@ class SearchResultViewModel {
             return Observable.just(data)
         }
         
-        guard let url = Bundle.main.url(forResource: items[index].name, withExtension: "jpg") else {
+        guard let url = Bundle.main.url(forResource: items[index].fileName, withExtension: "jpg") else {
             return .empty()
         }
         

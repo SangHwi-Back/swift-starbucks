@@ -1,84 +1,323 @@
 {
   "foods": [
     {
-      "title": "블루베리 베이글",
-      "name": "food1"
+      "key": "0",
+      "fileName": "food1",
+      "title": "리얼 블루베리 베이글",
+      "subTitle": null,
+      "engTitle": "Blueberry Bagel",
+      "menuDescription": "블루베리의 상큼한 풍미가 매력적인 베이글로 국내산 감자, 보리가루를 넣어 더욱 촉촉하고 건강하게 만들었습니다.",
+      "menuPrice": 3000.0,
+      "tempOption": null,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "100(g)",
+          "kcal": 261.0,
+          "carbonG": 52.0,
+          "sugarG": 7.0,
+          "sodiumMG": 574.0,
+          "proteinG": 10.0,
+          "fatG": 1.5,
+          "cholesterolMG": 0.0,
+          "transFatG": 0.0,
+          "satFatG": 0.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [2],
+      "badge": 0
     },
     {
-      "title": "치즈 베이글",
-      "name": "food2"
+      "key": "1",
+      "fileName": "food2"
+      "title": "리얼 치즈 베이글",
+      "subTitle": null,
+      "engTitle": "Cheese Bagel",
+      "menuDescription": "모짜렐라 치즈, 체다 치즈, 양파의 고소하고 짭조름한 풍미가 매력적인 베이글로 국내산 감자, 보리가루를 넣어 더욱 촉촉하고 건강하게 만들었습니다.",
+      "menuPrice": 3000.0,
+      "tempOption": null,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "110(g)",
+          "kcal": 300.0,
+          "carbonG": 50.0,
+          "sugarG": 6.0,
+          "sodiumMG": 525.0,
+          "proteinG": 14.0,
+          "fatG": 5.0,
+          "cholesterolMG": 11.0,
+          "transFatG": 0.1,
+          "satFatG": 2.8,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [0,2],
+      "badge": 0
     },
     {
-      "title": "플레인 스콘",
-      "name": "food3"
+      "key": "2",
+      "fileName": "food3",
+      "title": "클래식 스콘",
+      "subTitle": null,
+      "engTitle": "Classic Scone",
+      "menuDescription": "프랑스산 고급 버터로 만든 담백한 스콘입니다.",
+      "menuPrice": 3300.0,
+      "tempOption": null,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "105(g)",
+          "kcal": 468.0,
+          "carbonG": 41.0,
+          "sugarG": 17.0,
+          "sodiumMG": 435.0,
+          "proteinG": 4.0,
+          "fatG": 32.0,
+          "cholesterolMG": 105.0,
+          "transFatG": 0.5,
+          "satFatG": 19.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [0,3,2],
+      "badge": 0
     },
     {
-      "title": "레드벨벳 케이크",
-      "name": "food4"
+      "key": "3",
+      "fileName": "food4",
+      "title": "레드벨벳 크림치즈 케이크",
+      "subTitle": null,
+      "engTitle": "Red Velvet Cream Cheese Cake",
+      "menuDescription": "레드벨벳 시트 사이에 크림치즈 무스를 샌드한 케이크입니다.",
+      "menuPrice": 5500.0,
+      "tempOption": null,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "125(g)",
+          "kcal": 510.0,
+          "carbonG": 37.0,
+          "sugarG": 36.0,
+          "sodiumMG": 425.0,
+          "proteinG": 4.0,
+          "fatG": 38.0,
+          "cholesterolMG": 135.0,
+          "transFatG": 0.6,
+          "satFatG": 15.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [1,0,3,2],
+      "badge": null
     },
     {
-      "title": "티라미수 케이크",
-      "name": "food5"
+      "key": "4",
+      "fileName": "food5",
+      "title": "마스카포네 티라미수 케이크",
+      "subTitle": null,
+      "engTitle": "Mascarpone Tiramisu Cake",
+      "menuDescription": "고소한 마스카포네 치즈 크림에 촉촉한 커피 시트가 입안을 감싸는 기분 좋은 느낌의 떠먹는 티라미수입니다.",
+      "menuPrice": 5900.0,
+      "tempOption": null,
+      "menuNotification": "커피 리큐르에 카페인과 알코올이 소량 포함되어 있습니다.",
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "170(g)",
+          "kcal": 476.0,
+          "carbonG": 39.0,
+          "sugarG": 28.0,
+          "sodiumMG": 100.0,
+          "proteinG": 8.0,
+          "fatG": 32.0,
+          "cholesterolMG": 200.0,
+          "transFatG": 0.7,
+          "satFatG": 19.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [1,0,3,2,4],
+      "badge": 0
     },
     {
-      "title": "모르겠는데 뭔가 가성비 떨어질것만 같은 음식인데 한번은 먹어보고 싶다.",
-      "name": "food6"
+      "key": "5",
+      "fileName": "food6"
+      "title": "번트 치즈 케이크",
+      "subTitle": null,
+      "engTitle": "Burnt Cheese Cake",
+      "menuDescription": "크림치즈가 듬뿍 들어간 케이크를 높은 온도로 짧은 시간 구워 낸 진한 맛의 치즈 케이크입니다.",
+      "menuPrice": 6900.0,
+      "tempOption": null,
+      "menuNotification": "친환경 소재의 1입 케이스에 담겨 제공되는 상품입니다.",
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "200(g)",
+          "kcal": 825.0,
+          "carbonG": 60.0,
+          "sugarG": 59.0,
+          "sodiumMG": 640.0,
+          "proteinG": 11.0,
+          "fatG": 60.0,
+          "cholesterolMG": 330.0,
+          "transFatG": 0.6,
+          "satFatG": 30.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [0,3,2,5],
+      "badge": 0
     },
     {
-      "title": "스타벅스를 그렇게나 많이 갔는데 이런건 본 적이 없음.",
-      "name": "food7"
+      "key": "6",
+      "fileName": "food8",
+      "title": "블루베리 쿠키 치즈 케이크",
+      "subTitle": null,
+      "engTitle": "Blueberry Cookie Cheese Cake",
+      "menuDescription": "고소한 쿠키와 크림치즈를 듬뿍 넣어 만든 케이크위에 달콤, 상큼한 블루베리가 올라간 진한 치즈 풍미의 케이크입니다.",
+      "menuPrice": 6900.0,
+      "tempOption": null,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "260(g)",
+          "kcal": 985.0,
+          "carbonG": 114.0,
+          "sugarG": 68.0,
+          "sodiumMG": 220.0,
+          "proteinG": 13.0,
+          "fatG": 53.0,
+          "cholesterolMG": 280.0,
+          "transFatG": 1.2,
+          "satFatG": 32.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [1,0,3,2],
+      "badge": null
     },
     {
-      "title": "블루베리 케이크",
-      "name": "food8"
+      "key": "7",
+      "fileName": "food10",
+      "title": "클라우드 치즈 케이크",
+      "subTitle": null,
+      "engTitle": "Cloud Cheese Cake",
+      "menuDescription": "사워크림의 상큼함과 진한 치즈의 맛을 동시에 맛볼 수 있는 케이크입니다.",
+      "menuPrice": 5500.0,
+      "tempOption": null,
+      "menuNotification": "※ 케이크 위에 올라간 사워 크림의 특성 상 일반 치즈케이크보다 새콤한 맛이 있을 수 있습니다.",
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "120(g)",
+          "kcal": 532.0,
+          "carbonG": 36.0,
+          "sugarG": 24.0,
+          "sodiumMG": 374.0,
+          "proteinG": 8.0,
+          "fatG": 40.0,
+          "cholesterolMG": 116.0,
+          "transFatG": 1.0,
+          "satFatG": 24.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [0,3,2,5],
+      "badge": null
     },
     {
-      "title": "샤인머스켓 케이크",
-      "name": "food9"
+      "key": "8",
+      "fileName": "food12",
+      "title": "B.E.L.T. 샌드위치",
+      "subTitle": null,
+      "engTitle": "B.E.L.T. Sandwich",
+      "menuDescription": "주 재료인 베이컨(Bacon), 계란(Egg), 로메인 상추(Lettuce-Romane), 토마토(Tomato)의 각각의 머리 글자를 따온 이름의 샌드위치 입니다.",
+      "menuPrice": 5900.0,
+      "tempOption": null,
+      "menuNotification": "차갑게 드시면 더욱 맛있습니다. 워밍 시 품질의 저하가 발생할 수 있습니다.",
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "235(g)",
+          "kcal": 448.0,
+          "carbonG": 47.0,
+          "sugarG": 5.0,
+          "sodiumMG": 976.0,
+          "proteinG": 20.0,
+          "fatG": 20.0,
+          "cholesterolMG": 41.0,
+          "transFatG": 0.2,
+          "satFatG": 7.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [1,0,3,2,6,7,4,8,5],
+      "badge": null
     },
     {
-      "title": "치즈 케이크",
-      "name": "food10"
-    },
-    {
-      "title": "크레이프 에멘탈 치즈 케이크",
-      "name": "food11"
-    },
-    {
-      "title": "B.E.L.T 샌드위치",
-      "name": "food12"
-    },
-    {
+      "key": "9",
+      "fileName": "food13",
       "title": "루벤 샌드위치",
-      "name": "food13"
+      "subTitle": null,
+      "engTitle": "Reuben Sandwich",
+      "menuDescription": "곡물 사워도우 브레드 사이에 파스트라미와 적양배추로 만든 사우어 크라우트가 들어간 샌드위치입니다.",
+      "menuPrice": 6500.0,
+      "tempOption": null,
+      "menuNotification": "워밍 후 바로 취식해 주시기 바랍니다. 워밍을 원하지 않을 경우, 주문 시 '데우지 않음'을 선택바랍니다.",
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "172(g)",
+          "kcal": 374.0,
+          "carbonG": 41.0,
+          "sugarG": 9.0,
+          "sodiumMG": 946.0,
+          "proteinG": 21.0,
+          "fatG": 14.0,
+          "cholesterolMG": 35.0,
+          "transFatG": 0.2,
+          "satFatG": 5.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [1,0,3,2,6,4,8],
+      "badge": null
     },
     {
-      "title": "계란 토스트 이런거 역전앞에서 1500원에 사먹음",
-      "name": "food14"
-    },
-    {
-      "title": "머핀 샌드위치",
-      "name": "food15"
-    },
-    {
-      "title": "플레인 스콘",
-      "name": "food16"
-    },
-    {
-      "title": "초코 쿠키",
-      "name": "food17"
-    },
-    {
-      "title": "갈색 베이글",
-      "name": "food18"
-    },
-    {
-      "title": "노란 베이글",
-      "name": "food19"
-    },
-    {
-      "title": "자주색 베이글",
-      "name": "food20"
+      "key": "10",
+      "fileName": "food17",
+      "title": "화이트 초콜릿 카우보이 쿠키",
+      "subTitle": null,
+      "engTitle": "White Chocolate Cowboy Cookie",
+      "menuDescription": "달콤한 화이트 초콜릿과 고소한 피칸이 들어있는 초콜릿 쿠키입니다.",
+      "menuPrice": 2800.0,
+      "tempOption": null,
+      "menuNotification": null,
+      "nutritionInfo": [
+        {
+          "category": null,
+          "volume": "85(g)",
+          "kcal": 427.0,
+          "carbonG": 49.0,
+          "sugarG": 31.0,
+          "sodiumMG": 537.0,
+          "proteinG": 6.0,
+          "fatG": 23.0,
+          "cholesterolMG": 49.0,
+          "transFatG": 0.2,
+          "satFatG": 11.0,
+          "caffeineMG": 0.0
+        }
+      ],
+      "allergy": [1,0,3,2],
+      "badge": null
     }
   ]
 }

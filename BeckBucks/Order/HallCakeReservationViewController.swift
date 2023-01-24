@@ -17,7 +17,7 @@ class HallCakeReservationViewController: UIViewController {
     @IBOutlet weak var menuSearchButton: UIBarButtonItem!
     
     private let searchVC = UIStoryboard.searchViewController
-    let useCase = HallCakeReservationUseCase()
+    let VM = HallCakeReservationViewModel()
     let formatter = NumberFormatter()
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class HallCakeReservationViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         collectionView.collectionViewLayout = layout
         
-        useCase.itemsBinder
+        VM.itemsBinder
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx
                 .items(cellIdentifier: String(describing: CELL.self),
@@ -47,13 +47,13 @@ class HallCakeReservationViewController: UIViewController {
             
             cell.setUI()
         }
-        .disposed(by: useCase.disposeBag)
+        .disposed(by: VM.disposeBag)
         
         searchVC?.selectedQueryPublisher?
             .bind(onNext: { [weak self] query in
                 self?.present(UIAlertController.commonAlert(query), animated: true)
             })
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
         
         menuSearchButton.rx.tap
             .bind(onNext: { [weak self] in
@@ -61,9 +61,9 @@ class HallCakeReservationViewController: UIViewController {
                     self?.present(searchVC, animated: true)
                 }
             })
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
         
-        useCase.resolveUI()
+        VM.resolveUI()
     }
     
     @objc func moveBackButtonTouchUpInside(_ sender: Any?) {

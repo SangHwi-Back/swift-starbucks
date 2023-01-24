@@ -26,7 +26,7 @@ class MyBagViewController: UIViewController {
         String(describing: MyBagCollectionViewEmptyCell.self)
     }
     
-    let useCase = MyBagUseCase(true)
+    let VM = MyBagViewModel(true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class MyBagViewController: UIViewController {
                         .size.width = self.showFoodButton.frame.width
                 }
             }
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
         
         showMerchandiseButton.rx.tap
             .bind {
@@ -65,7 +65,7 @@ class MyBagViewController: UIViewController {
                         .size.width = self.showMerchandiseButton.frame.width
                 }
             }
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +105,7 @@ extension MyBagViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let entities: [any MyBagData] = indexPath.item == 0 ? useCase.foodItems : useCase.merchItems
+        let entities: [any MyBagData] = indexPath.item == 0 ? VM.foodItems : VM.merchItems
         
         guard indexPath.item != 0 || entities.isEmpty == false else {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyCellID, for: indexPath) as? MyBagCollectionViewEmptyCell {
@@ -116,7 +116,7 @@ extension MyBagViewController: UICollectionViewDataSource {
                         let isLargeTitle = offset.y < 25
                         self?.navigationItem.largeTitleDisplayMode = isLargeTitle ? .always : .never
                     })
-                    .disposed(by: useCase.disposeBag)
+                    .disposed(by: VM.disposeBag)
                 
                 return cell
             }
@@ -136,7 +136,7 @@ extension MyBagViewController: UICollectionViewDataSource {
                 let isLargeTitle = offset.y < 25
                 self?.navigationItem.largeTitleDisplayMode = isLargeTitle ? .always : .never
             })
-            .disposed(by: useCase.disposeBag)
+            .disposed(by: VM.disposeBag)
         
         return cell
     }

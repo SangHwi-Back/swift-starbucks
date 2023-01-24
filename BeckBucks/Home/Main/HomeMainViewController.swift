@@ -21,7 +21,7 @@ class HomeMainViewController: UIViewController {
   @IBOutlet weak var currentRecommendView: UIView!
   lazy var currentRecommendScrollView = RecommendScrollView(frame: currentRecommendView.bounds)
   
-  let useCase = HomeMainViewModel()
+  let VM = HomeMainViewModel()
   private var disposeBag = DisposeBag()
   
   override func viewDidLoad() {
@@ -31,7 +31,7 @@ class HomeMainViewController: UIViewController {
     processingView.addSubview(processingScrollView)
     currentRecommendView.addSubview(currentRecommendScrollView)
     
-    useCase.getRecommendationsForUser()
+    VM.getRecommendationsForUser()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] titledImageData in
         guard let imageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled else {
@@ -42,7 +42,7 @@ class HomeMainViewController: UIViewController {
       })
       .disposed(by: disposeBag)
     
-    useCase.getThumbDataImage()
+    VM.getThumbDataImage()
       .observeOn(MainScheduler.instance)
       .subscribe { [weak self] event in
         if case let SingleEvent.success(data) = event, let image = UIImage(data: data) {
@@ -52,7 +52,7 @@ class HomeMainViewController: UIViewController {
       }
       .disposed(by: disposeBag)
     
-    useCase.getIngList()
+    VM.getIngList()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] titledImageData in
         guard let imageView = self?.recommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled else {
@@ -63,7 +63,7 @@ class HomeMainViewController: UIViewController {
       })
       .disposed(by: disposeBag)
     
-    useCase.getThisTimeRecommendList()
+    VM.getThisTimeRecommendList()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] titledImageData in
         guard let imageView = self?.currentRecommendScrollView.insertView(ViewImageTitled.self) as? ViewImageTitled else {

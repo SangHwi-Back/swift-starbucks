@@ -25,7 +25,7 @@ class MenuDetailViewController: UIViewController {
     @IBOutlet weak var orderButton: UIButton!
     
     let layout = UICollectionViewFlowLayout()
-    var useCase: MenuDetailViewModel?
+    var VM: MenuDetailViewModel?
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -42,16 +42,16 @@ class MenuDetailViewController: UIViewController {
         hotIcedOptionStackView.setCornerRadius()
         orderButton.setCornerRadius()
         
-        if let imageData = useCase?.entity.imageData {
+        if let imageData = VM?.entity.imageData {
             menuImageView.image = UIImage(data: imageData)
         }
         
-        menuTitleLabel.text = useCase?.entity.title
-        menuEngTitleLabel.text = useCase?.entity.title
-        menuDescriptionLabel.text = Array(repeating: (useCase?.entity.title ?? ""), count: 8).joined(separator: " ")
-        menuPriceTagLabel.text = useCase?.getPrice(from: 90000)
+        menuTitleLabel.text = VM?.entity.title
+        menuEngTitleLabel.text = VM?.entity.title
+        menuDescriptionLabel.text = Array(repeating: (VM?.entity.title ?? ""), count: 8).joined(separator: " ")
+        menuPriceTagLabel.text = VM?.getPrice(from: 90000)
         
-        switch useCase?.entity.tempOption {
+        switch VM?.entity.tempOption {
         case .hot:
             icedButton.isHidden = true
         default:
@@ -69,7 +69,7 @@ class MenuDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        useCase?.recommendationsRelay
+        VM?.recommendationsRelay
             .bind(to: collectionView.rx.items(
                 cellIdentifier: String(describing: MenuDetailRecommendationCollectionViewCell.self),
                 cellType: MenuDetailRecommendationCollectionViewCell.self)
@@ -77,7 +77,7 @@ class MenuDetailViewController: UIViewController {
                 
                 if let data = element.imageData {
                     cell.menuImageView.image = UIImage(data: data)
-                } else if let useCase = self?.useCase, let disposeBag = self?.disposeBag {
+                } else if let useCase = self?.VM, let disposeBag = self?.disposeBag {
                     useCase.getRecommendationImage(at: row)
                         .map({ data -> UIImage? in
                             guard let data = data else { return nil }
@@ -87,10 +87,10 @@ class MenuDetailViewController: UIViewController {
                         .disposed(by: disposeBag)
                 }
                 
-                cell.menuNameLabel.text = element.name
+                cell.menuNameLabel.text = element.fileName
             }
             .disposed(by: disposeBag)
         
-        useCase?.getRecommendations()
+        VM?.getRecommendations()
     }
 }
