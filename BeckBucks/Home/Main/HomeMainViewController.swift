@@ -3,7 +3,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ContentsViewController: UIViewController {
+class HomeMainViewController: UIViewController {
   
   @IBOutlet weak var mainScrollView: UIScrollView!
   
