@@ -31,7 +31,7 @@
     },
     {
       "key": "1",
-      "fileName": "food2"
+      "fileName": "food2",
       "title": "리얼 치즈 베이글",
       "subTitle": null,
       "engTitle": "Cheese Bagel",
@@ -147,7 +147,7 @@
     },
     {
       "key": "5",
-      "fileName": "food6"
+      "fileName": "food6",
       "title": "번트 치즈 케이크",
       "subTitle": null,
       "engTitle": "Burnt Cheese Cake",
