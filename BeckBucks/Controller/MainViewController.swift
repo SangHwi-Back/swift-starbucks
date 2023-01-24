@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
   @IBOutlet weak var noLookTodayButton: UIButton!
   @IBOutlet weak var closeButton: UIButton!
   
-  let useCase = InitialEventUseCase()
+  let useCase = InitialEventViewModel()
   let disposeBag = DisposeBag()
   
   override func viewDidLoad() {

@@ -2,14 +2,14 @@ import RxSwift
 import RxCocoa
 import Foundation
 
-enum UseCaseError: Error {
+enum ViewModelError: Error {
   case testError
   case urlError(String)
   case decodeFailed(String)
   case requestError(Int)
 }
 
-class HomeMainUseCase {
+class HomeMainViewModel {
   
   init() {
     URLProtocol.registerClass(HTTPRequestMockProtocol.self)
@@ -58,13 +58,13 @@ class HomeMainUseCase {
   }
   
   func getRecommendationsForUser() -> Observable<TitledImageData> {
-    guard let recommendationURL else { return Observable.error(UseCaseError.urlError("recommendation.json")) }
+    guard let recommendationURL else { return Observable.error(ViewModelError.urlError("recommendation.json")) }
     
     let itemTitleObservable = URLSession.shared.rx.response(request: URLRequest(url: recommendationURL))
       .flatMap({ request -> Observable<String> in
         if let error = request.response.getRequestError { throw error }
         guard let result = try? JSONDecoder().decode(StarbucksArray.self, from: request.data) else {
-          throw UseCaseError.decodeFailed(request.response.url.getErrorMessage)
+          throw ViewModelError.decodeFailed(request.response.url.getErrorMessage)
         }
         
         return Observable<String>.from(result.foods.map({$0.title}))
@@ -73,7 +73,7 @@ class HomeMainUseCase {
     let imageDataObservable = Observable<Int>.from(1...4)
       .flatMap({ [weak self] num -> Observable<Data> in
         guard let url = self?.imageOfRecommendationItemURL(num) else {
-          throw UseCaseError.urlError("recommendation\(num).jpg")
+          throw ViewModelError.urlError("recommendation\(num).jpg")
         }
         
         return URLSession.shared.rx.data(request: URLRequest(url: url))
@@ -98,7 +98,7 @@ class HomeMainUseCase {
       .enumerated()
       .flatMap({ [weak self] (index, title) -> Observable<TitledImageData> in
         guard let url = self?.ingImageURL(index+1), let title = self?.ingListTitles[index] else {
-          throw UseCaseError.urlError("ingimg\(index+1).jpg")
+          throw ViewModelError.urlError("ingimg\(index+1).jpg")
         }
         
         return URLSession.shared.rx.response(request: URLRequest(url: url))
@@ -117,7 +117,7 @@ class HomeMainUseCase {
           return result
         }
         
-        throw UseCaseError.decodeFailed(request.response.url.getErrorMessage)
+        throw ViewModelError.decodeFailed(request.response.url.getErrorMessage)
       })
       .flatMap({
         return Observable<StarbucksItemDTO>.from($0.foods)
@@ -125,8 +125,8 @@ class HomeMainUseCase {
   }
   
   func getThisTimeRecommendList() -> Observable<TitledImageData> {
-    guard let foodsURL else { return Observable.error(UseCaseError.urlError("food.json")) }
-    guard let drinksURL else { return Observable.error(UseCaseError.urlError("drink.json")) }
+    guard let foodsURL else { return Observable.error(ViewModelError.urlError("food.json")) }
+    guard let drinksURL else { return Observable.error(ViewModelError.urlError("drink.json")) }
     
     let entities = Observable<(number: Int, food: StarbucksItemDTO, drink: StarbucksItemDTO)>
       .zip(getThisTimeRecommendList(foodsURL).enumerated(), getThisTimeRecommendList(drinksURL)) {
@@ -141,7 +141,7 @@ class HomeMainUseCase {
       let title = getRandomTitle
       
       guard let url = Bundle.main.url(forResource: title+"\(entityInfo.number)", withExtension: "jpg") else {
-        throw UseCaseError.urlError(title+"\(entityInfo.number).jpg")
+        throw ViewModelError.urlError(title+"\(entityInfo.number).jpg")
       }
       
       return URLSession.shared.rx.response(request: URLRequest(url: url))
@@ -167,7 +167,7 @@ private extension HTTPURLResponse {
       return nil
     }
     
-    return UseCaseError.requestError(self.statusCode)
+    return ViewModelError.requestError(self.statusCode)
   }
 }
 

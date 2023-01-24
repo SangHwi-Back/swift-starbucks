@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol OrderUseCase {
+protocol OrderViewModel {
     var disposeBag: DisposeBag { get }
     var itemBinder: PublishRelay<[StarbucksItemDTO]> { get }
     var items: [StarbucksItemDTO] { get }
@@ -18,10 +18,10 @@ protocol OrderUseCase {
     func getItem(at index: Int) -> StarbucksItemDTO?
 }
 
-extension OrderUseCase {
+extension OrderViewModel {
     func getFoodImageDataTitled(title: String, jsonURL: URL?) -> Observable<[StarbucksItemDTO]> {
         guard let jsonURL else {
-            return Observable.error(UseCaseError.urlError(jsonURL.getErrorMessage))
+            return Observable.error(ViewModelError.urlError(jsonURL.getErrorMessage))
         }
         
         return URLSession.shared.rx
@@ -32,7 +32,7 @@ extension OrderUseCase {
                 }
                 
                 guard let result = try? JSONDecoder().decode(StarbucksArray.self, from: result.data) else {
-                    throw UseCaseError.decodeFailed(
+                    throw ViewModelError.decodeFailed(
                         result.response.url.getErrorMessage
                     )
                 }
@@ -77,7 +77,7 @@ private extension Optional where Wrapped == URL {
 private extension HTTPURLResponse {
     var getRequestError: Error? {
         guard self.isSuccess else {
-            return UseCaseError.requestError(self.statusCode)
+            return ViewModelError.requestError(self.statusCode)
         }
         
         return nil

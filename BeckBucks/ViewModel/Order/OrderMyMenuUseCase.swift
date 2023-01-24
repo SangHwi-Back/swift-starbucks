@@ -1,19 +1,20 @@
 //
-//  OrderFoodMenuUseCase.swift
+//  OrderMyMenuUseCase.swift
 //  BeckBucks
 //
-//  Created by 백상휘 on 2023/01/09.
+//  Created by 백상휘 on 2023/01/20.
 //
 
 import Foundation
-import RxCocoa
 import RxSwift
+import RxCocoa
 
-class OrderFoodMenuUseCase: OrderUseCase {
-    let disposeBag = DisposeBag()
+class OrderMyMenuUseCase: OrderViewModel {
+    internal var disposeBag = DisposeBag()
+    
     let itemBinder = PublishRelay<[StarbucksItemDTO]>()
     
-    private(set) var items: [StarbucksItemDTO] = []
+    var items: [StarbucksItemDTO] = []
     
     init() {
         fetchItems()
@@ -31,27 +32,21 @@ class OrderFoodMenuUseCase: OrderUseCase {
     
     func getImageFrom(rowNumber: Int) -> Driver<Data?> {
         let observable = requestImage(at: rowNumber)
-        
+
         return observable
             .do(onNext: { [weak self] in self?.items[rowNumber].imageData = $0 })
             .asDriver(onErrorJustReturn: nil)
     }
     
-    func getItemTitle(rowNumber: Int) -> String? {
-        guard rowNumber < items.count else { return nil }
-        return items[rowNumber].title
-    }
-    
     func fetchItems() {
-        guard let url = Bundle.main.url(forResource: "food", withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: "drink", withExtension: "json") else {
             return
         }
         
-        getFoodImageDataTitled(title: "food", jsonURL: url)
+        getFoodImageDataTitled(title: "drink", jsonURL: url)
             .subscribe(onNext: { [weak self] entities in
                 self?.items = entities
             })
             .disposed(by: disposeBag)
     }
 }
-

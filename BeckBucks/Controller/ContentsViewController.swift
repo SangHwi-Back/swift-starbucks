@@ -21,7 +21,7 @@ class ContentsViewController: UIViewController {
   @IBOutlet weak var currentRecommendView: UIView!
   lazy var currentRecommendScrollView = RecommendScrollView(frame: currentRecommendView.bounds)
   
-  let useCase = HomeMainUseCase()
+  let useCase = HomeMainViewModel()
   private var disposeBag = DisposeBag()
   
   override func viewDidLoad() {

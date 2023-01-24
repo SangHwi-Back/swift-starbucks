@@ -54,7 +54,7 @@ class OrderViewController: UIViewController {
     var allList: [StarbucksItemDTO] = []
     var myList: [StarbucksItemDTO] = []
     
-    var useCase: any OrderUseCase {
+    var useCase: any OrderViewModel {
         guard orderViewCategoryRelay.value != .myMenu else {
             return myMenuUseCase
         }
@@ -237,7 +237,7 @@ class OrderViewController: UIViewController {
                 return
             }
             
-            dest.useCase = MenuDetailUseCase(entity: entity)
+            dest.useCase = MenuDetailViewModel(entity: entity)
         }
     }
 }
@@ -291,7 +291,7 @@ extension OrderViewController: UITableViewDataSource {
     }
 }
 
-private extension OrderUseCase {
+private extension OrderViewModel {
     func getImageInUsecase(at index: Int, imageView: UIImageView?) {
         self.getImageFrom(rowNumber: index)
             .drive(onNext: {

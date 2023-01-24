@@ -1,7 +1,7 @@
 import Foundation
 import RxSwift
 
-class InitialEventUseCase {
+class InitialEventViewModel {
   
   private let initialURLSession = InitialURLSession()
   

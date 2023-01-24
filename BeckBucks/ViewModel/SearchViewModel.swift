@@ -1,5 +1,5 @@
 //
-//  SearchViewUseCase.swift
+//  SearchViewModel.swift
 //  BeckBucks
 //
 //  Created by 백상휘 on 2023/01/22.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SearchViewUseCase<OutputType> {
+class SearchViewModel<OutputType> {
     
     private(set) var searchHistory: [String] = []
     var disposeBag = DisposeBag()

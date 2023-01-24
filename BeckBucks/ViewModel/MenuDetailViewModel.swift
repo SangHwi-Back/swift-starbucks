@@ -1,5 +1,5 @@
 //
-//  MenuDetailUseCase.swift
+//  MenuDetailViewModel.swift
 //  BeckBucks
 //
 //  Created by 백상휘 on 2023/01/23.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MenuDetailUseCase {
+class MenuDetailViewModel {
     let formatter = NumberFormatter()
     let entity: StarbucksItemDTO
     let recommendationsRelay = BehaviorRelay<[StarbucksItemDTO]>(value: [])

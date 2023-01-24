@@ -25,7 +25,7 @@ class MenuDetailViewController: UIViewController {
     @IBOutlet weak var orderButton: UIButton!
     
     let layout = UICollectionViewFlowLayout()
-    var useCase: MenuDetailUseCase?
+    var useCase: MenuDetailViewModel?
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {

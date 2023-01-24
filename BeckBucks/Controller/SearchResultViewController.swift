@@ -18,7 +18,7 @@ class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let useCase = SearchResultUseCase()
+    private let useCase = SearchResultViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

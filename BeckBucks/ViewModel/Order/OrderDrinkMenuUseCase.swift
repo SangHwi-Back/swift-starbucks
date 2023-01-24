@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class OrderDrinkMenuUseCase: OrderUseCase {
+class OrderDrinkMenuUseCase: OrderViewModel {
     let disposeBag = DisposeBag()
     let itemBinder = PublishRelay<[StarbucksItemDTO]>()
     

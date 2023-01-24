@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let selectedQueryPublisher = PublishSubject<String>()
-    let useCase = SearchViewUseCase<String>(["모카", "민트", "평촌", "돌체"])
+    let useCase = SearchViewModel<String>(["모카", "민트", "평촌", "돌체"])
     
     private var selectedItemIndexPath: IndexPath?
     private var cellDisposeBag = DisposeBag()
