@@ -54,7 +54,7 @@ class OrderViewController: UIViewController {
     var allList: [StarbucksItemDTO] = []
     var myList: [StarbucksItemDTO] = []
     
-    var useCase: any OrderViewModel {
+    var useCase: StarbucksViewModel<StarbucksItemDTO> {
         guard orderViewCategoryRelay.value != .myMenu else {
             return myMenuVM
         }
@@ -104,7 +104,7 @@ class OrderViewController: UIViewController {
                 
                 if category == .myMenu {
                     self?.myMenuVM.itemBinder
-                        .accept(self?.myMenuVM.items ?? [])
+                        .onNext(self?.myMenuVM.items ?? [])
                 }
                 
                 if let relay = self?.allMenuCategoryRelay {
@@ -119,7 +119,7 @@ class OrderViewController: UIViewController {
                     return
                 }
                 
-                useCase.itemBinder.accept(useCase.items)
+                useCase.itemBinder.onNext(useCase.items)
             }
             .disposed(by: disposeBag)
         
@@ -212,9 +212,9 @@ class OrderViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        allFoodMenuVM.fetchItems()
-        allDrinkmenuVM.fetchItems()
-        myMenuVM.fetchItems()
+        allFoodMenuVM.fetchJSON(name: "food")
+        allDrinkmenuVM.fetchJSON(name: "drink")
+        myMenuVM.fetchJSON(name: "food")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -283,7 +283,6 @@ extension OrderViewController: UITableViewDataSource {
                 for: indexPath) as? OrderViewListCell
             cell?.titleLabel.text = entity.title
             cell?.subTitleLabel.isHidden = true
-            
             useCase.getImageInUsecase(at: cellIndex, imageView: cell?.menuImageView)
             
             return cell ?? .init()
@@ -291,14 +290,12 @@ extension OrderViewController: UITableViewDataSource {
     }
 }
 
-private extension OrderViewModel {
+private extension ViewModel {
     func getImageInUsecase(at index: Int, imageView: UIImageView?) {
         self.getImageFrom(rowNumber: index)
-            .drive(onNext: {
-                guard let data = $0, let image = UIImage(data: data) else {
-                    return
-                }
-                imageView?.image = image
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {
+                imageView?.image = UIImage(data: $0)
             })
             .disposed(by: disposeBag)
     }

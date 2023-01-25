@@ -11,7 +11,12 @@ struct StarbucksArray: Decodable {
   let foods: [StarbucksItemDTO]
 }
 
-struct StarbucksItemDTO: Decodable, Identifiable {
+protocol StarbucksEntity {
+    var fileName: String { get }
+    var imageData: Data? { get set }
+}
+
+struct StarbucksItemDTO: Decodable, Identifiable, StarbucksEntity {
   
   enum CodingKeys: CodingKey {
     case key, fileName, title, subTitle, engTitle, menuDescription, menuPrice, tempOption, menuNotification, nutritionInfo, allergy, badge

@@ -2,13 +2,6 @@ import RxSwift
 import RxCocoa
 import Foundation
 
-enum ViewModelError: Error {
-  case testError
-  case urlError(String)
-  case decodeFailed(String)
-  case requestError(Int)
-}
-
 class HomeMainViewModel {
   
   init() {
@@ -158,21 +151,5 @@ class HomeMainViewModel {
   struct TitledImageData {
     let title: String
     let data: Data
-  }
-}
-
-private extension HTTPURLResponse {
-  var getRequestError: Error? {
-    guard self.isSuccess else {
-      return nil
-    }
-    
-    return ViewModelError.requestError(self.statusCode)
-  }
-}
-
-private extension Optional where Wrapped == URL {
-  var getErrorMessage: String {
-    ("Error occured at " + (self?.absoluteString ?? "unkown URL") + ".")
   }
 }
