@@ -176,6 +176,10 @@
 		1BD3C53029824DF2007B63FF /* OrderMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C52F29824DF1007B63FF /* OrderMainViewModel.swift */; };
 		1BD3C53229825513007B63FF /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C53129825513007B63FF /* ImageFetchable.swift */; };
 		1BD3C5342982552F007B63FF /* JSONFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C5332982552F007B63FF /* JSONFetchable.swift */; };
+		1BD3C53A29827464007B63FF /* mainHeaderImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3C53929827464007B63FF /* mainHeaderImage.jpeg */; };
+		1BD3C53C29827B80007B63FF /* mainEventImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3C53B29827B80007B63FF /* mainEventImage.jpeg */; };
+		1BD3C53F2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3C53E2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib */; };
+		1BD3C5412982B5F0007B63FF /* HomeMenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C5402982B5F0007B63FF /* HomeMenuItemCollectionViewCell.swift */; };
 		1BD427AF2833A9F90098DEEF /* homeIngEventList.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427AE2833A9F90098DEEF /* homeIngEventList.json */; };
 		1BD427B12833AA390098DEEF /* homeMainThumbImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427B02833AA390098DEEF /* homeMainThumbImage.jpg */; };
 		1BD427B32833AA990098DEEF /* homeMainData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427B22833AA990098DEEF /* homeMainData.json */; };
@@ -405,6 +409,10 @@
 		1BD3C52F29824DF1007B63FF /* OrderMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMainViewModel.swift; sourceTree = "<group>"; };
 		1BD3C53129825513007B63FF /* ImageFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchable.swift; sourceTree = "<group>"; };
 		1BD3C5332982552F007B63FF /* JSONFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetchable.swift; sourceTree = "<group>"; };
+		1BD3C53929827464007B63FF /* mainHeaderImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mainHeaderImage.jpeg; sourceTree = "<group>"; };
+		1BD3C53B29827B80007B63FF /* mainEventImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mainEventImage.jpeg; sourceTree = "<group>"; };
+		1BD3C53E2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		1BD3C5402982B5F0007B63FF /* HomeMenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BD427AE2833A9F90098DEEF /* homeIngEventList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeIngEventList.json; sourceTree = "<group>"; };
 		1BD427B02833AA390098DEEF /* homeMainThumbImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = homeMainThumbImage.jpg; sourceTree = "<group>"; };
 		1BD427B22833AA990098DEEF /* homeMainData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeMainData.json; sourceTree = "<group>"; };
@@ -505,6 +513,7 @@
 		1B27494728323B0E00027B60 /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				1BD3C53D29827D3C007B63FF /* main */,
 				1BDEFD1B284C66FD00EBC3DF /* InitialBackgroundImage.jpg */,
 				1B27494828323CFF00027B60 /* InitialJSON.json */,
 				1BD427B22833AA990098DEEF /* homeMainData.json */,
@@ -814,6 +823,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1BD3C53D29827D3C007B63FF /* main */ = {
+			isa = PBXGroup;
+			children = (
+				1BD3C53929827464007B63FF /* mainHeaderImage.jpeg */,
+				1BD3C53B29827B80007B63FF /* mainEventImage.jpeg */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 		1BD427C02833D34A0098DEEF /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -868,6 +886,8 @@
 			children = (
 				1B0F6627283371F8000428E3 /* HomeMainViewController.swift */,
 				1BD427C12833D9F10098DEEF /* HomeMainViewModel.swift */,
+				1BD3C53E2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib */,
+				1BD3C5402982B5F0007B63FF /* HomeMenuItemCollectionViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1096,6 +1116,7 @@
 				1B7AAA9F28E29D6400DD66EA /* food2.jpg in Resources */,
 				1B52DC0129715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_3.jpg in Resources */,
 				1B7AAA9728E29D6400DD66EA /* food9.jpg in Resources */,
+				1BD3C53F2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib in Resources */,
 				1B52DC0029715C0A0001E70F /* Cheongdam_Star_Earl_Grey_Milk_Cake_2.jpg in Resources */,
 				1B7AAA6D28E29D4D00DD66EA /* drink12.jpg in Resources */,
 				1BCFCE752834C45A00074ED2 /* EVE_APP_THUM_20220411095441511.jpg in Resources */,
@@ -1132,6 +1153,7 @@
 				1BCFCE762834C45A00074ED2 /* EVE_APP_THUM_20220429124913428.jpg in Resources */,
 				1B7AAA6E28E29D4D00DD66EA /* drink13.jpg in Resources */,
 				1B52DBFB29715C0A0001E70F /* (W)Mascapone_Tiraminu_1.jpg in Resources */,
+				1BD3C53A29827464007B63FF /* mainHeaderImage.jpeg in Resources */,
 				1B7AAA7828E29D4D00DD66EA /* drink9.jpg in Resources */,
 				1BF36D8728DF338D0033DF2A /* ingimg5.jpg in Resources */,
 				1B52DC0629715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg in Resources */,
@@ -1148,6 +1170,7 @@
 				1B7AAA9428E29D6400DD66EA /* food13.jpg in Resources */,
 				1BCFCE772834C45A00074ED2 /* EVE_APP_THUM_20220429082859621.jpg in Resources */,
 				1BF36D8628DF338D0033DF2A /* ingimg4.jpg in Resources */,
+				1BD3C53C29827B80007B63FF /* mainEventImage.jpeg in Resources */,
 				1B7AAA9828E29D6400DD66EA /* food6.jpg in Resources */,
 				1B52DBFC29715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_2.jpg in Resources */,
 				1B69A8F928E587AD001C6720 /* recommendation.json in Resources */,
@@ -1321,6 +1344,7 @@
 				1BD427C428347CA70098DEEF /* PayItemBucksProtocol.swift in Sources */,
 				1BCCB3002828B8F000CBB58F /* MainViewController.swift in Sources */,
 				1B47BB1C2980B23700E72F7D /* StarbucksViewModel.swift in Sources */,
+				1BD3C5412982B5F0007B63FF /* HomeMenuItemCollectionViewCell.swift in Sources */,
 				1B27494D28324C4C00027B60 /* InitialDTO.swift in Sources */,
 				1B3788D628F2FB8A00A2DF39 /* PayViewController.swift in Sources */,
 				1BCFCE692834B6B000074ED2 /* PayURLSession.swift in Sources */,
