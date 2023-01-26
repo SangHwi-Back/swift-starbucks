@@ -25,19 +25,4 @@ protocol ViewModel {
     
     var disposeBag: DisposeBag { get set }
     var itemBinder: PublishSubject<[Entity]> { get }
-    
-    func getImageFrom(rowNumber index: Int) -> Observable<Data>
-    
-    func getItem(at index: Int) -> Entity?
-}
-
-extension ViewModel {
-    
-    func getItem(at index: Int) -> Entity? {
-        guard index < items.count-1 else {
-            return nil
-        }
-        
-        return items[index]
-    }
 }

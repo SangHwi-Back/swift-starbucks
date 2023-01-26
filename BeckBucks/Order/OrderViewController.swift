@@ -44,9 +44,9 @@ class OrderViewController: UIViewController {
     private let orderViewCategoryRelay = BehaviorRelay<OrderViewCategory>(value: .allMenu)
     private let allMenuCategoryRelay = BehaviorRelay<AllMenuCategory>(value: .drink)
     
-    private let allFoodMenuVM = OrderFoodMenuViewModel()
-    private let allDrinkmenuVM = OrderDrinkMenuViewModel()
-    private let myMenuVM = OrderMyMenuViewModel()
+    private let allFoodMenuVM = OrderMainViewModel(jsonName: "food")
+    private let allDrinkmenuVM = OrderMainViewModel(jsonName: "drink")
+    private let myMenuVM = OrderMainViewModel(jsonName: "food")
     private var disposeBag = DisposeBag()
     
     var selectedItemIndexPath: IndexPath?
@@ -54,7 +54,7 @@ class OrderViewController: UIViewController {
     var allList: [StarbucksItemDTO] = []
     var myList: [StarbucksItemDTO] = []
     
-    var useCase: StarbucksViewModel<StarbucksItemDTO> {
+    var useCase: OrderMainViewModel {
         guard orderViewCategoryRelay.value != .myMenu else {
             return myMenuVM
         }
@@ -212,9 +212,9 @@ class OrderViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        allFoodMenuVM.fetchJSON(name: "food")
-        allDrinkmenuVM.fetchJSON(name: "drink")
-        myMenuVM.fetchJSON(name: "food")
+        allFoodMenuVM.fetch()
+        allDrinkmenuVM.fetch()
+        myMenuVM.fetch()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -272,7 +272,13 @@ extension OrderViewController: UITableViewDataSource {
             cell?.menuTitleLabel.text = entity.title
             cell?.setPrice(8000)
             cell?.descriptionLabel.text = "Someting Cool Descriptions"
-            useCase.getImageInUsecase(at: cellIndex, imageView: cell?.menuImageView)
+            
+            if let imageView = cell?.menuImageView {
+                useCase.getImage(at: cellIndex)
+                    .map({ UIImage(data: $0) })
+                    .bind(to: imageView.rx.image)
+                    .disposed(by: disposeBag)
+            }
             
             return cell ?? .init()
         case .allMenu:
@@ -283,20 +289,15 @@ extension OrderViewController: UITableViewDataSource {
                 for: indexPath) as? OrderViewListCell
             cell?.titleLabel.text = entity.title
             cell?.subTitleLabel.isHidden = true
-            useCase.getImageInUsecase(at: cellIndex, imageView: cell?.menuImageView)
+            
+            if let imageView = cell?.menuImageView {
+                useCase.getImage(at: cellIndex)
+                    .map({ UIImage(data: $0) })
+                    .bind(to: imageView.rx.image)
+                    .disposed(by: disposeBag)
+            }
             
             return cell ?? .init()
         }
-    }
-}
-
-private extension ViewModel {
-    func getImageInUsecase(at index: Int, imageView: UIImageView?) {
-        self.getImageFrom(rowNumber: index)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {
-                imageView?.image = UIImage(data: $0)
-            })
-            .disposed(by: disposeBag)
     }
 }

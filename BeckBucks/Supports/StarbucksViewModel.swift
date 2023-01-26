@@ -10,7 +10,6 @@ import RxCocoa
 import RxSwift
 
 class StarbucksViewModel<EntityType>: ViewModel where EntityType: StarbucksEntity {
-    
     typealias Entity = EntityType
     
     var items: [Entity] = []
@@ -25,52 +24,65 @@ class StarbucksViewModel<EntityType>: ViewModel where EntityType: StarbucksEntit
     deinit {
         URLProtocol.unregisterClass(HTTPRequestMockProtocol.self)
     }
-    
-    func getImageFrom(rowNumber index: Int) -> Observable<Data> {
-        guard index < items.count else {
-            return .error(ViewModelError.indexOutOfRange("indexOutOfRange: rowNumber a.k.a index (\(index)), itemsCount (\(items.count))"))
-        }
-        
-        if let data = items[index].imageData {
-            return .just(data)
-        }
-        
-        let jpegURL = Bundle.main.url(forResource: items[index].fileName, withExtension: "jpeg")
-        let jpgURL = Bundle.main.url(forResource: items[index].fileName, withExtension: "jpg")
-        
-        guard let url = jpegURL ?? jpgURL else {
-            return .error(ViewModelError.urlError("fileName : \(items[index].fileName)"))
-        }
-        
-        return URLSession.shared.rx.data(request: URLRequest(url: url))
-            .do(onNext:{ [weak self] in self?.items[index].imageData = $0 })
-    }
 }
 
-extension StarbucksViewModel where EntityType == StarbucksItemDTO {
-    func fetchJSON(name fileName: String) {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            return
+extension StarbucksViewModel where Entity: Identifiable, Entity: Equatable {
+    func getItem(at index: Int) -> Entity? {
+        if index < items.count-1 {
+            return items[index]
         }
         
-        URLSession.shared.rx
-            .response(request: URLRequest(url: url))
-            .subscribe(onNext: { [weak self] result in
-                guard let self = self else { return }
-                
-                if let error = result.response.getRequestError {
-                    self.itemBinder.onError(error)
-                    return
-                }
-                
-                do {
-                    self.items = (try JSONDecoder().decode(StarbucksArray.self, from: result.data)).foods
-                    self.itemBinder.onNext(self.items)
-                } catch {
-                    self.itemBinder.onError(error)
-                }
-            })
-            .disposed(by: disposeBag)
+        return nil
+    }
+    
+    func getItem(id: Entity.ID) -> Entity? {
+        guard let index = items.firstIndex(where: { $0.id == id }) else {
+            return nil
+        }
+        
+        return items[index]
+    }
+    
+    func getItem(_ entity: Entity) -> Entity? {
+        return items.first(where: { $0 == entity })
+    }
+    
+    @discardableResult
+    func removeItem(at index: Int) -> Entity? {
+        if index < items.count-1 {
+            items.remove(at: index)
+        }
+        
+        return nil
+    }
+    
+    @discardableResult
+    func removeItem(id: Entity.ID) -> Entity? {
+        guard let index = items.firstIndex(where: { $0.id == id }) else {
+            return nil
+        }
+        
+        return items.remove(at: index)
+    }
+    
+    @discardableResult
+    func removeItem(_ entity: Entity) -> Entity? {
+        guard let index = items.firstIndex(where: { $0.id == entity.id }) else {
+            return nil
+        }
+        
+        return items.remove(at: index)
+    }
+    
+    @discardableResult
+    func updateItem(_ entity: Entity) -> Entity? {
+        guard let index = items.firstIndex(where: { $0.id == entity.id }) else {
+            return nil
+        }
+        
+        items[index] = entity
+        
+        return items[index]
     }
 }
 

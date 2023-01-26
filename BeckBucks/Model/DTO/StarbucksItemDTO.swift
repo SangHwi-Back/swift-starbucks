@@ -16,7 +16,7 @@ protocol StarbucksEntity {
     var imageData: Data? { get set }
 }
 
-struct StarbucksItemDTO: Decodable, Identifiable, StarbucksEntity {
+struct StarbucksItemDTO: Decodable, Identifiable, Equatable, StarbucksEntity {
   
   enum CodingKeys: CodingKey {
     case key, fileName, title, subTitle, engTitle, menuDescription, menuPrice, tempOption, menuNotification, nutritionInfo, allergy, badge
@@ -93,6 +93,10 @@ struct StarbucksItemDTO: Decodable, Identifiable, StarbucksEntity {
     self.nutritionInfo = try container.decode([NutritionInfo].self, forKey: .nutritionInfo)
     self.allergy = try container.decode([AllergyElement].self, forKey: .allergy)
     self.badge = try? container.decode(NotifyBadge.self, forKey: .badge)
+  }
+  
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    return lhs.id == rhs.id
   }
 }
 
