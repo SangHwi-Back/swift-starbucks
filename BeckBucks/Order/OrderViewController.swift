@@ -249,6 +249,7 @@ extension OrderViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIndex = indexPath.row - (orderViewCategoryRelay.value == .myMenu ? 1 : 0)
+        let entity = useCase.items[cellIndex]
         
         switch orderViewCategoryRelay.value {
         case .myMenu:
@@ -266,12 +267,12 @@ extension OrderViewController: UITableViewDataSource {
                 return cell ?? .init()
             }
             
-            let entity = useCase.items[cellIndex]
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuTableViewCell.self), for: indexPath) as? OrderMyMenuTableViewCell
             
             cell?.menuTitleLabel.text = entity.title
-            cell?.setPrice(8000)
-            cell?.descriptionLabel.text = "Someting Cool Descriptions"
+            cell?.engTitleLabel.text = entity.engTitle
+            cell?.setPrice(Int(entity.menuPrice))
+            cell?.descriptionLabel.text = entity.menuDescription
             
             if let imageView = cell?.menuImageView {
                 useCase.getImage(at: cellIndex)
