@@ -352,7 +352,8 @@
                         <outlet property="headerButtonStackView" destination="AfL-bK-LdP" id="p4I-Ve-sUb"/>
                         <outlet property="headerScrollView" destination="DRb-F5-eVv" id="J5S-LY-3i0"/>
                         <outlet property="headerScrollViewHeight" destination="2bb-9U-kZo" id="bh2-Zt-K94"/>
-                        <outlet property="mainEventImageView" destination="QHd-e2-3h8" id="fSl-TO-6Fu"/>
+                        <outlet property="mainEventButton" destination="QHd-e2-3h8" id="fSl-TO-6Fu"/>
+                        <outlet property="mainHeaderImageView" destination="jH1-MI-Tfa" id="xir-nw-x9x"/>
                         <outlet property="mainScrollView" destination="uGR-4p-6bC" id="Z8V-fM-HYI"/>
                         <outlet property="nameLabel" destination="tGS-RN-Hxx" id="uRW-Vd-jKc"/>
                         <outlet property="newInfoCollectionView" destination="WzE-8J-9Qo" id="4Ys-Y4-HAv"/>
@@ -363,7 +364,7 @@
                         <outlet property="rewardTitleLabel" destination="7bh-cR-0WQ" id="b1e-K1-x0g"/>
                         <outlet property="rewardView" destination="hG6-iQ-Vvv" id="6Oa-Gh-wGn"/>
                         <outlet property="seeAllButton" destination="wMm-lm-mHr" id="BPX-dH-LIZ"/>
-                        <outlet property="thumbnailView" destination="TkW-hS-I7N" id="NKH-gV-LDm"/>
+                        <outlet property="thumbnailView" destination="TkW-hS-I7N" id="EBq-xJ-sDe"/>
                         <outlet property="whatsNewButton" destination="H7J-Jx-4m6" id="fVS-NW-EI6"/>
                         <segue destination="ZP1-ud-mzV" kind="show" identifier="testSegue" id="0zX-hD-yLE"/>
                     </connections>
@@ -397,7 +398,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-1j-1bg">
-                                <rect key="frame" x="-5" y="82" width="416" height="566"/>
+                                <rect key="frame" x="-6" y="81" width="416" height="567"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q0k-RF-XnI">

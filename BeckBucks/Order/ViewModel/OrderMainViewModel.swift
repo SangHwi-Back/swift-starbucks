@@ -25,8 +25,7 @@ class OrderMainViewModel: StarbucksViewModel<StarbucksItemDTO>, ImageFetchable, 
         }
         
         let fileName = items[rowNum].fileName
-      let imageObservable: Observable<Data> = getImageFrom(fileName: fileName,
-                                                           at: rowNum)
+      let imageObservable: Observable<Data> = getImageFrom(fileName: fileName)
         
         return imageObservable
             .do(onNext: { [weak self] data in

@@ -82,6 +82,8 @@
 		1B52DC1129715C0B0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */; };
 		1B52DC1229715C0B0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */; };
 		1B52DC1329715C0B0001E70F /* Dome_Pecan_Tart_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */; };
+		1B6733212983A58600E1872D /* HomeMainImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6733202983A58600E1872D /* HomeMainImageFetcher.swift */; };
+		1B6733232983A6CD00E1872D /* ResizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6733222983A6CD00E1872D /* ResizableImageView.swift */; };
 		1B69A8F728E587A5001C6720 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAA928E29EFE00DD66EA /* food.json */; };
 		1B69A8F828E587AA001C6720 /* drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAB28E29F2000DD66EA /* drink.json */; };
 		1B69A8F928E587AD001C6720 /* recommendation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAAE28E2A9F200DD66EA /* recommendation.json */; };
@@ -345,6 +347,8 @@
 		1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Crepe_Emmental_Cheese_Cake_3.jpg; sourceTree = "<group>"; };
 		1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blueberry_Cookie_Cheese_Cake_2.jpg; sourceTree = "<group>"; };
 		1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dome_Pecan_Tart_2.jpg; sourceTree = "<group>"; };
+		1B6733202983A58600E1872D /* HomeMainImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainImageFetcher.swift; sourceTree = "<group>"; };
+		1B6733222983A6CD00E1872D /* ResizableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableImageView.swift; sourceTree = "<group>"; };
 		1B797F57297A2BC700A58981 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1B7AAA5728E29D4C00DD66EA /* drink16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink16.jpg; sourceTree = "<group>"; };
 		1B7AAA5828E29D4C00DD66EA /* drink15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink15.jpg; sourceTree = "<group>"; };
@@ -932,6 +936,7 @@
 			children = (
 				1BD3C57A2983705A007B63FF /* HomeMainFetchFoodModel.swift */,
 				1BD3C5782983704D007B63FF /* HomeMainFetchDrinkModel.swift */,
+				1B6733202983A58600E1872D /* HomeMainImageFetcher.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1038,6 +1043,7 @@
 				1B176DAA297BD34700E93D2B /* LabelWithSFSymbol.swift */,
 				1B98BAE1297948D300353B1A /* AdjustableSwitch.xib */,
 				1B98BAE3297948F500353B1A /* AdjustableSwitch.swift */,
+				1B6733222983A6CD00E1872D /* ResizableImageView.swift */,
 				1B47BB18297F62F200E72F7D /* NotNecessary */,
 			);
 			path = Common;
@@ -1462,6 +1468,7 @@
 				1B7F19522973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift in Sources */,
 				1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */,
 				1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */,
+				1B6733232983A6CD00E1872D /* ResizableImageView.swift in Sources */,
 				1B27494B28323E3800027B60 /* InitialInfoBucksProtocol.swift in Sources */,
 				1B4FADB8297E5E2500FF8717 /* SearchResultViewController.swift in Sources */,
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
@@ -1537,6 +1544,7 @@
 				1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */,
 				1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */,
 				1BD427B92833AC750098DEEF /* HomeMainBucksProtocol.swift in Sources */,
+				1B6733212983A58600E1872D /* HomeMainImageFetcher.swift in Sources */,
 				1BCFCE812834C51600074ED2 /* ImageBucksGETProtocol.swift in Sources */,
 				1B7AAAAD28E2A48900DD66EA /* StarbucksItemDTO.swift in Sources */,
 				1B98BAE029766EF500353B1A /* NSLayoutAnchor+Extensions.swift in Sources */,

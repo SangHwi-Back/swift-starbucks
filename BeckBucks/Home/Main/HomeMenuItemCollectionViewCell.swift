@@ -9,6 +9,10 @@ import UIKit
 
 class MainMenuItemCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var menuImageView: UIImageView!
+    
+    @IBOutlet weak var menuTitleLabel: UILabel!
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         guard let view = loadViewFromNib() else { return }

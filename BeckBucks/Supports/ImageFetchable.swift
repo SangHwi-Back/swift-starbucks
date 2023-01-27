@@ -13,7 +13,7 @@ protocol ImageFetchable {
 }
 
 extension ImageFetchable {
-    func getImageFrom(fileName: String, at index: Int) -> Observable<Data> {
+    func getImageFrom(fileName: String) -> Observable<Data> {
         if let data = imageData[fileName] {
             return .just(data)
         }
