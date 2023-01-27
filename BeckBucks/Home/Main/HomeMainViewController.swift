@@ -234,6 +234,46 @@ class HomeMainViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        recommendationCollectionView.rx.itemSelected
+            .bind(onNext: { indexPath in
+                let id = String(describing: MenuDetailViewController.self)
+                let viewController = UIStoryboard(name: "Contents",bundle: Bundle.main)
+                    .instantiateViewController(withIdentifier: id)
+                
+                guard
+                    let viewController = viewController as? MenuDetailViewController,
+                    indexPath.item < self.menuVM.recommendMenus.count
+                else {
+                    return
+                }
+                
+                let entity = self.menuVM.recommendMenus[indexPath.row]
+                viewController.VM = MenuDetailViewModel(entity: entity)
+                self.navigationController?.pushViewController(viewController, animated: true)
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        currentMenuCollectionView.rx.itemSelected
+            .bind(onNext: { indexPath in
+                let id = String(describing: MenuDetailViewController.self)
+                let viewController = UIStoryboard(name: "Contents",bundle: Bundle.main)
+                    .instantiateViewController(withIdentifier: id)
+                
+                guard
+                    let viewController = viewController as? MenuDetailViewController,
+                    indexPath.item < self.menuVM.currentMenus.count
+                else {
+                    return
+                }
+                
+                let entity = self.menuVM.currentMenus[indexPath.row]
+                viewController.VM = MenuDetailViewModel(entity: entity)
+                self.navigationController?.pushViewController(viewController, animated: true)
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         mainVM.fetch()
         menuVM.fetch()
     }

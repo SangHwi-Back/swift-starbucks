@@ -61,6 +61,11 @@ class MenuDetailViewController: UIViewController {
         initialBind()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     private func initialBind() {
         
         nutritionInfoButton.rx.tap

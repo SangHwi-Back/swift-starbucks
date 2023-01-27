@@ -366,7 +366,7 @@
                         <outlet property="seeAllButton" destination="wMm-lm-mHr" id="BPX-dH-LIZ"/>
                         <outlet property="thumbnailView" destination="TkW-hS-I7N" id="EBq-xJ-sDe"/>
                         <outlet property="whatsNewButton" destination="H7J-Jx-4m6" id="fVS-NW-EI6"/>
-                        <segue destination="ZP1-ud-mzV" kind="show" identifier="HomeMainEventViewController" id="0zX-hD-yLE"/>
+                        <segue destination="ZP1-ud-mzV" kind="show" identifier="HomeMainDetailViewController" id="0zX-hD-yLE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6Y-DC-YWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -455,7 +455,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-1j-1bg">
-                                <rect key="frame" x="-7" y="81" width="416" height="566"/>
+                                <rect key="frame" x="-6" y="81" width="416" height="566"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q0k-RF-XnI">
