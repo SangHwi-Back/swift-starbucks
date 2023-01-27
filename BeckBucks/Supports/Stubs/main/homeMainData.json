@@ -1,0 +1,53 @@
+{
+    "mainHeaderImageFileName": "mainHeaderImage",
+    "mainEventImageFileName": "mainEventImage",
+    "processingEventImageFileNames": [
+        "processingEvent1",
+        "processingEvent2",
+        "processingEvent3",
+        "processingEvent4"
+    ],
+    "whatsNewList": [
+        {
+            "title": "뉴 이어 프로모션",
+            "subTitle": "2023년, 스타벅스에서 행운 가득한 신년을 맞이하세요!",
+            "imageFileName": "whatsNew1",
+            "detailImageFileName": "whatsNewDetail1"
+        },
+        {
+            "title": "아이스 챌린지 카페 아메리카노 사이즈 업 이벤트",
+            "subTitle": "#스벅아챌린지",
+            "imageFileName": "whatsNew2",
+            "detailImageFileName": "whatsNewDetail2"
+        },
+        {
+            "title": "뉴 이어 럭키 래빗 이벤트",
+            "subTitle": "2023년 새해의 행운을 스타벅스와 함께 찾아보세요!",
+            "imageFileName": "whatsNew3",
+            "detailImageFileName": "whatsNewDetail3"
+        },
+        {
+            "title": "만원 별 적립 이벤트",
+            "subTitle": "1만원 당 별 1개를 즉시 추가로 드립니다!",
+            "imageFileName": "whatsNew4",
+            "detailImageFileName": "whatsNewDetail4"
+        },
+        {
+            "title": "BARISTA FAVORITES",
+            "subTitle": "",
+            "imageFileName": "whatsNew5",
+            "detailImageFileName": "whatsNewDetail5"
+        },
+        {
+            "title": "스타벅스 현대카드 1월 한정 혜택",
+            "subTitle": "스타벅스 현대카드만의 스페셜한 혜택!",
+            "imageFileName": "whatsNew6",
+            "detailImageFileName": "whatsNewDetail6"
+        },        {
+            "title": "스타벅스 광화문교보문고점 단편선 이벤트",
+            "subTitle": "커피와 책이 함께하는 의미 있는 시간",
+            "imageFileName": "whatsNew7",
+            "detailImageFileName": "whatsNewDetail7"
+        }
+    ]
+}

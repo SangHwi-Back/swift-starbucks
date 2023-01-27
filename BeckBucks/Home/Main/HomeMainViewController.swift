@@ -39,6 +39,11 @@ class HomeMainViewController: UIViewController {
     let VM = HomeMainViewModel()
     
     private var originalHeaderHeight: CGFloat = 0
+    private var headerHeightExceptButtons: CGFloat {
+        originalHeaderHeight
+        - headerButtonStackView.frame.height
+        - (UIDevice.current.hasNotch ? 32 : 16)
+    }
     
     private var disposeBag = DisposeBag()
     
@@ -67,7 +72,7 @@ class HomeMainViewController: UIViewController {
         
         let mainScrollViewOffsetObservable = mainScrollView.rx.contentOffset
             .observeOn(MainScheduler.asyncInstance)
-            .filter({ offset in offset.y < (self.originalHeaderHeight - 48) })
+            .filter({ $0.y <= self.headerHeightExceptButtons })
         
         mainScrollViewOffsetObservable
             .map({ self.originalHeaderHeight - $0.y})
@@ -75,7 +80,7 @@ class HomeMainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mainScrollViewOffsetObservable
-            .map({ 1 - ($0.y / (self.originalHeaderHeight - 48)) })
+            .map({ 1 - ($0.y / self.headerHeightExceptButtons) })
             .bind(to: thumbnailView.rx.alpha, rewardView.rx.alpha)
             .disposed(by: disposeBag)
         
