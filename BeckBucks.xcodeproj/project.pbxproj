@@ -199,6 +199,9 @@
 		1BD3C571298362C0007B63FF /* processingEvent3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3C56D298362C0007B63FF /* processingEvent3.jpg */; };
 		1BD3C573298362D0007B63FF /* EVE_APP_THUM_20220321083416535.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3C572298362D0007B63FF /* EVE_APP_THUM_20220321083416535.jpg */; };
 		1BD3C57529836818007B63FF /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C57429836818007B63FF /* UIDevice+Extensions.swift */; };
+		1BD3C57729836EE5007B63FF /* HomeMainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C57629836EE5007B63FF /* HomeMainMenuViewModel.swift */; };
+		1BD3C5792983704D007B63FF /* HomeMainFetchDrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C5782983704D007B63FF /* HomeMainFetchDrinkModel.swift */; };
+		1BD3C57B2983705A007B63FF /* HomeMainFetchFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3C57A2983705A007B63FF /* HomeMainFetchFoodModel.swift */; };
 		1BD427AF2833A9F90098DEEF /* homeIngEventList.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427AE2833A9F90098DEEF /* homeIngEventList.json */; };
 		1BD427B12833AA390098DEEF /* homeMainThumbImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427B02833AA390098DEEF /* homeMainThumbImage.jpg */; };
 		1BD427B32833AA990098DEEF /* homeMainData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427B22833AA990098DEEF /* homeMainData.json */; };
@@ -451,6 +454,9 @@
 		1BD3C56D298362C0007B63FF /* processingEvent3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = processingEvent3.jpg; sourceTree = "<group>"; };
 		1BD3C572298362D0007B63FF /* EVE_APP_THUM_20220321083416535.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EVE_APP_THUM_20220321083416535.jpg; sourceTree = "<group>"; };
 		1BD3C57429836818007B63FF /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		1BD3C57629836EE5007B63FF /* HomeMainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainMenuViewModel.swift; sourceTree = "<group>"; };
+		1BD3C5782983704D007B63FF /* HomeMainFetchDrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainFetchDrinkModel.swift; sourceTree = "<group>"; };
+		1BD3C57A2983705A007B63FF /* HomeMainFetchFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainFetchFoodModel.swift; sourceTree = "<group>"; };
 		1BD427AE2833A9F90098DEEF /* homeIngEventList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeIngEventList.json; sourceTree = "<group>"; };
 		1BD427B02833AA390098DEEF /* homeMainThumbImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = homeMainThumbImage.jpg; sourceTree = "<group>"; };
 		1BD427B22833AA990098DEEF /* homeMainData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeMainData.json; sourceTree = "<group>"; };
@@ -905,6 +911,24 @@
 			path = processingEvent;
 			sourceTree = "<group>";
 		};
+		1BD3C57C298370B0007B63FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BD3C57A2983705A007B63FF /* HomeMainFetchFoodModel.swift */,
+				1BD3C5782983704D007B63FF /* HomeMainFetchDrinkModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1BD3C57D298370B7007B63FF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1BD427C12833D9F10098DEEF /* HomeMainViewModel.swift */,
+				1BD3C57629836EE5007B63FF /* HomeMainMenuViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1BD427C02833D34A0098DEEF /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,7 +982,8 @@
 			isa = PBXGroup;
 			children = (
 				1B0F6627283371F8000428E3 /* HomeMainViewController.swift */,
-				1BD427C12833D9F10098DEEF /* HomeMainViewModel.swift */,
+				1BD3C57D298370B7007B63FF /* ViewModel */,
+				1BD3C57C298370B0007B63FF /* Model */,
 				1BD3C53E2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib */,
 				1BD3C5402982B5F0007B63FF /* HomeMenuItemCollectionViewCell.swift */,
 			);
@@ -1414,6 +1439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BD3C53229825513007B63FF /* ImageFetchable.swift in Sources */,
+				1BD3C5792983704D007B63FF /* HomeMainFetchDrinkModel.swift in Sources */,
 				1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */,
 				1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */,
 				1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */,
@@ -1432,6 +1458,7 @@
 				1B27E92C297EA3B100CF6AFE /* MenuDetailViewController.swift in Sources */,
 				1B7F19562973F0CC00A1F07B /* MyBagViewModel.swift in Sources */,
 				1BCFCE672834B38100074ED2 /* PayImageBucksProtocol.swift in Sources */,
+				1BD3C57729836EE5007B63FF /* HomeMainMenuViewModel.swift in Sources */,
 				1BD427C428347CA70098DEEF /* PayItemBucksProtocol.swift in Sources */,
 				1BCCB3002828B8F000CBB58F /* MainViewController.swift in Sources */,
 				1B47BB1C2980B23700E72F7D /* StarbucksViewModel.swift in Sources */,
@@ -1443,6 +1470,7 @@
 				1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */,
 				1B797F58297A2BC700A58981 /* ViewModel.swift in Sources */,
 				1B176DA9297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift in Sources */,
+				1BD3C57B2983705A007B63FF /* HomeMainFetchFoodModel.swift in Sources */,
 				1B7F19502973C83700A1F07B /* MyBagListTableViewItemCell.swift in Sources */,
 				1BD427C22833D9F10098DEEF /* HomeMainViewModel.swift in Sources */,
 				1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */,
