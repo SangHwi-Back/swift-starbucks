@@ -139,6 +139,7 @@
 		1B98BAE4297948F500353B1A /* AdjustableSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B98BAE3297948F500353B1A /* AdjustableSwitch.swift */; };
 		1B98BAE62979833900353B1A /* OrderViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B98BAE52979833900353B1A /* OrderViewListCell.swift */; };
 		1B98BAE82979834900353B1A /* OrderMyMenuHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B98BAE72979834900353B1A /* OrderMyMenuHeaderCell.swift */; };
+		1B9C49902983B2C7008B75BC /* HomeMainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C498F2983B2C7008B75BC /* HomeMainDetailViewController.swift */; };
 		1BA5C16B29641B8F00FC4B81 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */; };
 		1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */; };
 		1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */; };
@@ -404,6 +405,7 @@
 		1B98BAE3297948F500353B1A /* AdjustableSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableSwitch.swift; sourceTree = "<group>"; };
 		1B98BAE52979833900353B1A /* OrderViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewListCell.swift; sourceTree = "<group>"; };
 		1B98BAE72979834900353B1A /* OrderMyMenuHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMenuHeaderCell.swift; sourceTree = "<group>"; };
+		1B9C498F2983B2C7008B75BC /* HomeMainDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainDetailViewController.swift; sourceTree = "<group>"; };
 		1BA5C16A29641B8F00FC4B81 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		1BB8C30A2835D88700F5F342 /* ImageBucksPOSTProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBucksPOSTProtocol.swift; sourceTree = "<group>"; };
 		1BB8C30C283606AA00F5F342 /* JsonBucksGetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBucksGetProtocol.swift; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 			isa = PBXGroup;
 			children = (
 				1B0F6627283371F8000428E3 /* HomeMainViewController.swift */,
+				1B9C498F2983B2C7008B75BC /* HomeMainDetailViewController.swift */,
 				1BD3C57D298370B7007B63FF /* ViewModel */,
 				1BD3C57C298370B0007B63FF /* Model */,
 				1BD3C53E2982B4E0007B63FF /* MainMenuItemCollectionViewCell.xib */,
@@ -1496,6 +1499,7 @@
 				1BD3C57B2983705A007B63FF /* HomeMainFetchFoodModel.swift in Sources */,
 				1B7F19502973C83700A1F07B /* MyBagListTableViewItemCell.swift in Sources */,
 				1BD427C22833D9F10098DEEF /* HomeMainViewModel.swift in Sources */,
+				1B9C49902983B2C7008B75BC /* HomeMainDetailViewController.swift in Sources */,
 				1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */,
 				1B98BAE4297948F500353B1A /* AdjustableSwitch.swift in Sources */,
 				1B176DAD297C3AD000E93D2B /* SearchViewModel.swift in Sources */,

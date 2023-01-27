@@ -101,8 +101,8 @@ class HomeMainViewController: UIViewController {
         
         mainEventButton.rx.tap
             .bind(onNext: { [weak self] in
-                // TODO: View Transition
-                print(self?.mainVM.mainEntity?.mainEventImageFileName ?? "Unhandled Error")
+                self?.performSegue(withIdentifier: "HomeMainDetailViewController",
+                                   sender: self?.mainVM.mainEntity)
             })
             .disposed(by: disposeBag)
         
@@ -184,6 +184,20 @@ class HomeMainViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        newInfoCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] indexPath in
+                guard
+                    let entities = self?.mainVM.mainEntity?.whatsNewList,
+                    indexPath.item < entities.count
+                else {
+                    return
+                }
+                
+                self?.performSegue(withIdentifier: "HomeMainDetailViewController",
+                                   sender: entities[indexPath.item])
+            })
+            .disposed(by: disposeBag)
+        
         menuVM.recommendMenuBinder
             .bind(to: recommendationCollectionView.rx.items(cellIdentifier: CellID,
                                                      cellType: CELL.self)
@@ -222,5 +236,25 @@ class HomeMainViewController: UIViewController {
         
         mainVM.fetch()
         menuVM.fetch()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if
+            let dest = segue.destination as? HomeMainDetailViewController,
+            let entity = sender as? HomeMainDTO
+        {
+            dest.title = "이벤트 & 뉴스"
+            dest.imageFileName = entity.mainEventImageFileName
+            dest.titleText = "Main Event Title Text"
+        }
+        
+        if
+            let dest = segue.destination as? HomeMainDetailViewController,
+            let entity = sender as? WhatsNewDTO
+        {
+            dest.title = entity.title
+            dest.imageFileName = entity.detailImageFileName
+            dest.titleText = entity.subTitle
+        }
     }
 }
