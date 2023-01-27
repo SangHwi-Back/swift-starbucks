@@ -8,7 +8,16 @@
 import Foundation
 
 extension HTTPURLResponse {
-  var isSuccess: Bool {
-    (200..<300 ~= self.statusCode)
-  }
+    
+    var isSuccess: Bool {
+        (200..<300 ~= self.statusCode)
+    }
+    
+    var getRequestError: Error? {
+        guard self.isSuccess else {
+            return ViewModelError.requestError(self.statusCode)
+        }
+        
+        return nil
+    }
 }

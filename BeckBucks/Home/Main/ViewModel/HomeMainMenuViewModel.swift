@@ -10,24 +10,26 @@ import RxSwift
 import RxCocoa
 
 class HomeMainMenuViewModel {
-    let foodModel = HomeMainFetchFoodModel()
-    let drinkModel = HomeMainFetchDrinkModel()
+    private let foodModel = HomeMainFetchFoodModel()
+    private let drinkModel = HomeMainFetchDrinkModel()
     
     private(set) var recommendMenus: [StarbucksItemDTO] = []
     let recommendMenuBinder = PublishSubject<[StarbucksItemDTO]>()
     private(set) var currentMenus: [StarbucksItemDTO] = []
     let currentMenuBinder = PublishSubject<[StarbucksItemDTO]>()
     
+    private var disposeBag = DisposeBag()
+    
     init() {
-        getRecommendMenu()
-        getCurrentMenu()
+        bindMenuModels()
+    }
+    
+    func fetch() {
         foodModel.fetch()
         drinkModel.fetch()
     }
     
-    private var disposeBag = DisposeBag()
-    
-    private func getRecommendMenu() {
+    private func bindMenuModels() {
         Observable<[StarbucksItemDTO]>.zip(
             foodModel.itemBinder,
             drinkModel.itemBinder
@@ -35,17 +37,16 @@ class HomeMainMenuViewModel {
             return $0 + $1
         }
         .subscribe(onNext: { [weak self] in
+            let randomValue = (2...5).randomElement() ?? 2
             var result = $0
             result.shuffle()
-            result.removeSubrange(0...$0.count)
+            result.removeSubrange(0...$0.count/randomValue)
             
             self?.recommendMenus = result
             self?.recommendMenuBinder.onNext(result)
         })
         .disposed(by: disposeBag)
-    }
-    
-    private func getCurrentMenu() {
+        
         Observable<[StarbucksItemDTO]>.zip(
             foodModel.itemBinder,
             drinkModel.itemBinder
@@ -53,9 +54,10 @@ class HomeMainMenuViewModel {
             return $0 + $1
         }
         .subscribe(onNext: { [weak self] in
+            let randomValue = (2...5).randomElement() ?? 2
             var result = $0
             result.shuffle()
-            result.removeSubrange(0...$0.count)
+            result.removeSubrange(0...$0.count/randomValue)
             
             self?.currentMenus = result
             self?.currentMenuBinder.onNext(result)

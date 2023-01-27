@@ -7,7 +7,7 @@ class HomeMainViewModel: JSONFetchable {
     let itemBinder = PublishSubject<HomeMainDTO>()
     
     var jsonName: String?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     init() {
         jsonName = "homeMainData"

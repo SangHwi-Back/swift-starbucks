@@ -85,20 +85,3 @@ extension StarbucksViewModel where Entity: Identifiable, Entity: Equatable {
         return items[index]
     }
 }
-
-extension Optional where Wrapped == URL {
-    var getErrorMessage: String {
-        ("Error occured at " + (self?.absoluteString ?? "unkown URL") + ".")
-    }
-}
-
-extension HTTPURLResponse {
-    var getRequestError: Error? {
-        guard self.isSuccess else {
-            return ViewModelError.requestError(self.statusCode)
-        }
-        
-        return nil
-    }
-}
-
