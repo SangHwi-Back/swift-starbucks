@@ -148,12 +148,13 @@ class HomeMainViewController: UIViewController {
                     .subscribe(onNext: { image in
                         let imageView = ResizableImageView(image: image)
                         imageView.frame.size.width = self?.view.frame.width ?? 300
+                        imageView.frame.size.width -= 32
                         imageView.frame.size = imageView.intrinsicContentSize
                         imageView.setCornerRadius(8)
+                        imageView.frame.origin.x = 16
                         
                         if let lastView = self?.processingEventView.subviews.last {
-                            imageView.frame.origin = CGPoint(x: 0,
-                                                             y: lastView.frame.maxY + 2)
+                            imageView.frame.origin.y = lastView.frame.maxY + 8
                             self?.processingEventViewHeight.constant = imageView.frame.maxY
                         }
                         
