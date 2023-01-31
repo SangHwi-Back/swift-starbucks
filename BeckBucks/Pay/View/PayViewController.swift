@@ -15,6 +15,8 @@ class PayViewController: UIViewController {
     
     @IBOutlet weak var eventImageView: UIImageView!
     
+    private var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(cardCollectionView.frame, view.frame)
@@ -55,6 +57,12 @@ extension PayViewController: UICollectionViewDataSource {
         cell.cardImageView.image = indexPath.getCardImage()
         cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
         cell.cardBackgroundView.putShadows(offset: CGSize(width: 2, height: 2))
+        cell.normalChargeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                let id = MoneyChargeViewController.storyboardIdentifier
+                self?.performSegue(withIdentifier: id, sender: self)
+            })
+            .disposed(by: disposeBag)
         return cell
     }
 }

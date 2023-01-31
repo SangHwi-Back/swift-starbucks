@@ -25,6 +25,18 @@
 		1B1C48382988D3EB0095D603 /* StarbucksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */; };
 		1B1C48392988D3F70095D603 /* HTTPRequestMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D8E28E08B780033DF2A /* HTTPRequestMockProtocol.swift */; };
 		1B1C483A2988D4100095D603 /* ProtocolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEB9A128331ABF003517F0 /* ProtocolError.swift */; };
+		1B1C483C2988FB2E0095D603 /* MoneyChargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C483B2988FB2E0095D603 /* MoneyChargeViewController.swift */; };
+		1B1C483E298900740095D603 /* MoneyChargeCardInfoVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C483D298900740095D603 /* MoneyChargeCardInfoVIew.xib */; };
+		1B1C4840298900AF0095D603 /* MoneyChargeDefinedChargeAmountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C483F298900AF0095D603 /* MoneyChargeDefinedChargeAmountView.xib */; };
+		1B1C4842298900CA0095D603 /* MoneyChargePaymentMethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C4841298900CA0095D603 /* MoneyChargePaymentMethodView.xib */; };
+		1B1C4844298900EE0095D603 /* MoneyChargeCustomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C4843298900EE0095D603 /* MoneyChargeCustomButtonView.xib */; };
+		1B1C4846298900F70095D603 /* MoneyChargeDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C4845298900F70095D603 /* MoneyChargeDescriptionView.xib */; };
+		1B1C484A298901340095D603 /* MoneyChargeCardInfoVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C4849298901340095D603 /* MoneyChargeCardInfoVIew.swift */; };
+		1B1C484C2989013D0095D603 /* MoneyChargeDefinedChargeAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C484B2989013D0095D603 /* MoneyChargeDefinedChargeAmountView.swift */; };
+		1B1C484E298901430095D603 /* MoneyChargePaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C484D298901430095D603 /* MoneyChargePaymentMethodView.swift */; };
+		1B1C48502989014A0095D603 /* MoneyChargeCustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C484F2989014A0095D603 /* MoneyChargeCustomButtonView.swift */; };
+		1B1C48522989014F0095D603 /* MoneyChargeDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48512989014F0095D603 /* MoneyChargeDescriptionView.swift */; };
+		1B1C48562989150B0095D603 /* ViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48552989150B0095D603 /* ViewFromNib.swift */; };
 		1B1F244C297D434300BA6FE9 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F244B297D434300BA6FE9 /* UIStoryboard+Extensions.swift */; };
 		1B1F244E297D43B300BA6FE9 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F244D297D43B300BA6FE9 /* UIAlertController+Extensions.swift */; };
 		1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B230A4828E5565900775128 /* UIView+Extensions.swift */; };
@@ -294,6 +306,18 @@
 		1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		1B1C48362988C7230095D603 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		1B1C483B2988FB2E0095D603 /* MoneyChargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeViewController.swift; sourceTree = "<group>"; };
+		1B1C483D298900740095D603 /* MoneyChargeCardInfoVIew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeCardInfoVIew.xib; sourceTree = "<group>"; };
+		1B1C483F298900AF0095D603 /* MoneyChargeDefinedChargeAmountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeDefinedChargeAmountView.xib; sourceTree = "<group>"; };
+		1B1C4841298900CA0095D603 /* MoneyChargePaymentMethodView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargePaymentMethodView.xib; sourceTree = "<group>"; };
+		1B1C4843298900EE0095D603 /* MoneyChargeCustomButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeCustomButtonView.xib; sourceTree = "<group>"; };
+		1B1C4845298900F70095D603 /* MoneyChargeDescriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeDescriptionView.xib; sourceTree = "<group>"; };
+		1B1C4849298901340095D603 /* MoneyChargeCardInfoVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeCardInfoVIew.swift; sourceTree = "<group>"; };
+		1B1C484B2989013D0095D603 /* MoneyChargeDefinedChargeAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeDefinedChargeAmountView.swift; sourceTree = "<group>"; };
+		1B1C484D298901430095D603 /* MoneyChargePaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargePaymentMethodView.swift; sourceTree = "<group>"; };
+		1B1C484F2989014A0095D603 /* MoneyChargeCustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeCustomButtonView.swift; sourceTree = "<group>"; };
+		1B1C48512989014F0095D603 /* MoneyChargeDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeDescriptionView.swift; sourceTree = "<group>"; };
+		1B1C48552989150B0095D603 /* ViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFromNib.swift; sourceTree = "<group>"; };
 		1B1F244B297D434300BA6FE9 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		1B1F244D297D43B300BA6FE9 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		1B230A4828E5565900775128 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -573,6 +597,35 @@
 				1BD3C52F29824DF1007B63FF /* OrderMainViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1B1C4847298900FD0095D603 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */,
+				1B1C483B2988FB2E0095D603 /* MoneyChargeViewController.swift */,
+				1B1C4848298901240095D603 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B1C4848298901240095D603 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				1B3788D728F2FD0B00A2DF39 /* CardCollectionViewCell.xib */,
+				1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */,
+				1B1C483D298900740095D603 /* MoneyChargeCardInfoVIew.xib */,
+				1B1C4849298901340095D603 /* MoneyChargeCardInfoVIew.swift */,
+				1B1C483F298900AF0095D603 /* MoneyChargeDefinedChargeAmountView.xib */,
+				1B1C484B2989013D0095D603 /* MoneyChargeDefinedChargeAmountView.swift */,
+				1B1C4841298900CA0095D603 /* MoneyChargePaymentMethodView.xib */,
+				1B1C484D298901430095D603 /* MoneyChargePaymentMethodView.swift */,
+				1B1C4843298900EE0095D603 /* MoneyChargeCustomButtonView.xib */,
+				1B1C484F2989014A0095D603 /* MoneyChargeCustomButtonView.swift */,
+				1B1C4845298900F70095D603 /* MoneyChargeDescriptionView.xib */,
+				1B1C48512989014F0095D603 /* MoneyChargeDescriptionView.swift */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 		1B27494028320F5C00027B60 /* ViewModel */ = {
@@ -882,6 +935,7 @@
 				1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */,
 				1BD3C53129825513007B63FF /* ImageFetchable.swift */,
 				1BD3C5332982552F007B63FF /* JSONFetchable.swift */,
+				1B1C48552989150B0095D603 /* ViewFromNib.swift */,
 				1B27494728323B0E00027B60 /* Stubs */,
 				1BF36D9128E094470033DF2A /* event */,
 				1BCCB2FB2828B8F000CBB58F /* AppDelegate.swift */,
@@ -987,9 +1041,7 @@
 		1BDED1D0297F5E8E0036E6BB /* Pay */ = {
 			isa = PBXGroup;
 			children = (
-				1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */,
-				1B3788D728F2FD0B00A2DF39 /* CardCollectionViewCell.xib */,
-				1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */,
+				1B1C4847298900FD0095D603 /* View */,
 			);
 			path = Pay;
 			sourceTree = "<group>";
@@ -1245,6 +1297,7 @@
 				1BD427AF2833A9F90098DEEF /* homeIngEventList.json in Resources */,
 				1B7AAA7228E29D4D00DD66EA /* drink14.jpg in Resources */,
 				1B7AAA7528E29D4D00DD66EA /* drink11.jpg in Resources */,
+				1B1C4846298900F70095D603 /* MoneyChargeDescriptionView.xib in Resources */,
 				1BD3C570298362C0007B63FF /* processingEvent4.jpg in Resources */,
 				1B52DBE129715ADB0001E70F /* hallCake.json in Resources */,
 				1BCFCEA02834FA2200074ED2 /* recommendation1.jpg in Resources */,
@@ -1334,9 +1387,11 @@
 				1B7AAAA028E29D6400DD66EA /* food4.jpg in Resources */,
 				1B52DC0529715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_3.jpg in Resources */,
 				1B3788DE28F3068600A2DF39 /* card_black.png in Resources */,
+				1B1C483E298900740095D603 /* MoneyChargeCardInfoVIew.xib in Resources */,
 				1BCFCE892834ED3100074ED2 /* payItemJSON2.json in Resources */,
 				1B52DC0D29715C0A0001E70F /* Seven_Layer_Ganache_Cake_3.jpg in Resources */,
 				1B98BAE2297948D400353B1A /* AdjustableSwitch.xib in Resources */,
+				1B1C4840298900AF0095D603 /* MoneyChargeDefinedChargeAmountView.xib in Resources */,
 				1BCFCE882834ED3100074ED2 /* payItemJSON0.json in Resources */,
 				1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */,
 				1B7AAAA628E29D6400DD66EA /* food11.jpg in Resources */,
@@ -1345,6 +1400,7 @@
 				1BD3C55729835ED0007B63FF /* whatsNew5.jpg in Resources */,
 				1BD3C55F29835F26007B63FF /* whatsNewDetail7.jpg in Resources */,
 				1B3788E528F3999700A2DF39 /* cards.json in Resources */,
+				1B1C4844298900EE0095D603 /* MoneyChargeCustomButtonView.xib in Resources */,
 				1B52DBFE29715C0A0001E70F /* Seven_Layer_Ganache_Cake_1.jpg in Resources */,
 				1B7AAA7328E29D4D00DD66EA /* drink8.jpg in Resources */,
 				1BCFCEA12834FA2200074ED2 /* recommendation4.jpg in Resources */,
@@ -1371,6 +1427,7 @@
 				1BCFCE742834C45A00074ED2 /* EVE_APP_THUM_20220308080409689.jpg in Resources */,
 				1B7AAA7B28E29D4D00DD66EA /* drink10.jpg in Resources */,
 				1B7AAA9A28E29D6400DD66EA /* food17.jpg in Resources */,
+				1B1C4842298900CA0095D603 /* MoneyChargePaymentMethodView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,6 +1534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B1C48312988C5980095D603 /* UIViewController+Extensions.swift in Sources */,
+				1B1C484E298901430095D603 /* MoneyChargePaymentMethodView.swift in Sources */,
 				1BD3C53229825513007B63FF /* ImageFetchable.swift in Sources */,
 				1BD3C5792983704D007B63FF /* HomeMainFetchDrinkModel.swift in Sources */,
 				1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */,
@@ -1487,6 +1545,7 @@
 				1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */,
 				1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */,
 				1B6733232983A6CD00E1872D /* ResizableImageView.swift in Sources */,
+				1B1C484A298901340095D603 /* MoneyChargeCardInfoVIew.swift in Sources */,
 				1B27494B28323E3800027B60 /* InitialInfoBucksProtocol.swift in Sources */,
 				1B4FADB8297E5E2500FF8717 /* SearchResultViewController.swift in Sources */,
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
@@ -1508,6 +1567,7 @@
 				1B3788D628F2FB8A00A2DF39 /* PayViewController.swift in Sources */,
 				1BCFCE692834B6B000074ED2 /* PayURLSession.swift in Sources */,
 				1BD427BF2833D3440098DEEF /* HomeURLSession.swift in Sources */,
+				1B1C48562989150B0095D603 /* ViewFromNib.swift in Sources */,
 				1BB8C30B2835D88700F5F342 /* ImageBucksPOSTProtocol.swift in Sources */,
 				1B797F58297A2BC700A58981 /* ViewModel.swift in Sources */,
 				1B176DA9297B7C6400E93D2B /* OrderMyMenuTableViewCell.swift in Sources */,
@@ -1529,6 +1589,7 @@
 				1B176DA7297AC24600E93D2B /* OrderMenuNeedLoginCell.swift in Sources */,
 				1B27E92E297EA3E200CF6AFE /* MenuDetailViewModel.swift in Sources */,
 				1B27493F28320F4800027B60 /* InitialEventViewModel.swift in Sources */,
+				1B1C483C2988FB2E0095D603 /* MoneyChargeViewController.swift in Sources */,
 				1B98BAE82979834900353B1A /* OrderMyMenuHeaderCell.swift in Sources */,
 				1BCFCEA3283530D800074ED2 /* AnonymousImageBucksProtocol.swift in Sources */,
 				1B176DA5297ABED400E93D2B /* OrderMenuEmptyCell.swift in Sources */,
@@ -1536,6 +1597,7 @@
 				1B27493D2832092F00027B60 /* HTTPRequest.swift in Sources */,
 				1BD3C53029824DF2007B63FF /* OrderMainViewModel.swift in Sources */,
 				1B98BAE62979833900353B1A /* OrderViewListCell.swift in Sources */,
+				1B1C48502989014A0095D603 /* MoneyChargeCustomButtonView.swift in Sources */,
 				1BD427B72833ABBB0098DEEF /* HomeIngDTO.swift in Sources */,
 				1B7F194E2973C82F00A1F07B /* MyBagListTableViewTitleCell.swift in Sources */,
 				1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */,
@@ -1564,6 +1626,8 @@
 				1B2749512832527200027B60 /* CommonUserDefaults.swift in Sources */,
 				1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */,
 				1BD427B92833AC750098DEEF /* HomeMainBucksProtocol.swift in Sources */,
+				1B1C48522989014F0095D603 /* MoneyChargeDescriptionView.swift in Sources */,
+				1B1C484C2989013D0095D603 /* MoneyChargeDefinedChargeAmountView.swift in Sources */,
 				1B6733212983A58600E1872D /* HomeMainImageFetcher.swift in Sources */,
 				1BCFCE812834C51600074ED2 /* ImageBucksGETProtocol.swift in Sources */,
 				1B7AAAAD28E2A48900DD66EA /* StarbucksItemDTO.swift in Sources */,

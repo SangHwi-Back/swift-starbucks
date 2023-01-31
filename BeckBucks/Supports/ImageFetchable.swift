@@ -20,8 +20,9 @@ extension ImageFetchable {
         
         let jpegURL = Bundle.main.url(forResource: fileName, withExtension: "jpeg")
         let jpgURL = Bundle.main.url(forResource: fileName, withExtension: "jpg")
+        let pngURL = Bundle.main.url(forResource: fileName, withExtension: "png")
         
-        guard let url = jpegURL ?? jpgURL else {
+        guard let url = jpegURL ?? jpgURL ?? pngURL else {
             return .error(ViewModelError.urlError("fileName : \(fileName)"))
         }
         

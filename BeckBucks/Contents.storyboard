@@ -72,7 +72,7 @@
                                         <rect key="frame" x="0.0" y="216" width="414" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7J-Jx-4m6">
-                                                <rect key="frame" x="0.0" y="0.0" width="116" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="110.5" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
@@ -87,7 +87,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3f-AH-58I">
-                                                <rect key="frame" x="132" y="0.0" width="94" height="48"/>
+                                                <rect key="frame" x="126.5" y="0.0" width="89.5" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
@@ -102,11 +102,11 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="tWa-K4-SXX">
-                                                <rect key="frame" x="242" y="0.0" width="110" height="48"/>
+                                                <rect key="frame" x="232" y="0.0" width="124.5" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6m-ok-fPv">
-                                                <rect key="frame" x="368" y="0.0" width="46" height="48"/>
+                                                <rect key="frame" x="372.5" y="0.0" width="41.5" height="48"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system">
                                                     <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -454,9 +454,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-1j-1bg">
-                                <rect key="frame" x="-6" y="81" width="416" height="566"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-1j-1bg">
+                                <rect key="frame" x="0.0" y="92" width="414" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q0k-RF-XnI">
                                     <size key="itemSize" width="128" height="128"/>
@@ -536,12 +535,16 @@
                         <constraints>
                             <constraint firstItem="6Ik-Ci-aOA" firstAttribute="height" secondItem="dvG-un-meR" secondAttribute="height" multiplier="0.07" id="0OU-av-JP2"/>
                             <constraint firstItem="t9I-nh-39e" firstAttribute="trailing" secondItem="zQ4-72-dep" secondAttribute="trailing" id="8HY-0g-NQy"/>
+                            <constraint firstItem="ezW-1j-1bg" firstAttribute="leading" secondItem="t9I-nh-39e" secondAttribute="leading" id="Cdr-op-Zxf"/>
                             <constraint firstItem="zQ4-72-dep" firstAttribute="height" secondItem="dvG-un-meR" secondAttribute="height" multiplier="0.1" id="HsJ-4J-7c3"/>
                             <constraint firstItem="6Ik-Ci-aOA" firstAttribute="leading" secondItem="t9I-nh-39e" secondAttribute="leading" id="Kal-Hp-I90"/>
+                            <constraint firstItem="ezW-1j-1bg" firstAttribute="top" secondItem="t9I-nh-39e" secondAttribute="top" id="L6f-FR-3hN"/>
                             <constraint firstItem="t9I-nh-39e" firstAttribute="trailing" secondItem="6Ik-Ci-aOA" secondAttribute="trailing" id="SNt-Ca-q15"/>
                             <constraint firstItem="zQ4-72-dep" firstAttribute="top" secondItem="6Ik-Ci-aOA" secondAttribute="bottom" id="TQ9-fm-FdP"/>
+                            <constraint firstItem="t9I-nh-39e" firstAttribute="trailing" secondItem="ezW-1j-1bg" secondAttribute="trailing" id="Uhi-gF-fGf"/>
                             <constraint firstItem="t9I-nh-39e" firstAttribute="bottom" secondItem="zQ4-72-dep" secondAttribute="bottom" id="er0-lh-Cnr"/>
                             <constraint firstItem="zQ4-72-dep" firstAttribute="leading" secondItem="t9I-nh-39e" secondAttribute="leading" id="fva-A2-ZRY"/>
+                            <constraint firstItem="6Ik-Ci-aOA" firstAttribute="top" secondItem="ezW-1j-1bg" secondAttribute="bottom" id="mWn-qE-sFL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pay" id="pgX-OI-pwi">
@@ -552,11 +555,194 @@
                     <connections>
                         <outlet property="cardCollectionView" destination="ezW-1j-1bg" id="X0J-MM-XK4"/>
                         <outlet property="eventImageView" destination="gRH-xn-qxm" id="ixW-Oy-Wae"/>
+                        <segue destination="DN2-2o-wet" kind="show" identifier="MoneyChargeViewController" id="MrK-5c-Cdp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKE-FF-Bob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1946" y="145"/>
+        </scene>
+        <!--일반 충전-->
+        <scene sceneID="aAf-kS-0Fd">
+            <objects>
+                <viewController storyboardIdentifier="MoneyChargeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DN2-2o-wet" customClass="MoneyChargeViewController" customModule="BeckBucks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sNo-s3-ceC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyp-sU-gjA">
+                                <rect key="frame" x="0.0" y="92" width="414" height="634"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H0V-SH-XX2">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="844"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCk-Xl-Ieq" customClass="MoneyChargeCardInfoVIew" customModule="BeckBucks" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="fXE-lf-IGm"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTM-sn-aON">
+                                                <rect key="frame" x="0.0" y="80" width="414" height="16"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncq-nI-0iG">
+                                                        <rect key="frame" x="16" y="8" width="382" height="0.5"/>
+                                                        <color key="backgroundColor" name="color_text_gray_2"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="0.5" id="OOt-Xg-2FA"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="ncq-nI-0iG" secondAttribute="trailing" constant="16" id="46q-Pa-Ia2"/>
+                                                    <constraint firstItem="ncq-nI-0iG" firstAttribute="leading" secondItem="HTM-sn-aON" secondAttribute="leading" constant="16" id="eYF-bQ-sR6"/>
+                                                    <constraint firstAttribute="height" constant="16" id="gGa-DM-dy8"/>
+                                                    <constraint firstItem="ncq-nI-0iG" firstAttribute="centerY" secondItem="HTM-sn-aON" secondAttribute="centerY" id="jD6-Pc-yPH"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cc-KM-eZG" customClass="MoneyChargeDefinedChargeAmountView" customModule="BeckBucks" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="96" width="414" height="220"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="220" id="g1c-qU-Uyp"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhn-og-Lvh" customClass="MoneyChargePaymentMethodView" customModule="BeckBucks" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="316" width="414" height="300"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="d4R-Mh-hTV"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j68-V7-BVO" customClass="MoneyChargeCustomButtonView" customModule="BeckBucks" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="616" width="414" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="WWi-42-6tv"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61n-5h-nED">
+                                                <rect key="frame" x="0.0" y="696" width="414" height="16"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa4-BV-GOc">
+                                                        <rect key="frame" x="16" y="8" width="382" height="0.5"/>
+                                                        <color key="backgroundColor" name="color_text_gray_2"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="0.5" id="yFF-Nr-Xaj"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Fa4-BV-GOc" firstAttribute="centerY" secondItem="61n-5h-nED" secondAttribute="centerY" id="5qY-SW-NNe"/>
+                                                    <constraint firstItem="Fa4-BV-GOc" firstAttribute="leading" secondItem="61n-5h-nED" secondAttribute="leading" constant="16" id="Q95-vT-ACP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Fa4-BV-GOc" secondAttribute="trailing" constant="16" id="drD-rz-sbP"/>
+                                                    <constraint firstAttribute="height" constant="16" id="jSA-kt-0KB"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDc-nT-a6B" customClass="MoneyChargeDescriptionView" customModule="BeckBucks" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="712" width="414" height="100"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="WNh-zX-8oD"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10w-41-XQp">
+                                                <rect key="frame" x="0.0" y="812" width="414" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="BlA-nY-I6o"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="H0V-SH-XX2" firstAttribute="leading" secondItem="ReU-02-eWf" secondAttribute="leading" id="E8l-2c-d95"/>
+                                    <constraint firstItem="H0V-SH-XX2" firstAttribute="bottom" secondItem="ReU-02-eWf" secondAttribute="bottom" id="Gdw-Zk-Spd"/>
+                                    <constraint firstItem="H0V-SH-XX2" firstAttribute="leading" secondItem="YbZ-qq-xoK" secondAttribute="leading" id="YOf-TZ-MKj"/>
+                                    <constraint firstItem="ReU-02-eWf" firstAttribute="top" secondItem="H0V-SH-XX2" secondAttribute="top" id="dzV-Gd-2gO"/>
+                                    <constraint firstItem="YbZ-qq-xoK" firstAttribute="trailing" secondItem="H0V-SH-XX2" secondAttribute="trailing" id="mJn-xm-mMh"/>
+                                    <constraint firstItem="H0V-SH-XX2" firstAttribute="trailing" secondItem="ReU-02-eWf" secondAttribute="trailing" id="oho-Th-PIb"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ReU-02-eWf"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="YbZ-qq-xoK"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSf-RP-vBf">
+                                <rect key="frame" x="0.0" y="726" width="414" height="87"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9y-bn-jBm">
+                                        <rect key="frame" x="16" y="45" width="382" height="38"/>
+                                        <color key="backgroundColor" name="starbucks_green_light"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="X4z-5d-CZk"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="주문하기">
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S3e-Cn-5GP">
+                                        <rect key="frame" x="16" y="8" width="382" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="충전 후 예상 총 카드 잔액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bH-IR-b03">
+                                                <rect key="frame" x="0.0" y="0.0" width="347" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <color key="textColor" name="color_text_gold"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vl-V9-ewb">
+                                                <rect key="frame" x="347" y="0.0" width="35" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="1W0-ED-UKi"/>
+                                    <constraint firstItem="S3e-Cn-5GP" firstAttribute="top" secondItem="fSf-RP-vBf" secondAttribute="top" constant="8" id="7xA-py-JVb"/>
+                                    <constraint firstAttribute="trailing" secondItem="i9y-bn-jBm" secondAttribute="trailing" constant="16" id="Oac-RL-n0s"/>
+                                    <constraint firstItem="i9y-bn-jBm" firstAttribute="leading" secondItem="fSf-RP-vBf" secondAttribute="leading" constant="16" id="Uka-kl-fhT"/>
+                                    <constraint firstItem="S3e-Cn-5GP" firstAttribute="leading" secondItem="fSf-RP-vBf" secondAttribute="leading" constant="16" id="VRn-mo-lT2"/>
+                                    <constraint firstAttribute="trailing" secondItem="S3e-Cn-5GP" secondAttribute="trailing" constant="16" id="WPg-kz-IMR"/>
+                                    <constraint firstAttribute="bottom" secondItem="i9y-bn-jBm" secondAttribute="bottom" constant="4" id="ZP7-eT-LdI"/>
+                                    <constraint firstItem="i9y-bn-jBm" firstAttribute="top" secondItem="S3e-Cn-5GP" secondAttribute="bottom" constant="8" id="ZeC-o7-7fx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9PH-Db-y19"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wyp-sU-gjA" firstAttribute="top" secondItem="9PH-Db-y19" secondAttribute="top" id="2UU-QV-OPH"/>
+                            <constraint firstItem="9PH-Db-y19" firstAttribute="trailing" secondItem="fSf-RP-vBf" secondAttribute="trailing" id="LXC-M7-St2"/>
+                            <constraint firstItem="fSf-RP-vBf" firstAttribute="leading" secondItem="9PH-Db-y19" secondAttribute="leading" id="QvK-tR-qqZ"/>
+                            <constraint firstItem="fSf-RP-vBf" firstAttribute="top" secondItem="Wyp-sU-gjA" secondAttribute="bottom" id="W83-Mc-A6Q"/>
+                            <constraint firstItem="9PH-Db-y19" firstAttribute="bottom" secondItem="fSf-RP-vBf" secondAttribute="bottom" id="WJo-6f-H4K"/>
+                            <constraint firstItem="H0V-SH-XX2" firstAttribute="leading" secondItem="9PH-Db-y19" secondAttribute="leading" id="ada-M3-4EF"/>
+                            <constraint firstItem="Wyp-sU-gjA" firstAttribute="leading" secondItem="9PH-Db-y19" secondAttribute="leading" id="jXd-iz-8k8"/>
+                            <constraint firstItem="9PH-Db-y19" firstAttribute="trailing" secondItem="Wyp-sU-gjA" secondAttribute="trailing" id="n2t-VC-CrT"/>
+                            <constraint firstItem="9PH-Db-y19" firstAttribute="trailing" secondItem="H0V-SH-XX2" secondAttribute="trailing" id="sHZ-cw-eHy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="일반 충전" id="8fL-xo-PBU"/>
+                    <connections>
+                        <outlet property="cardInfoView" destination="NCk-Xl-Ieq" id="5T3-YG-OdG"/>
+                        <outlet property="customButtonView" destination="j68-V7-BVO" id="lmt-Wt-S6Z"/>
+                        <outlet property="definedChargeAmountView" destination="5cc-KM-eZG" id="iBl-as-pCd"/>
+                        <outlet property="descriptionView" destination="MDc-nT-a6B" id="YZs-Km-Qzd"/>
+                        <outlet property="paymentMethodView" destination="Qhn-og-Lvh" id="WOz-Yw-J2m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5sL-19-UiN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2773.913043478261" y="144.64285714285714"/>
         </scene>
         <!--Shop-->
         <scene sceneID="q4b-eA-8Xn">
@@ -1445,7 +1631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56x-2q-rJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2885" y="599"/>
+            <point key="canvasLocation" x="2894" y="874"/>
         </scene>
         <!--Search Result View Controller-->
         <scene sceneID="NGz-sH-L4C">
