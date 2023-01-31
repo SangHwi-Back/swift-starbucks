@@ -20,10 +20,10 @@ class MyBagViewController: UIViewController {
     @IBOutlet weak var categoryUnderneathView: UIView!
     
     var cellID: String {
-        String(describing: MyBagCollectionViewCell.self)
+        MyBagCollectionViewCell.reusableIdentifier
     }
     var emptyCellID: String {
-        String(describing: MyBagCollectionViewEmptyCell.self)
+        MyBagCollectionViewEmptyCell.reusableIdentifier
     }
     
     let VM = MyBagViewModel(true)

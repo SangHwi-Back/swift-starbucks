@@ -28,4 +28,12 @@ extension UIView {
             layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
         }
     }
+    
+    func loadViewFromNib() -> UIView? {
+        let nib = UINib(nibName: String(describing: Self.self),
+                        bundle: Bundle.main)
+        let instantiatedNib = nib.instantiate(withOwner: self,
+                                              options: nil)
+        return instantiatedNib.first as? UIView
+    }
 }

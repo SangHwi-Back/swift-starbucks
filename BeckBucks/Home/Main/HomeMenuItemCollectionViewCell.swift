@@ -19,12 +19,4 @@ class MainMenuItemCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(view)
         view.frame = CGRect(origin: .zero, size: contentView.frame.size)
     }
-    
-    func loadViewFromNib() -> UIView? {
-        let nib = UINib(nibName: String(describing: Self.self),
-                        bundle: Bundle.main)
-        let instantiatedNib = nib.instantiate(withOwner: self,
-                                              options: nil)
-        return instantiatedNib.first as? UIView
-    }
 }

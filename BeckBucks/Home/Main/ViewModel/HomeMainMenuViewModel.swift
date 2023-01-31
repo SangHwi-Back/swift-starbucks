@@ -9,18 +9,22 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class HomeMainMenuViewModel {
+class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
+    enum EntityType {
+        case recommend
+        case current
+    }
+    
     private let foodModel = HomeMainFetchFoodModel()
     private let drinkModel = HomeMainFetchDrinkModel()
     
-    private(set) var recommendMenus: [StarbucksItemDTO] = []
-    let recommendMenuBinder = PublishSubject<[StarbucksItemDTO]>()
-    private(set) var currentMenus: [StarbucksItemDTO] = []
-    let currentMenuBinder = PublishSubject<[StarbucksItemDTO]>()
+    private(set) var recommendMenus: [Entity] = []
+    let recommendMenuBinder = PublishSubject<[Entity]>()
+    private(set) var currentMenus: [Entity] = []
+    let currentMenuBinder = PublishSubject<[Entity]>()
     
-    private var disposeBag = DisposeBag()
-    
-    init() {
+    override init() {
+        super.init()
         bindMenuModels()
     }
     
@@ -63,5 +67,25 @@ class HomeMainMenuViewModel {
             self?.currentMenuBinder.onNext(result)
         })
         .disposed(by: disposeBag)
+    }
+    
+    /// Deactivated. Use getItem(at: Int, type: EntityType).
+//    override func getItem(at index: Int) -> Entity? {
+//        return nil
+//    }
+    
+    func getItem(at index: Int, type: EntityType) -> Entity? {
+        switch type {
+        case .recommend:
+            return index < recommendMenus.count ? recommendMenus[index] : nil
+        case .current:
+            return index < currentMenus.count ? currentMenus[index] : nil
+        }
+    }
+}
+
+extension HomeMainMenuViewModel {
+    func getItem(at index: Int) -> Entity? {
+        return nil
     }
 }

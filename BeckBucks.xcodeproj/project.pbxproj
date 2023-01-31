@@ -18,6 +18,13 @@
 		1B176DAF297C3E8900E93D2B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DAE297C3E8900E93D2B /* SearchViewController.swift */; };
 		1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */; };
 		1B176DB3297D184800E93D2B /* SearchViewListTableViewFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */; };
+		1B1C48312988C5980095D603 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */; };
+		1B1C48322988C5D40095D603 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */; };
+		1B1C48352988C7190095D603 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */; };
+		1B1C48372988C7230095D603 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48362988C7230095D603 /* UICollectionViewCell+Extensions.swift */; };
+		1B1C48382988D3EB0095D603 /* StarbucksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */; };
+		1B1C48392988D3F70095D603 /* HTTPRequestMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D8E28E08B780033DF2A /* HTTPRequestMockProtocol.swift */; };
+		1B1C483A2988D4100095D603 /* ProtocolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEB9A128331ABF003517F0 /* ProtocolError.swift */; };
 		1B1F244C297D434300BA6FE9 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F244B297D434300BA6FE9 /* UIStoryboard+Extensions.swift */; };
 		1B1F244E297D43B300BA6FE9 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F244D297D43B300BA6FE9 /* UIAlertController+Extensions.swift */; };
 		1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B230A4828E5565900775128 /* UIView+Extensions.swift */; };
@@ -284,6 +291,9 @@
 		1B176DAE297C3E8900E93D2B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListTableViewCell.swift; sourceTree = "<group>"; };
 		1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListTableViewFooterCell.swift; sourceTree = "<group>"; };
+		1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		1B1C48362988C7230095D603 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		1B1F244B297D434300BA6FE9 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		1B1F244D297D43B300BA6FE9 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		1B230A4828E5565900775128 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -671,6 +681,9 @@
 				1B27E932297F431200CF6AFE /* String+Extensions.swift */,
 				1BD3C57429836818007B63FF /* UIDevice+Extensions.swift */,
 				1BD3C58329838BC4007B63FF /* URL+Extensions.swift */,
+				1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */,
+				1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */,
+				1B1C48362988C7230095D603 /* UICollectionViewCell+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1463,10 +1476,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B1C48312988C5980095D603 /* UIViewController+Extensions.swift in Sources */,
 				1BD3C53229825513007B63FF /* ImageFetchable.swift in Sources */,
 				1BD3C5792983704D007B63FF /* HomeMainFetchDrinkModel.swift in Sources */,
 				1B274958283268F000027B60 /* InitialImageBucksProtocol.swift in Sources */,
 				1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */,
+				1B1C48352988C7190095D603 /* UITableViewCell+Extensions.swift in Sources */,
 				1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */,
 				1B7F19522973C8BC00A1F07B /* MyBagListTableViewDescriptionCell.swift in Sources */,
 				1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */,
@@ -1505,6 +1520,7 @@
 				1B176DAD297C3AD000E93D2B /* SearchViewModel.swift in Sources */,
 				1BD427BD2833ACA90098DEEF /* HomeIngBucksProtocol.swift in Sources */,
 				1B2D7EAE2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift in Sources */,
+				1B1C48372988C7230095D603 /* UICollectionViewCell+Extensions.swift in Sources */,
 				1B2D7EAC2973BC3C00851D20 /* OrderNavigationController.swift in Sources */,
 				1BF36D7128D975D50033DF2A /* RecommendContentsView.swift in Sources */,
 				1BF36D8D28E08AC50033DF2A /* HTTPRequestMockModel.swift in Sources */,
@@ -1563,6 +1579,7 @@
 			files = (
 				1BD3C57F29838B4E007B63FF /* HomeMainMenuViewModel.swift in Sources */,
 				1BD3C58829838C0D007B63FF /* HomeMainFetchDrinkModel.swift in Sources */,
+				1B1C48322988C5D40095D603 /* UIViewController+Extensions.swift in Sources */,
 				1BD3C58529838BC7007B63FF /* URL+Extensions.swift in Sources */,
 				1BD3C58729838C09007B63FF /* HomeMainFetchFoodModel.swift in Sources */,
 				1BD3C57E29838B4C007B63FF /* HomeMainViewModel.swift in Sources */,
@@ -1570,7 +1587,10 @@
 				1BD3C58229838BB6007B63FF /* HTTPURLResponse+Extensions.swift in Sources */,
 				1BD3C58B29838D55007B63FF /* XCTestExpectation+Extensions.swift in Sources */,
 				1BD3C58029838B69007B63FF /* JSONFetchable.swift in Sources */,
+				1B1C483A2988D4100095D603 /* ProtocolError.swift in Sources */,
 				1BECD3EA2828BC2F00B486B9 /* MainViewModelTest.swift in Sources */,
+				1B1C48392988D3F70095D603 /* HTTPRequestMockProtocol.swift in Sources */,
+				1B1C48382988D3EB0095D603 /* StarbucksViewModel.swift in Sources */,
 				1BD3C58629838BF1007B63FF /* ViewModel.swift in Sources */,
 				1BD3C58129838B74007B63FF /* HomeMainDTO.swift in Sources */,
 			);

@@ -22,13 +22,13 @@ class MyBagCollectionViewCell: UICollectionViewCell {
     var navigationController: UINavigationController?
     
     private var titleCellID: String {
-        String(describing: MyBagListTableViewTitleCell.self)
+        MyBagListTableViewTitleCell.reusableIdentifier
     }
     private var itemCellID: String {
-        String(describing: MyBagListTableViewItemCell.self)
+        MyBagListTableViewItemCell.reusableIdentifier
     }
     private var descCellID: String {
-        String(describing: MyBagListTableViewDescriptionCell.self)
+        MyBagListTableViewDescriptionCell.reusableIdentifier
     }
     
     private var entities: [any MyBagData] = []

@@ -91,12 +91,4 @@ class AdjustableSwitch: UIView {
     func setMarkerColor(_ color: UIColor) {
         self.switchMarker.backgroundColor = color
     }
-  
-    func loadViewFromNib() -> UIView? {
-        let nib = UINib(nibName: String(describing: Self.self),
-                        bundle: Bundle.main)
-        let instantiatedNib = nib.instantiate(withOwner: self,
-                                              options: nil)
-        return instantiatedNib.first as? UIView
-    }
 }

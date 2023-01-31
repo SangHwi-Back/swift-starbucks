@@ -76,7 +76,7 @@ class MenuDetailViewController: UIViewController {
         
         VM?.recommendationsRelay
             .bind(to: collectionView.rx.items(
-                cellIdentifier: String(describing: MenuDetailRecommendationCollectionViewCell.self),
+                cellIdentifier: MenuDetailRecommendationCollectionViewCell.reusableIdentifier,
                 cellType: MenuDetailRecommendationCollectionViewCell.self)
             ) { [weak self] row, element, cell in
                 

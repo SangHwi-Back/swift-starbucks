@@ -41,7 +41,7 @@ class SearchViewController: UIViewController {
             .bind(onNext: { [weak self] indexPath in
                 self?.selectedItemIndexPath = indexPath
                 self?.tableView.deselectRow(at: indexPath, animated: true)
-                self?.performSegue(withIdentifier: String(describing: SearchResultViewController.self),
+                self?.performSegue(withIdentifier: SearchResultViewController.storyboardIdentifier,
                                    sender: true)
             })
             .disposed(by: VM.disposeBag)
@@ -72,7 +72,7 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == VM.searchHistory.count {
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: SearchViewListTableViewFooterCell.self),
+                withIdentifier: SearchViewListTableViewFooterCell.reusableIdentifier,
                 for: indexPath) as? SearchViewListTableViewFooterCell
             else {
                 return .init()
@@ -90,7 +90,7 @@ extension SearchViewController: UITableViewDataSource {
         }
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: SearchViewListTableViewCell.self),
+            withIdentifier: SearchViewListTableViewCell.reusableIdentifier,
             for: indexPath) as? SearchViewListTableViewCell else {
             return .init()
         }

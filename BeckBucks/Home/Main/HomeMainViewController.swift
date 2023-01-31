@@ -73,7 +73,7 @@ class HomeMainViewController: UIViewController {
     
     typealias CELL = MainMenuItemCollectionViewCell
     private var CellID: String {
-        String(describing: MainMenuItemCollectionViewCell.self)
+        MainMenuItemCollectionViewCell.reusableIdentifier
     }
     
     override func viewDidLoad() {
@@ -107,67 +107,9 @@ class HomeMainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mainVM.itemBinder
-            .subscribe(onNext: { [weak self] mainDTO in
-                guard
-                    let disposeBag = self?.disposeBag,
-                    let imageModel = self?.imageModel
-                else {
-                    return
-                }
-                
-                let getPublisher: (String) -> Observable<UIImage?>? = { fileName in
-                    imageModel
-                        .getImageFrom(fileName: fileName)
-                        .map({ UIImage(data: $0) })
-                }
-                
-                if let imageView = self?.mainHeaderImageView,
-                   let publisher = getPublisher(mainDTO.mainHeaderImageFileName)
-                {
-                    publisher
-                        .bind(to: imageView.rx.image)
-                        .disposed(by: disposeBag)
-                }
-                
-                if let button = self?.mainEventButton,
-                   let publisher = getPublisher(mainDTO.mainEventImageFileName)
-                {
-                    publisher
-                        .bind(to: button.rx.backgroundImage())
-                        .disposed(by: disposeBag)
-                }
-                
-                Observable<UIImage?>
-                    .concat(mainDTO.processingEventImageFileNames.map({
-                        imageModel
-                            .getImageFrom(fileName: $0)
-                            .map({UIImage(data: $0)})
-                    }))
-                    .compactMap({$0})
-                    .observeOn(MainScheduler.asyncInstance)
-                    .subscribe(onNext: { image in
-                        let imageView = ResizableImageView(image: image)
-                        imageView.frame.size.width = self?.view.frame.width ?? 300
-                        imageView.frame.size.width -= 32
-                        imageView.frame.size = imageView.intrinsicContentSize
-                        imageView.setCornerRadius(8)
-                        imageView.frame.origin.x = 16
-                        
-                        if let lastView = self?.processingEventView.subviews.last {
-                            imageView.frame.origin.y = lastView.frame.maxY + 8
-                            self?.processingEventViewHeight.constant = imageView.frame.maxY
-                        }
-                        
-                        self?.processingEventView.addSubview(imageView)
-                    })
-                    .disposed(by: disposeBag)
-            })
-            .disposed(by: disposeBag)
-        
-        mainVM.itemBinder
             .map({ $0.whatsNewList })
             .bind(to: newInfoCollectionView.rx.items(cellIdentifier: CellID,
-                                                            cellType: CELL.self)
+                                                     cellType: CELL.self)
             ) { [weak imageModel, weak disposeBag] row, entity, cell in
                 
                 if let disposeBag = disposeBag {
@@ -184,6 +126,58 @@ class HomeMainViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        mainVM.itemBinder
+            .subscribe(onNext: { [weak self] mainDTO in
+                guard
+                    let disposeBag = self?.disposeBag,
+                    let imageModel = self?.imageModel
+                else {
+                    return
+                }
+                
+                let imageObservable: (String) -> Observable<UIImage?> = { fileName in
+                    imageModel
+                        .getImageFrom(fileName: fileName)
+                        .map({ UIImage(data: $0) })
+                        .observeOn(MainScheduler.asyncInstance)
+                }
+                
+                imageObservable(mainDTO.mainHeaderImageFileName)
+                    .bind(onNext: { self?.mainHeaderImageView.image = $0 })
+                    .disposed(by: disposeBag)
+                
+                imageObservable(mainDTO.mainEventImageFileName)
+                    .bind(onNext: { self?.mainEventButton.setBackgroundImage($0, for: .normal) })
+                    .disposed(by: disposeBag)
+                
+                Observable<UIImage?>
+                    .concat(
+                        mainDTO.processingEventImageFileNames
+                            .map {
+                                imageModel
+                                    .getImageFrom(fileName: $0)
+                                    .map({UIImage(data: $0)})
+                            }
+                    )
+                    .compactMap({$0})
+                    .observeOn(MainScheduler.asyncInstance)
+                    .subscribe(onNext: { image in
+                        let imageView = ResizableImageView(image: image)
+                        imageView.resize(pinWidth: (self?.view.frame.width ?? 300) - 32)
+                        imageView.setCornerRadius(8)
+                        imageView.frame.origin.x = 16
+                        
+                        if let lastView = self?.processingEventView.subviews.last {
+                            imageView.frame.origin.y = lastView.frame.maxY + 8
+                            self?.processingEventViewHeight.constant = imageView.frame.maxY
+                        }
+                        
+                        self?.processingEventView.addSubview(imageView)
+                    })
+                    .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
         newInfoCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
                 guard
@@ -193,15 +187,18 @@ class HomeMainViewController: UIViewController {
                     return
                 }
                 
-                self?.performSegue(withIdentifier: "HomeMainDetailViewController",
-                                   sender: entities[indexPath.item])
+                self?.performSegue(
+                    withIdentifier: HomeMainDetailViewController.storyboardIdentifier,
+                    sender: entities[indexPath.item]
+                )
             })
             .disposed(by: disposeBag)
         
-        menuVM.recommendMenuBinder
-            .bind(to: recommendationCollectionView.rx.items(cellIdentifier: CellID,
-                                                     cellType: CELL.self)
-            ) { [weak imageModel, weak disposeBag] row, entity, cell in
+        func localBind(to view: UICollectionView, publisher: PublishSubject<[some StarbucksEntity]>) {
+            publisher
+                .bind(to: view.rx.items(cellIdentifier: CellID,
+                                        cellType: CELL.self)
+                ) { [weak imageModel, weak disposeBag] row, entity, cell in
                 
                 if let disposeBag = disposeBag {
                     cell.menuImageView.setCornerRadius(8)
@@ -215,67 +212,38 @@ class HomeMainViewController: UIViewController {
                 cell.menuTitleLabel.text = entity.title
             }
             .disposed(by: disposeBag)
+        }
         
-        menuVM.currentMenuBinder
-            .bind(to: currentMenuCollectionView.rx.items(cellIdentifier: CellID,
-                                                         cellType: CELL.self)
-            ) { [weak imageModel, weak disposeBag] row, entity, cell in
-                
-                if let disposeBag = disposeBag {
-                    cell.menuImageView.setCornerRadius(8)
-                    imageModel?
-                        .getImageFrom(fileName: entity.fileName)
-                        .map({ UIImage(data: $0) })
-                        .bind(to: cell.menuImageView.rx.image)
-                        .disposed(by: disposeBag)
-                }
-                
-                cell.menuTitleLabel.text = entity.title
-            }
-            .disposed(by: disposeBag)
+        localBind(to: recommendationCollectionView, publisher: menuVM.recommendMenuBinder)
+        localBind(to: currentMenuCollectionView, publisher: menuVM.currentMenuBinder)
         
         recommendationCollectionView.rx.itemSelected
-            .bind(onNext: { indexPath in
-                let id = String(describing: MenuDetailViewController.self)
-                let viewController = UIStoryboard(name: "Contents",bundle: Bundle.main)
-                    .instantiateViewController(withIdentifier: id)
-                
-                guard
-                    let viewController = viewController as? MenuDetailViewController,
-                    indexPath.item < self.menuVM.recommendMenus.count
-                else {
-                    return
-                }
-                
-                let entity = self.menuVM.recommendMenus[indexPath.row]
-                viewController.VM = MenuDetailViewModel(entity: entity)
-                self.navigationController?.pushViewController(viewController, animated: true)
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
+            .bind(onNext: { [weak self] indexPath in
+                guard let entity = self?.menuVM.recommendMenus[indexPath.row] else { return }
+                self?.itemSelectForNavigation(entity: entity)
             })
             .disposed(by: disposeBag)
         
         currentMenuCollectionView.rx.itemSelected
-            .bind(onNext: { indexPath in
-                let id = String(describing: MenuDetailViewController.self)
-                let viewController = UIStoryboard(name: "Contents",bundle: Bundle.main)
-                    .instantiateViewController(withIdentifier: id)
-                
-                guard
-                    let viewController = viewController as? MenuDetailViewController,
-                    indexPath.item < self.menuVM.currentMenus.count
-                else {
-                    return
-                }
-                
-                let entity = self.menuVM.currentMenus[indexPath.row]
-                viewController.VM = MenuDetailViewModel(entity: entity)
-                self.navigationController?.pushViewController(viewController, animated: true)
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
+            .bind(onNext: { [weak self] indexPath in
+                guard let entity = self?.menuVM.currentMenus[indexPath.row] else { return }
+                self?.itemSelectForNavigation(entity: entity)
             })
             .disposed(by: disposeBag)
         
         mainVM.fetch()
         menuVM.fetch()
+    }
+    
+    func itemSelectForNavigation(entity: StarbucksItemDTO) {
+        let storyboard = UIStoryboard(name: "Contents", bundle: Bundle.main)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: MenuDetailViewController.storyboardIdentifier) as? MenuDetailViewController else {
+            return
+        }
+        
+        viewController.VM = MenuDetailViewModel(entity: entity)
+        navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -72,7 +72,7 @@
                                         <rect key="frame" x="0.0" y="216" width="414" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7J-Jx-4m6">
-                                                <rect key="frame" x="0.0" y="0.0" width="120.5" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="116" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
@@ -87,7 +87,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3f-AH-58I">
-                                                <rect key="frame" x="136.5" y="0.0" width="98" height="48"/>
+                                                <rect key="frame" x="132" y="0.0" width="94" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
@@ -102,11 +102,11 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="tWa-K4-SXX">
-                                                <rect key="frame" x="250.5" y="0.0" width="97.5" height="48"/>
+                                                <rect key="frame" x="242" y="0.0" width="110" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6m-ok-fPv">
-                                                <rect key="frame" x="364" y="0.0" width="50" height="48"/>
+                                                <rect key="frame" x="368" y="0.0" width="46" height="48"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system">
                                                     <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -556,7 +556,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKE-FF-Bob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="144"/>
+            <point key="canvasLocation" x="1946" y="145"/>
         </scene>
         <!--Shop-->
         <scene sceneID="q4b-eA-8Xn">
@@ -2479,7 +2479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvh-KT-VFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2885" y="1258"/>
+            <point key="canvasLocation" x="1997" y="875"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="S0R-hh-sty">
@@ -2623,7 +2623,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피, 모카 소스, 진한 초콜릿 칩이 입안 가득 느껴지는 스타벅스에서만 맛볼 수 있는 프라푸치노" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000298023224" translatesAutoresizingMaskIntoConstraints="NO" id="prS-yw-hSn">
-                                        <rect key="frame" x="16" y="441.5" width="382" height="50"/>
+                                        <rect key="frame" x="16" y="449.5" width="382" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Ll5-xk-xVg"/>
                                         </constraints>
@@ -2632,7 +2632,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,300원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000298023224" translatesAutoresizingMaskIntoConstraints="NO" id="rux-ab-yoC">
-                                        <rect key="frame" x="16" y="493.5" width="382" height="45"/>
+                                        <rect key="frame" x="16" y="507.5" width="382" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="oUz-oX-pEt"/>
                                         </constraints>
@@ -2641,7 +2641,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKp-uJ-MSh">
-                                        <rect key="frame" x="16" y="554.5" width="382" height="45"/>
+                                        <rect key="frame" x="16" y="568.5" width="382" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPm-V1-SdW">
                                                 <rect key="frame" x="0.0" y="0.0" width="191" height="45"/>
@@ -2670,7 +2670,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxM-af-s3e">
-                                        <rect key="frame" x="16" y="615.5" width="382" height="70"/>
+                                        <rect key="frame" x="16" y="629.5" width="382" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="퍼스널 옵션을 선택하여 디카페인이나 블론드로 즐겨보세요. 최상의 맛을 위해 따뜻한 음료로 숏과 톨 사이즈로만 제공됩니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEm-pe-u2x">
                                                 <rect key="frame" x="8" y="8" width="366" height="54"/>
@@ -2689,7 +2689,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-b7-LLB">
-                                        <rect key="frame" x="16" y="709.5" width="382" height="100"/>
+                                        <rect key="frame" x="16" y="723.5" width="382" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGl-ec-dVa">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -2757,7 +2757,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDd-5Q-iVu">
-                                        <rect key="frame" x="0.0" y="825.5" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="839.5" width="414" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비슷한 다른 메뉴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pha-lp-1Ua">
                                                 <rect key="frame" x="16" y="24" width="382" height="25"/>
@@ -2853,8 +2853,8 @@
                                     <constraint firstItem="gcX-WU-XTE" firstAttribute="trailing" secondItem="ZFm-A6-cgY" secondAttribute="trailing" constant="16" id="jQB-0k-Zcm"/>
                                     <constraint firstItem="JxM-af-s3e" firstAttribute="leading" secondItem="ZFm-A6-cgY" secondAttribute="leading" id="jev-Fb-Sab"/>
                                     <constraint firstItem="prS-yw-hSn" firstAttribute="trailing" secondItem="ZFm-A6-cgY" secondAttribute="trailing" id="mxp-Te-ODf"/>
-                                    <constraint firstItem="prS-yw-hSn" firstAttribute="firstBaseline" secondItem="j1d-Rf-nNx" secondAttribute="baseline" constant="16" symbolType="layoutAnchor" id="pEJ-gQ-mg9"/>
-                                    <constraint firstItem="rux-ab-yoC" firstAttribute="firstBaseline" secondItem="prS-yw-hSn" secondAttribute="baseline" constant="32" symbolType="layoutAnchor" id="prD-r2-RkK"/>
+                                    <constraint firstItem="prS-yw-hSn" firstAttribute="top" secondItem="j1d-Rf-nNx" secondAttribute="bottom" constant="8" symbolType="layoutAnchor" id="pEJ-gQ-mg9"/>
+                                    <constraint firstItem="rux-ab-yoC" firstAttribute="top" secondItem="prS-yw-hSn" secondAttribute="bottom" constant="8" id="prD-r2-RkK"/>
                                     <constraint firstItem="ZFm-A6-cgY" firstAttribute="leading" secondItem="gcX-WU-XTE" secondAttribute="leading" constant="16" id="qhy-LL-q89"/>
                                     <constraint firstItem="FMi-b7-LLB" firstAttribute="leading" secondItem="ZFm-A6-cgY" secondAttribute="leading" id="tCU-1Y-p1v"/>
                                     <constraint firstItem="gcX-WU-XTE" firstAttribute="width" secondItem="AfI-b5-eJe" secondAttribute="width" id="tNC-dO-521"/>
@@ -2984,7 +2984,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyi-73-YNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="144"/>
+            <point key="canvasLocation" x="1207" y="145"/>
         </scene>
         <!--Order-->
         <scene sceneID="Ilq-TF-Kfq">

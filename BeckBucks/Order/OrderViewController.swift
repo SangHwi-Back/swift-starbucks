@@ -93,8 +93,10 @@ class OrderViewController: UIViewController {
             .bind(onNext: { indexPath in
                 self.selectedItemIndexPath = indexPath
                 self.tableView.deselectRow(at: indexPath, animated: true)
-                self.performSegue(withIdentifier: String(describing: MenuDetailViewController.self),
-                                   sender: true)
+                self.performSegue(
+                    withIdentifier: MenuDetailViewController.storyboardIdentifier,
+                    sender: true
+                )
             })
             .disposed(by: disposeBag)
         
@@ -254,7 +256,7 @@ extension OrderViewController: UITableViewDataSource {
         switch orderViewCategoryRelay.value {
         case .myMenu:
             guard indexPath.row > 0 else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuHeaderCell.self),
+                let cell = tableView.dequeueReusableCell(withIdentifier: OrderMyMenuHeaderCell.reusableIdentifier,
                                                          for: indexPath) as? OrderMyMenuHeaderCell
                 
                 cell?.adjustableSwitch?.switchStateRelay
@@ -267,7 +269,7 @@ extension OrderViewController: UITableViewDataSource {
                 return cell ?? .init()
             }
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderMyMenuTableViewCell.self), for: indexPath) as? OrderMyMenuTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: OrderMyMenuTableViewCell.reusableIdentifier, for: indexPath) as? OrderMyMenuTableViewCell
             
             cell?.menuTitleLabel.text = entity.title
             cell?.engTitleLabel.text = entity.engTitle
@@ -286,7 +288,7 @@ extension OrderViewController: UITableViewDataSource {
             
             let entity = useCase.items[cellIndex]
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: OrderViewListCell.self),
+                withIdentifier: OrderViewListCell.reusableIdentifier,
                 for: indexPath) as? OrderViewListCell
             cell?.titleLabel.text = entity.title
             cell?.subTitleLabel.isHidden = true

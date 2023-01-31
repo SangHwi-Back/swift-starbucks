@@ -12,6 +12,9 @@ import RxCocoa
 class HallCakeReservationViewController: UIViewController {
     
     typealias CELL = HallCakeReservationCollectionViewCell
+    var CELLID: String {
+        CELL.reusableIdentifier
+    }
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var menuSearchButton: UIBarButtonItem!
@@ -34,20 +37,17 @@ class HallCakeReservationViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         
         VM.itemsBinder
-            .observeOn(MainScheduler.instance)
-            .bind(to: collectionView.rx
-                .items(cellIdentifier: String(describing: CELL.self),
-                       cellType: CELL.self))
-        { row, entity, cell in
-            
-            cell.imageView.image = UIImage(data: entity.imageData)
-            cell.titleLabel.text = entity.title
-            cell.subTitleLabel.text = entity.engTitle
-            cell.priceTagLabel.text = (self.formatter.string(from: NSNumber(value: entity.price)) ?? "") + "원"
-            
-            cell.setUI()
-        }
-        .disposed(by: VM.disposeBag)
+            .bind(to: collectionView.rx.items(cellIdentifier: CELLID,cellType: CELL.self)
+            ) { [weak formatter] row, entity, cell in
+                
+                cell.imageView.image = UIImage(data: entity.imageData)
+                cell.titleLabel.text = entity.title
+                cell.subTitleLabel.text = entity.engTitle
+                cell.priceTagLabel.text = (formatter?.string(from: NSNumber(value: entity.price)) ?? "") + "원"
+                
+                cell.setUI()
+            }
+            .disposed(by: VM.disposeBag)
         
         searchVC?.selectedQueryPublisher?
             .bind(onNext: { [weak self] query in

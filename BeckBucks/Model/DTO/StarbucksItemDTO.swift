@@ -12,6 +12,7 @@ struct StarbucksArray: Decodable {
 }
 
 protocol StarbucksEntity {
+    var title: String { get }
     var fileName: String { get }
     var imageData: Data? { get set }
 }

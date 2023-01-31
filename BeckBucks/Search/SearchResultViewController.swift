@@ -28,8 +28,9 @@ class SearchResultViewController: UIViewController {
             .putShadows(offset: CGSize(width: view.frame.width, height: view.frame.height + 3))
         
         VM.itemsRelay
-            .bind(to: tableView.rx.items(cellIdentifier: String(describing: SearchResultTableViewCell.self),
-                                         cellType: SearchResultTableViewCell.self)) { [weak self] row, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reusableIdentifier,
+                                         cellType: SearchResultTableViewCell.self)
+            ) { [weak self] row, element, cell in
                 if let useCase = self?.VM {
                     useCase.requestImage(at: row)
                         .map({ data -> UIImage? in
