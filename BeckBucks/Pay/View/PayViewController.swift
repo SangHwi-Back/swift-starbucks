@@ -12,7 +12,6 @@ import RxCocoa
 class PayViewController: UIViewController {
     
     @IBOutlet weak var cardCollectionView: UICollectionView!
-    
     @IBOutlet weak var eventImageView: UIImageView!
     
     private var disposeBag = DisposeBag()
@@ -39,6 +38,12 @@ class PayViewController: UIViewController {
         cardCollectionView.collectionViewLayout = layout
         cardCollectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? MoneyChargeViewController {
+            dest.isAuto = (sender as? Int) == 1
+        }
+    }
 }
 
 extension PayViewController: UICollectionViewDataSource {
@@ -57,12 +62,20 @@ extension PayViewController: UICollectionViewDataSource {
         cell.cardImageView.image = indexPath.getCardImage()
         cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
         cell.cardBackgroundView.putShadows(offset: CGSize(width: 2, height: 2))
-        cell.normalChargeButton.rx.tap
-            .bind(onNext: { [weak self] in
-                let id = MoneyChargeViewController.storyboardIdentifier
-                self?.performSegue(withIdentifier: id, sender: self)
+        
+        Observable<Int>
+            .merge([
+                cell.normalChargeButton.rx.tap.map({0}),
+                cell.autoChargeButton.rx.tap.map({1})
+            ])
+            .bind(onNext: { [weak self] num in
+                self?.performSegue(
+                    withIdentifier: MoneyChargeViewController.storyboardIdentifier,
+                    sender: num
+                )
             })
             .disposed(by: disposeBag)
+        
         return cell
     }
 }

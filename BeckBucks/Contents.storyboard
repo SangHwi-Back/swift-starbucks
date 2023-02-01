@@ -574,7 +574,7 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="634"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H0V-SH-XX2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1118"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCk-Xl-Ieq" customClass="MoneyChargeCardInfoVIew" customModule="BeckBucks" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -630,8 +630,15 @@
                                                     <constraint firstAttribute="height" constant="80" id="WWi-42-6tv"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mds-gH-jfy" customClass="MoneyChargeAutomaticInfoView" customModule="BeckBucks" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="812" width="414" height="190"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="190" id="w6D-PZ-w9N"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61n-5h-nED">
-                                                <rect key="frame" x="0.0" y="812" width="414" height="16"/>
+                                                <rect key="frame" x="0.0" y="1002" width="414" height="16"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa4-BV-GOc">
                                                         <rect key="frame" x="16" y="8" width="382" height="0.5"/>
@@ -650,24 +657,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDc-nT-a6B" customClass="MoneyChargeDescriptionView" customModule="BeckBucks" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="828" width="414" height="100"/>
+                                                <rect key="frame" x="0.0" y="1018" width="414" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="WNh-zX-8oD"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10w-41-XQp">
-                                                <rect key="frame" x="0.0" y="928" width="414" height="32"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="BlA-nY-I6o"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mds-gH-jfy" customClass="MoneyChargeAutomaticInfoView" customModule="BeckBucks" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="960" width="414" height="190"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="190" id="w6D-PZ-w9N"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

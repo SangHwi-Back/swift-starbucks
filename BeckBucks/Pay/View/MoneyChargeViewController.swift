@@ -21,10 +21,13 @@ class MoneyChargeViewController: UIViewController {
     
     let imageModel = MoneyChargeImageFetcher()
     private var disposeBag = DisposeBag()
+    var isAuto: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.setAutoView()
+        
         imageModel.getImageFrom(fileName: "pay_event")
             .map({UIImage(data: $0)})
             .bind(to: customButtonView.customButton.rx.backgroundImage())
@@ -34,6 +37,26 @@ class MoneyChargeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func setAutoView() {
+        if isAuto {
+            
+            cardInfoView.isHidden = true
+            definedChargeAmountView.isHidden = true
+            paymentMethodView.isHidden = true
+            customButtonView.isHidden = true
+            descriptionView.isHidden = true
+            
+            descriptionView.titleView.isHidden = true
+            descriptionView.descriptionLabel.isHidden = false
+            descriptionView.showDescriptionButton.isUserInteractionEnabled = false
+            
+        } else {
+            
+            cardInfoFunctionalView.isHidden = true
+            automationInfoView.isHidden = true
+        }
     }
 }
 
