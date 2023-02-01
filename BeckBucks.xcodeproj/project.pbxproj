@@ -70,6 +70,10 @@
 		1B4FADB8297E5E2500FF8717 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB7297E5E2500FF8717 /* SearchResultViewController.swift */; };
 		1B4FADBA297E637000FF8717 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB9297E637000FF8717 /* SearchResultTableViewCell.swift */; };
 		1B4FADBC297E648100FF8717 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADBB297E648100FF8717 /* SearchResultViewModel.swift */; };
+		1B4FE454298A3337009B2DE1 /* MoneyChargeAutomaticInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4FE453298A3337009B2DE1 /* MoneyChargeAutomaticInfoView.xib */; };
+		1B4FE456298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FE455298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift */; };
+		1B4FE458298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4FE457298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib */; };
+		1B4FE45A298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FE459298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift */; };
 		1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */; };
 		1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */; };
 		1B52DBDA297145AC0001E70F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */; };
@@ -351,6 +355,10 @@
 		1B4FADB7297E5E2500FF8717 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		1B4FADB9297E637000FF8717 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		1B4FADBB297E648100FF8717 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		1B4FE453298A3337009B2DE1 /* MoneyChargeAutomaticInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeAutomaticInfoView.xib; sourceTree = "<group>"; };
+		1B4FE455298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeAutomaticInfoView.swift; sourceTree = "<group>"; };
+		1B4FE457298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeCardInfoFunctionalView.xib; sourceTree = "<group>"; };
+		1B4FE459298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeCardInfoFunctionalView.swift; sourceTree = "<group>"; };
 		1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationViewController.swift; sourceTree = "<group>"; };
 		1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -616,6 +624,8 @@
 				1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */,
 				1B1C483D298900740095D603 /* MoneyChargeCardInfoVIew.xib */,
 				1B1C4849298901340095D603 /* MoneyChargeCardInfoVIew.swift */,
+				1B4FE457298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib */,
+				1B4FE459298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift */,
 				1B1C483F298900AF0095D603 /* MoneyChargeDefinedChargeAmountView.xib */,
 				1B1C484B2989013D0095D603 /* MoneyChargeDefinedChargeAmountView.swift */,
 				1B1C4841298900CA0095D603 /* MoneyChargePaymentMethodView.xib */,
@@ -624,6 +634,8 @@
 				1B1C484F2989014A0095D603 /* MoneyChargeCustomButtonView.swift */,
 				1B1C4845298900F70095D603 /* MoneyChargeDescriptionView.xib */,
 				1B1C48512989014F0095D603 /* MoneyChargeDescriptionView.swift */,
+				1B4FE453298A3337009B2DE1 /* MoneyChargeAutomaticInfoView.xib */,
+				1B4FE455298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -1290,6 +1302,7 @@
 				1B7AAAA128E29D6400DD66EA /* food1.jpg in Resources */,
 				1BF36D8928DF338D0033DF2A /* ingimg1.jpg in Resources */,
 				1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */,
+				1B4FE458298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib in Resources */,
 				1B7AAA9528E29D6400DD66EA /* food10.jpg in Resources */,
 				1B7AAA7928E29D4D00DD66EA /* drink20.jpg in Resources */,
 				1B52DC1129715C0B0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg in Resources */,
@@ -1409,6 +1422,7 @@
 				1BCFCE912834F6CB00074ED2 /* payImageJSON0.json in Resources */,
 				1B3788DF28F3068600A2DF39 /* card_normal.png in Resources */,
 				1B7AAA7D28E29D4D00DD66EA /* drink6.jpg in Resources */,
+				1B4FE454298A3337009B2DE1 /* MoneyChargeAutomaticInfoView.xib in Resources */,
 				1B47BB17297F628200E72F7D /* Contents.storyboard in Resources */,
 				1BF36D8428DF338D0033DF2A /* ingimg6.jpg in Resources */,
 				1BD3C56E298362C0007B63FF /* processingEvent1.jpg in Resources */,
@@ -1554,6 +1568,7 @@
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
 				1B52DBDE297147C00001E70F /* HallCakeReservationCollectionViewCell.swift in Sources */,
 				1B0F6628283371F8000428E3 /* HomeMainViewController.swift in Sources */,
+				1B4FE456298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift in Sources */,
 				1BB8C30D283606AA00F5F342 /* JsonBucksGetProtocol.swift in Sources */,
 				1B27E92C297EA3B100CF6AFE /* MenuDetailViewController.swift in Sources */,
 				1B7F19562973F0CC00A1F07B /* MyBagViewModel.swift in Sources */,
@@ -1618,6 +1633,7 @@
 				1B176DAB297BD34700E93D2B /* LabelWithSFSymbol.swift in Sources */,
 				1BCCB2FE2828B8F000CBB58F /* SceneDelegate.swift in Sources */,
 				1B1F244C297D434300BA6FE9 /* UIStoryboard+Extensions.swift in Sources */,
+				1B4FE45A298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift in Sources */,
 				1B176DB3297D184800E93D2B /* SearchViewListTableViewFooterCell.swift in Sources */,
 				1B176DAF297C3E8900E93D2B /* SearchViewController.swift in Sources */,
 				1BD3C58429838BC4007B63FF /* URL+Extensions.swift in Sources */,

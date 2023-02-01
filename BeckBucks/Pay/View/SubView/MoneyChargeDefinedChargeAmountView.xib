@@ -4,12 +4,19 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoneyChargeDefinedChargeAmountView" customModule="BeckBucks" customModuleProvider="target">
             <connections>
+                <outlet property="fiveButton" destination="MRt-3D-LxY" id="C9l-tG-QcO"/>
+                <outlet property="oneButton" destination="kbm-l8-TLd" id="VHI-d4-vj7"/>
+                <outlet property="otherButton" destination="gWo-ZQ-n9F" id="UUU-IK-j2p"/>
+                <outlet property="sevenButton" destination="q6n-ur-TNm" id="FC3-oL-S0i"/>
+                <outlet property="tenButton" destination="rUA-3J-wPl" id="bPq-L2-vUV"/>
+                <outlet property="threeButton" destination="hRR-TQ-PHE" id="03L-SL-ArI"/>
                 <outletCollection property="amountButtons" destination="kbm-l8-TLd" collectionClass="NSMutableArray" id="vmP-wG-vhu"/>
                 <outletCollection property="amountButtons" destination="hRR-TQ-PHE" collectionClass="NSMutableArray" id="WUF-h6-wcd"/>
                 <outletCollection property="amountButtons" destination="MRt-3D-LxY" collectionClass="NSMutableArray" id="yaa-zF-ctg"/>
@@ -40,28 +47,28 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbm-l8-TLd">
                                     <rect key="frame" x="0.0" y="0.0" width="55.333333333333336" height="51"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" name="starbucks_green_light"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="1만원">
                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="baseForegroundColor" name="color_text_gray"/>
                                     </buttonConfiguration>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRR-TQ-PHE">
                                     <rect key="frame" x="63.333333333333329" y="0.0" width="57.666666666666671" height="51"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" name="starbucks_green_light"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="3만원">
                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="baseForegroundColor" name="color_text_gray"/>
                                     </buttonConfiguration>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRt-3D-LxY">
                                     <rect key="frame" x="129" y="0.0" width="57.666666666666657" height="51"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" name="starbucks_green_light"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="5만원">
                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="baseForegroundColor" name="color_text_gray"/>
                                     </buttonConfiguration>
                                 </button>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="240" horizontalCompressionResistancePriority="740" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-rL-sea">
@@ -82,28 +89,28 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6n-ur-TNm">
                                     <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="50.666666666666664"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" name="starbucks_green_light"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="7만원">
                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="baseForegroundColor" name="color_text_gray"/>
                                     </buttonConfiguration>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-3J-wPl">
                                     <rect key="frame" x="64.666666666666671" y="0.0" width="65.000000000000014" height="50.666666666666664"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" name="starbucks_green_light"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="10만원">
                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="baseForegroundColor" name="color_text_gray"/>
                                     </buttonConfiguration>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWo-ZQ-n9F">
                                     <rect key="frame" x="137.66666666666666" y="0.0" width="76" height="50.666666666666664"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" name="starbucks_green_light"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="다른 금액">
                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="baseForegroundColor" name="color_text_gray"/>
                                     </buttonConfiguration>
                                 </button>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="240" horizontalCompressionResistancePriority="740" translatesAutoresizingMaskIntoConstraints="NO" id="k3t-xK-dLr">
@@ -136,8 +143,8 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="color_text_gray">
-            <color red="0.42300000786781311" green="0.42800000309944153" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="starbucks_green_light">
+            <color red="0.16862745098039217" green="0.60784313725490191" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

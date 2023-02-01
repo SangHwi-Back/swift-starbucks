@@ -12,11 +12,12 @@ import RxCocoa
 class MoneyChargeViewController: UIViewController {
     
     @IBOutlet weak var cardInfoView: MoneyChargeCardInfoVIew!
+    @IBOutlet weak var cardInfoFunctionalView: MoneyChargeCardInfoFunctionalView!
     @IBOutlet weak var definedChargeAmountView: MoneyChargeDefinedChargeAmountView!
     @IBOutlet weak var paymentMethodView: MoneyChargePaymentMethodView!
     @IBOutlet weak var customButtonView: MoneyChargeCustomButtonView!
     @IBOutlet weak var descriptionView: MoneyChargeDescriptionView!
-    
+    @IBOutlet weak var automationInfoView: MoneyChargeAutomaticInfoView!
     
     let imageModel = MoneyChargeImageFetcher()
     private var disposeBag = DisposeBag()

@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="wcZ-4B-S9S" id="Njb-Gf-cSo"/>
                 <outlet property="showDescriptionButton" destination="msV-Ys-Cco" id="gfF-A5-pKl"/>
+                <outlet property="titleView" destination="lkH-LW-d8A" id="Zik-o8-tC3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

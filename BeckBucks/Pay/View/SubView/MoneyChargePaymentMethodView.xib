@@ -30,37 +30,27 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD1-Dq-7ye">
-                    <rect key="frame" x="16.000000000000007" y="68.333333333333329" width="110.66666666666669" height="35"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="16" y="84.333333333333329" width="87.666666666666671" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="tintColor" name="starbucks_green_light"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Button">
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                    <state key="normal" title="  신용카드">
                         <color key="titleColor" systemColor="labelColor"/>
                         <imageReference key="image" image="circle.circle.fill" catalog="system" symbolScale="medium"/>
                     </state>
-                    <buttonConfiguration key="configuration" style="plain" title="신용카드" imagePadding="8">
-                        <imageReference key="image" image="circle.circle.fill" catalog="system" symbolScale="medium"/>
-                        <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
-                        <color key="baseForegroundColor" systemColor="labelColor"/>
-                    </buttonConfiguration>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5k-VC-Ak5">
-                    <rect key="frame" x="15.999999999999993" y="119.33333333333331" width="117.33333333333331" height="35"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="16" y="137.33333333333334" width="93.666666666666671" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="tintColor" name="starbucks_green_light"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Button">
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                    <state key="normal" title="  SSGPAY">
                         <color key="titleColor" systemColor="labelColor"/>
                         <imageReference key="image" image="circle" catalog="system" symbolScale="medium"/>
                     </state>
-                    <buttonConfiguration key="configuration" style="plain" title="SSGPAY" imagePadding="8">
-                        <imageReference key="image" image="circle" catalog="system" symbolScale="medium"/>
-                        <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
-                        <color key="baseForegroundColor" systemColor="labelColor"/>
-                    </buttonConfiguration>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" text="재충전 이후 거래 이력이 없는 경우, 충전일로부터 최대 7일 내 온라인에서 충전 취소가 가능합니다." textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="eez-PR-T8Y">
-                    <rect key="frame" x="16" y="170.33333333333334" width="343" height="97.666666666666657"/>
+                    <rect key="frame" x="16" y="182.33333333333334" width="343" height="85.666666666666657"/>
                     <color key="backgroundColor" name="color_text_gray_2"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" name="color_text_gray"/>
@@ -71,15 +61,15 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="k5k-VC-Ak5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="5Oy-o9-9kW"/>
-                <constraint firstItem="eez-PR-T8Y" firstAttribute="top" relation="lessThanOrEqual" secondItem="k5k-VC-Ak5" secondAttribute="bottom" constant="16" id="8EW-ja-ohP"/>
+                <constraint firstItem="eez-PR-T8Y" firstAttribute="top" secondItem="k5k-VC-Ak5" secondAttribute="bottom" constant="24" id="8EW-ja-ohP"/>
                 <constraint firstItem="Fbz-BM-POD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="A9V-3P-1xM"/>
                 <constraint firstItem="eez-PR-T8Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="HXp-zn-EgE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="k5k-VC-Ak5" secondAttribute="trailing" constant="16" id="J0G-H3-vlk"/>
                 <constraint firstItem="Fbz-BM-POD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="Lq0-Ug-tUe"/>
                 <constraint firstAttribute="trailing" secondItem="Fbz-BM-POD" secondAttribute="trailing" constant="16" id="P8K-xG-480"/>
-                <constraint firstItem="gD1-Dq-7ye" firstAttribute="top" secondItem="Fbz-BM-POD" secondAttribute="bottom" constant="16" id="Sv5-8y-zGu"/>
+                <constraint firstItem="gD1-Dq-7ye" firstAttribute="top" secondItem="Fbz-BM-POD" secondAttribute="bottom" constant="32" id="Sv5-8y-zGu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gD1-Dq-7ye" secondAttribute="trailing" constant="16" id="SzI-cc-mxL"/>
-                <constraint firstItem="k5k-VC-Ak5" firstAttribute="top" secondItem="gD1-Dq-7ye" secondAttribute="bottom" constant="16" id="VIG-gP-eh8"/>
+                <constraint firstItem="k5k-VC-Ak5" firstAttribute="top" secondItem="gD1-Dq-7ye" secondAttribute="bottom" constant="32" id="VIG-gP-eh8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eez-PR-T8Y" secondAttribute="bottom" constant="32" id="Vuf-df-ptL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eez-PR-T8Y" secondAttribute="trailing" constant="16" id="Wng-hN-Rlm"/>
                 <constraint firstItem="gD1-Dq-7ye" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="zIv-64-mRP"/>

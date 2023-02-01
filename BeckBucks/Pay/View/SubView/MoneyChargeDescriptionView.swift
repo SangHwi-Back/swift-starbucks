@@ -11,6 +11,7 @@ import RxSwift
 
 class MoneyChargeDescriptionView: UIView {
     
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var showDescriptionButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     
