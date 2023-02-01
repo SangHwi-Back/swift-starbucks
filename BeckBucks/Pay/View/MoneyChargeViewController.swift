@@ -46,11 +46,14 @@ class MoneyChargeViewController: UIViewController {
             definedChargeAmountView.isHidden = true
             paymentMethodView.isHidden = true
             customButtonView.isHidden = true
-            descriptionView.isHidden = true
             
             descriptionView.titleView.isHidden = true
             descriptionView.descriptionLabel.isHidden = false
             descriptionView.showDescriptionButton.isUserInteractionEnabled = false
+            
+            if let descView = descriptionView.subviews.first {
+                descView.frame = descView.frame.insetBy(dx: 16, dy: 0)
+            }
             
         } else {
             
