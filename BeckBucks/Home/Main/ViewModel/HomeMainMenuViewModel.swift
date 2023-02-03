@@ -83,9 +83,3 @@ class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
         }
     }
 }
-
-extension HomeMainMenuViewModel {
-    func getItem(at index: Int) -> Entity? {
-        return nil
-    }
-}

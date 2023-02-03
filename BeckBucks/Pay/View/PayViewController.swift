@@ -14,11 +14,12 @@ class PayViewController: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var eventImageView: UIImageView!
     
+    private let VM = PayViewModel()
+    private var cellDisposeBag = DisposeBag()
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(cardCollectionView.frame, view.frame)
         let layout = UICollectionViewFlowLayout()
         
         layout.scrollDirection = .horizontal
@@ -31,9 +32,31 @@ class PayViewController: UIViewController {
         
         eventImageView.image = UIImage(named: "pay_event.png")
         
+        cardCollectionView.rx.willDisplayCell
+            .bind(onNext: { [weak self] event in
+                guard let self = self, let cell = event.cell as? CardCollectionViewCell else { return }
+                
+                self.cellDisposeBag = DisposeBag()
+                
+                Observable<Int>
+                    .merge([
+                        cell.normalChargeButton.rx.tap.map({0}),
+                        cell.autoChargeButton.rx.tap.map({1})
+                    ])
+                    .bind(onNext: { [weak self] num in
+                        self?.performSegue(
+                            withIdentifier: MoneyChargeViewController.storyboardIdentifier,
+                            sender: num
+                        )
+                    })
+                    .disposed(by: self.cellDisposeBag)
+            })
+            .disposed(by: disposeBag)
+        
         cardCollectionView.dataSource = self
         cardCollectionView.register(
-            UINib(nibName: "CardCollectionViewCell", bundle: Bundle.main),
+            UINib(nibName: "CardCollectionViewCell",
+                  bundle: Bundle.main),
             forCellWithReuseIdentifier: "CardCollectionViewCell")
         cardCollectionView.collectionViewLayout = layout
         cardCollectionView.reloadData()
@@ -41,7 +64,10 @@ class PayViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? MoneyChargeViewController {
-            dest.isAuto = (sender as? Int) == 1
+            let isAuto = (sender as? Int) == 1
+            
+            dest.isAuto = isAuto
+            dest.title = isAuto ? "자동 충전" : "일반 충전"
         }
     }
 }
@@ -62,19 +88,6 @@ extension PayViewController: UICollectionViewDataSource {
         cell.cardImageView.image = indexPath.getCardImage()
         cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
         cell.cardBackgroundView.putShadows(offset: CGSize(width: 2, height: 2))
-        
-        Observable<Int>
-            .merge([
-                cell.normalChargeButton.rx.tap.map({0}),
-                cell.autoChargeButton.rx.tap.map({1})
-            ])
-            .bind(onNext: { [weak self] num in
-                self?.performSegue(
-                    withIdentifier: MoneyChargeViewController.storyboardIdentifier,
-                    sender: num
-                )
-            })
-            .disposed(by: disposeBag)
         
         return cell
     }

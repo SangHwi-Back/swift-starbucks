@@ -1,6 +1,7 @@
 {
     "cards": [
         {
+            "id": 0,
             "name": "스타벅스 e카드",
             "balance": 28.39,
             "currency": "us"
@@ -9,6 +10,7 @@
             "isUsing": false
         },
         {
+            "id": 1,
             "name": "2016 블랙 사이렌 카드",
             "balance": 13000.0,
             "currency": "kr"
@@ -17,6 +19,7 @@
             "isUsing": true
         },
         {
+            "id": 2,
             "name": "スターバックス SAKURA 2019",
             "balance": 138.0,
             "currency": "jp",
@@ -25,6 +28,7 @@
             "isUsing": false
         },
         {
+            "id": 3,
             "name": "Card of rich person who using this card as some kind of credit card in india.",
             "balance": 9327674392371294572395734610.0,
             "currency": "in",

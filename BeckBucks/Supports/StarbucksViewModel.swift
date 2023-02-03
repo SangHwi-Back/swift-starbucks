@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class StarbucksViewModel<EntityType>: ViewModel where EntityType: StarbucksEntity {
+class StarbucksViewModel<EntityType>: ViewModel where EntityType: Identifiable, EntityType: Equatable {
     typealias Entity = EntityType
     
     var items: [Entity] = []
@@ -41,10 +41,6 @@ extension StarbucksViewModel where Entity: Identifiable, Entity: Equatable {
         }
         
         return items[index]
-    }
-    
-    func getItem(_ entity: Entity) -> Entity? {
-        return items.first(where: { $0 == entity })
     }
     
     @discardableResult
@@ -83,5 +79,9 @@ extension StarbucksViewModel where Entity: Identifiable, Entity: Equatable {
         items[index] = entity
         
         return items[index]
+    }
+    
+    func count() -> Int {
+        items.count
     }
 }

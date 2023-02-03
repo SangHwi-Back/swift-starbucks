@@ -74,6 +74,7 @@
 		1B4FE456298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FE455298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift */; };
 		1B4FE458298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4FE457298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib */; };
 		1B4FE45A298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FE459298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift */; };
+		1B4FE45D298CB6A0009B2DE1 /* PayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FE45C298CB6A0009B2DE1 /* PayViewModel.swift */; };
 		1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */; };
 		1B52DBD8297144FE0001E70F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */; };
 		1B52DBDA297145AC0001E70F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */; };
@@ -359,6 +360,7 @@
 		1B4FE455298A333C009B2DE1 /* MoneyChargeAutomaticInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeAutomaticInfoView.swift; sourceTree = "<group>"; };
 		1B4FE457298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyChargeCardInfoFunctionalView.xib; sourceTree = "<group>"; };
 		1B4FE459298A355F009B2DE1 /* MoneyChargeCardInfoFunctionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyChargeCardInfoFunctionalView.swift; sourceTree = "<group>"; };
+		1B4FE45C298CB6A0009B2DE1 /* PayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewModel.swift; sourceTree = "<group>"; };
 		1B52DBD529713C1C0001E70F /* HallCakeReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallCakeReservationViewController.swift; sourceTree = "<group>"; };
 		1B52DBD7297144FE0001E70F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		1B52DBD9297145AB0001E70F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 			children = (
 				1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */,
 				1B1C483B2988FB2E0095D603 /* MoneyChargeViewController.swift */,
+				1B4FE45B298CB692009B2DE1 /* ViewModel */,
 				1B1C4848298901240095D603 /* SubView */,
 			);
 			path = View;
@@ -803,6 +806,14 @@
 				1B4FADB9297E637000FF8717 /* SearchResultTableViewCell.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		1B4FE45B298CB692009B2DE1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1B4FE45C298CB6A0009B2DE1 /* PayViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1B52DBDF29715A4B0001E70F /* hallCake */ = {
@@ -1598,6 +1609,7 @@
 				1B1C48372988C7230095D603 /* UICollectionViewCell+Extensions.swift in Sources */,
 				1B2D7EAC2973BC3C00851D20 /* OrderNavigationController.swift in Sources */,
 				1BF36D7128D975D50033DF2A /* RecommendContentsView.swift in Sources */,
+				1B4FE45D298CB6A0009B2DE1 /* PayViewModel.swift in Sources */,
 				1BF36D8D28E08AC50033DF2A /* HTTPRequestMockModel.swift in Sources */,
 				1B230A4928E5565900775128 /* UIView+Extensions.swift in Sources */,
 				1BD3C57529836818007B63FF /* UIDevice+Extensions.swift in Sources */,
