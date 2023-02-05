@@ -4,8 +4,8 @@
             "id": 0,
             "name": "스타벅스 e카드",
             "balance": 28.39,
-            "currency": "us"
-            "card_name": "card_normal.png",
+            "currency": "en-US",
+            "card_name": "card_normal",
             "card_number": "5272-8918-3398-2387",
             "isUsing": false
         },
@@ -13,8 +13,8 @@
             "id": 1,
             "name": "2016 블랙 사이렌 카드",
             "balance": 13000.0,
-            "currency": "kr"
-            "card_name": "card_black.png",
+            "currency": "ko-KR",
+            "card_name": "card_black",
             "card_number": "9441-0935-7189-6521",
             "isUsing": true
         },
@@ -22,8 +22,8 @@
             "id": 2,
             "name": "スターバックス SAKURA 2019",
             "balance": 138.0,
-            "currency": "jp",
-            "card_name": "card_okinawa.jpg",
+            "currency": "ja-JP",
+            "card_name": "card_okinawa",
             "card_number": "1275-2398-7135-0134",
             "isUsing": false
         },
@@ -31,8 +31,8 @@
             "id": 3,
             "name": "Card of rich person who using this card as some kind of credit card in india.",
             "balance": 9327674392371294572395734610.0,
-            "currency": "in",
-            "card_name": "card_seattle.png",
+            "currency": "bn-IN",
+            "card_name": "card_seattle",
             "card_number": "6984-3168-5127-8213",
             "isUsing": false
         }

@@ -9,21 +9,20 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var cardBackgroundView: UIView!
-    
     @IBOutlet weak var cardImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var balanceLabel: UILabel!
     
     @IBOutlet weak var barcodeImageView: UIImageView!
     @IBOutlet weak var cardNumberLabel: UILabel!
-    
     @IBOutlet weak var descriptionSymbolButton: UIButton!
-    @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var autoChargeButton: UIButton!
     @IBOutlet weak var normalChargeButton: UIButton!
+    
+    private let formatter = NumberFormatter()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +30,25 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
+        guard let view = loadViewFromNib() else { return }
+        contentView.addSubview(view)
+        
+        formatter.numberStyle = .decimal
+        formatter.currencyDecimalSeparator = " "
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        [
+            view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
+            , view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+            , view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            , view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        ].forEach {
+            $0.isActive = true
+        }
+        
+        view.putShadows(offset: CGSize(width: 2, height: 2))
     }
     
     /// Copied from (hackingwithswift.com/example-code/media/how-to-create-a-barcode)
@@ -47,5 +65,9 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
 
         return nil
+    }
+    
+    func setBalance(_ num: Float, currencyCode: String) {
+        balanceLabel.text = (formatter.string(from: NSNumber(value: num)) ?? "0") + (Locale(identifier: currencyCode).currencySymbol ?? "")
     }
 }

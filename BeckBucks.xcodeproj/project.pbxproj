@@ -62,7 +62,6 @@
 		1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */; };
 		1B3788E328F3103600A2DF39 /* pay_event.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E228F3103600A2DF39 /* pay_event.png */; };
 		1B3788E528F3999700A2DF39 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E428F3999700A2DF39 /* cards.json */; };
-		1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */; };
 		1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E828F39FDA00A2DF39 /* card_seattle.png */; };
 		1B47BB17297F628200E72F7D /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B47BB16297F628200E72F7D /* Contents.storyboard */; };
 		1B47BB1C2980B23700E72F7D /* StarbucksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */; };
@@ -106,6 +105,7 @@
 		1B52DC1129715C0B0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */; };
 		1B52DC1229715C0B0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */; };
 		1B52DC1329715C0B0001E70F /* Dome_Pecan_Tart_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */; };
+		1B5373D3298F3A240038E58A /* card_okinawa.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5373D2298F3A240038E58A /* card_okinawa.jpeg */; };
 		1B6733212983A58600E1872D /* HomeMainImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6733202983A58600E1872D /* HomeMainImageFetcher.swift */; };
 		1B6733232983A6CD00E1872D /* ResizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6733222983A6CD00E1872D /* ResizableImageView.swift */; };
 		1B69A8F728E587A5001C6720 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B7AAAA928E29EFE00DD66EA /* food.json */; };
@@ -348,7 +348,6 @@
 		1B3788E028F3092E00A2DF39 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B3788E228F3103600A2DF39 /* pay_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_event.png; sourceTree = "<group>"; };
 		1B3788E428F3999700A2DF39 /* cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
-		1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = card_okinawa.jpg; sourceTree = "<group>"; };
 		1B3788E828F39FDA00A2DF39 /* card_seattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_seattle.png; sourceTree = "<group>"; };
 		1B47BB16297F628200E72F7D /* Contents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarbucksViewModel.swift; sourceTree = "<group>"; };
@@ -392,6 +391,7 @@
 		1B52DBF829715C0A0001E70F /* Crepe_Emmental_Cheese_Cake_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Crepe_Emmental_Cheese_Cake_3.jpg; sourceTree = "<group>"; };
 		1B52DBF929715C0A0001E70F /* Blueberry_Cookie_Cheese_Cake_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blueberry_Cookie_Cheese_Cake_2.jpg; sourceTree = "<group>"; };
 		1B52DBFA29715C0A0001E70F /* Dome_Pecan_Tart_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dome_Pecan_Tart_2.jpg; sourceTree = "<group>"; };
+		1B5373D2298F3A240038E58A /* card_okinawa.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = card_okinawa.jpeg; sourceTree = "<group>"; };
 		1B6733202983A58600E1872D /* HomeMainImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainImageFetcher.swift; sourceTree = "<group>"; };
 		1B6733222983A6CD00E1872D /* ResizableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableImageView.swift; sourceTree = "<group>"; };
 		1B797F57297A2BC700A58981 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -761,7 +761,7 @@
 			children = (
 				1B3788DC28F3068600A2DF39 /* card_black.png */,
 				1B3788DD28F3068600A2DF39 /* card_normal.png */,
-				1B3788E628F39F3600A2DF39 /* card_okinawa.jpg */,
+				1B5373D2298F3A240038E58A /* card_okinawa.jpeg */,
 				1B3788E828F39FDA00A2DF39 /* card_seattle.png */,
 				1B3788E228F3103600A2DF39 /* pay_event.png */,
 				1B3788E428F3999700A2DF39 /* cards.json */,
@@ -1312,7 +1312,6 @@
 				1BCFCE7B2834C45A00074ED2 /* EVE_APP_THUM_20211231080741192.jpg in Resources */,
 				1B7AAAA128E29D6400DD66EA /* food1.jpg in Resources */,
 				1BF36D8928DF338D0033DF2A /* ingimg1.jpg in Resources */,
-				1B3788E728F39F3600A2DF39 /* card_okinawa.jpg in Resources */,
 				1B4FE458298A3558009B2DE1 /* MoneyChargeCardInfoFunctionalView.xib in Resources */,
 				1B7AAA9528E29D6400DD66EA /* food10.jpg in Resources */,
 				1B7AAA7928E29D4D00DD66EA /* drink20.jpg in Resources */,
@@ -1433,6 +1432,7 @@
 				1BCFCE912834F6CB00074ED2 /* payImageJSON0.json in Resources */,
 				1B3788DF28F3068600A2DF39 /* card_normal.png in Resources */,
 				1B7AAA7D28E29D4D00DD66EA /* drink6.jpg in Resources */,
+				1B5373D3298F3A240038E58A /* card_okinawa.jpeg in Resources */,
 				1B4FE454298A3337009B2DE1 /* MoneyChargeAutomaticInfoView.xib in Resources */,
 				1B47BB17297F628200E72F7D /* Contents.storyboard in Resources */,
 				1BF36D8428DF338D0033DF2A /* ingimg6.jpg in Resources */,

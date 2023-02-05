@@ -18,14 +18,20 @@ extension ImageFetchable {
             return .just(data)
         }
         
-        let jpegURL = Bundle.main.url(forResource: fileName, withExtension: "jpeg")
-        let jpgURL = Bundle.main.url(forResource: fileName, withExtension: "jpg")
-        let pngURL = Bundle.main.url(forResource: fileName, withExtension: "png")
-        
-        guard let url = jpegURL ?? jpgURL ?? pngURL else {
-            return .error(ViewModelError.urlError("fileName : \(fileName)"))
+        guard let url = fileName.getImageURL() else {
+            return .just(Data())
+            // TODO: - card_seattle.png URL Not found error occured. reason unknown.
+//            return .error(ViewModelError.urlError("fileName : \(fileName)"))
         }
         
         return URLSession.shared.rx.data(request: URLRequest(url: url))
+    }
+}
+
+extension String {
+    func getImageURL() -> URL? {
+        Bundle.main.url(forResource: self, withExtension: "jpeg")
+        ?? Bundle.main.url(forResource: self, withExtension: "jpg")
+        ?? Bundle.main.url(forResource: self, withExtension: "png")
     }
 }
