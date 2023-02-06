@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0244E72990ED820074434D /* UICollectionViewCellHeightAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0244E62990ED820074434D /* UICollectionViewCellHeightAdjusted.swift */; };
 		1B0F662628336A5B000428E3 /* CommonBucksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F662528336A5B000428E3 /* CommonBucksProtocol.swift */; };
 		1B0F6628283371F8000428E3 /* HomeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6627283371F8000428E3 /* HomeMainViewController.swift */; };
 		1B161249292F880200B31347 /* HTTPURLResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */; };
@@ -297,6 +298,7 @@
 
 /* Begin PBXFileReference section */
 		011029F81A403A54E1CA4F10 /* Pods-BeckBucks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeckBucks.release.xcconfig"; path = "Target Support Files/Pods-BeckBucks/Pods-BeckBucks.release.xcconfig"; sourceTree = "<group>"; };
+		1B0244E62990ED820074434D /* UICollectionViewCellHeightAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellHeightAdjusted.swift; sourceTree = "<group>"; };
 		1B0F662528336A5B000428E3 /* CommonBucksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBucksProtocol.swift; sourceTree = "<group>"; };
 		1B0F6627283371F8000428E3 /* HomeMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewController.swift; sourceTree = "<group>"; };
 		1B161248292F880200B31347 /* HTTPURLResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Extensions.swift"; sourceTree = "<group>"; };
@@ -1136,6 +1138,7 @@
 				1B98BAE3297948F500353B1A /* AdjustableSwitch.swift */,
 				1B6733222983A6CD00E1872D /* ResizableImageView.swift */,
 				1B47BB18297F62F200E72F7D /* NotNecessary */,
+				1B0244E62990ED820074434D /* UICollectionViewCellHeightAdjusted.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1604,6 +1607,7 @@
 				1B7F19542973E2D500A1F07B /* MyBagViewController.swift in Sources */,
 				1B98BAE4297948F500353B1A /* AdjustableSwitch.swift in Sources */,
 				1B176DAD297C3AD000E93D2B /* SearchViewModel.swift in Sources */,
+				1B0244E72990ED820074434D /* UICollectionViewCellHeightAdjusted.swift in Sources */,
 				1BD427BD2833ACA90098DEEF /* HomeIngBucksProtocol.swift in Sources */,
 				1B2D7EAE2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift in Sources */,
 				1B1C48372988C7230095D603 /* UICollectionViewCell+Extensions.swift in Sources */,

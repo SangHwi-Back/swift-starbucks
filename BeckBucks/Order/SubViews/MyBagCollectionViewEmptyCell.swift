@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyBagCollectionViewEmptyCell: UICollectionViewCell {
+class MyBagCollectionViewEmptyCell: UICollectionViewCellHeightAdjusted {
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
@@ -16,18 +16,6 @@ class MyBagCollectionViewEmptyCell: UICollectionViewCell {
     @IBOutlet weak var orderViewButton: UIButton!
     @IBOutlet weak var symbolImageView: UIImageView!
     @IBOutlet weak var paddingView: UIView!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     func resolveUI() {
         

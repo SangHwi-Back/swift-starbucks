@@ -77,13 +77,10 @@ class MyBagViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = collectionView.frame.size
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = collectionView.frame.size
+        }
         
-        collectionView.collectionViewLayout = layout
         collectionView.dataSource = self
         collectionView.reloadData()
         

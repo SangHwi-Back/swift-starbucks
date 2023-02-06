@@ -7,25 +7,12 @@
 
 import UIKit
 
-class HallCakeReservationCollectionViewCell: UICollectionViewCell {
+class HallCakeReservationCollectionViewCell: UICollectionViewCellHeightAdjusted {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var priceTagLabel: UILabel!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
     
     func setUI() {
         imageView.setCornerRadius(40)

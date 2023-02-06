@@ -14,6 +14,8 @@ class PayViewController: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var eventImageView: UIImageView!
     
+    @IBOutlet weak var buttonContainer: UIView!
+    
     private let VM = PayViewModel(jsonName: "cards")
     private var cellDisposeBag = DisposeBag()
     private var disposeBag = DisposeBag()
@@ -38,7 +40,7 @@ class PayViewController: UIViewController {
                 cellType: CardCollectionViewCell.self
             )) { row, entity, cell in
                 
-                cell.nameLabel.text = entity.name
+                cell.nameButton.setTitle(entity.name, for: .normal)
                 cell.setBalance(entity.balance, currencyCode: entity.currency)
                 cell.cardNumberLabel.text = entity.card_number
                 cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
@@ -48,16 +50,20 @@ class PayViewController: UIViewController {
         VM.getImageFrom(fileName: "pay_event").toImage()
             .bind(to: eventImageView.rx.image)
             .disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        view.layoutIfNeeded()
         
-        // TODO: - layout Error
-        layout.itemSize = CGSize(width: cardCollectionView.frame.size.width, height: 500)
-        
-        cardCollectionView.collectionViewLayout = layout
+        if let layout = cardCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = cardCollectionView.frame.size
+        }
         
         VM.fetch()
     }

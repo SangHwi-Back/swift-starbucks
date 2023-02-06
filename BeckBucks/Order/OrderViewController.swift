@@ -250,8 +250,6 @@ extension OrderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIndex = indexPath.row - (orderViewCategoryRelay.value == .myMenu ? 1 : 0)
-        let entity = useCase.items[cellIndex]
         
         switch orderViewCategoryRelay.value {
         case .myMenu:
@@ -269,6 +267,9 @@ extension OrderViewController: UITableViewDataSource {
                 return cell ?? .init()
             }
             
+            let cellIndex = indexPath.row - 1
+            
+            let entity = useCase.items[cellIndex]
             let cell = tableView.dequeueReusableCell(withIdentifier: OrderMyMenuTableViewCell.reusableIdentifier, for: indexPath) as? OrderMyMenuTableViewCell
             
             cell?.menuTitleLabel.text = entity.title
@@ -277,16 +278,14 @@ extension OrderViewController: UITableViewDataSource {
             cell?.descriptionLabel.text = entity.menuDescription
             
             if let imageView = cell?.menuImageView {
-                useCase.getImage(at: cellIndex)
-                    .map({ UIImage(data: $0) })
+                useCase.getImage(at: cellIndex).toImage()
                     .bind(to: imageView.rx.image)
                     .disposed(by: disposeBag)
             }
             
             return cell ?? .init()
         case .allMenu:
-            
-            let entity = useCase.items[cellIndex]
+            let entity = useCase.items[indexPath.row]
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: OrderViewListCell.reusableIdentifier,
                 for: indexPath) as? OrderViewListCell
@@ -294,8 +293,7 @@ extension OrderViewController: UITableViewDataSource {
             cell?.subTitleLabel.isHidden = true
             
             if let imageView = cell?.menuImageView {
-                useCase.getImage(at: cellIndex)
-                    .map({ UIImage(data: $0) })
+                useCase.getImage(at: indexPath.row).toImage()
                     .bind(to: imageView.rx.image)
                     .disposed(by: disposeBag)
             }

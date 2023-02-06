@@ -15,84 +15,66 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardCollectionViewCell" customModule="BeckBucks" customModuleProvider="target">
             <connections>
                 <outlet property="autoChargeButton" destination="w26-Oi-JP0" id="Pap-Bn-r6z"/>
-                <outlet property="balanceLabel" destination="Lq6-HW-ERt" id="saA-pe-dek"/>
+                <outlet property="balanceButton" destination="oxP-RY-spH" id="k4q-hg-sFV"/>
                 <outlet property="barcodeImageView" destination="0EZ-Rv-8Sc" id="Acj-yV-AuO"/>
                 <outlet property="cardImageView" destination="o4b-Mp-gYv" id="a5U-Nd-8zY"/>
                 <outlet property="cardNumberLabel" destination="Ng0-XD-Ai2" id="Xnf-fS-fOW"/>
                 <outlet property="descriptionSymbolButton" destination="FM6-XG-My6" id="lkI-vT-OQg"/>
-                <outlet property="nameLabel" destination="uXA-Ak-zBt" id="BFF-C7-pAQ"/>
+                <outlet property="nameButton" destination="zIc-AL-5FP" id="697-YK-Qj2"/>
                 <outlet property="normalChargeButton" destination="lIF-MQ-3Zh" id="h0h-w1-l1I"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o4b-Mp-gYv">
-                    <rect key="frame" x="0.0" y="64" width="414" height="160"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="730" translatesAutoresizingMaskIntoConstraints="NO" id="o4b-Mp-gYv">
+                    <rect key="frame" x="0.0" y="64" width="414" height="39"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIc-AL-5FP">
+                    <rect key="frame" x="0.0" y="119" width="414" height="34"/>
+                    <color key="tintColor" name="color_text_gold"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="2016 블랙 사이렌 카드" image="star.circle" catalog="system">
+                        <color key="titleColor" systemColor="labelColor"/>
+                    </state>
+                    <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="2016 블랙 사이렌 카드" imagePadding="8">
+                        <imageReference key="image" image="star.circle" catalog="system" symbolScale="small" renderingMode="original"/>
+                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxP-RY-spH">
+                    <rect key="frame" x="0.0" y="161" width="414" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" name="color_text_gray"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="  12,100원">
+                        <color key="titleColor" systemColor="labelColor"/>
+                        <imageReference key="image" image="wonsign.circle" catalog="system" symbolScale="small"/>
+                    </state>
+                    <buttonConfiguration key="configuration" style="plain" title="  12,100원">
+                        <imageReference key="image" image="wonsign.circle" catalog="system" symbolScale="small"/>
+                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="260" translatesAutoresizingMaskIntoConstraints="NO" id="0EZ-Rv-8Sc">
+                    <rect key="frame" x="0.0" y="203" width="414" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="FRI-Nv-dfy"/>
+                        <constraint firstAttribute="height" constant="60" id="k3L-1X-vDv"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jfl-tG-57q">
-                    <rect key="frame" x="127" y="248" width="160.5" height="22"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016 블랙 사이렌 카드" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="uXA-Ak-zBt">
-                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="132.5" id="j6T-ub-h7t"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-3o-oPb">
-                            <rect key="frame" x="140.5" y="0.0" width="20" height="22"/>
-                            <color key="tintColor" systemColor="systemYellowColor"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="" image="star.circle" catalog="system"/>
-                        </button>
-                    </subviews>
-                </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VpY-sw-hTW">
-                    <rect key="frame" x="164" y="286" width="86" height="24"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9N-77-ARh">
-                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="t9N-77-ARh" secondAttribute="height" multiplier="1:1" id="DOY-D2-3hl"/>
-                                <constraint firstAttribute="width" constant="24" id="hP7-kD-KKC"/>
-                            </constraints>
-                            <color key="tintColor" name="color_text_gray"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="">
-                                <backgroundConfiguration key="background" image="wonsign.circle" catalog="system" imageContentMode="scaleAspectFit"/>
-                            </buttonConfiguration>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12,100원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Lq6-HW-ERt">
-                            <rect key="frame" x="32" y="0.0" width="54" height="24"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EZ-Rv-8Sc">
-                    <rect key="frame" x="0.0" y="328" width="414" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="AqG-zg-7xM"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="****_****_**50-8252" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-XD-Ai2">
-                    <rect key="frame" x="0.0" y="396" width="414" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="740" text="****_****_**50-8252" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-XD-Ai2">
+                    <rect key="frame" x="0.0" y="271" width="414" height="17"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM6-XG-My6">
-                    <rect key="frame" x="0.0" y="429" width="414" height="17.5"/>
+                <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM6-XG-My6">
+                    <rect key="frame" x="0.0" y="296" width="414" height="17.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="tintColor" name="starbucks_green_light"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -101,90 +83,52 @@
                         <imageReference key="image" image="exclamationmark.arrow.triangle.2.circlepath" catalog="system" symbolScale="small"/>
                     </state>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i11-QI-AgU">
-                    <rect key="frame" x="0.0" y="462.5" width="414" height="121.5"/>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="740" verticalCompressionResistancePriority="740" distribution="fillEqually" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i11-QI-AgU">
+                    <rect key="frame" x="0.0" y="329.5" width="414" height="54.5"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nv-t5-DYW">
-                            <rect key="frame" x="0.0" y="0.0" width="203" height="60"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w26-Oi-JP0">
-                                    <rect key="frame" x="0.0" y="0.0" width="171" height="65"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title=""/>
-                                </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="760" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgu-re-3jY">
-                                    <rect key="frame" x="0.0" y="2.5" width="171" height="25"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="tintColor" name="color_text_gray"/>
-                                    <imageReference key="image" image="wonsign.circle" catalog="system" symbolScale="small"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="자동 충전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Lzm-iZ-OY4">
-                                    <rect key="frame" x="0.0" y="30" width="171" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" name="color_text_gray"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wO5-yH-era">
-                            <rect key="frame" x="211" y="0.0" width="203" height="60"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIF-MQ-3Zh">
-                                    <rect key="frame" x="0.0" y="0.0" width="171" height="65"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title=""/>
-                                </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="760" id="92M-ff-af7">
-                                    <rect key="frame" x="0.0" y="2.5" width="171" height="25"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="tintColor" name="color_text_gray"/>
-                                    <imageReference key="image" image="wonsign.circle" catalog="system" symbolScale="small"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="일반 충전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="LOt-Q7-B5X">
-                                    <rect key="frame" x="0.0" y="30" width="171" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" name="color_text_gray"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w26-Oi-JP0">
+                            <rect key="frame" x="0.0" y="0.0" width="203" height="54.5"/>
+                            <color key="tintColor" name="color_text_gray"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="wonsign.circle" catalog="system" imagePlacement="top" title="자동 충전"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIF-MQ-3Zh">
+                            <rect key="frame" x="211" y="0.0" width="203" height="54.5"/>
+                            <color key="tintColor" name="color_text_gray"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="wonsign.circle" catalog="system" imagePlacement="top" title="일반 충전"/>
+                        </button>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="AqH-N3-W38"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="mK2-9f-Tv6"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="FM6-XG-My6" firstAttribute="top" secondItem="Ng0-XD-Ai2" secondAttribute="bottom" constant="16" id="4MW-k9-i6g"/>
+                <constraint firstItem="zIc-AL-5FP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3oB-jh-ebn"/>
+                <constraint firstItem="o4b-Mp-gYv" firstAttribute="height" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.266667" id="4CQ-n7-7JS"/>
+                <constraint firstItem="FM6-XG-My6" firstAttribute="top" secondItem="Ng0-XD-Ai2" secondAttribute="bottom" constant="8" id="4MW-k9-i6g"/>
+                <constraint firstItem="zIc-AL-5FP" firstAttribute="leading" secondItem="mK2-9f-Tv6" secondAttribute="leading" id="4x2-Zo-XIs"/>
+                <constraint firstItem="zIc-AL-5FP" firstAttribute="top" secondItem="o4b-Mp-gYv" secondAttribute="bottom" constant="16" id="7LE-p8-Eds"/>
                 <constraint firstItem="FM6-XG-My6" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="9i9-HH-xE8"/>
                 <constraint firstItem="mK2-9f-Tv6" firstAttribute="bottom" secondItem="i11-QI-AgU" secondAttribute="bottom" constant="16" id="K5S-AV-kw2"/>
                 <constraint firstItem="o4b-Mp-gYv" firstAttribute="top" secondItem="mK2-9f-Tv6" secondAttribute="top" constant="16" id="Kc7-X3-nmw"/>
+                <constraint firstItem="oxP-RY-spH" firstAttribute="top" secondItem="zIc-AL-5FP" secondAttribute="bottom" constant="8" id="PM4-qL-TgK"/>
                 <constraint firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="QGB-ZC-kgC"/>
                 <constraint firstItem="i11-QI-AgU" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="QHF-kT-cQA"/>
                 <constraint firstItem="FM6-XG-My6" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="See-OT-zQf"/>
                 <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="U1H-Ke-2Dq"/>
-                <constraint firstItem="VpY-sw-hTW" firstAttribute="top" secondItem="jfl-tG-57q" secondAttribute="bottom" constant="16" id="WnC-f6-MQu"/>
-                <constraint firstItem="jfl-tG-57q" firstAttribute="centerX" secondItem="mK2-9f-Tv6" secondAttribute="centerX" id="aTR-dg-MlU"/>
-                <constraint firstItem="jfl-tG-57q" firstAttribute="top" secondItem="o4b-Mp-gYv" secondAttribute="bottom" constant="24" id="bxD-xI-41K"/>
+                <constraint firstItem="mK2-9f-Tv6" firstAttribute="trailing" secondItem="zIc-AL-5FP" secondAttribute="trailing" id="VQB-pe-SLF"/>
+                <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="top" secondItem="oxP-RY-spH" secondAttribute="bottom" constant="8" id="Yer-16-RXE"/>
                 <constraint firstItem="Ng0-XD-Ai2" firstAttribute="top" secondItem="0EZ-Rv-8Sc" secondAttribute="bottom" constant="8" id="dEr-Qv-eRS"/>
+                <constraint firstItem="oxP-RY-spH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eqx-Aw-e9B"/>
+                <constraint firstItem="oxP-RY-spH" firstAttribute="leading" secondItem="mK2-9f-Tv6" secondAttribute="leading" id="h3O-qp-CN7"/>
                 <constraint firstItem="o4b-Mp-gYv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i5o-yh-siU"/>
                 <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="ifr-Q6-P7v"/>
                 <constraint firstItem="Ng0-XD-Ai2" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="l5v-of-bsM"/>
-                <constraint firstItem="0EZ-Rv-8Sc" firstAttribute="top" secondItem="VpY-sw-hTW" secondAttribute="bottom" constant="18" id="nsz-37-H0y"/>
-                <constraint firstItem="VpY-sw-hTW" firstAttribute="centerX" secondItem="mK2-9f-Tv6" secondAttribute="centerX" id="ou7-2L-b9p"/>
                 <constraint firstItem="i11-QI-AgU" firstAttribute="trailing" secondItem="o4b-Mp-gYv" secondAttribute="trailing" id="u60-Uc-N29"/>
                 <constraint firstItem="Ng0-XD-Ai2" firstAttribute="leading" secondItem="o4b-Mp-gYv" secondAttribute="leading" id="uFH-kt-NSY"/>
                 <constraint firstItem="i11-QI-AgU" firstAttribute="top" secondItem="FM6-XG-My6" secondAttribute="bottom" constant="16" id="wkm-3j-Y3q"/>
+                <constraint firstItem="mK2-9f-Tv6" firstAttribute="trailing" secondItem="oxP-RY-spH" secondAttribute="trailing" id="znU-rc-Jps"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-62.318840579710148" y="-501.5625"/>
@@ -194,17 +138,17 @@
         <image name="exclamationmark.arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
         <image name="star.circle" catalog="system" width="128" height="123"/>
         <image name="wonsign.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="color_text_gold">
+            <color red="0.73333333333333328" green="0.56862745098039214" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="color_text_gray">
             <color red="0.42300000786781311" green="0.42800000309944153" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="starbucks_green_light">
             <color red="0.16862745098039217" green="0.60784313725490191" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

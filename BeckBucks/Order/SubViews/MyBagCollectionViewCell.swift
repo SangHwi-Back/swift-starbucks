@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MyBagCollectionViewCell: UICollectionViewCell {
+class MyBagCollectionViewCell: UICollectionViewCellHeightAdjusted {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,18 +33,6 @@ class MyBagCollectionViewCell: UICollectionViewCell {
     
     private var entities: [any MyBagData] = []
     private var disposeBag = DisposeBag()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     func resolveUI(_ entities: [any MyBagData]) {
         self.entities = entities

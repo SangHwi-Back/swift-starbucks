@@ -16,6 +16,7 @@ class OrderViewListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.mutateListTitleStyleLabel()
+        menuImageView.setCornerRadius()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

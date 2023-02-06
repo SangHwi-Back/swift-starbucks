@@ -28,13 +28,9 @@ class HallCakeReservationViewController: UIViewController {
         
         formatter.numberStyle = .decimal
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: view.frame.width, height: 80)
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        collectionView.collectionViewLayout = layout
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: collectionView.frame.width, height: 80)
+        }
         
         VM.itemsBinder
             .bind(to: collectionView.rx.items(cellIdentifier: CELLID,cellType: CELL.self)

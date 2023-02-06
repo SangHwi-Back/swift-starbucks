@@ -7,13 +7,13 @@
 
 import UIKit
 
-class CardCollectionViewCell: UICollectionViewCell {
+class CardCollectionViewCell: UICollectionViewCellHeightAdjusted {
     
     @IBOutlet weak var cardImageView: UIImageView!
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameButton: UIButton!
     
-    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var balanceButton: UIButton!
     
     @IBOutlet weak var barcodeImageView: UIImageView!
     @IBOutlet weak var cardNumberLabel: UILabel!
@@ -68,6 +68,8 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func setBalance(_ num: Float, currencyCode: String) {
-        balanceLabel.text = (formatter.string(from: NSNumber(value: num)) ?? "0") + (Locale(identifier: currencyCode).currencySymbol ?? "")
+        let balance = formatter.string(from: NSNumber(value: num)) ?? "0"
+        let currencySymbol = Locale(identifier: currencyCode).currencySymbol ?? ""
+        balanceButton.setTitle(balance + currencySymbol, for: .normal)
     }
 }
