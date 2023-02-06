@@ -23,6 +23,7 @@ class CardCollectionViewCell: UICollectionViewCellHeightAdjusted {
     @IBOutlet weak var normalChargeButton: UIButton!
     
     private let formatter = NumberFormatter()
+    var viewController: UIViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,5 +72,15 @@ class CardCollectionViewCell: UICollectionViewCellHeightAdjusted {
         let balance = formatter.string(from: NSNumber(value: num)) ?? "0"
         let currencySymbol = Locale(identifier: currencyCode).currencySymbol ?? ""
         balanceButton.setTitle(balance + currencySymbol, for: .normal)
+    }
+    
+    @IBAction func allChargeButtonTouchUpInside(_ sender: UIButton) {
+        viewController?.performSegue(withIdentifier: MoneyChargeViewController.storyboardIdentifier,
+                                     sender: 1)
+    }
+    
+    @IBAction func normalChargeButtonTouchUpInside(_ sender: UIButton) {
+        viewController?.performSegue(withIdentifier: MoneyChargeViewController.storyboardIdentifier,
+                                     sender: 0)
     }
 }

@@ -17,33 +17,29 @@ class PayViewController: UIViewController {
     @IBOutlet weak var buttonContainer: UIView!
     
     private let VM = PayViewModel(jsonName: "cards")
-    private var cellDisposeBag = DisposeBag()
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layoutIfNeeded()
-        
-        cardCollectionView.rx.willDisplayCell
-            .bind(onNext: { [weak self] event in
-                guard let cell = event.cell as? CardCollectionViewCell else {
-                    return
-                }
-                
-                self?.cellBind(cell, at: event.at)
-            })
-            .disposed(by: disposeBag)
         
         VM.itemBinder
             .bind(to: cardCollectionView.rx.items(
                 cellIdentifier: CardCollectionViewCell.reusableIdentifier,
                 cellType: CardCollectionViewCell.self
-            )) { row, entity, cell in
+            )) { [weak self] row, entity, cell in
                 
                 cell.nameButton.setTitle(entity.name, for: .normal)
                 cell.setBalance(entity.balance, currencyCode: entity.currency)
                 cell.cardNumberLabel.text = entity.card_number
                 cell.barcodeImageView.image = cell.generateBarcode(from: "BeckBucks")
+                
+                if let vm = self?.VM, let disposeBag = self?.disposeBag {
+                    vm.getImage(at: row).toImage()
+                        .bind(to: cell.cardImageView.rx.image)
+                        .disposed(by: disposeBag)
+                }
+                
+                cell.viewController = self
             }
             .disposed(by: disposeBag)
         
@@ -59,8 +55,6 @@ class PayViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        view.layoutIfNeeded()
-        
         if let layout = cardCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = cardCollectionView.frame.size
         }
@@ -75,26 +69,6 @@ class PayViewController: UIViewController {
             dest.isAuto = isAuto
             dest.title = isAuto ? "자동 충전" : "일반 충전"
         }
-    }
-    
-    func cellBind(_ cell: CardCollectionViewCell, at indexPath: IndexPath) {
-        cellDisposeBag = DisposeBag()
-        
-        Observable<Int>.merge([
-            cell.normalChargeButton.rx.tap.map({0}),
-            cell.autoChargeButton.rx.tap.map({1})
-        ])
-        .bind(onNext: { [weak self] num in
-            self?.performSegue(
-                withIdentifier: MoneyChargeViewController.storyboardIdentifier,
-                sender: num
-            )
-        })
-        .disposed(by: cellDisposeBag)
-        
-        VM.getImage(at: indexPath.item).toImage()
-            .bind(to: cell.cardImageView.rx.image)
-            .disposed(by: cellDisposeBag)
     }
 }
 
