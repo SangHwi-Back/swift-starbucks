@@ -35,6 +35,11 @@ class MoneyChargeViewController: UIViewController {
             .map({UIImage(data: $0)})
             .bind(to: customButtonView.customButton.rx.backgroundImage())
             .disposed(by: disposeBag)
+        
+        if let entity {
+            cardInfoView.setCardInformation(entity)
+            cardInfoFunctionalView.setCardInformation(entity)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

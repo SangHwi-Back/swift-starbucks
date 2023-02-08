@@ -25,6 +25,8 @@ class MoneyChargeDefinedChargeAmountView: UIView {
     
     private var disposeBag = DisposeBag()
     
+    var chargeAmountSubject = PublishSubject<Float>()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         guard let viewFromNib = loadViewFromNib() else {
@@ -38,16 +40,17 @@ class MoneyChargeDefinedChargeAmountView: UIView {
         
         Observable<Int>
             .merge([
-                oneButton.rx.tap.map({0}),
-                threeButton.rx.tap.map({1}),
-                fiveButton.rx.tap.map({2}),
-                sevenButton.rx.tap.map({3}),
-                tenButton.rx.tap.map({4}),
-                otherButton.rx.tap.map({5}),
+                oneButton.rx.tap.map({1}),
+                threeButton.rx.tap.map({2}),
+                fiveButton.rx.tap.map({3}),
+                sevenButton.rx.tap.map({4}),
+                tenButton.rx.tap.map({5}),
+                otherButton.rx.tap.map({0}),
             ])
-            .bind(onNext: { [weak self] index in
-                self?.selectedIndex = index
-                self?.changeButtonSelected(at: index)
+            .bind(onNext: { [weak self] num in
+                self?.selectedIndex = num
+                self?.changeButtonSelected(at: num)
+                self?.chargeAmountSubject.onNext(Float(num * 10000))
             })
             .disposed(by: disposeBag)
     }

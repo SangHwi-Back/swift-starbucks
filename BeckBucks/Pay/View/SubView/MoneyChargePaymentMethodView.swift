@@ -16,7 +16,13 @@ class MoneyChargePaymentMethodView: UIView {
         case ssgPay
     }
     
-    private(set) var selectedMethod = SelectedMethod.creditCard
+    var chargeMethodSubject = PublishSubject<SelectedMethod>()
+    private(set) var selectedMethod = SelectedMethod.creditCard {
+        didSet {
+            chargeMethodSubject.onNext(selectedMethod)
+        }
+    }
+    
     private var disposeBag = DisposeBag()
     
     @IBOutlet weak var setCreditCardButton: UIButton!
