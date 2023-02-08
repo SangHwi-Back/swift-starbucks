@@ -30,10 +30,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="730" translatesAutoresizingMaskIntoConstraints="NO" id="o4b-Mp-gYv">
-                    <rect key="frame" x="0.0" y="64" width="414" height="31"/>
+                    <rect key="frame" x="0.0" y="64" width="414" height="34"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIc-AL-5FP">
-                    <rect key="frame" x="0.0" y="111" width="414" height="34"/>
+                    <rect key="frame" x="0.0" y="114" width="414" height="34"/>
                     <color key="tintColor" name="color_text_gold"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="2016 블랙 사이렌 카드" image="star.circle" catalog="system">
@@ -46,7 +46,7 @@
                     </buttonConfiguration>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxP-RY-spH">
-                    <rect key="frame" x="0.0" y="153" width="414" height="34"/>
+                    <rect key="frame" x="0.0" y="156" width="414" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="tintColor" name="color_text_gray"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -55,7 +55,6 @@
                         <imageReference key="image" image="wonsign.circle" catalog="system" symbolScale="small"/>
                     </state>
                     <buttonConfiguration key="configuration" style="plain" title="  12,100원">
-                        <imageReference key="image" image="wonsign.circle" catalog="system" symbolScale="small"/>
                         <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </buttonConfiguration>

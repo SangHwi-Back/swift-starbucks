@@ -23,6 +23,9 @@ class MoneyChargeViewController: UIViewController {
     private var disposeBag = DisposeBag()
     var isAuto: Bool = false
     
+    var updateEntitySubject: PublishSubject<CardInformation>?
+    var entity: CardInformation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -36,10 +39,20 @@ class MoneyChargeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        if let entity {
+            var entity = entity
+            entity.balance += 10000
+            updateEntitySubject?.onNext(entity)
+        }
+        
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func setAutoView() {
+        
+        title = isAuto ? "자동 충전" : "일반 충전"
+        
         if isAuto {
             
             cardInfoView.isHidden = true

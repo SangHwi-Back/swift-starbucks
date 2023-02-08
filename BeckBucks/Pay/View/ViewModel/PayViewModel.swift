@@ -15,8 +15,30 @@ class PayViewModel: StarbucksViewModel<CardInformation>, ImageFetchable, JSONFet
     var jsonName: String?
     var imageData: [String : Data] = [:]
     
+    var updateEntitySubject = PublishSubject<Entity>()
+    
+    override var items: [StarbucksViewModel<CardInformation>.Entity] {
+        didSet {
+            itemBinder.onNext(items)
+        }
+    }
+    
     init(jsonName: String?) {
+        super.init()
         self.jsonName = jsonName
+        updateEntitySubject
+            .subscribe(onNext: { [weak self] entity in
+                self?.updateItem(entity)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    subscript(index: Int) -> Entity? {
+        guard 0..<items.count ~= index else {
+            return nil
+        }
+        
+        return items[index]
     }
     
     func getImage(at rowNum: Int) -> Observable<Data> {
@@ -62,7 +84,7 @@ struct StarbucksCardArray: Decodable {
 struct CardInformation: Equatable, Identifiable, Decodable {
     let id: Int
     let name: String
-    let balance: Float
+    var balance: Float
     let currency: String
     let card_name: String
     let card_number: String

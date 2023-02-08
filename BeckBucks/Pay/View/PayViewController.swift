@@ -11,6 +11,8 @@ import RxCocoa
 
 class PayViewController: UIViewController {
     
+    typealias CELL = CardCollectionViewCell
+    
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var eventImageView: UIImageView!
     
@@ -24,8 +26,8 @@ class PayViewController: UIViewController {
         
         VM.itemBinder
             .bind(to: cardCollectionView.rx.items(
-                cellIdentifier: CardCollectionViewCell.reusableIdentifier,
-                cellType: CardCollectionViewCell.self
+                cellIdentifier: CELL.reusableIdentifier,
+                cellType: CELL.self
             )) { [weak self] row, entity, cell in
                 
                 cell.nameButton.setTitle(entity.name, for: .normal)
@@ -46,6 +48,8 @@ class PayViewController: UIViewController {
         VM.getImageFrom(fileName: "pay_event").toImage()
             .bind(to: eventImageView.rx.image)
             .disposed(by: disposeBag)
+        
+        VM.fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,16 +62,18 @@ class PayViewController: UIViewController {
         if let layout = cardCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = cardCollectionView.frame.size
         }
-        
-        VM.fetch()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? MoneyChargeViewController {
+            
+            let cellOffsetX = cardCollectionView.contentOffset.x
+            let cellWidth = cardCollectionView.frame.width
             let isAuto = (sender as? Int) == 1
             
             dest.isAuto = isAuto
-            dest.title = isAuto ? "자동 충전" : "일반 충전"
+            dest.updateEntitySubject = VM.updateEntitySubject
+            dest.entity = VM[Int(cellOffsetX / cellWidth)]
         }
     }
 }
