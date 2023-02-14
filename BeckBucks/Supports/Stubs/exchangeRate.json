@@ -1,0 +1,36 @@
+{
+    "rates": [
+        {
+            "currencyCode": "en-US"
+            , "valueFromWon": 1267.3
+            , "definedChargeValues": [
+                10, 30, 50, 70, 100
+            ]
+            , "currencySymbol": "$"
+        },
+        {
+            "currencyCode": "ko-KR"
+            , "valueFromWon": 1.0
+            , "definedChargeValues": [
+                10000, 30000, 50000, 70000, 100000
+            ]
+            , "currencySymbol": "원"
+        },
+        {
+            "currencyCode": "ja-JP"
+            , "valueFromWon": 9.61
+            , "definedChargeValues": [
+                1000, 3000, 5000, 7000, 10000
+            ]
+            , "currencySymbol": null
+        },
+        {
+            "currencyCode": "bn-IN"
+            , "valueFromWon": 15.3
+            , "definedChargeValues": [
+                500, 1500, 2500, 3500, 5000, 10000
+            ]
+            , "currencySymbol": null
+        }
+    ]
+}

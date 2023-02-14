@@ -19,6 +19,7 @@
 		1B176DAF297C3E8900E93D2B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DAE297C3E8900E93D2B /* SearchViewController.swift */; };
 		1B176DB1297D183700E93D2B /* SearchViewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */; };
 		1B176DB3297D184800E93D2B /* SearchViewListTableViewFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */; };
+		1B197CD4299BC39A0048E138 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B197CD3299BC39A0048E138 /* UIStackView+Extensions.swift */; };
 		1B1C48312988C5980095D603 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */; };
 		1B1C48322988C5D40095D603 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */; };
 		1B1C48352988C7190095D603 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */; };
@@ -64,6 +65,8 @@
 		1B3788E328F3103600A2DF39 /* pay_event.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E228F3103600A2DF39 /* pay_event.png */; };
 		1B3788E528F3999700A2DF39 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E428F3999700A2DF39 /* cards.json */; };
 		1B3788E928F39FDA00A2DF39 /* card_seattle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B3788E828F39FDA00A2DF39 /* card_seattle.png */; };
+		1B3B75C7299B6D2400E4C9F4 /* exchangeRate.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3B75C6299B6D2400E4C9F4 /* exchangeRate.json */; };
+		1B3B75C9299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3B75C8299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift */; };
 		1B47BB17297F628200E72F7D /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B47BB16297F628200E72F7D /* Contents.storyboard */; };
 		1B47BB1C2980B23700E72F7D /* StarbucksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */; };
 		1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */; };
@@ -310,6 +313,7 @@
 		1B176DAE297C3E8900E93D2B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1B176DB0297D183700E93D2B /* SearchViewListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListTableViewCell.swift; sourceTree = "<group>"; };
 		1B176DB2297D184800E93D2B /* SearchViewListTableViewFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListTableViewFooterCell.swift; sourceTree = "<group>"; };
+		1B197CD3299BC39A0048E138 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		1B1C48362988C7230095D603 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 		1B3788E228F3103600A2DF39 /* pay_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_event.png; sourceTree = "<group>"; };
 		1B3788E428F3999700A2DF39 /* cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		1B3788E828F39FDA00A2DF39 /* card_seattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_seattle.png; sourceTree = "<group>"; };
+		1B3B75C6299B6D2400E4C9F4 /* exchangeRate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exchangeRate.json; sourceTree = "<group>"; };
+		1B3B75C8299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFromCurrencyModel.swift; sourceTree = "<group>"; };
 		1B47BB16297F628200E72F7D /* Contents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarbucksViewModel.swift; sourceTree = "<group>"; };
 		1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
@@ -616,6 +622,7 @@
 			children = (
 				1B3788D528F2FB8A00A2DF39 /* PayViewController.swift */,
 				1B1C483B2988FB2E0095D603 /* MoneyChargeViewController.swift */,
+				1B3B75CA299B6DD600E4C9F4 /* Model */,
 				1B4FE45B298CB692009B2DE1 /* ViewModel */,
 				1B1C4848298901240095D603 /* SubView */,
 			);
@@ -675,6 +682,7 @@
 				1BCFCE8C2834F6CB00074ED2 /* payImageJSON1.json */,
 				1BCFCE8A2834F6CB00074ED2 /* payImageJSON2.json */,
 				1BCFCE8B2834F6CB00074ED2 /* payImageJSON3.json */,
+				1B3B75C6299B6D2400E4C9F4 /* exchangeRate.json */,
 				1B7AAAA828E29D6800DD66EA /* food */,
 				1B7AAA7F28E29D5100DD66EA /* drink */,
 				1B3788DB28F3065B00A2DF39 /* card */,
@@ -754,6 +762,7 @@
 				1B1C48302988C5980095D603 /* UIViewController+Extensions.swift */,
 				1B1C48342988C7190095D603 /* UITableViewCell+Extensions.swift */,
 				1B1C48362988C7230095D603 /* UICollectionViewCell+Extensions.swift */,
+				1B197CD3299BC39A0048E138 /* UIStackView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -769,6 +778,14 @@
 				1B3788E428F3999700A2DF39 /* cards.json */,
 			);
 			path = card;
+			sourceTree = "<group>";
+		};
+		1B3B75CA299B6DD600E4C9F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B3B75C8299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1B47BB18297F62F200E72F7D /* NotNecessary */ = {
@@ -1352,6 +1369,7 @@
 				1B3788D828F2FD0B00A2DF39 /* CardCollectionViewCell.xib in Resources */,
 				1B27494928323CFF00027B60 /* InitialJSON.json in Resources */,
 				1BCCB3082828B8F300CBB58F /* LaunchScreen.storyboard in Resources */,
+				1B3B75C7299B6D2400E4C9F4 /* exchangeRate.json in Resources */,
 				1BCFCE782834C45A00074ED2 /* EVE_APP_THUM_20220411125521718.jpg in Resources */,
 				1B7AAA9C28E29D6400DD66EA /* food18.jpg in Resources */,
 				1B52DC0329715C0A0001E70F /* (W)Bearista_Milk_Cream_Cake_1.jpg in Resources */,
@@ -1610,6 +1628,7 @@
 				1B0244E72990ED820074434D /* UICollectionViewCellHeightAdjusted.swift in Sources */,
 				1BD427BD2833ACA90098DEEF /* HomeIngBucksProtocol.swift in Sources */,
 				1B2D7EAE2973C69500851D20 /* MyBagCollectionViewEmptyCell.swift in Sources */,
+				1B197CD4299BC39A0048E138 /* UIStackView+Extensions.swift in Sources */,
 				1B1C48372988C7230095D603 /* UICollectionViewCell+Extensions.swift in Sources */,
 				1B2D7EAC2973BC3C00851D20 /* OrderNavigationController.swift in Sources */,
 				1BF36D7128D975D50033DF2A /* RecommendContentsView.swift in Sources */,
@@ -1632,6 +1651,7 @@
 				1BD427B72833ABBB0098DEEF /* HomeIngDTO.swift in Sources */,
 				1B7F194E2973C82F00A1F07B /* MyBagListTableViewTitleCell.swift in Sources */,
 				1B52DBD629713C1D0001E70F /* HallCakeReservationViewController.swift in Sources */,
+				1B3B75C9299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift in Sources */,
 				1BCCB2FC2828B8F000CBB58F /* AppDelegate.swift in Sources */,
 				1B4FADBA297E637000FF8717 /* SearchResultTableViewCell.swift in Sources */,
 				1BD427B52833AAEC0098DEEF /* HomeMainDTO.swift in Sources */,

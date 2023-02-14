@@ -20,6 +20,11 @@ class MoneyChargeViewController: UIViewController {
     @IBOutlet weak var automationInfoView: MoneyChargeAutomaticInfoView!
     
     let imageModel = MoneyChargeImageFetcher()
+    lazy var moneyModel: MoneyFromCurrencyModel? = {
+        guard let entity else { return nil }
+        return MoneyFromCurrencyModel(currencyCode: entity.currency)
+    }()
+    
     private var disposeBag = DisposeBag()
     var isAuto: Bool = false
     
@@ -36,6 +41,31 @@ class MoneyChargeViewController: UIViewController {
             .bind(to: customButtonView.customButton.rx.backgroundImage())
             .disposed(by: disposeBag)
         
+        moneyModel?.getJSONFetchObservable()
+            .subscribe(onNext: { [weak self] response in
+                guard let model = self?.moneyModel else {
+                    return
+                }
+                
+                let result = try? JSONDecoder().decode(ExchangeRateWrapper.self, from: response.data).rates
+                
+                model.rates = result ?? []
+                self?.definedChargeAmountView
+                    .currencyInfoBehaviorSubject
+                    .onNext((
+                        model.getDefinedChargeAmounts(),
+                        model.getCurrencySymbol() ?? ""
+                    ))
+            })
+            .disposed(by: disposeBag)
+        
+        definedChargeAmountView
+            .chargeAmountSubject
+            .bind(onNext: { [weak self] num in
+                self?.entity?.balance += num
+            })
+            .disposed(by: disposeBag)
+        
         if let entity {
             cardInfoView.setCardInformation(entity)
             cardInfoFunctionalView.setCardInformation(entity)
@@ -46,8 +76,6 @@ class MoneyChargeViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         if let entity {
-            var entity = entity
-            entity.balance += 10000
             updateEntitySubject?.onNext(entity)
         }
         

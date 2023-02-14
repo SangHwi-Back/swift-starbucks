@@ -29,11 +29,22 @@ extension UIView {
         }
     }
     
-    func loadViewFromNib() -> UIView? {
+    func loadNibs() -> [Any] {
         let nib = UINib(nibName: String(describing: Self.self),
                         bundle: Bundle.main)
         let instantiatedNib = nib.instantiate(withOwner: self,
                                               options: nil)
-        return instantiatedNib.first as? UIView
+        return instantiatedNib
+    }
+    
+    func loadViewFromNib() -> UIView? {
+        return loadNibs().first as? UIView
+    }
+    
+    func loadAllViewFromNib() -> [UIView] {
+        return loadNibs().compactMap({ $0 as? UIView })
+    }
+    func copyView<T: UIView>() -> T? {
+        return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as? T
     }
 }

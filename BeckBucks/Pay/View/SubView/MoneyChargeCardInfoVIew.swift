@@ -15,6 +15,8 @@ class MoneyChargeCardInfoVIew: UIView {
     
     private var formatter = NumberFormatter()
     
+    private var currencyLocale: Locale?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -33,11 +35,12 @@ class MoneyChargeCardInfoVIew: UIView {
         cardImageView.image = UIImage(named: entity.card_name)
         cardTitleLabel.text = entity.name
         setBalance(entity.balance, currencyCode: entity.currency)
+        currencyLocale = Locale(identifier: entity.currency)
     }
     
     func setBalance(_ num: Float, currencyCode: String) {
         let balance = formatter.string(from: NSNumber(value: num)) ?? "0"
-        let currencySymbol = Locale(identifier: currencyCode).currencySymbol ?? ""
+        let currencySymbol = currencyLocale?.currencySymbol ?? ""
         cardBalanceLabel.text = (balance + currencySymbol)
     }
 }
