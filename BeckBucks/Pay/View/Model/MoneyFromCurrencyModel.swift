@@ -25,6 +25,17 @@ class MoneyFromCurrencyModel: JSONFetchable {
     let locale: Locale
     let currencyCode: String?
     
+    private var priceNumberFormatter: NumberFormatter = {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.roundingMode = .down
+        formatter.allowsFloats = false
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.currencySymbol = ""
+        return formatter
+    }()
+    
     init(currencyCode: String) {
         self.locale = Locale(identifier: currencyCode)
         self.currencyCode = currencyCode
@@ -40,6 +51,14 @@ class MoneyFromCurrencyModel: JSONFetchable {
         }
         
         return rate.definedChargeValues
+    }
+    
+    func getDefinedChargeStrings(_ formatter: NumberFormatter? = nil) -> [String] {
+        getDefinedChargeAmounts().compactMap { value -> String? in
+            
+            let amount = NSNumber(floatLiteral: Double(value))
+            return self.priceNumberFormatter.string(from: amount)
+        }
     }
     
     func getCurrencySymbol() -> String? {

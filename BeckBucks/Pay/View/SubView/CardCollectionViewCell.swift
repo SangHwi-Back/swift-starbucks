@@ -71,7 +71,7 @@ class CardCollectionViewCell: UICollectionViewCellHeightAdjusted {
     func setBalance(_ num: Float, currencyCode: String) {
         let balance = formatter.string(from: NSNumber(value: num)) ?? "0"
         let currencySymbol = Locale(identifier: currencyCode).currencySymbol ?? ""
-        balanceButton.setTitle(balance + currencySymbol, for: .normal)
+        balanceButton.setTitle(balance + " " + currencySymbol, for: .normal)
     }
     
     @IBAction func allChargeButtonTouchUpInside(_ sender: UIButton) {

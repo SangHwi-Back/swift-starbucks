@@ -18,8 +18,14 @@ class MoneyChargeDefinedChargeAmountView: UIView {
     private var disposeBag = DisposeBag()
     
     var chargeAmountSubject = PublishSubject<Float>()
-    let currencyInfoBehaviorSubject = BehaviorSubject<([Int], String)>(value: ([], ""))
-    var definedButton: UIButton?
+    let currencyInfoBehaviorSubject = BehaviorSubject<([String], String)>(value: ([], ""))
+    private var definedButton: UIButton?
+    
+    var moneyModel: MoneyFromCurrencyModel?
+    
+    private var lastStackView: UIStackView? {
+        superStackView.arrangedSubviews.last as? UIStackView
+    }
     
     private var spacer: () -> UIView = {
         let view = UIView()
@@ -51,25 +57,27 @@ class MoneyChargeDefinedChargeAmountView: UIView {
         self.addSubview(targetView)
         self.definedButton = button
         targetView.frame = CGRect(origin: .zero, size: frame.size)
+    }
+    
+    func makeButtons() {
+        guard let moneyModel else { return }
         
-        iterateSuperStackView { stackView in
-            let buttons = stackView.arrangedSubviews.compactMap({ $0 as? UIButton })
-            buttons.forEach(self.makeButtonRound(_:))
-        }
+        iterateSuperStackView({ stackView in
+            stackView.subviews.forEach { view in
+                stackView.removeArrangedSubview(view)
+            }
+        })
         
-        currencyInfoBehaviorSubject
+        selectableButtons.removeAll()
+        
+        moneyModel.getJSONFetchObservable()
             .observeOn(MainScheduler.instance)
             .do(
-                onNext: { [weak self] _, _ in
-                    self?.iterateSuperStackView({ stackView in
-                        stackView.subviews.forEach { view in
-                            stackView.removeArrangedSubview(view)
-                        }
-                    })
-                    
-                    self?.selectableButtons.removeAll()
+                onNext: { [weak self] result in
+                    let result = try? JSONDecoder().decode(ExchangeRateWrapper.self, from: result.data)
+                    self?.moneyModel?.rates = result?.rates ?? []
                 },
-                afterNext: { [weak self] _, _ in
+                afterNext: { [weak self] _ in
                     var buttons: [UIButton] = []
                     self?.iterateSuperStackView({ stackView in
                         let contents = stackView.arrangedSubviews.compactMap({$0 as? UIButton})
@@ -79,39 +87,33 @@ class MoneyChargeDefinedChargeAmountView: UIView {
                     self?.bindButtons(buttons)
                 }
             )
-            .bind { [weak self] (amounts, symbol) in
-                var lastStackView: UIStackView? {
-                    self?.superStackView.arrangedSubviews.last as? UIStackView
+            .bind { [weak self] _ in
+                guard
+                    let amounts = self?.moneyModel?.getDefinedChargeStrings(),
+                    let symbol = self?.moneyModel?.getCurrencySymbol()
+                else {
+                    return
                 }
                 
                 for amount in amounts {
                     guard
-                        let button = self?.definedButton?.copyView() as? UIButton,
-                        var stackView = lastStackView
+                        let buttonCount = self?.lastStackView?.arrangedSubviews.count,
+                        let button = self?.definedButton?.copyView() as? UIButton
                     else {
                         continue
                     }
                     
-                    if
-                        stackView.arrangedSubviews.count >= 3,
-                        let copiedStackView = stackView.copyView() as? UIStackView
-                    {
-                        stackView.addArrangedSubview(UIView())
-                        
-                        copiedStackView.arrangedSubviews.forEach({ view in
-                            copiedStackView.removeArrangedSubview(view)
-                        })
-                        self?.superStackView.addArrangedSubview(copiedStackView)
-                        stackView = copiedStackView
+                    if buttonCount >= 3 {
+                        self?.addStackViewForButtons()
                     }
                     
-                    stackView.addArrangedSubview(button)
+                    self?.lastStackView?.addArrangedSubview(button)
                     self?.makeButtonRound(button)
-                    button.setTitle("\(amount)\(symbol)", for: .normal)
+                    button.setTitle("\(amount) \(symbol)", for: .normal)
                     self?.selectableButtons.append(button)
                 }
                 
-                lastStackView?.addArrangedSubview(UIView())
+                self?.lastStackView?.addArrangedSubview(UIView())
             }
             .disposed(by: disposeBag)
     }
@@ -127,7 +129,7 @@ class MoneyChargeDefinedChargeAmountView: UIView {
             )
             .bind(onNext: { [weak self] num in
                 guard
-                    let balances = try? self?.currencyInfoBehaviorSubject.value().0,
+                    let balances = self?.moneyModel?.getDefinedChargeAmounts(),
                     num < balances.count
                 else {
                     return
@@ -138,6 +140,19 @@ class MoneyChargeDefinedChargeAmountView: UIView {
                 self?.chargeAmountSubject.onNext(Float(balances[num]))
             })
             .disposed(by: buttonDisposeBag)
+    }
+    
+    private func addStackViewForButtons() {
+        
+        lastStackView?.addArrangedSubview(UIView())
+        guard let copiedStackView = lastStackView?.copyView() as? UIStackView else {
+            return
+        }
+        
+        copiedStackView.arrangedSubviews.forEach({ view in
+            copiedStackView.removeArrangedSubview(view)
+        })
+        superStackView.addArrangedSubview(copiedStackView)
     }
     
     private func makeButtonRound(_ button: UIButton) {

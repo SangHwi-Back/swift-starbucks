@@ -41,24 +41,8 @@ class MoneyChargeViewController: UIViewController {
             .bind(to: customButtonView.customButton.rx.backgroundImage())
             .disposed(by: disposeBag)
         
-        moneyModel?.getJSONFetchObservable()
-            .subscribe(onNext: { [weak self] response in
-                guard let model = self?.moneyModel else {
-                    return
-                }
-                
-                let result = try? JSONDecoder().decode(ExchangeRateWrapper.self, from: response.data).rates
-                
-                model.rates = result ?? []
-                self?.definedChargeAmountView
-                    .currencyInfoBehaviorSubject
-                    .onNext((
-                        model.getDefinedChargeAmounts(),
-                        model.getCurrencySymbol() ?? ""
-                    ))
-            })
-            .disposed(by: disposeBag)
-        
+        definedChargeAmountView.moneyModel = moneyModel
+        definedChargeAmountView.makeButtons()
         definedChargeAmountView
             .chargeAmountSubject
             .bind(onNext: { [weak self] num in
