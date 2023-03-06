@@ -11,8 +11,7 @@ import RxCocoa
 
 class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
     enum EntityType {
-        case recommend
-        case current
+        case recommend, current
     }
     
     private let foodModel = HomeMainFetchFoodModel()
@@ -34,39 +33,30 @@ class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
     }
     
     private func bindMenuModels() {
-        Observable<[StarbucksItemDTO]>.zip(
-            foodModel.itemBinder,
-            drinkModel.itemBinder
-        ) {
-            return $0 + $1
+        typealias RESULT = (type: EntityType, result: [StarbucksItemDTO])
+
+        let getObservable: (EntityType) -> Observable<RESULT> = { type in
+            return .zip(self.foodModel.itemBinder, self.drinkModel.itemBinder) {
+                return (type: type, result: $0 + $1)
+            }
         }
-        .subscribe(onNext: { [weak self] in
-            let randomValue = (2...5).randomElement() ?? 2
-            var result = $0
-            result.shuffle()
-            result.removeSubrange(0...$0.count/randomValue)
-            
-            self?.recommendMenus = result
-            self?.recommendMenuBinder.onNext(result)
-        })
-        .disposed(by: disposeBag)
-        
-        Observable<[StarbucksItemDTO]>.zip(
-            foodModel.itemBinder,
-            drinkModel.itemBinder
-        ) {
-            return $0 + $1
-        }
-        .subscribe(onNext: { [weak self] in
-            let randomValue = (2...5).randomElement() ?? 2
-            var result = $0
-            result.shuffle()
-            result.removeSubrange(0...$0.count/randomValue)
-            
-            self?.currentMenus = result
-            self?.currentMenuBinder.onNext(result)
-        })
-        .disposed(by: disposeBag)
+
+        Observable<RESULT>
+            .merge([getObservable(.recommend), getObservable(.current)])
+            .subscribe(onNext: { [weak self] in
+                var result = $0.result
+                result = result.shuffleAndRemove()
+
+                switch $0.type {
+                case .recommend:
+                    self?.recommendMenus = result
+                    self?.recommendMenuBinder.onNext(result)
+                case .current:
+                    self?.currentMenus = result
+                    self?.currentMenuBinder.onNext(result)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     /// Deactivated. Use getItem(at: Int, type: EntityType).
@@ -81,5 +71,13 @@ class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
         case .current:
             return index < currentMenus.count ? currentMenus[index] : nil
         }
+    }
+}
+
+private extension Array {
+    mutating func shuffleAndRemove() -> Self {
+        self.shuffle()
+        self.removeSubrange(0...self.count/((2...5).randomElement() ?? 2))
+        return self
     }
 }
