@@ -260,8 +260,8 @@
 		1BD427C8283482E30098DEEF /* payImageJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BD427C7283482E30098DEEF /* payImageJSON.json */; };
 		1BD427CA28348B4C0098DEEF /* PayItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD427C928348B4C0098DEEF /* PayItemDTO.swift */; };
 		1BD427CC28348BA30098DEEF /* PayItemImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD427CB28348BA30098DEEF /* PayItemImageDTO.swift */; };
-		1BDEFD1C284C66FD00EBC3DF /* InitialBackgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BDEFD1B284C66FD00EBC3DF /* InitialBackgroundImage.jpg */; };
 		1BECD3EA2828BC2F00B486B9 /* MainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECD3E92828BC2F00B486B9 /* MainViewModelTest.swift */; };
+		1BF27E2829D52A3E0031E88A /* InitialBackgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BF27E2729D52A3E0031E88A /* InitialBackgroundImage.jpg */; };
 		1BF36D6B28D961DE0033DF2A /* RecommendScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D6A28D961DE0033DF2A /* RecommendScrollView.swift */; };
 		1BF36D6D28D961E70033DF2A /* ViewImageTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D6C28D961E70033DF2A /* ViewImageTitled.swift */; };
 		1BF36D6F28D962960033DF2A /* ViewImageSubTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF36D6E28D962960033DF2A /* ViewImageSubTitled.swift */; };
@@ -544,8 +544,8 @@
 		1BD427C7283482E30098DEEF /* payImageJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = payImageJSON.json; sourceTree = "<group>"; };
 		1BD427C928348B4C0098DEEF /* PayItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayItemDTO.swift; sourceTree = "<group>"; };
 		1BD427CB28348BA30098DEEF /* PayItemImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayItemImageDTO.swift; sourceTree = "<group>"; };
-		1BDEFD1B284C66FD00EBC3DF /* InitialBackgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InitialBackgroundImage.jpg; sourceTree = "<group>"; };
 		1BECD3E92828BC2F00B486B9 /* MainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTest.swift; sourceTree = "<group>"; };
+		1BF27E2729D52A3E0031E88A /* InitialBackgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InitialBackgroundImage.jpg; sourceTree = "<group>"; };
 		1BF36D6A28D961DE0033DF2A /* RecommendScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendScrollView.swift; sourceTree = "<group>"; };
 		1BF36D6C28D961E70033DF2A /* ViewImageTitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImageTitled.swift; sourceTree = "<group>"; };
 		1BF36D6E28D962960033DF2A /* ViewImageSubTitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImageSubTitled.swift; sourceTree = "<group>"; };
@@ -667,7 +667,7 @@
 				1B7AAAA928E29EFE00DD66EA /* food.json */,
 				1B7AAAAB28E29F2000DD66EA /* drink.json */,
 				1BD3C53D29827D3C007B63FF /* main */,
-				1BDEFD1B284C66FD00EBC3DF /* InitialBackgroundImage.jpg */,
+				1BF27E2729D52A3E0031E88A /* InitialBackgroundImage.jpg */,
 				1B27494828323CFF00027B60 /* InitialJSON.json */,
 				1BF36D9228E0953E0033DF2A /* homeMainImage.jpg */,
 				1BD427B02833AA390098DEEF /* homeMainThumbImage.jpg */,
@@ -1397,6 +1397,7 @@
 				1B7AAA7828E29D4D00DD66EA /* drink9.jpg in Resources */,
 				1BF36D8728DF338D0033DF2A /* ingimg5.jpg in Resources */,
 				1B52DC0629715C0A0001E70F /* (W)Mascapone_Tiraminu_3.jpg in Resources */,
+				1BF27E2829D52A3E0031E88A /* InitialBackgroundImage.jpg in Resources */,
 				1B7AAA7C28E29D4D00DD66EA /* drink1.jpg in Resources */,
 				1B7AAA7428E29D4D00DD66EA /* drink7.jpg in Resources */,
 				1BF36D8328DF338D0033DF2A /* ingimg7.jpg in Resources */,
@@ -1424,7 +1425,6 @@
 				1B52DBFD29715C0A0001E70F /* Dome_Pecan_Tart_1.jpg in Resources */,
 				1B52DBFF29715C0A0001E70F /* (W)Mascapone_Tiraminu_2.jpg in Resources */,
 				1BCFCE862834ED3100074ED2 /* payItemJSON3.json in Resources */,
-				1BDEFD1C284C66FD00EBC3DF /* InitialBackgroundImage.jpg in Resources */,
 				1BCFCE8E2834F6CB00074ED2 /* payImageJSON2.json in Resources */,
 				1BD3C55029835E76007B63FF /* whatsNewDetail3.jpg in Resources */,
 				1BD427C8283482E30098DEEF /* payImageJSON.json in Resources */,

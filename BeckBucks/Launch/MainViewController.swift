@@ -4,13 +4,10 @@ import RxSwift
 
 class MainViewController: UIViewController {
 
+  @IBOutlet weak var contentsStackView: UIStackView!
   @IBOutlet weak var backgroundImageView: UIImageView!
-  @IBOutlet weak var rangeLabel: UILabel!
-  @IBOutlet weak var targetLabel: UILabel!
-  @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var titleLabel: UILabel!
-  
   @IBOutlet weak var noLookTodayButton: UIButton!
+  @IBOutlet weak var buttonStackView: UIStackView!
   @IBOutlet weak var closeButton: UIButton!
   
   let useCase = InitialEventViewModel()
@@ -47,24 +44,6 @@ class MainViewController: UIViewController {
   }
   
   func getInitialEvent() {
-    let sharedObservable = useCase.getInitialInfo().share()
-    
-    sharedObservable.map({$0?.range})
-      .bind(to: rangeLabel.rx.text)
-      .disposed(by: disposeBag)
-    
-    sharedObservable.map({$0?.target})
-      .bind(to: targetLabel.rx.text)
-      .disposed(by: disposeBag)
-    
-    sharedObservable.map({$0?.description})
-      .bind(to: descriptionLabel.rx.text)
-      .disposed(by: disposeBag)
-    
-    sharedObservable.map({$0?.title})
-      .bind(to: titleLabel.rx.text)
-      .disposed(by: disposeBag)
-    
     useCase.getBackgroundImage()
       .map({UIImage.init(data: $0)})
       .bind(to: backgroundImageView.rx.image)
@@ -73,5 +52,15 @@ class MainViewController: UIViewController {
   
   func moveNext() {
     performSegue(withIdentifier: "Contents", sender: self)
+  }
+  
+  override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.willTransition(to: newCollection, with: coordinator)
+    
+    if newCollection.verticalSizeClass == .compact {
+      backgroundImageView.contentMode = .scaleAspectFit
+    } else {
+      backgroundImageView.contentMode = .scaleAspectFill
+    }
   }
 }
