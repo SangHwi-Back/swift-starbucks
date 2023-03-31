@@ -5,9 +5,10 @@ import RxCocoa
 
 class HomeMainViewController: UIViewController {
     
-    @IBOutlet weak var headerScrollView: UIScrollView!
-    @IBOutlet weak var headerScrollViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var topLeadingStackView: UIStackView!
+    
     @IBOutlet weak var thumbnailView: UIView!
+    @IBOutlet weak var thumbnailViewHeight: NSLayoutConstraint!
     @IBOutlet weak var mainHeaderImageView: UIImageView!
     
     @IBOutlet weak var rewardView: UIView!
@@ -38,19 +39,29 @@ class HomeMainViewController: UIViewController {
     
     @IBOutlet weak var currentMenuCollectionView: UICollectionView!
     
+    @IBOutlet weak var topRightView: UIView!
+    @IBOutlet weak var topRightContentsCollectionView: UICollectionView!
+    
+    // MARK: - ViewModels
     let mainVM = HomeMainViewModel()
     let menuVM = HomeMainMenuViewModel()
     let imageModel = HomeMainImageFetcher()
     
+    // MARK: - Properties of header
     private var originalHeaderHeight: CGFloat = 0
+    private var topPadding: CGFloat {
+        UIDevice.current.hasNotch ? 32 : 16
+    }
     private var headerHeightExceptButtons: CGFloat {
-        originalHeaderHeight
-        - headerButtonStackView.frame.height
-        - (UIDevice.current.hasNotch ? 32 : 16)
+        originalHeaderHeight + rewardView.frame.height - topPadding
     }
     
+    // MARK: - DisposeBag
+    private var transitionBag = DisposeBag()
     private var disposeBag = DisposeBag()
     
+    // MARK: - CollectionLayout
+    private let itemWidth: CGFloat = 120
     private var layout: UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -58,32 +69,40 @@ class HomeMainViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return layout
     }
+    
     private lazy var itemContentsLayout: UICollectionViewFlowLayout = {
         let layout = self.layout
-        layout.itemSize = CGSize(width: view.frame.width / 3,
-                                 height: view.frame.width / 3 + 30)
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth + 30)
         return layout
     }()
     private lazy var eventContentsLayout: UICollectionViewFlowLayout = {
         let layout = self.layout
-        layout.itemSize = CGSize(width: view.frame.width / 2,
-                                 height: view.frame.width / 2 - 30)
+        layout.itemSize = CGSize(width: itemWidth * 1.5, height: itemWidth * 1.5 - 30)
         return layout
     }()
     
+    // MARK: - Type of Cell
     typealias CELL = MainMenuItemCollectionViewCell
     private var CellID: String {
         MainMenuItemCollectionViewCell.reusableIdentifier
     }
     
+    // MARK: - Portrait & Landscape
+    private var isPortrait: Bool {
+        view.frame.width > view.frame.height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        originalHeaderHeight = headerScrollView.frame.height
+        originalHeaderHeight = thumbnailViewHeight.constant
         
         recommendationCollectionView.collectionViewLayout = itemContentsLayout
         newInfoCollectionView.collectionViewLayout = eventContentsLayout
         currentMenuCollectionView.collectionViewLayout = itemContentsLayout
+        let verticalLayout = itemContentsLayout
+        verticalLayout.scrollDirection = .vertical
+        topRightContentsCollectionView.collectionViewLayout = verticalLayout
         
         let mainScrollViewOffsetObservable = mainScrollView.rx.contentOffset
             .observeOn(MainScheduler.asyncInstance)
@@ -91,11 +110,11 @@ class HomeMainViewController: UIViewController {
         
         mainScrollViewOffsetObservable
             .map({ self.originalHeaderHeight - $0.y})
-            .bind(to: headerScrollViewHeight.rx.constant)
+            .bind(to: thumbnailViewHeight.rx.constant)
             .disposed(by: disposeBag)
         
         mainScrollViewOffsetObservable
-            .map({ 1 - ($0.y / self.headerHeightExceptButtons) })
+            .map({ 1 - ($0.y / self.thumbnailViewHeight.constant) })
             .bind(to: thumbnailView.rx.alpha, rewardView.rx.alpha)
             .disposed(by: disposeBag)
         
@@ -194,29 +213,6 @@ class HomeMainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        func localBind(to view: UICollectionView, publisher: PublishSubject<[some StarbucksEntity]>) {
-            publisher
-                .bind(to: view.rx.items(cellIdentifier: CellID,
-                                        cellType: CELL.self)
-                ) { [weak imageModel, weak disposeBag] row, entity, cell in
-                
-                if let disposeBag = disposeBag {
-                    cell.menuImageView.setCornerRadius(8)
-                    imageModel?
-                        .getImageFrom(fileName: entity.fileName)
-                        .map({ UIImage(data: $0) })
-                        .bind(to: cell.menuImageView.rx.image)
-                        .disposed(by: disposeBag)
-                }
-                
-                cell.menuTitleLabel.text = entity.title
-            }
-            .disposed(by: disposeBag)
-        }
-        
-        localBind(to: recommendationCollectionView, publisher: menuVM.recommendMenuBinder)
-        localBind(to: currentMenuCollectionView, publisher: menuVM.currentMenuBinder)
-        
         recommendationCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
                 guard let entity = self?.menuVM.recommendMenus[indexPath.row] else { return }
@@ -233,6 +229,26 @@ class HomeMainViewController: UIViewController {
         
         mainVM.fetch()
         menuVM.fetch()
+    }
+    
+    func localBind(to view: UICollectionView, publisher: PublishSubject<[some StarbucksEntity]>) {
+        publisher
+            .bind(to: view.rx.items(cellIdentifier: CellID,
+                                    cellType: CELL.self)
+            ) { [weak imageModel, weak disposeBag] row, entity, cell in
+                
+                if let disposeBag = disposeBag {
+                    cell.menuImageView.setCornerRadius(8)
+                    imageModel?
+                        .getImageFrom(fileName: entity.fileName)
+                        .map({ UIImage(data: $0) })
+                        .bind(to: cell.menuImageView.rx.image)
+                        .disposed(by: disposeBag)
+                }
+                
+                cell.menuTitleLabel.text = entity.title
+            }
+            .disposed(by: transitionBag)
     }
     
     func itemSelectForNavigation(entity: StarbucksItemDTO) {
@@ -263,6 +279,24 @@ class HomeMainViewController: UIViewController {
             dest.title = entity.title
             dest.imageFileName = entity.detailImageFileName
             dest.titleText = entity.subTitle
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        transitionBag = DisposeBag()
+        
+        if isPortrait { // portrait
+            
+            localBind(to: recommendationCollectionView,
+                      publisher: menuVM.recommendMenuBinder)
+            localBind(to: currentMenuCollectionView,
+                      publisher: menuVM.currentMenuBinder)
+        }
+        else { // landscape
+            
+            localBind(to: topRightContentsCollectionView,
+                      publisher: menuVM.recommendMenuBinder)
         }
     }
 }
