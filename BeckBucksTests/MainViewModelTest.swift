@@ -3,57 +3,66 @@ import RxSwift
 import RxCocoa
 
 class MainViewModelTest: XCTestCase {
+    let viewModel = HomeViewModel()
+    var disposeBag = DisposeBag()
     
-    let mainVM = HomeMainViewModel()
-    let menuVM = HomeMainMenuViewModel()
-    
-    private var disposeBag = DisposeBag()
-    
-    func test_mainInfo_getItems() {
-        
-        let expect = XCTestExpectation.withCount(1)
-        
-        mainVM.itemBinder
-            .subscribe(onNext:{
-                print("PRINT IN TEST : item count is \($0.whatsNewList.count)")
-                expect.fulfill()
-            })
-            .disposed(by: disposeBag)
-        
-        mainVM.fetch()
-        
-        wait(for: [expect], timeout: 3.0)
+    override func setUp() {
+        super.setUp()
+        viewModel.currentIndex = 0
     }
     
-    func test_mainMenu_getItems() {
+    func test_viewModel() throws {
+        // MARK: - Arrange
+        var currentSubject: BehaviorSubject<[MainItemDTO]>?
         
-        let expect = XCTestExpectation.withCount(2)
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 6
         
-        menuVM.recommendMenuBinder
-            .subscribe(onNext:{
-                
-                print("PRINT IN TEST :", $0.map({ item in item.id }))
-                
-                if $0.isEmpty == false, $0.isInOrder() == false {
-                    expect.fulfill()
-                }
+        let testSubject = PublishSubject<Int>()
+        
+        testSubject
+            .do(onNext: { _ in
+                expectation.fulfill()
+            })
+            .bind(to: viewModel.rx.indexBindable)
+            .disposed(by: disposeBag)
+        viewModel
+            .indexSubject
+            .subscribe(onNext: { subject in
+                expectation.fulfill()
+                currentSubject = subject
             })
             .disposed(by: disposeBag)
         
-        menuVM.currentMenuBinder
-            .subscribe(onNext:{
-                
-                print("PRINT IN TEST :", $0.map({ item in item.id }))
-                
-                if $0.isEmpty == false, $0.isInOrder() == false {
-                    expect.fulfill()
-                }
-            })
-            .disposed(by: disposeBag)
+        // MARK: - Action
+        for i in 1...3 {
+            testSubject.onNext(i)
+        }
         
-        menuVM.fetch()
+        // MARK: - Assert
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(currentSubject)
+    }
+    
+    func test_indexMinRange() throws {
         
-        wait(for: [expect], timeout: 3.0)
+        viewModel.currentIndex = -1
+        XCTAssertEqual(viewModel.currentIndex, 0)
+    }
+    
+    func test_indexMaxRange() throws {
+        
+        viewModel.currentIndex = 3
+        XCTAssertEqual(viewModel.currentIndex, 0)
+    }
+    
+    func test_indexRange() throws {
+        
+        for i in 0...2 {
+            
+            viewModel.currentIndex = i
+            XCTAssertEqual(viewModel.currentIndex, i)
+        }
     }
 }
 
