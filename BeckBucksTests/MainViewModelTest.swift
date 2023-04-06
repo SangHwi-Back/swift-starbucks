@@ -12,36 +12,42 @@ class MainViewModelTest: XCTestCase {
     }
     
     func test_viewModel() throws {
-        // MARK: - Arrange
-        var currentSubject: BehaviorSubject<[MainItemDTO]>?
-        
+        // MARK: - test_viewModel.Arrange
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 6
         
+        ///   Test Reactive extension for **currentIndex**.
         let testSubject = PublishSubject<Int>()
-        
         testSubject
-            .do(onNext: { _ in
-                expectation.fulfill()
-            })
-            .bind(to: viewModel.rx.indexBindable)
-            .disposed(by: disposeBag)
-        viewModel
-            .indexSubject
-            .subscribe(onNext: { subject in
-                expectation.fulfill()
-                currentSubject = subject
-            })
+            .do(afterNext: { _ in expectation.fulfill()})
+            .bind(to: viewModel.rx.indexBindable) // Here is Target.
             .disposed(by: disposeBag)
         
-        // MARK: - Action
+        ///   Test Reactive extension for **itemBinderByIndex**.
+        viewModel.rx.itemBinderByIndex
+            .bind { relay in
+                guard let relay else { return }
+                self.localBind(relay, to: expectation) // Here is Target.
+            }
+            .disposed(by: disposeBag)
+        
+        // MARK: - test_viewModel.Action
         for i in 1...3 {
             testSubject.onNext(i)
         }
         
-        // MARK: - Assert
+        // MARK: - test_viewModel.Assert
         wait(for: [expectation], timeout: 3.0)
-        XCTAssertNotNil(currentSubject)
+    }
+    
+    private func localBind(_ relay: BehaviorRelay<[HomeViewModel.DTO]>, to expectation: XCTestExpectation) {
+        relay
+            .subscribe(onNext: { items in
+                if items.isEmpty == false {
+                    expectation.fulfill()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func test_indexMinRange() throws {

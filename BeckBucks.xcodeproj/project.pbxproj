@@ -68,6 +68,8 @@
 		1B3B75C7299B6D2400E4C9F4 /* exchangeRate.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B3B75C6299B6D2400E4C9F4 /* exchangeRate.json */; };
 		1B3B75C9299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3B75C8299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift */; };
 		1B447BD029DC4C9E004341E3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5925D229DA91540016B987 /* HomeViewModel.swift */; };
+		1B447BD429DE52D3004341E3 /* HomeMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B447BD329DE52D3004341E3 /* HomeMainModel.swift */; };
+		1B447BD529DE52F8004341E3 /* HomeMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B447BD329DE52D3004341E3 /* HomeMainModel.swift */; };
 		1B47BB17297F628200E72F7D /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B47BB16297F628200E72F7D /* Contents.storyboard */; };
 		1B47BB1C2980B23700E72F7D /* StarbucksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */; };
 		1B4FADB6297E5DEF00FF8717 /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */; };
@@ -359,6 +361,7 @@
 		1B3788E828F39FDA00A2DF39 /* card_seattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_seattle.png; sourceTree = "<group>"; };
 		1B3B75C6299B6D2400E4C9F4 /* exchangeRate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exchangeRate.json; sourceTree = "<group>"; };
 		1B3B75C8299B6DD300E4C9F4 /* MoneyFromCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFromCurrencyModel.swift; sourceTree = "<group>"; };
+		1B447BD329DE52D3004341E3 /* HomeMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainModel.swift; sourceTree = "<group>"; };
 		1B47BB16297F628200E72F7D /* Contents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1B47BB1B2980B23700E72F7D /* StarbucksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarbucksViewModel.swift; sourceTree = "<group>"; };
 		1B4FADB5297E5DEF00FF8717 /* SearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
@@ -1051,6 +1054,7 @@
 				1BD3C57A2983705A007B63FF /* HomeMainFetchFoodModel.swift */,
 				1BD3C5782983704D007B63FF /* HomeMainFetchDrinkModel.swift */,
 				1B6733202983A58600E1872D /* HomeMainImageFetcher.swift */,
+				1B447BD329DE52D3004341E3 /* HomeMainModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1601,6 +1605,7 @@
 				1B3788E128F3092E00A2DF39 /* CardCollectionViewCell.swift in Sources */,
 				1BD3C5342982552F007B63FF /* JSONFetchable.swift in Sources */,
 				1B27E930297F423A00CF6AFE /* MenuDetailRecommendationCollectionViewCell.swift in Sources */,
+				1B447BD429DE52D3004341E3 /* HomeMainModel.swift in Sources */,
 				1B2749562832678D00027B60 /* InitialURLSession.swift in Sources */,
 				1B52DBDE297147C00001E70F /* HallCakeReservationCollectionViewCell.swift in Sources */,
 				1B0F6628283371F8000428E3 /* HomeMainViewController.swift in Sources */,
@@ -1699,6 +1704,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B447BD029DC4C9E004341E3 /* HomeViewModel.swift in Sources */,
+				1B447BD529DE52F8004341E3 /* HomeMainModel.swift in Sources */,
 				1BD3C57F29838B4E007B63FF /* HomeMainMenuViewModel.swift in Sources */,
 				1BD3C58829838C0D007B63FF /* HomeMainFetchDrinkModel.swift in Sources */,
 				1B1C48322988C5D40095D603 /* UIViewController+Extensions.swift in Sources */,
