@@ -227,8 +227,52 @@ class HomeMainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        topRightContentsCollectionView.rx.willThroughPageThreshold
+            .drive(onNext: { [weak self] didThrough in
+                guard
+                    didThrough,
+                    let upperView = self?.topRightContentsCollectionView,
+                    let bgView = self?.topRightView,
+                    let disposeBag = self?.disposeBag
+                else {
+                    return
+                }
+                
+                upperView.frame.size.height -= 120
+                
+                let containerView = UIView.roundedBorderedBox(CGRect(
+                    x: 16,
+                    y: upperView.frame.height + 10,
+                    width: bgView.frame.width - 32,
+                    height: 100
+                ))
+                
+                bgView.addSubview(containerView)
+                let indicator = containerView.makeIndicatorAtCenter()
+                containerView.addSubview(indicator)
+                containerView.delete(after: 4)
+                    .disposed(by: disposeBag)
+                
+                self?.makeTopRightCollectionViewFill()
+            })
+            .disposed(by: disposeBag)
+        
         mainVM.fetch()
         menuVM.fetch()
+    }
+    
+    func makeTopRightCollectionViewFill() {
+        UIView.animate(withDuration: 0.5, delay: 3.0) {[weak self] in
+            guard let self = self else { return }
+            
+            let containerView = self.topRightView.subviews.first {
+                $0.subviews.contains(where: { $0 is UIActivityIndicatorView })
+            }
+            containerView?.frame.origin.y = self.topRightView.frame.height
+            containerView?.layer.opacity = 0.0
+            
+            self.topRightContentsCollectionView.frame.size.height = self.topRightView.frame.height
+        }
     }
     
     func localBind(to view: UICollectionView, publisher: PublishSubject<[some StarbucksEntity]>) {
@@ -288,15 +332,15 @@ class HomeMainViewController: UIViewController {
         
         if isPortrait { // portrait
             
+            localBind(to: topRightContentsCollectionView,
+                      publisher: menuVM.recommendMenuBinder)
+        }
+        else { // landscape
+            
             localBind(to: recommendationCollectionView,
                       publisher: menuVM.recommendMenuBinder)
             localBind(to: currentMenuCollectionView,
                       publisher: menuVM.currentMenuBinder)
-        }
-        else { // landscape
-            
-            localBind(to: topRightContentsCollectionView,
-                      publisher: menuVM.recommendMenuBinder)
         }
     }
 }
