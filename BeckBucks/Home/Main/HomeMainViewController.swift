@@ -41,6 +41,8 @@ class HomeMainViewController: UIViewController {
     
     @IBOutlet weak var topRightView: UIView!
     @IBOutlet weak var topRightContentsCollectionView: UICollectionView!
+    @IBOutlet weak var topConstraintAtTopRightCollectionView: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraintAtTopRightCollectionView: NSLayoutConstraint!
     
     // MARK: - ViewModels
     let mainVM = HomeMainViewModel()
@@ -228,32 +230,32 @@ class HomeMainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         topRightContentsCollectionView.rx.willThroughPageThreshold
-            .drive(onNext: { [weak self] didThrough in
-                guard
-                    didThrough,
-                    let upperView = self?.topRightContentsCollectionView,
-                    let bgView = self?.topRightView,
-                    let disposeBag = self?.disposeBag
-                else {
-                    return
+            .drive(onNext: { [weak self] result in
+                guard result.didThrough else { return }
+                
+                let isUpward = (result.collectionView.contentOffset.y < 0)
+                
+                self?.topConstraintAtTopRightCollectionView.constant = (isUpward ? 100 : -100)
+                self?.bottomConstraintAtTopRightCollectionView.constant = (isUpward ? -100 : 100)
+                
+                UIView.animate(withDuration: 0.5) {
+                    
+                    self?.topRightView.layoutIfNeeded()
+                } completion: { _ in
+                    
+                    let containerYPosition = (isUpward ? 0 : result.collectionView.frame.height - 100) + 10
+                    let containerWidth = (self?.topRightView.frame.width ?? 200) - 32
+                    let containerRect = CGRect(x: 16, y: containerYPosition, width: containerWidth, height: 80)
+                    
+                    let containerView = UIView.roundedBorderedBox(containerRect)
+                    
+                    self?.topRightView.addSubview(containerView)
+                    let indicator = containerView.makeIndicatorAtCenter()
+                    
+                    containerView.addSubview(indicator)
+                    
+                    self?.removeViewAsDimmedInTopRightView(view: containerView)
                 }
-                
-                upperView.frame.size.height -= 120
-                
-                let containerView = UIView.roundedBorderedBox(CGRect(
-                    x: 16,
-                    y: upperView.frame.height + 10,
-                    width: bgView.frame.width - 32,
-                    height: 100
-                ))
-                
-                bgView.addSubview(containerView)
-                let indicator = containerView.makeIndicatorAtCenter()
-                containerView.addSubview(indicator)
-                containerView.delete(after: 4)
-                    .disposed(by: disposeBag)
-                
-                self?.makeTopRightCollectionViewFill()
             })
             .disposed(by: disposeBag)
         
@@ -261,18 +263,23 @@ class HomeMainViewController: UIViewController {
         menuVM.fetch()
     }
     
-    func makeTopRightCollectionViewFill() {
-        UIView.animate(withDuration: 0.5, delay: 3.0) {[weak self] in
-            guard let self = self else { return }
-            
-            let containerView = self.topRightView.subviews.first {
-                $0.subviews.contains(where: { $0 is UIActivityIndicatorView })
-            }
-            containerView?.frame.origin.y = self.topRightView.frame.height
-            containerView?.layer.opacity = 0.0
-            
-            self.topRightContentsCollectionView.frame.size.height = self.topRightView.frame.height
-        }
+    private func removeViewAsDimmedInTopRightView(view: UIView) {
+        BehaviorSubject(value: view)
+            .asDriver(onErrorJustReturn: UIView())
+            .delay(.seconds(3))
+            .drive(onNext: { [weak self] viewForRemove in
+                
+                self?.topConstraintAtTopRightCollectionView.constant = 0
+                self?.bottomConstraintAtTopRightCollectionView.constant = 0
+                
+                UIView.animate(withDuration: 0.5) {
+                    viewForRemove.layer.opacity = 0
+                    self?.topRightView.layoutIfNeeded()
+                } completion: { _ in
+                    viewForRemove.removeFromSuperview()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func localBind(to view: UICollectionView, publisher: PublishSubject<[some StarbucksEntity]>) {
