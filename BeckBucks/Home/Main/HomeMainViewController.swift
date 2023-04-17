@@ -89,11 +89,6 @@ class HomeMainViewController: UIViewController {
         MainMenuItemCollectionViewCell.reusableIdentifier
     }
     
-    // MARK: - Portrait & Landscape
-    private var isPortrait: Bool {
-        view.frame.width > view.frame.height
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -111,7 +106,10 @@ class HomeMainViewController: UIViewController {
             .filter({ $0.y <= self.headerHeightExceptButtons })
         
         mainScrollViewOffsetObservable
-            .map({ self.originalHeaderHeight - $0.y})
+            .map({
+                let result = self.originalHeaderHeight - $0.y
+                return result < 0 ? 0 : result
+            })
             .bind(to: thumbnailViewHeight.rx.constant)
             .disposed(by: disposeBag)
         
@@ -282,10 +280,41 @@ class HomeMainViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    func localBind(to view: UICollectionView, publisher: PublishSubject<[some StarbucksEntity]>) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewLocalBind(isPortrait: view.frame.width < view.frame.height)
+    }
+    
+    override func viewWillTransition(
+        to size: CGSize,
+        with coordinator: UIViewControllerTransitionCoordinator) {
+            super.viewWillTransition(to: size, with: coordinator)
+            viewLocalBind(isPortrait: size.width < size.height)
+        }
+    
+    private func viewLocalBind(isPortrait: Bool) {
+        transitionBag = DisposeBag()
+        
+        if isPortrait { // portrait
+            
+            localBind(to: recommendationCollectionView,
+                      publisher: menuVM.recommendMenuBinder)
+            localBind(to: currentMenuCollectionView,
+                      publisher: menuVM.currentMenuBinder)
+        }
+        else { // landscape
+            
+            localBind(to: topRightContentsCollectionView,
+                      publisher: menuVM.recommendMenuBinder)
+            mainScrollView.contentOffset.y = 0
+        }
+    }
+    
+    func localBind(to view: UICollectionView, publisher: BehaviorRelay<[some StarbucksEntity]>) {
         publisher
-            .bind(to: view.rx.items(cellIdentifier: CellID,
-                                    cellType: CELL.self)
+            .bind(to: view.rx.items(
+                cellIdentifier: CellID,
+                cellType: CELL.self)
             ) { [weak imageModel, weak disposeBag] row, entity, cell in
                 
                 if let disposeBag = disposeBag {
@@ -330,24 +359,6 @@ class HomeMainViewController: UIViewController {
             dest.title = entity.title
             dest.imageFileName = entity.detailImageFileName
             dest.titleText = entity.subTitle
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        transitionBag = DisposeBag()
-        
-        if isPortrait { // portrait
-            
-            localBind(to: topRightContentsCollectionView,
-                      publisher: menuVM.recommendMenuBinder)
-        }
-        else { // landscape
-            
-            localBind(to: recommendationCollectionView,
-                      publisher: menuVM.recommendMenuBinder)
-            localBind(to: currentMenuCollectionView,
-                      publisher: menuVM.currentMenuBinder)
         }
     }
 }
