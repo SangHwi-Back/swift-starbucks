@@ -72,16 +72,16 @@ class HomeMainViewController: UIViewController {
         return layout
     }
     
-    private lazy var itemContentsLayout: UICollectionViewFlowLayout = {
+    private lazy var itemContentsLayout: () -> UICollectionViewFlowLayout = {
         let layout = self.layout
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth + 30)
+        layout.itemSize = CGSize(width: self.itemWidth, height: self.itemWidth + 30)
         return layout
-    }()
-    private lazy var eventContentsLayout: UICollectionViewFlowLayout = {
+    }
+    private lazy var eventContentsLayout: () -> UICollectionViewFlowLayout = {
         let layout = self.layout
-        layout.itemSize = CGSize(width: itemWidth * 1.5, height: itemWidth * 1.5 - 30)
+        layout.itemSize = CGSize(width: self.itemWidth * 1.5, height: self.itemWidth * 1.5 - 30)
         return layout
-    }()
+    }
     
     // MARK: - Type of Cell
     typealias CELL = MainMenuItemCollectionViewCell
@@ -94,10 +94,10 @@ class HomeMainViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         originalHeaderHeight = thumbnailViewHeight.constant
         
-        recommendationCollectionView.collectionViewLayout = itemContentsLayout
-        newInfoCollectionView.collectionViewLayout = eventContentsLayout
-        currentMenuCollectionView.collectionViewLayout = itemContentsLayout
-        let verticalLayout = itemContentsLayout
+        recommendationCollectionView.collectionViewLayout = itemContentsLayout()
+        newInfoCollectionView.collectionViewLayout = eventContentsLayout()
+        currentMenuCollectionView.collectionViewLayout = itemContentsLayout()
+        let verticalLayout = itemContentsLayout()
         verticalLayout.scrollDirection = .vertical
         topRightContentsCollectionView.collectionViewLayout = verticalLayout
         
@@ -289,25 +289,21 @@ class HomeMainViewController: UIViewController {
         to size: CGSize,
         with coordinator: UIViewControllerTransitionCoordinator) {
             super.viewWillTransition(to: size, with: coordinator)
-            viewLocalBind(isPortrait: size.width < size.height)
+            
+            if size.width > size.height { // LandScape
+                mainScrollView.contentOffset.y = 0
+            }
         }
     
     private func viewLocalBind(isPortrait: Bool) {
         transitionBag = DisposeBag()
         
-        if isPortrait { // portrait
-            
-            localBind(to: recommendationCollectionView,
-                      publisher: menuVM.recommendMenuBinder)
-            localBind(to: currentMenuCollectionView,
-                      publisher: menuVM.currentMenuBinder)
-        }
-        else { // landscape
-            
-            localBind(to: topRightContentsCollectionView,
-                      publisher: menuVM.recommendMenuBinder)
-            mainScrollView.contentOffset.y = 0
-        }
+        localBind(to: recommendationCollectionView,
+                  publisher: menuVM.recommendMenuBinder)
+        localBind(to: currentMenuCollectionView,
+                  publisher: menuVM.currentMenuBinder)
+        localBind(to: topRightContentsCollectionView,
+                  publisher: menuVM.recommendMenuBinder)
     }
     
     func localBind(to view: UICollectionView, publisher: BehaviorRelay<[some StarbucksEntity]>) {
