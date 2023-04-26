@@ -3,57 +3,72 @@ import RxSwift
 import RxCocoa
 
 class MainViewModelTest: XCTestCase {
+    let viewModel = HomeViewModel()
+    var disposeBag = DisposeBag()
     
-    let mainVM = HomeMainViewModel()
-    let menuVM = HomeMainMenuViewModel()
-    
-    private var disposeBag = DisposeBag()
-    
-    func test_mainInfo_getItems() {
-        
-        let expect = XCTestExpectation.withCount(1)
-        
-        mainVM.itemBinder
-            .subscribe(onNext:{
-                print("PRINT IN TEST : item count is \($0.whatsNewList.count)")
-                expect.fulfill()
-            })
-            .disposed(by: disposeBag)
-        
-        mainVM.fetch()
-        
-        wait(for: [expect], timeout: 3.0)
+    override func setUp() {
+        super.setUp()
+        viewModel.currentIndex = 0
     }
     
-    func test_mainMenu_getItems() {
+    func test_viewModel() throws {
+        // MARK: - test_viewModel.Arrange
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 6
         
-        let expect = XCTestExpectation.withCount(2)
+        ///   Test Reactive extension for **currentIndex**.
+        let testSubject = PublishSubject<Int>()
+        testSubject
+            .do(afterNext: { _ in expectation.fulfill()})
+            .bind(to: viewModel.rx.indexBindable) // Here is Target.
+            .disposed(by: disposeBag)
         
-        menuVM.recommendMenuBinder
-            .subscribe(onNext:{
-                
-                print("PRINT IN TEST :", $0.map({ item in item.id }))
-                
-                if $0.isEmpty == false, $0.isInOrder() == false {
-                    expect.fulfill()
+        ///   Test Reactive extension for **itemBinderByIndex**.
+        viewModel.rx.itemBinderByIndex
+            .bind { relay in
+                guard let relay else { return }
+                self.localBind(relay, to: expectation) // Here is Target.
+            }
+            .disposed(by: disposeBag)
+        
+        // MARK: - test_viewModel.Action
+        for i in 1...3 {
+            testSubject.onNext(i)
+        }
+        
+        // MARK: - test_viewModel.Assert
+        wait(for: [expectation], timeout: 3.0)
+    }
+    
+    private func localBind(_ relay: BehaviorRelay<[HomeViewModel.DTO]>, to expectation: XCTestExpectation) {
+        relay
+            .subscribe(onNext: { items in
+                if items.isEmpty == false {
+                    expectation.fulfill()
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    func test_indexMinRange() throws {
         
-        menuVM.currentMenuBinder
-            .subscribe(onNext:{
-                
-                print("PRINT IN TEST :", $0.map({ item in item.id }))
-                
-                if $0.isEmpty == false, $0.isInOrder() == false {
-                    expect.fulfill()
-                }
-            })
-            .disposed(by: disposeBag)
+        viewModel.currentIndex = -1
+        XCTAssertEqual(viewModel.currentIndex, 0)
+    }
+    
+    func test_indexMaxRange() throws {
         
-        menuVM.fetch()
+        viewModel.currentIndex = 3
+        XCTAssertEqual(viewModel.currentIndex, 0)
+    }
+    
+    func test_indexRange() throws {
         
-        wait(for: [expect], timeout: 3.0)
+        for i in 0...2 {
+            
+            viewModel.currentIndex = i
+            XCTAssertEqual(viewModel.currentIndex, i)
+        }
     }
 }
 

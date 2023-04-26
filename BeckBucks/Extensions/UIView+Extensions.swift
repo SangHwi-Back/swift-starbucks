@@ -6,8 +6,19 @@
 //
 
 import UIKit
+import RxSwift
 
 extension UIView {
+    
+    /// Default frame is `CGRect(x: 0, y: 0, width: 100, height: 100)`
+    static func roundedBorderedBox(_ frame: CGRect? = nil) -> UIView {
+        let view = UIView(frame: frame ?? CGRect(x: 0, y: 0, width: 100, height: 100))
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 1.0
+        view.setCornerRadius(4)
+        return view
+    }
+    
     func setCornerRadius(_ radius: CGFloat? = nil) {
         self.layer.cornerRadius = radius ?? min(self.frame.height, self.frame.width) / 2
         self.clipsToBounds = true
@@ -46,5 +57,23 @@ extension UIView {
     }
     func copyView<T: UIView>() -> T? {
         return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as? T
+    }
+    
+    func makeIndicatorAtCenter() -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView()
+        indicator.frame = CGRect(
+            x: frame.width / 2 - 10,
+            y: frame.height / 2 - 10,
+            width: 20,
+            height: 20)
+        indicator.startAnimating()
+        return indicator
+    }
+    
+    func delete(after seconds: Int) -> Disposable {
+        BehaviorSubject(value: self)
+            .delay(.seconds(seconds), scheduler: MainScheduler.asyncInstance)
+            .asDriver(onErrorJustReturn: UIView())
+            .drive(onNext: { $0.removeFromSuperview() })
     }
 }

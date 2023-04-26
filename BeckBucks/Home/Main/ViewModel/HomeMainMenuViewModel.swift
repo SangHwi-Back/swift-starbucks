@@ -18,9 +18,9 @@ class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
     private let drinkModel = HomeMainFetchDrinkModel()
     
     private(set) var recommendMenus: [Entity] = []
-    let recommendMenuBinder = PublishSubject<[Entity]>()
+    let recommendMenuBinder = BehaviorRelay<[Entity]>(value: [])
     private(set) var currentMenus: [Entity] = []
-    let currentMenuBinder = PublishSubject<[Entity]>()
+    let currentMenuBinder = BehaviorRelay<[Entity]>(value: [])
     
     override init() {
         super.init()
@@ -50,10 +50,10 @@ class HomeMainMenuViewModel: StarbucksViewModel<StarbucksItemDTO> {
                 switch $0.type {
                 case .recommend:
                     self?.recommendMenus = result
-                    self?.recommendMenuBinder.onNext(result)
+                    self?.recommendMenuBinder.accept(result)
                 case .current:
                     self?.currentMenus = result
-                    self?.currentMenuBinder.onNext(result)
+                    self?.currentMenuBinder.accept(result)
                 }
             })
             .disposed(by: disposeBag)
