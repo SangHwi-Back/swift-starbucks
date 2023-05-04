@@ -39,6 +39,8 @@ class HomeMainViewController: UIViewController {
     
     @IBOutlet weak var currentMenuCollectionView: UICollectionView!
     
+    @IBOutlet weak var topRightPrevButton: UIButton!
+    @IBOutlet weak var topRightNextButton: UIButton!
     @IBOutlet weak var topRightView: UIView!
     @IBOutlet weak var topRightContentsCollectionView: UICollectionView!
     @IBOutlet weak var topConstraintAtTopRightCollectionView: NSLayoutConstraint!
@@ -102,6 +104,8 @@ class HomeMainViewController: UIViewController {
         let verticalLayout = itemContentsLayout()
         verticalLayout.scrollDirection = .vertical
         topRightContentsCollectionView.collectionViewLayout = verticalLayout
+        
+        enablePrevNextButtonAtTopRightView()
         
         let mainScrollViewOffsetObservable = mainScrollView.rx.contentOffset
             .observeOn(MainScheduler.asyncInstance)
@@ -259,6 +263,24 @@ class HomeMainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        topRightPrevButton.rx.tap
+            .asDriver(onErrorJustReturn: Void())
+            .drive(onNext: {
+                self.topRightBinderIndex -= 1
+                self.enablePrevNextButtonAtTopRightView()
+                self.viewLocalBind(isPortrait: false)
+            })
+            .disposed(by: disposeBag)
+        
+        topRightNextButton.rx.tap
+            .asDriver(onErrorJustReturn: Void())
+            .drive(onNext: {
+                self.topRightBinderIndex += 1
+                self.enablePrevNextButtonAtTopRightView()
+                self.viewLocalBind(isPortrait: false)
+            })
+            .disposed(by: disposeBag)
+        
         mainVM.fetch()
         menuVM.fetch()
     }
@@ -284,6 +306,7 @@ class HomeMainViewController: UIViewController {
                             return
                         }
                         self?.topRightBinderIndex -= 1
+                        self?.enablePrevNextButtonAtTopRightView()
                         self?.viewLocalBind(isPortrait: false)
                     }
                     else {
@@ -292,11 +315,25 @@ class HomeMainViewController: UIViewController {
                             return
                         }
                         self?.topRightBinderIndex += 1
+                        self?.enablePrevNextButtonAtTopRightView()
                         self?.viewLocalBind(isPortrait: false)
                     }
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func enablePrevNextButtonAtTopRightView() {
+        
+        topRightPrevButton.isEnabled = true
+        topRightNextButton.isEnabled = true
+        
+        if topRightBinderIndex == 0 {
+            topRightPrevButton.isEnabled = false
+        }
+        else if topRightBinderIndex == 1 {
+            topRightNextButton.isEnabled = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
