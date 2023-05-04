@@ -58,6 +58,8 @@ class HomeMainViewController: UIViewController {
         originalHeaderHeight + rewardView.frame.height - topPadding
     }
     
+    private var topRightBinderIndex = 0
+    
     // MARK: - DisposeBag
     private var transitionBag = DisposeBag()
     private var disposeBag = DisposeBag()
@@ -262,19 +264,36 @@ class HomeMainViewController: UIViewController {
     }
     
     private func removeViewAsDimmedInTopRightView(view: UIView) {
-        BehaviorSubject(value: view)
-            .asDriver(onErrorJustReturn: UIView())
-            .delay(.seconds(3))
-            .drive(onNext: { [weak self] viewForRemove in
+        BehaviorSubject<(view: UIView, isPrev: Bool)>(value: (view: view, isPrev: view.frame.origin.y == 10))
+            .asDriver(onErrorJustReturn: (view: UIView(), isPrev: false))
+            .delay(.milliseconds(1200))
+            .drive(onNext: { [weak self] viewInfo in
                 
                 self?.topConstraintAtTopRightCollectionView.constant = 0
                 self?.bottomConstraintAtTopRightCollectionView.constant = 0
                 
                 UIView.animate(withDuration: 0.5) {
-                    viewForRemove.layer.opacity = 0
+                    viewInfo.view.layer.opacity = 0
                     self?.topRightView.layoutIfNeeded()
                 } completion: { _ in
-                    viewForRemove.removeFromSuperview()
+                    
+                    viewInfo.view.removeFromSuperview()
+                    
+                    if viewInfo.isPrev {
+                        guard let index = self?.topRightBinderIndex, index > 0 else {
+                            return
+                        }
+                        self?.topRightBinderIndex -= 1
+                        self?.viewLocalBind(isPortrait: false)
+                    }
+                    else {
+                        // TODO: index 최대값을 비롯한 뷰 상태값을 관리하는 모델이 필요함.
+                        guard let index = self?.topRightBinderIndex, index < 1 else {
+                            return
+                        }
+                        self?.topRightBinderIndex += 1
+                        self?.viewLocalBind(isPortrait: false)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -303,7 +322,7 @@ class HomeMainViewController: UIViewController {
         localBind(to: currentMenuCollectionView,
                   publisher: menuVM.currentMenuBinder)
         localBind(to: topRightContentsCollectionView,
-                  publisher: menuVM.recommendMenuBinder)
+                  publisher: topRightBinderIndex == 0 ? menuVM.recommendMenuBinder : menuVM.currentMenuBinder)
     }
     
     func localBind(to view: UICollectionView, publisher: BehaviorRelay<[some StarbucksEntity]>) {
