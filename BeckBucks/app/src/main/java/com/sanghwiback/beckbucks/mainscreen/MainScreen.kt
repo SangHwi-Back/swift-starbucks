@@ -2,6 +2,8 @@ package com.sanghwiback.beckbucks.mainscreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,9 +23,10 @@ val paddingModifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 18.d
 @Preview(showBackground = true)
 @Composable
 fun MainScreen() {
-    Column {
+    Column(Modifier.verticalScroll(rememberScrollState())) {
         MainHeader()
         MainHeaderButtons()
         MainPromotionSection()
+        MainEventSection()
     }
 }
