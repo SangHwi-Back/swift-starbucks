@@ -66,6 +66,17 @@ private fun MenuCard(model: MenuCardModel) {
             .padding(horizontal = 16.dp, vertical = 14.dp)
     ) {
         // 상단: 이미지 + 메뉴명/옵션 + 하트 아이콘
+
+        Spacer(modifier = Modifier.fillMaxWidth())
+        Icon(
+            imageVector = Icons.Outlined.FavoriteBorder,
+            contentDescription = "찜",
+            tint = Color.Gray,
+            modifier = Modifier
+                .padding(start = 8.dp)
+                .size(22.dp)
+        )
+        
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -103,20 +114,15 @@ private fun MenuCard(model: MenuCardModel) {
                     overflow = TextOverflow.Ellipsis,
                 )
             }
-            Icon(
-                imageVector = Icons.Outlined.FavoriteBorder,
-                contentDescription = "찜",
-                tint = Color.Gray,
-                modifier = Modifier
-                    .padding(start = 8.dp)
-                    .size(22.dp)
-            )
         }
+
+        // 구분선
 
         Spacer(modifier = Modifier.height(12.dp))
         HorizontalDivider(color = Color(0xFFEEEEEE))
 
         // 하단: 매장명 + 주문 버튼
+        
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -177,12 +183,38 @@ sealed class MenuOption {
         enum class CupOption { Owned, Instant }
     }
 
+    fun Beverage.Size.nameOnScreen(): String = when (this) {
+        Beverage.Size.Grande -> "그란데"
+        Beverage.Size.Tall -> "톨"
+        Beverage.Size.Short -> "숏"
+    }
+
+    fun Beverage.Temperature.nameOnScreen(): String = when (this) {
+        Beverage.Temperature.Hot -> "뜨겁게"
+        Beverage.Temperature.Ice -> "차갑게"
+    }
+
+    fun Beverage.CupOption.nameOnScreen(): String = when (this) {
+        Beverage.CupOption.Owned -> "텀블러"
+        Beverage.CupOption.Instant -> "일회용"
+    }
+
     data class Food(
         val heating: Heating,
         val packaging: Packaging,
     ) : MenuOption() {
         enum class Heating { Warm, Cold }
         enum class Packaging { HereToUse, TakeOut }
+    }
+
+    fun Food.Heating.nameOnScreen(): String = when (this) {
+        Food.Heating.Warm -> "뜨겁게"
+        Food.Heating.Cold -> "아이스"
+    }
+
+    fun Food.Packaging.nameOnScreen(): String = when (this) {
+        Food.Packaging.HereToUse -> "먹고가기"
+        Food.Packaging.TakeOut -> "포장하기"
     }
 }
 
