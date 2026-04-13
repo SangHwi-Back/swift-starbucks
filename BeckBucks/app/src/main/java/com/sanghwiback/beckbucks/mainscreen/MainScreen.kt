@@ -29,5 +29,6 @@ fun MainScreen() {
         MainPromotionSection()
         MainEventSection()
         MainQuickOrderSection()
+        MainMinorEventSection()
     }
 }
