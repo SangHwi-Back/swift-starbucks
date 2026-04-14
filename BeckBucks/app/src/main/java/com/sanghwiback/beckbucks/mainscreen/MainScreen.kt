@@ -30,5 +30,6 @@ fun MainScreen() {
         MainEventSection()
         MainQuickOrderSection()
         MainMinorEventSection()
+        MainNewEventSection()
     }
 }
